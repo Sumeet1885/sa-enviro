@@ -1,0 +1,220 @@
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+ 
+ /* SA Enviro Solutions - Water Treatment Design System
+    Premium Blue Water Theme - All colors in HSL
+ */
+ 
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
+ 
+ @layer base {
+   :root {
+     /* Background & Foreground */
+     --background: 210 50% 98%;
+     --foreground: 210 50% 10%;
+ 
+     /* Card surfaces */
+     --card: 0 0% 100%;
+     --card-foreground: 210 50% 10%;
+ 
+     /* Popover */
+     --popover: 0 0% 100%;
+     --popover-foreground: 210 50% 10%;
+ 
+     /* Primary - Deep Ocean Blue */
+     --primary: 210 80% 35%;
+     --primary-foreground: 0 0% 100%;
+ 
+     /* Secondary - Sky Blue */
+     --secondary: 200 70% 50%;
+     --secondary-foreground: 0 0% 100%;
+ 
+     /* Muted - Soft Blue Gray */
+     --muted: 210 30% 95%;
+     --muted-foreground: 210 20% 45%;
+ 
+     /* Accent - Teal/Cyan */
+     --accent: 185 75% 40%;
+     --accent-foreground: 0 0% 100%;
+ 
+     /* Destructive */
+     --destructive: 0 84% 60%;
+     --destructive-foreground: 0 0% 100%;
+ 
+     /* Borders & Inputs */
+     --border: 210 30% 88%;
+     --input: 210 30% 88%;
+     --ring: 210 80% 35%;
+ 
+     --radius: 0.75rem;
+ 
+     /* Water-themed extended palette */
+     --water-deep: 210 85% 25%;
+     --water-ocean: 210 80% 35%;
+     --water-sea: 200 75% 45%;
+     --water-sky: 195 85% 55%;
+     --water-light: 195 90% 85%;
+     --water-foam: 195 50% 95%;
+     
+     /* Industrial accents */
+     --steel: 210 15% 65%;
+     --steel-dark: 210 20% 35%;
+     --success: 160 70% 40%;
+     --warning: 40 95% 50%;
+ 
+     /* Sidebar */
+     --sidebar-background: 210 50% 10%;
+     --sidebar-foreground: 210 20% 95%;
+     --sidebar-primary: 200 70% 50%;
+     --sidebar-primary-foreground: 0 0% 100%;
+     --sidebar-accent: 210 40% 20%;
+     --sidebar-accent-foreground: 210 20% 95%;
+     --sidebar-border: 210 30% 25%;
+     --sidebar-ring: 200 70% 50%;
+ 
+     /* Gradients */
+     --gradient-ocean: linear-gradient(135deg, hsl(210 85% 25%) 0%, hsl(200 75% 45%) 100%);
+     --gradient-sky: linear-gradient(180deg, hsl(195 85% 55%) 0%, hsl(210 80% 35%) 100%);
+     --gradient-water: linear-gradient(135deg, hsl(200 75% 45%) 0%, hsl(185 75% 40%) 100%);
+     --gradient-hero: linear-gradient(135deg, hsl(210 85% 25% / 0.9) 0%, hsl(200 75% 45% / 0.8) 100%);
+ 
+     /* Shadows */
+     --shadow-sm: 0 2px 8px hsl(210 50% 10% / 0.05);
+     --shadow-md: 0 4px 16px hsl(210 50% 10% / 0.1);
+     --shadow-lg: 0 8px 32px hsl(210 50% 10% / 0.15);
+     --shadow-water: 0 10px 40px hsl(200 75% 45% / 0.2);
+   }
+ 
+   .dark {
+     --background: 210 50% 8%;
+     --foreground: 210 20% 95%;
+ 
+     --card: 210 40% 12%;
+     --card-foreground: 210 20% 95%;
+ 
+     --popover: 210 40% 12%;
+     --popover-foreground: 210 20% 95%;
+ 
+     --primary: 200 70% 50%;
+     --primary-foreground: 0 0% 100%;
+ 
+     --secondary: 210 60% 30%;
+     --secondary-foreground: 210 20% 95%;
+ 
+     --muted: 210 30% 18%;
+     --muted-foreground: 210 20% 65%;
+ 
+     --accent: 185 70% 45%;
+     --accent-foreground: 0 0% 100%;
+ 
+     --destructive: 0 70% 45%;
+     --destructive-foreground: 0 0% 100%;
+ 
+     --border: 210 30% 22%;
+     --input: 210 30% 22%;
+     --ring: 200 70% 50%;
+ 
+     --sidebar-background: 210 50% 6%;
+     --sidebar-foreground: 210 20% 95%;
+     --sidebar-primary: 200 70% 50%;
+     --sidebar-primary-foreground: 0 0% 100%;
+     --sidebar-accent: 210 40% 15%;
+     --sidebar-accent-foreground: 210 20% 95%;
+     --sidebar-border: 210 30% 18%;
+     --sidebar-ring: 200 70% 50%;
+   }
+ }
+ 
+ @layer base {
+   * {
+     @apply border-border;
+   }
+ 
+   html {
+     scroll-behavior: smooth;
+   }
+ 
+   body {
+     @apply bg-background text-foreground font-sans antialiased;
+   }
+ 
+   h1, h2, h3, h4 {
+     @apply font-display font-semibold tracking-tight;
+   }
+ }
+ 
+ @layer components {
+   .hero-overlay {
+     background: var(--gradient-hero);
+   }
+ 
+   .water-ripple {
+     position: relative;
+     overflow: hidden;
+   }
+   
+   .water-ripple::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: radial-gradient(circle at 50% 100%, hsl(var(--water-light) / 0.3), transparent 70%);
+     pointer-events: none;
+   }
+ 
+   .glass {
+     background: hsl(var(--card) / 0.8);
+     backdrop-filter: blur(12px);
+     border: 1px solid hsl(var(--border) / 0.5);
+   }
+ 
+   .gradient-text {
+     background: var(--gradient-ocean);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+   }
+ 
+   .card-hover {
+     @apply transition-all duration-300;
+   }
+   
+   .card-hover:hover {
+     transform: translateY(-4px);
+     box-shadow: var(--shadow-lg);
+   }
+ 
+   .section-padding {
+     @apply py-16 md:py-24 lg:py-32;
+   }
+ 
+   .container-wide {
+     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+   }
+ }
+ 
+ @layer utilities {
+   .animate-float {
+     animation: float 6s ease-in-out infinite;
+   }
+ 
+   .animate-wave {
+     animation: wave 8s ease-in-out infinite;
+   }
+ 
+   .animate-pulse-slow {
+     animation: pulse 4s ease-in-out infinite;
+   }
+ }
+ 
+ @keyframes float {
+   0%, 100% { transform: translateY(0); }
+   50% { transform: translateY(-10px); }
+ }
+ 
+ @keyframes wave {
+   0%, 100% { transform: translateX(0) translateY(0); }
+   25% { transform: translateX(5px) translateY(-5px); }
+   50% { transform: translateX(0) translateY(-10px); }
+   75% { transform: translateX(-5px) translateY(-5px); }
+ }
