@@ -2,11 +2,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SEO } from "@/components/layout/SEO";
-import {
-  AnimatedSection,
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/motion";
+
 import { galleryImages, seoData } from "@/constants/siteData";
 
 const Gallery = () => {
@@ -29,7 +25,7 @@ const Gallery = () => {
       {/* Hero */}
       <section className="py-24 lg:py-32 bg-gradient-to-br from-water-deep to-water-ocean text-primary-foreground">
         <div className="container-wide">
-          <AnimatedSection className="max-w-3xl">
+          <div className="max-w-3xl">
             <span className="inline-block px-4 py-1.5 rounded-full bg-water-sky/20 text-water-sky text-sm font-medium mb-4">
               Gallery
             </span>
@@ -40,12 +36,12 @@ const Gallery = () => {
               Explore our portfolio of water treatment solutions and
               installations.
             </p>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
       {/* Filter */}
-      <section className="py-8 bg-background border-b border-border sticky top-20 z-30">
+      <section className="py-8 bg-background border-b border-border relative top-20 z-30">
         <div className="container-wide">
           <div className="flex flex-wrap gap-2 justify-center">
             {categories.map((cat) => (
@@ -68,9 +64,9 @@ const Gallery = () => {
       {/* Gallery Grid */}
       <section className="section-padding bg-background">
         <div className="container-wide">
-          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {filteredImages.map((image, i) => (
-              <StaggerItem key={i}>
+              <div key={i}>
                 <button
                   onClick={() => setSelectedImage(image.src)}
                   className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer w-full border border-blue-100 dark:border-blue-900/30 shadow-lg hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-1"
@@ -127,9 +123,9 @@ const Gallery = () => {
                   <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-blue-400 rounded-tl-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
                   <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-cyan-400 rounded-br-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
                 </button>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 

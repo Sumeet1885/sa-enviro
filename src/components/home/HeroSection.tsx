@@ -134,7 +134,7 @@ export function HeroSection() {
   const active = extended[index % heroData.slides.length];
 
   return (
-    <div className="relative h-screen overflow-hidden bg-black text-white">
+    <div className="relative  py-24 lg:py-32 h-screen overflow-hidden bg-black text-white">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -174,7 +174,7 @@ export function HeroSection() {
         </AnimatePresence>
       </div>
 
-      <div className="absolute inset-x-0 bottom-10 flex justify-between px-8 z-30 pointer-events-none">
+      <div className="absolute inset-x-0 bottom-20 flex justify-between px-8 z-30 pointer-events-none">
         <button
           onClick={prev}
           className="pointer-events-auto bg-white/70 p-3 rounded-full hover:bg-white transition"
