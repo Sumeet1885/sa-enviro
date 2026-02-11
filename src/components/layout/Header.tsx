@@ -19,8 +19,8 @@ export function Header() {
 
   // Transform values based on scroll - EXPANDING instead of shrinking
   const navWidth = useTransform(scrollY, [0, 100], [50, 60]); // Expands width
-  const navPadding = useTransform(scrollY, [0, 100], [12, 20]); // More padding
-  const logoScale = useTransform(scrollY, [0, 100], [1, 1.1]); // Logo gets bigger
+  const navPadding = useTransform(scrollY, [0, 100], [12, 15]); // More padding
+  const logoScale = useTransform(scrollY, [0, 100], [1, 1.0]); // Logo gets bigger
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,11 +46,11 @@ export function Header() {
         transition-all duration-700 ease-out
         ${
           isScrolled
-            ? "backdrop-blur-2xl bg-gradient-to-r from-cyan-500/40 via-blue-600/40 to-teal-500/40 shadow-2xl shadow-cyan-500/30 border-2 border-cyan-300/50"
+            ? "bg-[linear-gradient(135deg,rgba(0,0,0,0.35),rgba(0,0,0,0.15))]"
             : "backdrop-blur-md bg-white/10 border border-white/20"
         }
         rounded-full flex items-center justify-center gap-4 sm:gap-8 text-sm
-        hover:shadow-2xl hover:shadow-cyan-400/40
+        hover:shadow-2xl hover:shadow-cyan-400/40 
         group
       `}
       style={{
@@ -138,11 +138,7 @@ export function Header() {
           className={`
             w-12 h-12 rounded-xl flex items-center justify-center 
             transition-all duration-500
-            ${
-              isScrolled
-                ? "bg-gradient-to-br from-cyan-400 via-blue-500 to-teal-500 shadow-2xl shadow-cyan-400/60 ring-2 ring-white/30"
-                : "bg-white/10"
-            }
+            ${isScrolled ? "" : "bg-white/10"}
           `}
         >
           <img

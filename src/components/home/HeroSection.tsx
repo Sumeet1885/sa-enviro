@@ -1,206 +1,105 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { heroData } from "@/constants/siteData";
 
 const extended = [...heroData.slides, ...heroData.slides, ...heroData.slides];
 const CENTER = heroData.slides.length;
 
-export function UltimateWaterButton() {
+export function FrostedWhiteButton() {
   return (
-    <motion.button
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-      whileHover={{ scale: 1.08, y: -5 }}
-      whileTap={{ scale: 0.95 }}
-      className="
-        mt-10 px-14 py-6 rounded-full 
-        bg-white text-black font-bold text-xl
-        relative overflow-hidden
-        shadow-[0_0_50px_rgba(6,182,212,0.6),0_15px_40px_rgba(0,0,0,0.25),inset_0_2px_10px_rgba(255,255,255,0.8)]
-        hover:shadow-[0_0_80px_rgba(6,182,212,0.9),0_20px_50px_rgba(0,0,0,0.35),inset_0_2px_15px_rgba(255,255,255,1)]
-        transition-all duration-500
-        group
-        border-2 border-cyan-100
-      "
-    >
-      <Link to={heroData.cta.primary.href}>
-        {/* Water filling animation at bottom */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-cyan-200/40 via-cyan-100/30 to-transparent rounded-b-full"
-          animate={{
-            scaleY: [1, 1.15, 1],
-            opacity: [0.4, 0.6, 0.4],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-
-        {/* Animated wave surface */}
-        <motion.div
-          className="absolute left-0 right-0"
-          animate={{
-            bottom: ["35%", "45%", "35%"],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <svg
-            viewBox="0 0 300 40"
-            className="w-full"
-            preserveAspectRatio="none"
-          >
-            <motion.path
-              fill="rgba(6, 182, 212, 0.2)"
-              animate={{
-                d: [
-                  "M0,20 Q37.5,10 75,20 T150,20 T225,20 T300,20 L300,40 L0,40 Z",
-                  "M0,20 Q37.5,30 75,20 T150,20 T225,20 T300,20 L300,40 L0,40 Z",
-                  "M0,20 Q37.5,10 75,20 T150,20 T225,20 T300,20 L300,40 L0,40 Z",
-                ],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </svg>
-        </motion.div>
-
-        {/* Bubbles rising from bottom */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={`bubble-${i}`}
-            className="absolute rounded-full bg-white/50 backdrop-blur-sm"
-            style={{
-              width: `${6 + Math.random() * 8}px`,
-              height: `${6 + Math.random() * 8}px`,
-              left: `${15 + i * 12}%`,
-            }}
-            animate={{
-              y: [80, -30],
-              x: [0, Math.random() * 30 - 15, Math.random() * 30 - 15, 0],
-              scale: [0.5, 1, 1.2, 0.8],
-              opacity: [0, 0.8, 0.6, 0],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: i * 0.6,
-              ease: "easeOut",
-            }}
-          />
-        ))}
-
-        {/* Multiple ripple rings */}
-        {[...Array(4)].map((_, i) => (
-          <motion.div
-            key={`ripple-${i}`}
-            className="absolute inset-0 rounded-full border-2 border-cyan-400/30"
-            animate={{
-              scale: [1, 1.6],
-              opacity: [0.6, 0],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              delay: i * 0.75,
-              ease: "easeOut",
-            }}
-          />
-        ))}
-
-        {/* Shimmer sweep */}
-        {/* <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-        animate={{
-          x: ["-100%", "200%"],
-        }}
+    <Link to="/services">
+      <motion.button
+        className="
+        mt-5
+          group relative
+          px-10 py-5
+          bg-white/90
+          backdrop-blur-sm
+          border border-slate-200/80
+          text-slate-900
+          font-medium text-base
+          rounded-full
+          overflow-hidden
+          shadow-xl shadow-slate-200/40
+        "
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "linear",
-          repeatDelay: 1,
+          type: "spring",
+          stiffness: 300,
+          damping: 25,
         }}
-      /> */}
+        whileHover={{
+          scale: 1.03,
+          backgroundColor: "rgba(255, 255, 255, 0.95)",
+          boxShadow: "0 25px 60px -15px rgba(0, 0, 0, 0.15)",
+        }}
+        whileTap={{ scale: 0.97 }}
+      >
+        {/* Subtle gradient overlay */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-slate-50/50 to-white/30"
+          initial={{ opacity: 0 }}
+          whileHover={{
+            opacity: 1,
+            transition: { duration: 0.3 },
+          }}
+        />
 
-        {/* Top glass reflection */}
-        <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/70 via-white/30 to-transparent rounded-t-full" />
-
-        {/* Radial shine spot */}
-        <div
-          className="absolute w-16 h-16 bg-white/50 rounded-full blur-xl"
+        {/* Shine effect */}
+        <motion.div
+          className="absolute inset-0"
           style={{
-            top: "25%",
-            left: "30%",
+            background:
+              "linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.8) 50%, transparent 70%)",
+            backgroundSize: "200% 100%",
           }}
-        />
-
-        {/* Outer pulsing glow - multiple layers */}
-        <motion.div
-          className="absolute inset-0 rounded-full bg-cyan-300/40 blur-2xl -z-10"
           animate={{
-            scale: [1, 1.4, 1],
-            opacity: [0.4, 0.7, 0.4],
-          }}
-          transition={{
-            duration: 2.5,
-            repeat: Infinity,
-          }}
-        />
-
-        <motion.div
-          className="absolute inset-0 rounded-full bg-cyan-400/30 blur-3xl -z-20"
-          animate={{
-            scale: [1.2, 1.6, 1.2],
-            opacity: [0.3, 0.5, 0.3],
+            backgroundPosition: ["200% 0%", "-200% 0%"],
           }}
           transition={{
             duration: 3,
-            repeat: Infinity,
-          }}
-        />
-
-        {/* Button content */}
-        <span className="relative z-10 flex items-center gap-3">
-          {/* <motion.div
-          animate={{
-            rotate: [0, 360],
-          }}
-          transition={{
-            duration: 4,
             repeat: Infinity,
             ease: "linear",
           }}
-        >
-          <Droplets className="w-6 h-6 text-cyan-600 drop-shadow-lg" />
-        </motion.div> */}
-          <span className="drop-shadow-sm">{heroData.cta.primary.text}</span>
+        />
 
-          {/* <motion.div
-          animate={{
-            x: [0, 4, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <Waves className="w-5 h-5 text-cyan-600 drop-shadow-lg" />
-        </motion.div> */}
+        {/* Top highlight */}
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+
+        {/* Content */}
+        <span className="relative z-10 flex items-center gap-2">
+          <span>Discover More</span>
+
+          <motion.div
+            whileHover={{
+              x: 4,
+              y: -4,
+              rotate: 45,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 20,
+            }}
+          >
+            <ArrowRight className="w-5 h-5" strokeWidth={2} />
+          </motion.div>
         </span>
-      </Link>
-    </motion.button>
+
+        {/* Outer subtle glow */}
+        <motion.div
+          className="absolute -inset-2 bg-white/50 rounded-3xl blur-xl -z-10"
+          initial={{ opacity: 0 }}
+          whileHover={{
+            opacity: 1,
+            transition: { duration: 0.3 },
+          }}
+        />
+      </motion.button>
+    </Link>
   );
 }
 
@@ -270,7 +169,7 @@ export function HeroSection() {
             <p className="mt-6 text-sm sm:text-base opacity-80">
               {active.desc}
             </p>
-            <UltimateWaterButton />
+            <FrostedWhiteButton />
           </motion.div>
         </AnimatePresence>
       </div>
