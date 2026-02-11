@@ -54,8 +54,8 @@ export const siteConfig: SiteConfig = {
   description:
     "SA Enviro Solutions (SAES) provides quality and customized services to address Environmental Aspects, specifically in Water and Wastewater Treatment, Zero Liquid Discharge, Air Pollution Control, Energy, Safety & Solid-Waste Management.",
   contact: {
-    phone: "+91 9822392719",
-    email: "info@saenvirosolutions.com",
+    phone: "+91 8087758585",
+    email: "sales@saenvirosolutions.com",
     address: "Chinchwad, Pune, Maharashtra, India",
   },
   social: {
@@ -388,11 +388,6 @@ export const galleryImages = [
     src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Activated-Carbon-Filters.webp",
     alt: "Activated Carbon Filters",
     category: "filters",
-  },
-  {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Reverse-Osmosis-RO-Plants-1.webp",
-    alt: "Reverse Osmosis Plants",
-    category: "plants",
   },
   {
     src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Water-Treatment-Plants-WTP1.webp",
