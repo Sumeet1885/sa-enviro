@@ -1,120 +1,503 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Droplets, Phone } from "lucide-react";
-import { navigation, siteConfig } from "@/constants/siteData";
-import { Button } from "@/components/ui/button";
+import { Menu, X, Droplets, Waves } from "lucide-react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Logo from "@/assets/logo.webp";
 
-export const Header = () => {
+import { navigation, siteConfig } from "@/constants/siteData";
+
+export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { scrollY } = useScroll();
+
+  // Transform values based on scroll - EXPANDING instead of shrinking
+  const navWidth = useTransform(scrollY, [0, 100], [50, 60]); // Expands width
+  const navPadding = useTransform(scrollY, [0, 100], [5, 5]); // More padding
+  const logoScale = useTransform(scrollY, [0, 100], [1, 1.0]); // Logo gets bigger
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass">
-      <div className="container-wide">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg  flex items-center justify-center group-hover:scale-110 transition-transform">
-              <img src={Logo} alt="Company Logo" />
-              {/* <Droplets className="w-6 h-6 text-primary-foreground" /> */}
-            </div>
-            <div className="hidden sm:block">
-              <span className="font-display text-xl font-bold text-primary">
-                {siteConfig.shortName}
-              </span>
-              <span className="block text-xs text-muted-foreground -mt-1">
-                Enviro Solutions
-              </span>
-            </div>
-          </Link>
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        delay: 0.2,
+      }}
+      className={`
+        fixed top-6 z-50 
+        transition-all duration-700 ease-out
+        ${
+          isScrolled
+            ? "bg-gradient-to-r from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/60"
+            : "bg-gradient-to-r from-slate-800/80 via-slate-900/75 to-slate-800/80 backdrop-blur-2xl border-2 border-slate-600/60"
+        }
+        rounded-full flex items-center justify-center gap-4 sm:gap-8 text-sm
+        shadow-[0_16px_48px_rgba(0,0,0,0.5)]
+        hover:shadow-[0_20px_64px_rgba(139,92,246,0.45)] 
+        group
+      `}
+      style={{
+        width: `${navWidth.get()}%`,
+        paddingTop: navPadding,
+        paddingBottom: navPadding,
+        marginLeft: "25%",
+      }}
+    >
+      {/* Strong gradient overlay for depth */}
+      {isScrolled && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="absolute inset-0 rounded-full overflow-hidden"
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-violet-600/15 via-purple-600/15 to-fuchsia-600/15"
+            animate={{
+              scale: [1, 1.05, 1],
+              opacity: [0.5, 0.7, 0.5],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </motion.div>
+      )}
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={`relative py-2 text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === item.href
-                    ? "text-primary"
-                    : "text-foreground/80"
-                }`}
-              >
-                {item.name}
-                {location.pathname === item.href && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-primary rounded-full"
-                  />
-                )}
-              </Link>
-            ))}
-          </nav>
-
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-4">
-            <a
-              href={`tel:${siteConfig.contact.phone}`}
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+      {/* Enhanced accent particles */}
+      <AnimatePresence>
+        {isScrolled && (
+          <>
+            {/* <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ duration: 0.4 }}
+              className="absolute -top-2 left-12"
             >
-              <Phone className="w-4 h-4" />
-              <span className="hidden xl:inline">
-                {siteConfig.contact.phone}
-              </span>
-            </a>
-            <Button asChild>
-              <Link to="/contact">Get Quote</Link>
-            </Button>
-          </div>
+              <Droplets className="w-5 h-5 text-violet-400 drop-shadow-[0_4px_12px_rgba(139,92,246,0.8)]" />
+            </motion.div> */}
+            {/* <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="absolute -top-2 right-12"
+            >
+              <Waves className="w-5 h-5 text-purple-400 drop-shadow-[0_4px_12px_rgba(168,85,247,0.8)]" />
+            </motion.div> */}
+          </>
+        )}
+      </AnimatePresence>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden pr-12 rounded-lg hover:bg-muted transition-colors"
-            aria-label="Toggle menu"
+      {/* Logo with DRAMATIC popup and highlighting */}
+      <Link
+        to="/"
+        className="flex items-center gap-3 group/logo relative right-7 transition-all duration-500"
+      >
+        <motion.div
+          style={{ scale: logoScale }}
+          whileHover={{
+            scale: 1.25,
+            rotate: [0, -10, 10, -10, 0],
+            transition: { duration: 0.7, ease: "easeInOut" },
+          }}
+          className={`
+            w-14 h-14 rounded-2xl flex items-center justify-center 
+            transition-all duration-700 relative
+            ${
+              isScrolled
+                ? "bg-gradient-to-br from-violet-600/40 via-purple-600/35 to-fuchsia-600/40 backdrop-blur-md border-2 border-violet-400/60 shadow-[0_0_40px_rgba(139,92,246,0.6)]"
+                : "bg-gradient-to-br from-slate-700/50 to-slate-800/50 border-2 border-slate-600/50 shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
+            }
+          `}
+        >
+          <motion.img
+            src={Logo}
+            alt="Company Logo"
+            className="w-10 h-10 object-contain relative z-10"
+            animate={{
+              filter: isScrolled
+                ? [
+                    "drop-shadow(0 4px 16px rgba(139,92,246,0.6))",
+                    "drop-shadow(0 6px 24px rgba(139,92,246,0.9))",
+                    "drop-shadow(0 4px 16px rgba(139,92,246,0.6))",
+                  ]
+                : "drop-shadow(0 4px 12px rgba(0,0,0,0.4))",
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* DRAMATIC pulsing glow effects */}
+          {isScrolled && (
+            <>
+              {/* Inner intense glow */}
+              <motion.div
+                animate={{
+                  opacity: [0.5, 0.9, 0.5],
+                  scale: [0.9, 1.15, 0.9],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-400/60 via-purple-500/50 to-fuchsia-500/60 blur-md -z-10"
+              />
+
+              {/* Middle glow layer */}
+              <motion.div
+                animate={{
+                  opacity: [0.4, 0.7, 0.4],
+                  scale: [1.1, 1.35, 1.1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/50 to-purple-600/50 blur-lg -z-20"
+              />
+
+              {/* Outer massive glow */}
+              <motion.div
+                animate={{
+                  opacity: [0.3, 0.6, 0.3],
+                  scale: [1.3, 1.6, 1.3],
+                }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-600/40 via-purple-600/40 to-fuchsia-600/40 blur-2xl -z-30"
+              />
+
+              {/* Ultra outer atmospheric glow */}
+              <motion.div
+                animate={{
+                  opacity: [0.2, 0.5, 0.2],
+                  scale: [1.5, 2, 1.5],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/30 to-fuchsia-600/30 blur-3xl -z-40"
+              />
+            </>
+          )}
+
+          {/* Enhanced shine effect on hover */}
+          <motion.div
+            className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/0 via-white/60 to-white/0"
+            initial={{ x: "-100%", opacity: 0 }}
+            whileHover={{ x: "100%", opacity: 1 }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+          />
+        </motion.div>
+
+        <motion.div
+          className="hidden sm:block"
+          animate={{
+            x: isScrolled ? 0 : 0,
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <span
+            className={`
+            font-display font-bold transition-all duration-500
+            ${
+              isScrolled
+                ? "text-2xl text-white drop-shadow-[0_3px_16px_rgba(139,92,246,0.8)]"
+                : "text-xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+            }
+          `}
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </div>
+            {siteConfig.shortName}
+          </span>
+          <motion.span
+            className={`
+              block -mt-1 transition-all duration-500 font-medium
+              ${
+                isScrolled
+                  ? "text-sm text-violet-200 drop-shadow-[0_2px_8px_rgba(139,92,246,0.6)]"
+                  : "text-xs text-slate-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
+              }
+            `}
+            animate={{
+              opacity: isScrolled ? [0.85, 1, 0.85] : 0.9,
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+            }}
+          >
+            Enviro Solutions
+          </motion.span>
+        </motion.div>
+      </Link>
 
-      {/* Mobile Navigation */}
+      {/* Navigation Links with strong contrast */}
+      {navigation.map((item, index) => (
+        <motion.a
+          key={item.name}
+          href={item.href}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 * index }}
+          whileHover={{
+            scale: 1.08,
+            y: -2,
+          }}
+          className={`
+            relative hidden lg:flex items-center
+            transition-all duration-500 font-semibold
+            ${
+              isScrolled
+                ? "text-white text-base drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]"
+                : "text-white text-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+            }
+          `}
+        >
+          {item.name}
+
+          {/* Strong underline effect */}
+          <motion.span
+            className={`
+              absolute -bottom-1 left-0 h-[2px] rounded-full
+              ${
+                isScrolled
+                  ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
+                  : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
+              }
+            `}
+            initial={{ width: 0 }}
+            whileHover={{ width: "100%" }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          />
+
+          {/* Strong background glow on hover */}
+          {isScrolled && (
+            <>
+              <motion.span
+                className="absolute inset-0 -inset-x-4 -inset-y-2 rounded-2xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 backdrop-blur-sm border border-violet-400/30 -z-10"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileHover={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.span
+                className="absolute inset-0 rounded-2xl bg-violet-500/20 blur-xl -z-20"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+            </>
+          )}
+        </motion.a>
+      ))}
+
+      {/* Mobile Menu Button with strong visibility */}
+      <motion.button
+        whileHover={{ scale: 1.15, rotate: 90 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setIsOpen(!isOpen)}
+        className={`
+          lg:hidden p-3 rounded-2xl transition-all duration-500 relative overflow-hidden
+          ${
+            isScrolled
+              ? "bg-gradient-to-br from-violet-600/40 to-purple-600/40 backdrop-blur-md text-white border-2 border-violet-400/60 shadow-[0_8px_32px_rgba(139,92,246,0.5)]"
+              : "bg-gradient-to-br from-slate-700/50 to-slate-800/50 border-2 border-slate-600/50 text-white shadow-[0_4px_16px_rgba(0,0,0,0.4)]"
+          }
+        `}
+        aria-label="Toggle menu"
+      >
+        {/* Enhanced button shine effect */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+          animate={{
+            x: ["-100%", "100%"],
+          }}
+          transition={{
+            duration: 2.5,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
+        <AnimatePresence mode="wait">
+          {isOpen ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative z-10"
+            >
+              <X className="w-6 h-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="menu"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative z-10"
+            >
+              <Menu className="w-6 h-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.button>
+
+      {/* Mobile Menu Dropdown with strong contrast */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-border bg-card"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className={`
+              absolute top-full left-0 right-0 mt-4 
+              lg:hidden rounded-3xl overflow-hidden
+              ${
+                isScrolled
+                  ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
+                  : "bg-gradient-to-br from-slate-800/85 via-slate-900/80 to-slate-800/85 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.4)]"
+              }
+            `}
           >
-            <nav className="container-wide py-4 flex flex-col gap-2">
-              {navigation.map((item) => (
-                <Link
+            {/* Strong gradient overlay */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-violet-600/15 via-purple-600/15 to-fuchsia-600/15"
+              animate={{
+                scale: [1, 1.02, 1],
+                opacity: [0.4, 0.6, 0.4],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+              }}
+            />
+
+            <nav className="py-6 flex flex-col gap-2 px-6 relative z-10">
+              {navigation.map((item, index) => (
+                <motion.div
                   key={item.name}
-                  to={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    location.pathname === item.href
-                      ? "bg-primary text-primary-foreground"
-                      : "hover:bg-muted"
-                  }`}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    delay: 0.08 * index,
+                    type: "spring",
+                    stiffness: 300,
+                  }}
                 >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="pt-4 border-t border-border mt-2">
-                <Button asChild className="w-full">
-                  <Link to="/contact" onClick={() => setIsOpen(false)}>
-                    Get Quote
+                  <Link
+                    to={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`
+                      px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
+                      flex items-center gap-3 relative overflow-hidden group/link
+                      ${
+                        location.pathname === item.href
+                          ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
+                          : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
+                      }
+                      drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]
+                    `}
+                  >
+                    {/* Strong shine effect on hover */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.6 }}
+                    />
+
+                    {/* Icon for active state */}
+                    {location.pathname === item.href && (
+                      <Droplets className="w-5 h-5 relative z-10 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
+                    )}
+
+                    <span className="relative z-10">{item.name}</span>
+
+                    {/* Strong active indicator */}
+                    {location.pathname === item.href && (
+                      <motion.span
+                        layoutId="mobile-active-pill"
+                        className="absolute right-4 w-3 h-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          opacity: [1, 0.8, 1],
+                        }}
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                        }}
+                      />
+                    )}
                   </Link>
-                </Button>
-              </div>
+                </motion.div>
+              ))}
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+
+      {/* Enhanced floating particles with more visibility */}
+      {isScrolled && (
+        <>
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1.5 h-1.5 rounded-full bg-violet-400/70 shadow-[0_0_12px_rgba(139,92,246,0.8)]"
+              animate={{
+                y: [-20, -50, -20],
+                x: [0, Math.random() * 20 - 10, 0],
+                opacity: [0, 0.9, 0],
+                scale: [0.5, 1.2, 0.5],
+              }}
+              transition={{
+                duration: 3.5 + Math.random() * 1.5,
+                repeat: Infinity,
+                delay: i * 0.5,
+                ease: "easeInOut",
+              }}
+              style={{
+                left: `${20 + i * 15}%`,
+                top: "100%",
+              }}
+            />
+          ))}
+        </>
+      )}
+    </motion.nav>
   );
-};
+}
