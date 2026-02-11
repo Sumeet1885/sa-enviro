@@ -1,8 +1,53 @@
 // Site data extracted from JSON - all content comes from here
 
-import { Image } from "../assets/about-hero.jpg";
+import Image from "../assets/about-hero.jpg";
+import Image1 from "@/assets/about-hero.jpg";
+import Image2 from "@/assets/hero-water-treatment.jpg";
+import Image3 from "@/assets/hero2.jpg";
+import Image4 from "@/assets/hero3.jpg";
 
-export const siteConfig = {
+interface SiteConfig {
+  name: string;
+  shortName: string;
+  tagline: string;
+  description: string;
+  contact: {
+    phone: string;
+    email: string;
+    address: string;
+  };
+  social: {
+    facebook: string;
+    linkedin: string;
+    twitter: string;
+  };
+}
+
+interface NavigationItem {
+  name: string;
+  href: string;
+}
+interface HeroSlideItem {
+  id: number;
+  title: string;
+  subtitle: string;
+  desc: string;
+  img: string;
+}
+
+interface CTA {
+  primary: {
+    text: string;
+    href: string;
+  };
+}
+
+interface HeroData {
+  cta: CTA;
+  slides: HeroSlideItem[];
+}
+
+export const siteConfig: SiteConfig = {
   name: "SA Enviro Solutions",
   shortName: "SAES",
   tagline: "Leading Water Treatment Industry Into New Age",
@@ -20,7 +65,7 @@ export const siteConfig = {
   },
 };
 
-export const navigation = [
+export const navigation: NavigationItem[] = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
@@ -28,19 +73,46 @@ export const navigation = [
   { name: "Contact", href: "/contact" },
 ];
 
-export const heroData = {
-  title: "Pure Water, Pure Life",
-  subtitle: "Leading Water Treatment Industry Into New Age",
-  description:
-    "SA Enviro Solutions provides quality and customized services in Water Treatment, Zero Liquid Discharge, Air Pollution Control, Energy, Safety & Waste Management.",
+export const heroData: HeroData = {
   cta: {
-    primary: { text: "Our Services", href: "/services" },
-    secondary: { text: "Contact Us", href: "/contact" },
+    primary: { text: "Explore", href: "/services" },
   },
-  images: [
-    "https://images.pexels.com/photos/5712211/pexels-photo-5712211.jpeg",
-    "https://images.pexels.com/photos/3105242/pexels-photo-3105242.jpeg",
-    "https://images.pexels.com/photos/3808769/pexels-photo-3808769.jpeg?w=1200&q=80",
+  slides: [
+    {
+      id: 1,
+      title: "Modern Wastewater Treatment Facility",
+      subtitle: "Engineering clean water for a sustainable future",
+      desc: "An aerial view of an advanced wastewater treatment plant featuring large circular clarifier tanks, interconnected pipelines.",
+      img: Image1,
+    },
+    {
+      id: 2,
+      title: "Industrial Water Filtration System",
+      subtitle: "Precision-engineered purification infrastructure",
+      desc: "Interior view of a high-grade industrial filtration plant featuring stainless steel pressure vessels, interconnected pipe networks.",
+      img: Image2,
+    },
+    {
+      id: 3,
+      title: "Rural Wastewater Treatment Site",
+      subtitle: "Compact ecological water management",
+      desc: "Top-down aerial view of a community-scale wastewater treatment plant featuring circular settling tanks, sludge basins.",
+      img: Image3,
+    },
+    {
+      id: 3,
+      title: "Abstract Perspectives",
+      subtitle: "Finding symmetry in chaos",
+      desc: "Modern abstract forms and human emotion.",
+      img: Image4,
+    },
+    {
+      id: 4,
+      title: "Municipal Clarifier Basin",
+      subtitle: "Final stage sedimentation for clean discharge",
+      desc: "Ground-level view of a circular secondary clarifier where treated water is separated from residual solids using a slow rotating bridge and scraper system.",
+      img: Image4,
+    },
   ],
 };
 
@@ -139,7 +211,7 @@ export const services = [
     description:
       "The Dual Media Filter are utilized for higher flow rates with a smaller footprint. High filtration velocities are achieved by proper selection of Media, and designing of Distribution.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Dual-Media-Filters.jpg",
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
     link: "/services/dual-media-filters",
   },
   {
@@ -148,7 +220,7 @@ export const services = [
     description:
       "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Reverse-Osmosis-RO-Plants-1.webp",
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Reverse-Osmosis-RO-2.webp",
     link: "/services/reverse-osmosis",
   },
   {
@@ -184,7 +256,7 @@ export const services = [
     description:
       "It is the process of removing mineral salts from water by using the ion exchange process. Demineralization produces water of a higher quality than conventional distillation.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/DM-Plants.jpg",
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
     link: "/services/dm-plants",
   },
   {
@@ -193,7 +265,7 @@ export const services = [
     description:
       "The Water Softeners are available in different sizes and materials, manually operated or fully Automatic and ready to install.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Water-Softeners.jpg",
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
     link: "/services/water-softeners",
   },
   {
@@ -219,8 +291,7 @@ export const services = [
     title: "Ultra Filtration (UF)",
     description:
       "Advanced membrane filtration technology for removing suspended solids, bacteria, and other contaminants.",
-    image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Ultra-Filtration.jpg",
+    image: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF1.png",
     link: "/services/ultra-filtration",
   },
 ];
