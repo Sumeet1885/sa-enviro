@@ -19,7 +19,7 @@ export function Header() {
 
   // Transform values based on scroll - EXPANDING instead of shrinking
   const navWidth = useTransform(scrollY, [0, 100], [50, 60]); // Expands width
-  const navPadding = useTransform(scrollY, [0, 100], [12, 15]); // More padding
+  const navPadding = useTransform(scrollY, [0, 100], [5, 5]); // More padding
   const logoScale = useTransform(scrollY, [0, 100], [1, 1.0]); // Logo gets bigger
 
   useEffect(() => {
@@ -46,11 +46,12 @@ export function Header() {
         transition-all duration-700 ease-out
         ${
           isScrolled
-            ? "bg-[linear-gradient(135deg,rgba(0,0,0,0.35),rgba(0,0,0,0.15))]"
-            : "backdrop-blur-md bg-white/10 border border-white/20"
+            ? "bg-gradient-to-r from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/60"
+            : "bg-gradient-to-r from-slate-800/80 via-slate-900/75 to-slate-800/80 backdrop-blur-2xl border-2 border-slate-600/60"
         }
         rounded-full flex items-center justify-center gap-4 sm:gap-8 text-sm
-        hover:shadow-2xl hover:shadow-cyan-400/40 
+        shadow-[0_16px_48px_rgba(0,0,0,0.5)]
+        hover:shadow-[0_20px_64px_rgba(139,92,246,0.45)] 
         group
       `}
       style={{
@@ -60,70 +61,55 @@ export function Header() {
         marginLeft: "25%",
       }}
     >
-      {/* Animated water ripple effect */}
+      {/* Strong gradient overlay for depth */}
       {isScrolled && (
-        <>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="absolute inset-0 rounded-full overflow-hidden"
+        >
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="absolute inset-0 rounded-full overflow-hidden"
-          >
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-blue-400/20 to-teal-400/20"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </motion.div>
-
-          {/* Water wave effect */}
-          {/* <motion.div
-            className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400"
+            className="absolute inset-0 bg-gradient-to-r from-violet-600/15 via-purple-600/15 to-fuchsia-600/15"
             animate={{
-              x: ["-100%", "100%"],
+              scale: [1, 1.05, 1],
+              opacity: [0.5, 0.7, 0.5],
             }}
             transition={{
-              duration: 3,
+              duration: 5,
               repeat: Infinity,
-              ease: "linear",
+              ease: "easeInOut",
             }}
-          /> */}
-        </>
+          />
+        </motion.div>
       )}
 
-      {/* Droplet icons floating */}
+      {/* Enhanced accent particles */}
       <AnimatePresence>
         {isScrolled && (
           <>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute -top-3 left-10"
+              transition={{ duration: 0.4 }}
+              className="absolute -top-2 left-12"
             >
-              <Droplets className="w-5 h-5 text-cyan-300 drop-shadow-lg" />
-            </motion.div>
-            <motion.div
+              <Droplets className="w-5 h-5 text-violet-400 drop-shadow-[0_4px_12px_rgba(139,92,246,0.8)]" />
+            </motion.div> */}
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 }}
-              className="absolute -top-3 right-10"
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="absolute -top-2 right-12"
             >
-              <Waves className="w-5 h-5 text-blue-300 drop-shadow-lg" />
-            </motion.div>
+              <Waves className="w-5 h-5 text-purple-400 drop-shadow-[0_4px_12px_rgba(168,85,247,0.8)]" />
+            </motion.div> */}
           </>
         )}
       </AnimatePresence>
 
-      {/* Logo */}
+      {/* Logo with DRAMATIC popup and highlighting */}
       <Link
         to="/"
         className="flex items-center gap-3 group/logo relative right-7 transition-all duration-500"
@@ -131,51 +117,108 @@ export function Header() {
         <motion.div
           style={{ scale: logoScale }}
           whileHover={{
-            scale: 1.2,
+            scale: 1.25,
             rotate: [0, -10, 10, -10, 0],
-            transition: { duration: 0.6 },
+            transition: { duration: 0.7, ease: "easeInOut" },
           }}
           className={`
-            w-12 h-12 rounded-xl flex items-center justify-center 
-            transition-all duration-500
-            ${isScrolled ? "" : "bg-white/10"}
+            w-14 h-14 rounded-2xl flex items-center justify-center 
+            transition-all duration-700 relative
+            ${
+              isScrolled
+                ? "bg-gradient-to-br from-violet-600/40 via-purple-600/35 to-fuchsia-600/40 backdrop-blur-md border-2 border-violet-400/60 shadow-[0_0_40px_rgba(139,92,246,0.6)]"
+                : "bg-gradient-to-br from-slate-700/50 to-slate-800/50 border-2 border-slate-600/50 shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
+            }
           `}
         >
-          <img
+          <motion.img
             src={Logo}
             alt="Company Logo"
-            className="w-9 h-9 object-contain drop-shadow-lg"
+            className="w-10 h-10 object-contain relative z-10"
+            animate={{
+              filter: isScrolled
+                ? [
+                    "drop-shadow(0 4px 16px rgba(139,92,246,0.6))",
+                    "drop-shadow(0 6px 24px rgba(139,92,246,0.9))",
+                    "drop-shadow(0 4px 16px rgba(139,92,246,0.6))",
+                  ]
+                : "drop-shadow(0 4px 12px rgba(0,0,0,0.4))",
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           />
 
-          {/* Pulsing water glow effect */}
+          {/* DRAMATIC pulsing glow effects */}
           {isScrolled && (
             <>
+              {/* Inner intense glow */}
               <motion.div
                 animate={{
-                  opacity: [0.4, 0.8, 0.4],
-                  scale: [1, 1.3, 1],
+                  opacity: [0.5, 0.9, 0.5],
+                  scale: [0.9, 1.15, 0.9],
                 }}
                 transition={{
                   duration: 2.5,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute inset-0 rounded-xl bg-cyan-300 blur-lg -z-10"
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-400/60 via-purple-500/50 to-fuchsia-500/60 blur-md -z-10"
               />
+
+              {/* Middle glow layer */}
               <motion.div
                 animate={{
-                  opacity: [0.3, 0.6, 0.3],
-                  scale: [1.2, 1.5, 1.2],
+                  opacity: [0.4, 0.7, 0.4],
+                  scale: [1.1, 1.35, 1.1],
                 }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute inset-0 rounded-xl bg-blue-400 blur-xl -z-20"
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/50 to-purple-600/50 blur-lg -z-20"
+              />
+
+              {/* Outer massive glow */}
+              <motion.div
+                animate={{
+                  opacity: [0.3, 0.6, 0.3],
+                  scale: [1.3, 1.6, 1.3],
+                }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-600/40 via-purple-600/40 to-fuchsia-600/40 blur-2xl -z-30"
+              />
+
+              {/* Ultra outer atmospheric glow */}
+              <motion.div
+                animate={{
+                  opacity: [0.2, 0.5, 0.2],
+                  scale: [1.5, 2, 1.5],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/30 to-fuchsia-600/30 blur-3xl -z-40"
               />
             </>
           )}
+
+          {/* Enhanced shine effect on hover */}
+          <motion.div
+            className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/0 via-white/60 to-white/0"
+            initial={{ x: "-100%", opacity: 0 }}
+            whileHover={{ x: "100%", opacity: 1 }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
+          />
         </motion.div>
 
         <motion.div
@@ -190,8 +233,8 @@ export function Header() {
             font-display font-bold transition-all duration-500
             ${
               isScrolled
-                ? "text-2xl text-white drop-shadow-[0_2px_8px_rgba(6,182,212,0.8)]"
-                : "text-xl text-white"
+                ? "text-2xl text-white drop-shadow-[0_3px_16px_rgba(139,92,246,0.8)]"
+                : "text-xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
             }
           `}
           >
@@ -202,15 +245,15 @@ export function Header() {
               block -mt-1 transition-all duration-500 font-medium
               ${
                 isScrolled
-                  ? "text-sm text-cyan-100 drop-shadow-[0_1px_4px_rgba(6,182,212,0.6)]"
-                  : "text-xs text-white"
+                  ? "text-sm text-violet-200 drop-shadow-[0_2px_8px_rgba(139,92,246,0.6)]"
+                  : "text-xs text-slate-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
               }
             `}
             animate={{
-              opacity: isScrolled ? 1 : 0.9,
+              opacity: isScrolled ? [0.85, 1, 0.85] : 0.9,
             }}
             transition={{
-              duration: 2,
+              duration: 3,
               repeat: Infinity,
             }}
           >
@@ -219,7 +262,7 @@ export function Header() {
         </motion.div>
       </Link>
 
-      {/* Navigation Links with better visibility */}
+      {/* Navigation Links with strong contrast */}
       {navigation.map((item, index) => (
         <motion.a
           key={item.name}
@@ -228,177 +271,194 @@ export function Header() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 * index }}
           whileHover={{
-            scale: 1.15,
-            y: -3,
+            scale: 1.08,
+            y: -2,
           }}
           className={`
             relative hidden lg:flex items-center
             transition-all duration-500 font-semibold
             ${
               isScrolled
-                ? "text-white text-base drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
-                : "text-white/80 hover:text-white text-sm"
+                ? "text-white text-base drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]"
+                : "text-white text-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
             }
           `}
         >
           {item.name}
 
-          {/* Water wave underline effect */}
+          {/* Strong underline effect */}
           <motion.span
             className={`
-              absolute -bottom-1 left-0 h-0.5 rounded-full
+              absolute -bottom-1 left-0 h-[2px] rounded-full
               ${
                 isScrolled
-                  ? "bg-gradient-to-r from-cyan-300 via-blue-300 to-teal-300 shadow-lg shadow-cyan-400/50"
-                  : "bg-gradient-to-r from-cyan-400 to-blue-400"
+                  ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
+                  : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
               }
             `}
             initial={{ width: 0 }}
             whileHover={{ width: "100%" }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           />
 
-          {/* Background glow on hover when scrolled */}
+          {/* Strong background glow on hover */}
           {isScrolled && (
-            <motion.span
-              className="absolute inset-0 -inset-x-3 -inset-y-2 rounded-full bg-cyan-400/20 backdrop-blur-sm border border-cyan-300/30 -z-10"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileHover={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-            />
-          )}
-
-          {/* Extra glow effect */}
-          {isScrolled && (
-            <motion.span
-              className="absolute inset-0 rounded-full bg-cyan-300/30 blur-md -z-20"
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
+            <>
+              <motion.span
+                className="absolute inset-0 -inset-x-4 -inset-y-2 rounded-2xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 backdrop-blur-sm border border-violet-400/30 -z-10"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileHover={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.span
+                className="absolute inset-0 rounded-2xl bg-violet-500/20 blur-xl -z-20"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              />
+            </>
           )}
         </motion.a>
       ))}
 
-      {/* Mobile Menu Button with better visibility */}
+      {/* Mobile Menu Button with strong visibility */}
       <motion.button
-        whileHover={{ scale: 1.15, rotate: 180 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.15, rotate: 90 }}
+        whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
         className={`
-          lg:hidden p-3 rounded-xl transition-all duration-500
+          lg:hidden p-3 rounded-2xl transition-all duration-500 relative overflow-hidden
           ${
             isScrolled
-              ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-2xl shadow-cyan-500/60 ring-2 ring-white/30"
-              : "hover:bg-white/10 text-white"
+              ? "bg-gradient-to-br from-violet-600/40 to-purple-600/40 backdrop-blur-md text-white border-2 border-violet-400/60 shadow-[0_8px_32px_rgba(139,92,246,0.5)]"
+              : "bg-gradient-to-br from-slate-700/50 to-slate-800/50 border-2 border-slate-600/50 text-white shadow-[0_4px_16px_rgba(0,0,0,0.4)]"
           }
         `}
         aria-label="Toggle menu"
       >
+        {/* Enhanced button shine effect */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+          animate={{
+            x: ["-100%", "100%"],
+          }}
+          transition={{
+            duration: 2.5,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.div
               key="close"
-              initial={{ rotate: -180, opacity: 0 }}
+              initial={{ rotate: -90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 180, opacity: 0 }}
+              exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.3 }}
+              className="relative z-10"
             >
-              <X className="w-6 h-6 drop-shadow-lg" />
+              <X className="w-6 h-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]" />
             </motion.div>
           ) : (
             <motion.div
               key="menu"
-              initial={{ rotate: 180, opacity: 0 }}
+              initial={{ rotate: 90, opacity: 0 }}
               animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -180, opacity: 0 }}
+              exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.3 }}
+              className="relative z-10"
             >
-              <Menu className="w-6 h-6 drop-shadow-lg" />
+              <Menu className="w-6 h-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]" />
             </motion.div>
           )}
         </AnimatePresence>
       </motion.button>
 
-      {/* Mobile Menu Dropdown with water theme */}
+      {/* Mobile Menu Dropdown with strong contrast */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -30, scale: 0.9 }}
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -30, scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className={`
               absolute top-full left-0 right-0 mt-4 
               lg:hidden rounded-3xl overflow-hidden
               ${
                 isScrolled
-                  ? "bg-gradient-to-br from-cyan-500/95 via-blue-600/95 to-teal-500/95 backdrop-blur-2xl border-2 border-cyan-300/50 shadow-2xl shadow-cyan-500/40"
-                  : "bg-gradient-to-br from-cyan-400/30 via-blue-500/30 to-teal-400/30 backdrop-blur-xl border border-white/30"
+                  ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
+                  : "bg-gradient-to-br from-slate-800/85 via-slate-900/80 to-slate-800/85 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.4)]"
               }
             `}
           >
-            {/* Water ripple background */}
+            {/* Strong gradient overlay */}
             <motion.div
-              className="absolute inset-0 bg-gradient-to-br from-cyan-300/20 via-blue-400/20 to-teal-300/20"
+              className="absolute inset-0 bg-gradient-to-br from-violet-600/15 via-purple-600/15 to-fuchsia-600/15"
               animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.3, 0.5, 0.3],
+                scale: [1, 1.02, 1],
+                opacity: [0.4, 0.6, 0.4],
               }}
               transition={{
-                duration: 4,
+                duration: 5,
                 repeat: Infinity,
               }}
             />
 
-            <nav className="py-6 flex flex-col gap-3 px-6 relative z-10">
+            <nav className="py-6 flex flex-col gap-2 px-6 relative z-10">
               {navigation.map((item, index) => (
                 <motion.div
                   key={item.name}
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 * index, type: "spring" }}
+                  transition={{
+                    delay: 0.08 * index,
+                    type: "spring",
+                    stiffness: 300,
+                  }}
                 >
                   <Link
                     to={item.href}
                     onClick={() => setIsOpen(false)}
                     className={`
-                      px-6 py-4 rounded-xl text-base font-bold transition-all duration-300
+                      px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
                       flex items-center gap-3 relative overflow-hidden group/link
                       ${
                         location.pathname === item.href
-                          ? "bg-white/30 text-white shadow-2xl shadow-cyan-400/50 ring-2 ring-white/40 backdrop-blur-sm"
-                          : "hover:bg-white/20 text-white hover:shadow-xl hover:shadow-cyan-400/30"
+                          ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
+                          : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
                       }
-                      drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]
+                      drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]
                     `}
                   >
-                    {/* Wave shimmer effect */}
+                    {/* Strong shine effect on hover */}
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
                       initial={{ x: "-100%" }}
                       whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.8 }}
+                      transition={{ duration: 0.6 }}
                     />
 
-                    {/* Droplet icon for active */}
+                    {/* Icon for active state */}
                     {location.pathname === item.href && (
-                      <Droplets className="w-5 h-5 relative z-10" />
+                      <Droplets className="w-5 h-5 relative z-10 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
                     )}
 
                     <span className="relative z-10">{item.name}</span>
 
-                    {/* Animated water droplet indicator */}
+                    {/* Strong active indicator */}
                     {location.pathname === item.href && (
                       <motion.span
                         layoutId="mobile-active-pill"
-                        className="absolute right-4 w-3 h-3 rounded-full bg-gradient-to-br from-cyan-200 to-blue-200 shadow-lg shadow-cyan-300/50"
+                        className="absolute right-4 w-3 h-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
                         animate={{
                           scale: [1, 1.3, 1],
-                          opacity: [1, 0.7, 1],
+                          opacity: [1, 0.8, 1],
                         }}
                         transition={{
-                          duration: 2,
+                          duration: 2.5,
                           repeat: Infinity,
                         }}
                       />
@@ -411,26 +471,27 @@ export function Header() {
         )}
       </AnimatePresence>
 
-      {/* Floating water droplets effect when scrolled */}
+      {/* Enhanced floating particles with more visibility */}
       {isScrolled && (
         <>
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1.5 h-1.5 rounded-full bg-cyan-200/60 shadow-lg shadow-cyan-400/50"
+              className="absolute w-1.5 h-1.5 rounded-full bg-violet-400/70 shadow-[0_0_12px_rgba(139,92,246,0.8)]"
               animate={{
-                y: [-30, -60, -30],
-                x: [0, Math.random() * 30 - 15, 0],
-                opacity: [0, 1, 0],
-                scale: [0.5, 1, 0.5],
+                y: [-20, -50, -20],
+                x: [0, Math.random() * 20 - 10, 0],
+                opacity: [0, 0.9, 0],
+                scale: [0.5, 1.2, 0.5],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: 3.5 + Math.random() * 1.5,
                 repeat: Infinity,
-                delay: i * 0.4,
+                delay: i * 0.5,
+                ease: "easeInOut",
               }}
               style={{
-                left: `${15 + i * 17}%`,
+                left: `${20 + i * 15}%`,
                 top: "100%",
               }}
             />
