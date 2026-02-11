@@ -211,7 +211,7 @@ export const services = [
     description:
       "The Dual Media Filter are utilized for higher flow rates with a smaller footprint. High filtration velocities are achieved by proper selection of Media, and designing of Distribution.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Dual-Media-Filters.jpg",
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
     link: "/services/dual-media-filters",
   },
   {
@@ -220,7 +220,7 @@ export const services = [
     description:
       "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Reverse-Osmosis-RO-Plants-1.webp",
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Reverse-Osmosis-RO-2.webp",
     link: "/services/reverse-osmosis",
   },
   {
@@ -256,7 +256,7 @@ export const services = [
     description:
       "It is the process of removing mineral salts from water by using the ion exchange process. Demineralization produces water of a higher quality than conventional distillation.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/DM-Plants.jpg",
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
     link: "/services/dm-plants",
   },
   {
@@ -265,7 +265,7 @@ export const services = [
     description:
       "The Water Softeners are available in different sizes and materials, manually operated or fully Automatic and ready to install.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Water-Softeners.jpg",
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
     link: "/services/water-softeners",
   },
   {
@@ -291,8 +291,7 @@ export const services = [
     title: "Ultra Filtration (UF)",
     description:
       "Advanced membrane filtration technology for removing suspended solids, bacteria, and other contaminants.",
-    image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Ultra-Filtration.jpg",
+    image: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF1.png",
     link: "/services/ultra-filtration",
   },
 ];
