@@ -57,7 +57,6 @@ export const AnimatedSection = ({
     margin: "0px 0px -150px 0px",
   });
 
-  // If mobile, skip animations entirely
   if (isMobile) {
     return (
       <div ref={ref} className={className}>
