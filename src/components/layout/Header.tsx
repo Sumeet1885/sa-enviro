@@ -124,7 +124,10 @@ export function Header() {
       </AnimatePresence>
 
       {/* Logo */}
-      <Link to="/" className="flex items-center gap-3 group/logo relative">
+      <Link
+        to="/"
+        className="flex items-center gap-3 group/logo relative right-7 transition-all duration-500"
+      >
         <motion.div
           style={{ scale: logoScale }}
           whileHover={{
