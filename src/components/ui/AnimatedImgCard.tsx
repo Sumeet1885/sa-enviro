@@ -410,7 +410,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
         {/* FLOATING 3D STATS CARD - IN FRONT */}
         {/* ========================================== */}
         <motion.div
-          className="absolute -bottom-8 -right-8 bg-gradient-to-br from-card/95 via-card to-card/90 rounded-2xl shadow-2xl border-2 border-primary/40 overflow-hidden backdrop-blur-xl"
+          className="absolute -bottom-8 -right-8 bg-gradient-to-br from-card/95 via-card to-card/90 rounded-2xl shadow-2xl  border-primary/40 overflow-hidden card-hover"
           style={{
             transformStyle: "preserve-3d",
             transform: "translateZ(80px)",
