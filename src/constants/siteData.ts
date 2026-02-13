@@ -5,6 +5,7 @@ import Image1 from "@/assets/about-hero.jpg";
 import Image2 from "@/assets/hero-water-treatment.jpg";
 import Image3 from "@/assets/hero2.jpg";
 import Image4 from "@/assets/hero3.jpg";
+import { Layout } from "lucide-react";
 
 interface SiteConfig {
   name: string;
@@ -441,5 +442,18 @@ export const seoData = {
     title: "Contact Us | SA Enviro Solutions",
     description:
       "Get in touch with SA Enviro Solutions for your water treatment needs. Located in Chinchwad, Pune.",
+  },
+};
+
+export const productsData = {
+  effluent_treatment_plant: {
+    id: 1,
+    title: "Effluent Treatment Plant",
+    description:
+      "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent. The industrial effluent treatment plants involve different stages of treatment including physio- chemical treatment and biological treatment followed by tertiary treatment. Integrated functions with simple control make the operation much easier. Our engineers can also custom design the effluent treatment plants based on the specific application requirement of the customers. Our Industrial effluent treatment plants have a compact design and can be easily installed on the site.",
+    image:
+      "https://saenvirosolutions.com/wp-content/uploads/2022/04/RO1-585x390.png",
+    link: "/services/effluent-treatment",
+    Layout: "1",
   },
 };
