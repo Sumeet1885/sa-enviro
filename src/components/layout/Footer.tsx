@@ -8,6 +8,7 @@ import {
   Linkedin,
   Twitter,
 } from "lucide-react";
+import { motion } from "framer-motion";
 import { siteConfig, navigation, services } from "@/constants/siteData";
 import logo from "@/assets/logo.webp";
 
@@ -16,27 +17,31 @@ export const Footer = () => {
   const featuredServices = services.slice(0, 6);
 
   return (
-    <footer className="bg-water-deep text-primary-foreground">
+    <footer className="dark-section">
       {/* Main Footer */}
       <div className="container-wide section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg  flex items-center justify-center">
-                <img src={logo} alt="Company Logo" />
+              <motion.div
+                className={`
+            w-16 h-16 rounded-2xl flex items-center justify-center 
+            transition-all duration-700 relative white-glass`}
+              >
+                <img src={logo} alt="Company Logo" className="w-10 h-10" />
                 {/* <Droplets className="w-6 h-6 text-water-deep" /> */}
-              </div>
+              </motion.div>
               <div>
                 <span className="font-display text-xl font-bold">
                   {siteConfig.shortName}
                 </span>
-                <span className="block text-xs text-water-light -mt-1">
+                <span className="block text-xs gradient-water-deep -mt-1">
                   Enviro Solutions
                 </span>
               </div>
             </Link>
-            <p className="text-water-light/80 text-sm leading-relaxed">
+            <p className=" text-sm leading-relaxed">
               {siteConfig.description.substring(0, 150)}...
             </p>
             <div className="flex gap-4">
@@ -44,7 +49,7 @@ export const Footer = () => {
                 href={siteConfig.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-water-ocean/50 flex items-center justify-center hover:bg-water-sea transition-colors"
+                className="w-10 h-10 rounded-lg flex items-center justify-center  transition-colors"
               >
                 <Facebook className="w-5 h-5" />
               </a>
@@ -52,7 +57,7 @@ export const Footer = () => {
                 href={siteConfig.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-water-ocean/50 flex items-center justify-center hover:bg-water-sea transition-colors"
+                className="w-10 h-10 rounded-lg  flex items-center justify-center  transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -60,7 +65,7 @@ export const Footer = () => {
                 href={siteConfig.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-water-ocean/50 flex items-center justify-center hover:bg-water-sea transition-colors"
+                className="w-10 h-10 rounded-lg  flex items-center justify-center  transition-colors"
               >
                 <Twitter className="w-5 h-5" />
               </a>
@@ -112,8 +117,8 @@ export const Footer = () => {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-water-sky flex-shrink-0 mt-0.5" />
-                <span className="text-water-light/80 text-sm">
+                <MapPin className="w-5 h-5  flex-shrink-0 mt-0.5 hover:text-water-sky" />
+                <span className=" text-sm hover:text-water-sky">
                   {siteConfig.contact.address}
                 </span>
               </li>
@@ -122,16 +127,16 @@ export const Footer = () => {
                   href={`tel:${siteConfig.contact.phone}`}
                   className="flex items-center gap-3 text-water-light/80 hover:text-water-sky transition-colors text-sm"
                 >
-                  <Phone className="w-5 h-5 text-water-sky flex-shrink-0" />
+                  <Phone className="w-5 h-5  flex-shrink-0" />
                   {siteConfig.contact.phone}
                 </a>
               </li>
               <li>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="flex items-center gap-3 text-water-light/80 hover:text-water-sky transition-colors text-sm"
+                  className="flex items-center gap-3  hover:text-water-sky transition-colors text-sm"
                 >
-                  <Mail className="w-5 h-5 text-water-sky flex-shrink-0" />
+                  <Mail className="w-5 h-5  flex-shrink-0" />
                   {siteConfig.contact.email}
                 </a>
               </li>
