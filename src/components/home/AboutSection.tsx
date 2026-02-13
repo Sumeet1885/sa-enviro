@@ -18,7 +18,7 @@ export const AboutSection = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="section-padding bg-background">
+    <section className=" section-padding light-section relative overflow-hidden">
       <div className="container-wide">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <AnimatedSection direction="left">
@@ -28,10 +28,10 @@ export const AboutSection = () => {
           {/* Content */}
           <div>
             <AnimatedSection direction="right">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-water-light/50 text-water-deep text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-1.5 rounded-full gradient-water-deep  text-sm font-medium mb-4">
                 {aboutData.title}
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-6">
                 Leading the Way in{" "}
                 <span className="gradient-text">Water Treatment</span>
               </h2>
@@ -57,20 +57,13 @@ export const AboutSection = () => {
                     value: "Tailored",
                   },
                 ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 p-4 rounded-xl bg-muted/50"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <item.icon className="w-5 h-5 text-primary" />
+                  <div key={i} className="flex items-center gap-3 p-4 card">
+                    <div className="w-10 h-10  flex items-center justify-center">
+                      <item.icon className="w-5 h-5 " />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-foreground">
-                        {item.value}
-                      </div>
-                      <div className="text-xs text-muted-foreground">
-                        {item.label}
-                      </div>
+                      <div className="text-sm font-semibold ">{item.value}</div>
+                      <div className="text-xs ">{item.label}</div>
                     </div>
                   </div>
                 ))}
@@ -78,7 +71,7 @@ export const AboutSection = () => {
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.3}>
-              <Button asChild size="lg">
+              <Button className="button-primary" asChild size="lg">
                 <Link to="/about">
                   Learn More About Us
                   <ArrowRight className="w-5 h-5 ml-2" />
