@@ -213,12 +213,12 @@ export function Header() {
           )}
 
           {/* Enhanced shine effect on hover */}
-          <motion.div
+          {/* <motion.div
             className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/0 via-white/60 to-white/0"
             initial={{ x: "-100%", opacity: 0 }}
             whileHover={{ x: "100%", opacity: 1 }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
-          />
+          /> */}
         </motion.div>
 
         <motion.div
