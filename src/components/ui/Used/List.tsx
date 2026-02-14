@@ -1,13 +1,28 @@
+import clsx from "clsx";
+
 interface ListProps {
   items: string[];
+  ordered?: boolean;
 }
 
-export default function List({ items }: ListProps) {
+const baseStyles = "pl-6 space-y-2 text-muted-foreground";
+
+export default function List({ items, ordered = false }: ListProps) {
   return (
-    <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-      {items.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ul>
+    <>
+      {ordered ? (
+        <ol className={clsx(baseStyles, "list-decimal")}>
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ol>
+      ) : (
+        <ul className={clsx(baseStyles, "list-disc")}>
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 }
