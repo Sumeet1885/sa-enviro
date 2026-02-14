@@ -21,7 +21,7 @@ export default function Text({
   className,
   as: Component = "p",
 }: TextProps) {
-  const baseStyles = "text-foreground";
+  const baseStyles = "text-foreground mb-2 ";
 
   const variantStyles = {
     title: "tracking-tight",

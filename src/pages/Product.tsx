@@ -2,8 +2,9 @@ import React from "react";
 import { SEO } from "@/components/layout/SEO";
 import Carousel from "@/components/ui/carousel";
 import ProductInfo from "@/components/ui/productInfo";
-import { seoData, productsData } from "@/constants/siteData";
-import ServiceSection from "@/components/ServiceSection";
+import { seoData, products } from "@/constants/siteData";
+import ProductContentSection from "@/components/ProductContentSection";
+import ProductShowCase from "@/components/ui/Used/ProductShowCase";
 
 function Product() {
   return (
@@ -28,7 +29,15 @@ function Product() {
           </div>
         </div>
       </section>
-      <ServiceSection layout="1" product={productsData.effluent_treatment_plant} />
+      {products[0].images.length > 1 ? (
+        <ProductShowCase
+          layout="2"
+          product={products[0]}
+          images={products[0].images}
+        />
+      ) : (
+        <ProductContentSection layout="1" product={products[0]} />
+      )}
     </div>
   );
 }

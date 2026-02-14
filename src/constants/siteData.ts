@@ -5,6 +5,8 @@ import Image1 from "@/assets/about-hero.jpg";
 import Image2 from "@/assets/hero-water-treatment.jpg";
 import Image3 from "@/assets/hero2.jpg";
 import Image4 from "@/assets/hero3.jpg";
+import { Product } from "./type";
+import { Description } from "@radix-ui/react-toast";
 import { Layout } from "lucide-react";
 
 interface SiteConfig {
@@ -457,3 +459,355 @@ export const productsData = {
     Layout: "1",
   },
 };
+
+// {
+//   "id": "activated-sludge-process",
+//   "sections": [
+//     {
+//       "type": "title",
+//       "content": "Activated Sludge Process"
+//     },
+//     {
+//       "type": "subtitle",
+//       "content": "Secondary Treatment Method"
+//     },
+//     {
+//       "type": "paragraph",
+//       "content": "Activated sludge process is a biological wastewater treatment process."
+//     },
+//     {
+//       "type": "keyValue",
+//       "items": [
+//         {
+//           "key": "Settle",
+//           "value": "Air and mixing are turned off. The activated sludge is allowed to settle."
+//         },
+//         {
+//           "key": "Aeration",
+//           "value": "Air is supplied to promote biological activity."
+//         }
+//       ]
+//     },
+//     {
+//       "type": "list",
+//       "style": "bullet",
+//       "items": [
+//         "Primary treatment",
+//         "Secondary treatment",
+//         "Tertiary treatment"
+//       ]
+//     }
+//   ]
+// }
+
+// {
+//   "id": "activated-sludge-process",
+//   "sections": [
+//     {
+//       "type": "title",
+//       "content": "Activated Sludge Process"
+//     },
+//     {
+//       "type": "subtitle",
+//       "content": "Secondary Treatment Method"
+//     },
+//     {
+//       "type": "paragraph",
+//       "content": "Activated sludge process is a biological wastewater treatment process."
+//     },
+//     {
+//       "type": "keyValue",
+//       "items": [
+//         {
+//           "key": "Settle",
+//           "value": "Air and mixing are turned off. The activated sludge is allowed to settle."
+//         },
+//         {
+//           "key": "Aeration",
+//           "value": "Air is supplied to promote biological activity."
+//         }
+//       ]
+//     },
+//     {
+//       "type": "list",
+//       "style": "bullet",
+//       "items": [
+//         "Primary treatment",
+//         "Secondary treatment",
+//         "Tertiary treatment"
+//       ]
+//     }
+//   ]
+// }
+
+export const products: Product[] = [
+  {
+    key: "sewage_treatment_plants",
+    main: {
+      title: "Sewage Treatment Plants",
+      description:
+        "On the Activated Sludge Process basis sewage treatment plants are designed. The advanced technologies involved to treat sewage such as MBBR technology, UASB technology and Sequential Batch Reactor (SBR). These technologies are discussed below:",
+    },
+    // image:
+    //   "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp1-585x390.jpg",
+        alt: "Sewage Treatment Plant - View 1",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+        alt: "Sewage Treatment Plant - Overview",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp3-585x390.jpg",
+        alt: "Sewage Treatment Plant - View 2",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp4-585x390.jpg",
+        alt: "Sewage Treatment Plant - View 3",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp6-585x390.jpg",
+        alt: "Sewage Treatment Plant - View 4",
+      },
+    ],
+
+    Page_Description: [
+      {
+        type: "p",
+        content:
+          "We offer a huge range of Sewage Treatment Plants, which are used in the national as well as international market. These products are manufactured using latest techniques using modern machines and we offer these products in a cost effective as well as reliable manner. Our products are easily available in different specifications and we check these on the basis of different quality parameter using various quality controller. These products are available with customized services to our clients.",
+      },
+      {
+        type: "subtitle",
+        content: "Sequential Batch Reactor (SBR)",
+      },
+      {
+        type: "p",
+        content:
+          "SBR is an application of Activated Sludge Process that is operated on a batch basis. It is used in small communities where space is limited. The design principles for this reactor are keyed to the following treatment steps:",
+      },
+      {
+        type: "keyValue",
+        items: [
+          {
+            key: "Fill",
+            value: "During this phase, the basin receives influent wastewater.",
+          },
+          {
+            key: "React",
+            value: "During this phase aeration and mixing units are on.",
+          },
+          {
+            key: "Settle",
+            value:
+              "Air and mixing are turned off. The activated sludge is allowed to settle.",
+          },
+        ],
+      },
+      {
+        type: "subtitle",
+        content: "Moving Bed Biofilm Reactor (MBBR)",
+      },
+      {
+        type: "p",
+        content:
+          "MBBR is an economical and efficient solution for wastewater treatment. MBBR system consists of an aeration tank containing special plastic elements called media, to support the growth of biofilm in the reactor. These media have a large surface area for optimal contact with water, air and bacteria. The bacteria grow on the surface of the media and break down the organic matter from the wastewater. It significantly increases the capacity and efficiency of the existing plant and decreases the carbon footprint.",
+      },
+      {
+        type: "subtitle",
+        content: "Membrane Bioreactor (MBR)",
+      },
+      {
+        type: "subtitle",
+        content: "Anaerobic Treatment",
+      },
+      {
+        type: "p",
+        content:
+          "Anaerobic Treatment is an energy-efficient process in which bacteria transforms organic waste in the wastewater into biogas in the absence of oxygen. To achieve this oxygen-free environment, the entry of air into anaerobic tanks is prevented, typically by a gastight cover.",
+      },
+      {
+        type: "subtitle",
+        content: "Up flow Anaerobic Sludge Blanket (UASB)",
+      },
+      {
+        type: "p",
+        content:
+          "Up flow Anaerobic Sludge Blanket (UASB) technology, also known as UASB reactor is a form of an anaerobic digester that is used for wastewater treatment. In this process, wastewater flows upward through the blanket of sludge and microorganism degrade the organic matter and produces methane gas as a by-product, which further can be used as fuel.",
+      },
+      {
+        type: "subtitle",
+        content: "Integrated Sewage Treatment Plant",
+      },
+      {
+        type: "p",
+        content:
+          "We offer an excellent quality range of Integrated Sewage Treatment Plants, which are used for the treatment of both sewage water as well as solid wet waste together. These products are used as an alternative energy source and the treat water is used for different purposes such as farming, gardening, washing and flushing. Our products are available at genuine prices to our clients and these are available on the basis of latest techniques.",
+      },
+      {
+        type: "subtitle",
+        content: "Application:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Residential Buildings",
+          "Industries",
+          "Hotels & Resorts",
+          "Education Institutes",
+        ],
+      },
+      {
+        type: "subtitle",
+        content: "Combined Sewage Cum Effluent Treatment Plants",
+      },
+      {
+        type: "p",
+        content:
+          "We offer a wide range of Combined Sewage cum Effluent Treatment Plants that satisfies two purposes simultaneously. These are efficiently designed to treat and manage both sewage and effluent at the same time. This plant proficiently drains out water from sewage and effluents and hence making it usable for other application such as gardening, farming and washing. Our range of combined sewage cum effluent treatment plants is available in standard specification and can also be customized to meet the varied requirements of our clients.",
+      },
+      {
+        type: "subtitle",
+        content: "Features:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Low operating cost",
+          "Less manpower engaged",
+          "Compact in size",
+          "Low electrical consumption",
+        ],
+      },
+    ],
+  },
+  {
+    key: "sewage_treatment_plants",
+    main: {
+      title: "Sewage Treatment Plants",
+      description:
+        "On the Activated Sludge Process basis sewage treatment plants are designed. The advanced technologies involved to treat sewage such as MBBR technology, UASB technology and Sequential Batch Reactor (SBR). These technologies are discussed below:",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp1-585x390.jpg",
+        alt: "Sewage Treatment Plant - View 1",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "p",
+        content:
+          "We offer a huge range of Sewage Treatment Plants, which are used in the national as well as international market. These products are manufactured using latest techniques using modern machines and we offer these products in a cost effective as well as reliable manner. Our products are easily available in different specifications and we check these on the basis of different quality parameter using various quality controller. These products are available with customized services to our clients.",
+      },
+      {
+        type: "subtitle",
+        content: "Sequential Batch Reactor (SBR)",
+      },
+      {
+        type: "p",
+        content:
+          "SBR is an application of Activated Sludge Process that is operated on a batch basis. It is used in small communities where space is limited. The design principles for this reactor are keyed to the following treatment steps:",
+      },
+      {
+        type: "keyValue",
+        items: [
+          {
+            key: "Fill",
+            value: "During this phase, the basin receives influent wastewater.",
+          },
+          {
+            key: "React",
+            value: "During this phase aeration and mixing units are on.",
+          },
+          {
+            key: "Settle",
+            value:
+              "Air and mixing are turned off. The activated sludge is allowed to settle.",
+          },
+        ],
+      },
+      {
+        type: "subtitle",
+        content: "Moving Bed Biofilm Reactor (MBBR)",
+      },
+      {
+        type: "p",
+        content:
+          "MBBR is an economical and efficient solution for wastewater treatment. MBBR system consists of an aeration tank containing special plastic elements called media, to support the growth of biofilm in the reactor. These media have a large surface area for optimal contact with water, air and bacteria. The bacteria grow on the surface of the media and break down the organic matter from the wastewater. It significantly increases the capacity and efficiency of the existing plant and decreases the carbon footprint.",
+      },
+      {
+        type: "subtitle",
+        content: "Membrane Bioreactor (MBR)",
+      },
+      {
+        type: "subtitle",
+        content: "Anaerobic Treatment",
+      },
+      {
+        type: "p",
+        content:
+          "Anaerobic Treatment is an energy-efficient process in which bacteria transforms organic waste in the wastewater into biogas in the absence of oxygen. To achieve this oxygen-free environment, the entry of air into anaerobic tanks is prevented, typically by a gastight cover.",
+      },
+      {
+        type: "subtitle",
+        content: "Up flow Anaerobic Sludge Blanket (UASB)",
+      },
+      {
+        type: "p",
+        content:
+          "Up flow Anaerobic Sludge Blanket (UASB) technology, also known as UASB reactor is a form of an anaerobic digester that is used for wastewater treatment. In this process, wastewater flows upward through the blanket of sludge and microorganism degrade the organic matter and produces methane gas as a by-product, which further can be used as fuel.",
+      },
+      {
+        type: "subtitle",
+        content: "Integrated Sewage Treatment Plant",
+      },
+      {
+        type: "p",
+        content:
+          "We offer an excellent quality range of Integrated Sewage Treatment Plants, which are used for the treatment of both sewage water as well as solid wet waste together. These products are used as an alternative energy source and the treat water is used for different purposes such as farming, gardening, washing and flushing. Our products are available at genuine prices to our clients and these are available on the basis of latest techniques.",
+      },
+      {
+        type: "subtitle",
+        content: "Application:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Residential Buildings",
+          "Industries",
+          "Hotels & Resorts",
+          "Education Institutes",
+        ],
+      },
+      {
+        type: "subtitle",
+        content: "Combined Sewage Cum Effluent Treatment Plants",
+      },
+      {
+        type: "p",
+        content:
+          "We offer a wide range of Combined Sewage cum Effluent Treatment Plants that satisfies two purposes simultaneously. These are efficiently designed to treat and manage both sewage and effluent at the same time. This plant proficiently drains out water from sewage and effluents and hence making it usable for other application such as gardening, farming and washing. Our range of combined sewage cum effluent treatment plants is available in standard specification and can also be customized to meet the varied requirements of our clients.",
+      },
+      {
+        type: "subtitle",
+        content: "Features:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Low operating cost",
+          "Less manpower engaged",
+          "Compact in size",
+          "Low electrical consumption",
+        ],
+      },
+    ],
+  },
+];
