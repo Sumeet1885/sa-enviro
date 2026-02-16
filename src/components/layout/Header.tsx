@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Droplets, Waves } from "lucide-react";
+import { Menu, X, Droplets, Waves, ChevronDown } from "lucide-react";
 import {
   motion,
   AnimatePresence,
@@ -11,16 +11,417 @@ import Logo from "@/assets/logo.webp";
 
 import { navigation, siteConfig } from "@/constants/siteData";
 
+// Navigation item type with optional dropdown
+export interface NavigationItem {
+  name: string;
+  href: string;
+  dropdown?: {
+    name: string;
+    key: string;
+  }[];
+}
+
+// Dropdown Component
+interface DropdownProps {
+  item: NavigationItem;
+  isScrolled: boolean;
+  index: number;
+}
+
+const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutId) clearTimeout(timeoutId);
+    const id = setTimeout(() => setIsOpen(true), 300);
+    setTimeoutId(id);
+  };
+
+  const handleMouseLeave = () => {
+    if (timeoutId) clearTimeout(timeoutId);
+    const id = setTimeout(() => setIsOpen(false), 200);
+    setTimeoutId(id);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [timeoutId]);
+
+  if (!item.dropdown) {
+    return (
+      <motion.a
+        href={item.href}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 * index }}
+        whileHover={{
+          scale: 1.08,
+          y: -2,
+        }}
+        className={`
+          relative flex items-center
+          transition-all duration-500 font-semibold whitespace-nowrap
+          ${
+            isScrolled
+              ? "text-white text-base drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]"
+              : "text-white text-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+          }
+        `}
+      >
+        {item.name}
+
+        {/* Strong underline effect */}
+        <motion.span
+          className={`
+            absolute -bottom-1 left-0 h-[2px] rounded-full
+            ${
+              isScrolled
+                ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
+                : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
+            }
+          `}
+          initial={{ width: 0 }}
+          whileHover={{ width: "100%" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+        />
+
+        {/* Strong background glow on hover */}
+        {isScrolled && (
+          <>
+            <motion.span
+              className="absolute inset-0 -inset-x-4 -inset-y-2 rounded-2xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 backdrop-blur-sm border border-violet-400/30 -z-10"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileHover={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className="absolute inset-0 rounded-2xl bg-violet-500/20 blur-xl -z-20"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+          </>
+        )}
+      </motion.a>
+    );
+  }
+
+  return (
+    <div
+      className="relative"
+      ref={dropdownRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <motion.button
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 * index }}
+        whileHover={{
+          scale: 1.08,
+          y: -2,
+        }}
+        className={`
+          relative flex items-center gap-1.5
+          transition-all duration-500 font-semibold whitespace-nowrap
+          ${
+            isScrolled
+              ? "text-white text-base drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]"
+              : "text-white text-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+          }
+        `}
+      >
+        {item.name}
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ChevronDown className="w-4 h-4" />
+        </motion.div>
+
+        {/* Strong underline effect */}
+        <motion.span
+          className={`
+            absolute -bottom-1 left-0 h-[2px] rounded-full
+            ${
+              isScrolled
+                ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
+                : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
+            }
+          `}
+          initial={{ width: 0 }}
+          animate={{ width: isOpen ? "100%" : 0 }}
+          whileHover={{ width: "100%" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+        />
+
+        {/* Strong background glow on hover */}
+        {isScrolled && (
+          <>
+            <motion.span
+              className="absolute inset-0 -inset-x-4 -inset-y-2 rounded-2xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 backdrop-blur-sm border border-violet-400/30 -z-10"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: isOpen ? 1 : 0, scale: isOpen ? 1 : 0.9 }}
+              whileHover={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className="absolute inset-0 rounded-2xl bg-violet-500/20 blur-xl -z-20"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isOpen ? 1 : 0 }}
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+          </>
+        )}
+      </motion.button>
+
+      {/* Dropdown Menu */}
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className={`
+        absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-56 max-w-xs z-50
+        rounded-2xl overflow-hidden
+        ${
+          isScrolled
+            ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
+            : "bg-gradient-to-br from-slate-800/90 via-slate-900/85 to-slate-800/90 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.5)]"
+        }
+      `}
+          >
+            {/* Gradient overlay */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-violet-600/10 via-purple-600/10 to-fuchsia-600/10"
+              animate={{
+                scale: [1, 1.02, 1],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+              }}
+            />
+
+            <ul className="p-2 relative z-10">
+              {item.dropdown.map((dropItem, idx) => (
+                <motion.a
+                  key={dropItem.key}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 * idx }}
+                >
+                  <Link
+                    to={`product/${dropItem.key}`}
+                    className={`
+                flex flex-col px-4 py-3 rounded-xl
+                transition-all duration-300
+                text-white font-medium
+                hover:bg-gradient-to-r hover:from-violet-600/30 hover:to-purple-600/30
+                hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)]
+                hover:border-violet-400/40
+                group/item
+                relative overflow-hidden
+                whitespace-nowrap
+              `}
+                  >
+                    {/* Shine effect */}
+                    <motion.div
+                      id={dropItem.key}
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.5 }}
+                    />
+
+                    <span className="relative z-10 text-sm font-semibold">
+                      {dropItem.name}
+                    </span>
+                  </Link>
+                </motion.a>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// Mobile Menu Item Component with Dropdown
+interface MobileMenuItemProps {
+  item: NavigationItem;
+  location: ReturnType<typeof useLocation>;
+  onClose: () => void;
+  index: number;
+}
+
+const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
+  item,
+  location,
+  onClose,
+  index,
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{
+        delay: 0.08 * index,
+        type: "spring",
+        stiffness: 300,
+      }}
+    >
+      {/* Parent Link/Button */}
+      {item.dropdown ? (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className={`
+            w-full px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
+            flex items-center justify-between relative overflow-hidden group/link
+            ${
+              location.pathname === item.href
+                ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
+                : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
+            }
+            drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]
+          `}
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+            initial={{ x: "-100%" }}
+            whileHover={{ x: "100%" }}
+            transition={{ duration: 0.6 }}
+          />
+
+          <div className="flex items-center gap-3 relative z-10">
+            {location.pathname === item.href && (
+              <Droplets className="w-5 h-5 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
+            )}
+            <span>{item.name}</span>
+          </div>
+
+          <motion.div
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="relative z-10"
+          >
+            <ChevronDown className="w-5 h-5" />
+          </motion.div>
+        </button>
+      ) : (
+        <Link
+          to={item.href}
+          onClick={onClose}
+          className={`
+            px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
+            flex items-center gap-3 relative overflow-hidden group/link
+            ${
+              location.pathname === item.href
+                ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
+                : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
+            }
+            drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]
+          `}
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+            initial={{ x: "-100%" }}
+            whileHover={{ x: "100%" }}
+            transition={{ duration: 0.6 }}
+          />
+
+          {location.pathname === item.href && (
+            <Droplets className="w-5 h-5 relative z-10 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
+          )}
+
+          <span className="relative z-10">{item.name}</span>
+
+          {location.pathname === item.href && (
+            <motion.span
+              layoutId="mobile-active-pill"
+              className="absolute right-4 w-3 h-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [1, 0.8, 1],
+              }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+              }}
+            />
+          )}
+        </Link>
+      )}
+
+      {/* Mobile Dropdown Items - Collapsible */}
+      <AnimatePresence>
+        {item.dropdown && isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="mt-2 ml-4 pl-4 border-l-2 border-violet-400/30 space-y-1 overflow-hidden"
+          >
+            {item.dropdown.map((dropItem, idx) => (
+              <motion.div
+                key={dropItem.name}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.05 * idx }}
+              >
+                <Link
+                  to={`product/${dropItem.key}`}
+                  onClick={onClose}
+                  className="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-violet-600/20 rounded-lg transition-all group/subitem relative overflow-hidden"
+                >
+                  {/* Shine effect for dropdown items */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.5 }}
+                  />
+
+                  <span className="relative z-10 font-medium">
+                    {dropItem.name}
+                  </span>
+                  {dropItem.description && (
+                    <span className="relative z-10 block text-xs text-slate-400 mt-0.5 group-hover/subitem:text-violet-300 transition-colors">
+                      {dropItem.description}
+                    </span>
+                  )}
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const { scrollY } = useScroll();
 
-  // Transform values based on scroll - EXPANDING instead of shrinking
-  const navWidth = useTransform(scrollY, [0, 100], [50, 60]); // Expands width
-  const navPadding = useTransform(scrollY, [0, 100], [5, 5]); // More padding
-  const logoScale = useTransform(scrollY, [0, 100], [1, 1.0]); // Logo gets bigger
+  // Transform values based on scroll
+  const navPadding = useTransform(scrollY, [0, 100], [5, 5]);
+  const logoScale = useTransform(scrollY, [0, 100], [1, 1.0]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +444,7 @@ export function Header() {
           delay: 0.2,
         }}
         className={`
-          w-full max-w-3xl
+          w-full max-w-7xl
           transition-all duration-700 ease-out
           ${
             isScrolled
@@ -82,7 +483,7 @@ export function Header() {
           </motion.div>
         )}
 
-        {/* Logo with DRAMATIC popup and highlighting */}
+        {/* Logo */}
         <Link
           to="/"
           className="flex items-center gap-2 sm:gap-3 group/logo relative transition-all duration-500 flex-shrink-0"
@@ -124,10 +525,9 @@ export function Header() {
               }}
             />
 
-            {/* DRAMATIC pulsing glow effects */}
+            {/* Glow effects */}
             {isScrolled && (
               <>
-                {/* Inner intense glow */}
                 <motion.div
                   animate={{
                     opacity: [0.5, 0.9, 0.5],
@@ -140,8 +540,6 @@ export function Header() {
                   }}
                   className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-400/60 via-purple-500/50 to-fuchsia-500/60 blur-md -z-10"
                 />
-
-                {/* Middle glow layer */}
                 <motion.div
                   animate={{
                     opacity: [0.4, 0.7, 0.4],
@@ -154,8 +552,6 @@ export function Header() {
                   }}
                   className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/50 to-purple-600/50 blur-lg -z-20"
                 />
-
-                {/* Outer massive glow */}
                 <motion.div
                   animate={{
                     opacity: [0.3, 0.6, 0.3],
@@ -168,8 +564,6 @@ export function Header() {
                   }}
                   className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-600/40 via-purple-600/40 to-fuchsia-600/40 blur-2xl -z-30"
                 />
-
-                {/* Ultra outer atmospheric glow */}
                 <motion.div
                   animate={{
                     opacity: [0.2, 0.5, 0.2],
@@ -227,68 +621,19 @@ export function Header() {
           </motion.div>
         </Link>
 
-        {/* Navigation Links with strong contrast */}
+        {/* Navigation Links with Dropdowns */}
         <div className="hidden lg:flex items-center gap-6 flex-1 justify-center">
           {navigation.map((item, index) => (
-            <motion.a
+            <Dropdown
               key={item.name}
-              href={item.href}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index }}
-              whileHover={{
-                scale: 1.08,
-                y: -2,
-              }}
-              className={`
-                relative flex items-center
-                transition-all duration-500 font-semibold whitespace-nowrap
-                ${
-                  isScrolled
-                    ? "text-white text-base drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]"
-                    : "text-white text-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
-                }
-              `}
-            >
-              {item.name}
-
-              {/* Strong underline effect */}
-              <motion.span
-                className={`
-                  absolute -bottom-1 left-0 h-[2px] rounded-full
-                  ${
-                    isScrolled
-                      ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
-                      : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
-                  }
-                `}
-                initial={{ width: 0 }}
-                whileHover={{ width: "100%" }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              />
-
-              {/* Strong background glow on hover */}
-              {isScrolled && (
-                <>
-                  <motion.span
-                    className="absolute inset-0 -inset-x-4 -inset-y-2 rounded-2xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 backdrop-blur-sm border border-violet-400/30 -z-10"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileHover={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.span
-                    className="absolute inset-0 rounded-2xl bg-violet-500/20 blur-xl -z-20"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </>
-              )}
-            </motion.a>
+              item={item}
+              isScrolled={isScrolled}
+              index={index}
+            />
           ))}
         </div>
 
-        {/* Mobile Menu Button with strong visibility */}
+        {/* Mobile Menu Button */}
         <motion.button
           whileHover={{ scale: 1.15, rotate: 90 }}
           whileTap={{ scale: 0.95 }}
@@ -303,7 +648,6 @@ export function Header() {
           `}
           aria-label="Toggle menu"
         >
-          {/* Enhanced button shine effect */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
             animate={{
@@ -343,7 +687,7 @@ export function Header() {
           </AnimatePresence>
         </motion.button>
 
-        {/* Mobile Menu Dropdown with strong contrast */}
+        {/* Mobile Menu Dropdown */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -361,7 +705,6 @@ export function Header() {
                 }
               `}
             >
-              {/* Strong gradient overlay */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-violet-600/15 via-purple-600/15 to-fuchsia-600/15"
                 animate={{
@@ -376,69 +719,20 @@ export function Header() {
 
               <nav className="py-6 flex flex-col gap-2 px-6 relative z-10">
                 {navigation.map((item, index) => (
-                  <motion.div
+                  <MobileMenuItem
                     key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.08 * index,
-                      type: "spring",
-                      stiffness: 300,
-                    }}
-                  >
-                    <Link
-                      to={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`
-                        px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
-                        flex items-center gap-3 relative overflow-hidden group/link
-                        ${
-                          location.pathname === item.href
-                            ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
-                            : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
-                        }
-                        drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]
-                      `}
-                    >
-                      {/* Strong shine effect on hover */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.6 }}
-                      />
-
-                      {/* Icon for active state */}
-                      {location.pathname === item.href && (
-                        <Droplets className="w-5 h-5 relative z-10 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
-                      )}
-
-                      <span className="relative z-10">{item.name}</span>
-
-                      {/* Strong active indicator */}
-                      {location.pathname === item.href && (
-                        <motion.span
-                          layoutId="mobile-active-pill"
-                          className="absolute right-4 w-3 h-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
-                          animate={{
-                            scale: [1, 1.3, 1],
-                            opacity: [1, 0.8, 1],
-                          }}
-                          transition={{
-                            duration: 2.5,
-                            repeat: Infinity,
-                          }}
-                        />
-                      )}
-                    </Link>
-                  </motion.div>
+                    item={item}
+                    location={location}
+                    onClose={() => setIsOpen(false)}
+                    index={index}
+                  />
                 ))}
               </nav>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Enhanced floating particles with more visibility */}
+        {/* Floating particles */}
         {isScrolled && (
           <>
             {[...Array(5)].map((_, i) => (

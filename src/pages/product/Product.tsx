@@ -5,8 +5,13 @@ import ProductInfo from "@/components/ui/productInfo";
 import { seoData, products } from "@/constants/siteData";
 import ProductContentSection from "@/components/ProductContentSection";
 import ProductShowCase from "@/components/ui/Used/ProductShowCase";
+import { useParams } from "react-router-dom";
 
 function Product() {
+  const { slug } = useParams();
+
+  const product = products.find((product) => product.key === slug);
+
   return (
     <div className="min-h-screen bg-white">
       <SEO
@@ -29,14 +34,10 @@ function Product() {
           </div>
         </div>
       </section>
-      {products[0].images.length > 1 ? (
-        <ProductShowCase
-          layout="1"
-          product={products[0]}
-          images={products[0].images}
-        />
+      {product.images.length > 1 ? (
+        <ProductShowCase layout="1" product={product} images={product.images} />
       ) : (
-        <ProductContentSection layout="2" product={products[1]} />
+        <ProductContentSection layout="2" product={product} />
       )}
     </div>
   );

@@ -26,9 +26,15 @@ interface SiteConfig {
   };
 }
 
-interface NavigationItem {
+interface DropDown {
+  name: string;
+  key: string;
+}
+
+export interface NavigationItem {
   name: string;
   href: string;
+  dropdown?: DropDown[];
 }
 interface HeroSlideItem {
   id: number;
@@ -68,9 +74,25 @@ export const siteConfig: SiteConfig = {
   },
 };
 
+const Product_DropDown = [
+  {
+    name: "Sewage Treatment Plants",
+    key: "sewage_treatment_plants",
+  },
+  {
+    name: "Zero Liquid Discharge (ZLD)",
+    key: "zero_liquid_discharge",
+  },
+];
+
 export const navigation: NavigationItem[] = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
+  {
+    name: "Products",
+    href: "/products",
+    dropdown: Product_DropDown,
+  },
   { name: "Services", href: "/services" },
   { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
@@ -446,99 +468,6 @@ export const seoData = {
       "Get in touch with SA Enviro Solutions for your water treatment needs. Located in Chinchwad, Pune.",
   },
 };
-
-export const productsData = {
-  effluent_treatment_plant: {
-    id: 1,
-    title: "Effluent Treatment Plant",
-    description:
-      "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent. The industrial effluent treatment plants involve different stages of treatment including physio- chemical treatment and biological treatment followed by tertiary treatment. Integrated functions with simple control make the operation much easier. Our engineers can also custom design the effluent treatment plants based on the specific application requirement of the customers. Our Industrial effluent treatment plants have a compact design and can be easily installed on the site.",
-    image:
-      "https://saenvirosolutions.com/wp-content/uploads/2022/04/RO1-585x390.png",
-    link: "/services/effluent-treatment",
-    Layout: "1",
-  },
-};
-
-// {
-//   "id": "activated-sludge-process",
-//   "sections": [
-//     {
-//       "type": "title",
-//       "content": "Activated Sludge Process"
-//     },
-//     {
-//       "type": "subtitle",
-//       "content": "Secondary Treatment Method"
-//     },
-//     {
-//       "type": "paragraph",
-//       "content": "Activated sludge process is a biological wastewater treatment process."
-//     },
-//     {
-//       "type": "keyValue",
-//       "items": [
-//         {
-//           "key": "Settle",
-//           "value": "Air and mixing are turned off. The activated sludge is allowed to settle."
-//         },
-//         {
-//           "key": "Aeration",
-//           "value": "Air is supplied to promote biological activity."
-//         }
-//       ]
-//     },
-//     {
-//       "type": "list",
-//       "style": "bullet",
-//       "items": [
-//         "Primary treatment",
-//         "Secondary treatment",
-//         "Tertiary treatment"
-//       ]
-//     }
-//   ]
-// }
-
-// {
-//   "id": "activated-sludge-process",
-//   "sections": [
-//     {
-//       "type": "title",
-//       "content": "Activated Sludge Process"
-//     },
-//     {
-//       "type": "subtitle",
-//       "content": "Secondary Treatment Method"
-//     },
-//     {
-//       "type": "paragraph",
-//       "content": "Activated sludge process is a biological wastewater treatment process."
-//     },
-//     {
-//       "type": "keyValue",
-//       "items": [
-//         {
-//           "key": "Settle",
-//           "value": "Air and mixing are turned off. The activated sludge is allowed to settle."
-//         },
-//         {
-//           "key": "Aeration",
-//           "value": "Air is supplied to promote biological activity."
-//         }
-//       ]
-//     },
-//     {
-//       "type": "list",
-//       "style": "bullet",
-//       "items": [
-//         "Primary treatment",
-//         "Secondary treatment",
-//         "Tertiary treatment"
-//       ]
-//     }
-//   ]
-// }
 
 export const products: Product[] = [
   {

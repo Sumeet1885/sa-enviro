@@ -14,6 +14,7 @@ const Extra_Text_Section = ({
         if (block.type === "p") {
           return (
             <Text
+              key={index}
               variant="body"
               size="sm"
               weight="normal"
