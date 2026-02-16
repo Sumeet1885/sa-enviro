@@ -7,12 +7,6 @@ import { siteConfig } from "@/constants/siteData";
 export const CTASection = () => {
   return (
     <section className="section-padding dark-section relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-water-sky rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-water-light rounded-full blur-3xl animate-wave" />
-      </div>
-
       <div className="container-wide relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <AnimatedSection>
