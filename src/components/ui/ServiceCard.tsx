@@ -74,7 +74,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
         >
           <motion.img
             src={service.image}
-            className="w-full aspect-[3/2] lg:aspect-[4/5] h-48 lg:h-[28rem] object-cover"
+            className="w-full aspect-[3/2] lg:aspect-[4/5] h-48 lg:h-[28rem] object-obtain"
             alt={service.title}
             animate={{
               scale: isHovered ? 1.05 : 1,
@@ -368,7 +368,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-obtain"
                   />
 
                   {/* Decorative gradient overlay */}
