@@ -4,6 +4,7 @@ import { Product } from "@/constants/type";
 import Extra_Text_Section from "@/components/ui/dynamic_Text";
 import Text from "@/components/ui/Used/Text";
 import { products } from "@/constants/siteData";
+import Image_Section from "@/assets/Small Section/Image_Section";
 
 interface StatItem {
   number: string;
@@ -73,7 +74,7 @@ const Content_Section: React.FC<ContentSectionProps> = ({
   return (
     <motion.div className={className} variants={itemVariants}>
       {/* Header Section */}
-      <motion.div className="mb-12 sm:mb-16" variants={itemVariants}>
+      <motion.div className="mb-6 sm:mb-8" variants={itemVariants}>
         <Text
           variant="title"
           size="xl"
@@ -90,7 +91,7 @@ const Content_Section: React.FC<ContentSectionProps> = ({
           className="mb-2"
           as={"p"}
         >
-          {product.main.title}{" "}
+          {product.main.description}{" "}
         </Text>
       </motion.div>
 
@@ -125,7 +126,7 @@ const ImageColumn: React.FC<ImageColumnProps> = ({
         <img
           src={image.url}
           alt={image.alt}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-contain"
           loading="lazy"
           style={{
             display: "block",
@@ -168,7 +169,6 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
 
 const ProductShowCase: React.FC<RemoteTeamSectionProps> = ({
   layout = "2",
-
   images,
   product,
 }) => {

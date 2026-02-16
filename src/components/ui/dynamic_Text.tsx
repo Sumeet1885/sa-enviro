@@ -13,13 +13,25 @@ const Extra_Text_Section = ({
       {extraContent.map((block, index) => {
         if (block.type === "p") {
           return (
-            <Text key={index} variant="body" size="lg" weight="normal">
+            <Text
+              variant="body"
+              size="sm"
+              weight="normal"
+              className="mb-4 leading-relaxed"
+              as={"p"}
+            >
               {block.content}
             </Text>
           );
         } else if (block.type === "subtitle") {
           return (
-            <Text key={index} variant="subtitle" size="xl" weight="bold">
+            <Text
+              key={index}
+              variant="subtitle"
+              size="lg"
+              weight="bold"
+              as={"h4"}
+            >
               {block.content}
             </Text>
           );
@@ -36,8 +48,8 @@ const Extra_Text_Section = ({
             <div key={index} className="space-y-2">
               {block.items.map((item, idx) => (
                 <div key={idx} className="flex gap-2">
-                  <span className="font-medium text-gray-900">{item.key}:</span>
-                  <span className="text-gray-600">{item.value}</span>
+                  <span className="text-sm">{item.key}:</span>
+                  <span className="text-sm">{item.value}</span>
                 </div>
               ))}
             </div>

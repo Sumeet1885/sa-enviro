@@ -37,14 +37,14 @@ export type PageDescriptionBlock =
   | KeyValueBlock
   | ListBlock;
 
-type ProductImage = {
+export interface ProductImage {
   url: string;
   alt: string;
-};
+}
 
 export interface Product {
   key: string;
   main: main;
   images: ProductImage[];
-  Page_Description: PageDescriptionBlock[];
+  Page_Description?: PageDescriptionBlock[];
 }
