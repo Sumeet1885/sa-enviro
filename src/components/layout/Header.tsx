@@ -444,7 +444,7 @@ export function Header() {
           delay: 0.2,
         }}
         className={`
-          w-full max-w-7xl
+          w-full max-w-3xl
           transition-all duration-700 ease-out
           ${
             isScrolled

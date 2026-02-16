@@ -6,6 +6,8 @@ import { seoData, products } from "@/constants/siteData";
 import ProductContentSection from "@/components/ProductContentSection";
 import ProductShowCase from "@/components/ui/Used/ProductShowCase";
 import { useParams } from "react-router-dom";
+import { randomInt } from "crypto";
+import { log } from "console";
 
 function Product() {
   const { slug } = useParams();
@@ -35,9 +37,16 @@ function Product() {
         </div>
       </section>
       {product.images.length > 1 ? (
-        <ProductShowCase layout="1" product={product} images={product.images} />
+        <ProductShowCase
+          layout={Math.floor(Math.random() * 3).toString()}
+          product={product}
+          images={product.images}
+        />
       ) : (
-        <ProductContentSection layout="2" product={product} />
+        <ProductContentSection
+          layout={Math.floor(Math.random() * 4).toString()}
+          product={product}
+        />
       )}
     </div>
   );
