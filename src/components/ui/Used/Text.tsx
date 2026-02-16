@@ -24,8 +24,8 @@ export default function Text({
   const baseStyles = "text-foreground mb-2 ";
 
   const variantStyles = {
-    title: "tracking-tight",
-    subtitle: "text-muted-foreground",
+    title: "text-4xl font-bold",
+    subtitle: "text-muted-foreground tracking-tight",
     body: "",
     caption: "text-muted-foreground",
   };

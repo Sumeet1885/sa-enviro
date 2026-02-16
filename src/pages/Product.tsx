@@ -17,13 +17,13 @@ function Product() {
         <div className="container-wide">
           <div className="max-w-3xl">
             <span className="inline-block px-4 py-1.5 rounded-full bg-water-sky/20 text-water-sky text-sm font-medium mb-4">
-              Gallery
+              Product
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6">
-              Our Projects & Equipment
+              Our Product & Equipment
             </h1>
             <p className="text-water-light/90 text-lg">
-              Explore our portfolio of water treatment solutions and
+              Explore our Product of water treatment solutions and
               installations.
             </p>
           </div>
@@ -31,12 +31,12 @@ function Product() {
       </section>
       {products[0].images.length > 1 ? (
         <ProductShowCase
-          layout="2"
+          layout="1"
           product={products[0]}
           images={products[0].images}
         />
       ) : (
-        <ProductContentSection layout="1" product={products[0]} />
+        <ProductContentSection layout="2" product={products[1]} />
       )}
     </div>
   );

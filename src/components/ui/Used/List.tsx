@@ -5,7 +5,7 @@ interface ListProps {
   ordered?: boolean;
 }
 
-const baseStyles = "pl-6 space-y-2 text-muted-foreground";
+const baseStyles = "pl-6 space-y-2 mb-4 text-sm";
 
 export default function List({ items, ordered = false }: ListProps) {
   return (
