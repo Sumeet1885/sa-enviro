@@ -7,7 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { Layout } from "@/components/layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Product from "./pages/Product";
+import Product from "./pages/product/Product";
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
@@ -30,7 +30,7 @@ const App = () => (
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/product" element={<Product />} />
-
+              <Route path="/product/:slug" element={<Product />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
