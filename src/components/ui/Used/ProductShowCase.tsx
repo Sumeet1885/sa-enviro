@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Product } from "@/constants/type";
 import Extra_Text_Section from "@/components/ui/dynamic_Text";
 import Text from "@/components/ui/Used/Text";
 import { products } from "@/constants/siteData";
 import Image_Section from "@/assets/Small Section/Image_Section";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface StatItem {
   number: string;
@@ -150,7 +151,7 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
   containerVariants,
   imageVariants,
 }) => (
-  <div className="lg:sticky lg:top-20 lg:self-start">
+  <div className="lg:sticky lg:top-20 lg:self-start hidden lg:block">
     <motion.div className="grid grid-cols-2 gap-4" variants={containerVariants}>
       <ImageColumn
         images={leftColumnImages}
@@ -166,6 +167,97 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
     </motion.div>
   </div>
 );
+
+interface CarouselProps {
+  images: ImageItem[];
+}
+
+const Carousel: React.FC<CarouselProps> = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  return (
+    <div className="relative w-full">
+      {/* Carousel wrapper */}
+      <div className="relative h-56 md:h-96 overflow-hidden rounded-xl">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <img
+              src={images[currentIndex].url}
+              alt={images[currentIndex].alt}
+              className="w-full h-full object-contain"
+              loading="lazy"
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Previous button */}
+      <button
+        type="button"
+        className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        onClick={handlePrev}
+        aria-label="Previous image"
+      >
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <ChevronLeft className="w-5 h-5 text-white" />
+        </span>
+      </button>
+
+      {/* Next button */}
+      <button
+        type="button"
+        className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        onClick={handleNext}
+        aria-label="Next image"
+      >
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+          <ChevronRight className="w-5 h-5 text-white" />
+        </span>
+      </button>
+
+      {/* Dots indicator */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              index === currentIndex
+                ? "bg-white w-6"
+                : "bg-white/50 hover:bg-white/75"
+            }`}
+            aria-label={`Go to image ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const ProductShowCase: React.FC<RemoteTeamSectionProps> = ({
   layout = "2",
@@ -241,6 +333,13 @@ const ProductShowCase: React.FC<RemoteTeamSectionProps> = ({
       />
     ) : null;
 
+  const carousel =
+    product.images.length > 0 ? (
+      <div className="lg:hidden">
+        <Carousel images={product.images} />
+      </div>
+    ) : null;
+
   return (
     <div className="min-h-screen">
       <motion.div
@@ -252,12 +351,14 @@ const ProductShowCase: React.FC<RemoteTeamSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-start">
           {layout === "1" ? (
             <>
+              {carousel}
               {contentSection}
               {masonryGrid}
             </>
           ) : (
             <>
               {masonryGrid}
+              {carousel}
               {contentSection}
             </>
           )}
