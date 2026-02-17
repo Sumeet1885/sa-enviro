@@ -70,7 +70,7 @@ export default {
           deep: "var(--water-deep)",
           ocean: "var(--water-ocean)",
           sea: "var(--water-sea)",
-          sky: "var(--water-sky)",
+          sky:  "rgb(var(--water-sky) / <alpha-value>)",
           light: "var(--water-light)",
           foam: "var(--water-foam)",
         },
