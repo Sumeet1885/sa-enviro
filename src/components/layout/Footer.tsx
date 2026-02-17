@@ -1,16 +1,29 @@
 import { Link } from "react-router-dom";
-import {
-  Droplets,
-  Mail,
-  Phone,
-  MapPin,
-  Facebook,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
+
+import { Droplets, Mail, Phone, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig, navigation, services } from "@/constants/siteData";
 import logo from "@/assets/logo.webp";
+import {
+  Facebook,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Youtube,
+  Github,
+  Globe,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+const socialIconMap: Record<string, LucideIcon> = {
+  facebook: Facebook,
+  linkedin: Linkedin,
+  twitter: Twitter,
+  instagram: Instagram,
+  youtube: Youtube,
+  github: Github,
+  website: Globe,
+};
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -25,12 +38,30 @@ export const Footer = () => {
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3">
               <motion.div
+                whileHover={{
+                  scale: 1.25,
+
+                  transition: { duration: 0.7, ease: "easeInOut" },
+                }}
                 className={`
-            w-16 h-16 rounded-2xl flex items-center justify-center 
-            transition-all duration-700 relative white-glass`}
+              w-10 h-10 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center 
+              transition-all duration-700 relative flex-shrink-0 border-2 bg-gradient-to-r from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl 
+              
+            `}
               >
-                <img src={logo} alt="Company Logo" className="w-10 h-10" />
-                {/* <Droplets className="w-6 h-6 text-water-deep" /> */}
+                <motion.img
+                  src={logo}
+                  alt="Company Logo"
+                  className="w-7 h-7 sm:w-10 sm:h-10 object-contain relative z-10"
+                  animate={{
+                    filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.4))",
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
               </motion.div>
               <div>
                 <span className="font-display text-xl font-bold">
@@ -45,30 +76,22 @@ export const Footer = () => {
               {siteConfig.description.substring(0, 150)}...
             </p>
             <div className="flex gap-4">
-              <a
-                href={siteConfig.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg flex items-center justify-center  transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href={siteConfig.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg  flex items-center justify-center  transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href={siteConfig.social.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg  flex items-center justify-center  transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
+              {Object.entries(siteConfig.social).map(([platform, url]) => {
+                const Icon = socialIconMap[platform.toLowerCase()];
+                if (!Icon) return null; // skip if no matching icon found
+
+                return (
+                  <a
+                    key={platform}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 hover:bg-white group"
+                  >
+                    <Icon className="w-5 h-5 transition-colors duration-200 group-hover:text-black" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -117,7 +140,9 @@ export const Footer = () => {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5  flex-shrink-0 mt-0.5 hover:text-water-sky" />
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 hover:bg-white group">
+                  <MapPin className="w-5 h-5 transition-colors duration-200 group-hover:text-black" />
+                </div>
                 <span className=" text-sm hover:text-water-sky">
                   {siteConfig.contact.address}
                 </span>
@@ -127,16 +152,20 @@ export const Footer = () => {
                   href={`tel:${siteConfig.contact.phone}`}
                   className="flex items-center gap-3 text-water-light/80 hover:text-water-sky transition-colors text-sm"
                 >
-                  <Phone className="w-5 h-5  flex-shrink-0" />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 hover:bg-white group">
+                    <Phone className="w-5 h-5 transition-colors duration-200 group-hover:text-black" />
+                  </div>
                   {siteConfig.contact.phone}
                 </a>
               </li>
               <li>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="flex items-center gap-3  hover:text-water-sky transition-colors text-sm"
+                  className="flex items-center gap-3  hover:text-water-sky transition-colors text-sm "
                 >
-                  <Mail className="w-5 h-5  flex-shrink-0" />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 hover:bg-white group">
+                    <Mail className="w-5 h-5 transition-colors duration-200 group-hover:text-black" />
+                  </div>
                   {siteConfig.contact.email}
                 </a>
               </li>
