@@ -10,8 +10,10 @@ import About from "./pages/About";
 import Product from "./pages/product/Product";
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
+
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import GlassOctagonLogo from "./components/ui/Used/GlassLogo";
 
 const queryClient = new QueryClient();
 

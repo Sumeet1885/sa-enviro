@@ -83,6 +83,30 @@ const Product_DropDown = [
     name: "Zero Liquid Discharge (ZLD)",
     key: "zero_liquid_discharge",
   },
+  {
+    name: "Effluent Treatment Plants",
+    key: "effluent_treatment_plants",
+  },
+  {
+    name: "Water Treatment Plants",
+    key: "water_treatment_plants",
+  },
+  {
+    name: "Ultra Filtration",
+    key: "ultra_filtration",
+  },
+  {
+    name: "Reverse Osmosis",
+    key: "reverse_osmosis",
+  },
+  {
+    name: "Demineralisation Plants",
+    key: "demineralisation_plants",
+  },
+  {
+    name: "Water Softeners Plant",
+    key: "water_softeners_plant",
+  },
 ];
 
 export const navigation: NavigationItem[] = [
@@ -628,6 +652,242 @@ export const products: Product[] = [
       {
         url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/zld-1024x332.png",
         alt: "Zero Liquid Discharge",
+      },
+    ],
+  },
+  {
+    key: "effluent_treatment_plants",
+    main: {
+      title: "Effluent Treatment Plant",
+      description:
+        "We at SA Enviro Solutions manufacture and supply effluent treatment plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent. The industrial effluent treatment plants involve different stages of treatment including physio-chemical treatment and biological treatment followed by tertiary treatment. Integrated functions with simple control make the operation much easier. Our engineers can also custom design the effluent treatment plants based on the specific application requirement of the customers. Our Industrial effluent treatment plants have a compact design and can be easily installed on the site.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp4-409x390.png",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp5-585x390.png",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp3.png",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp2.png",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp1.jpg",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "subtitle",
+        content: "The Effluent Treatment Plants Applications:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Manufacturing industry",
+          "Pharmaceutical industry",
+          "Chemical & Paint manufacturing companies",
+          "Textile, Paper & Dyes",
+          "Dairy industry",
+          "Plating & Coating industry",
+          "Coolant treatment",
+          "Pickling industry",
+          "Food Industries",
+          "Fertilizer Industries",
+          "Automobile Industries",
+          "Foundries",
+          "Sugar Industries",
+          "Distilleries",
+        ],
+      },
+    ],
+  },
+  {
+    key: "water_treatment_plants",
+    main: {
+      title: "Water Treatment Plants",
+      description:
+        "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants. We also offer effective turnkey solutions for these plants to our clients. Wide range of plants are demanded in API, Chemical, Paint, Food processing and Dye industries.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/WTP.png",
+        alt: "Industrial Water Treatment Plant System",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "subtitle",
+        content: "Water Treatment Plants supplied by SAES",
+      },
+      {
+        type: "list",
+        style: "number",
+        items: [
+          "Drinking Water Treatment Plants",
+          "Municipal Water Treatment Plants",
+          "Raw Water Treatment Plants",
+          "Packaged Drinking Water Treatment Plants",
+          "Sea Water Treatment Plants",
+          "Turnkey Water Treatment Plants",
+          "Process Water Treatment Plants",
+          "Automatic (Scada operated) Water Treatment Plants",
+        ],
+      },
+    ],
+  },
+  {
+    key: "ultra_filtration",
+    main: {
+      title: "Ultra Filtration (UF)",
+      description:
+        "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds colloidal and particulate matters from a feed stream.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF1.png",
+        alt: "Ultra Filtration (UF)",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF2.png",
+        alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",
+      },
+    ],
+    Page_Description: [],
+  },
+  {
+    key: "reverse_osmosis",
+    main: {
+      title: "Reverse osmosis (RO)",
+      description:
+        "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water. In reverse osmosis, an applied pressure is used to overcome osmotic pressure, a colligative property that is driven by chemical potential differences of the solvent, a thermodynamic parameter.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/RO1-585x390.png",
+        alt: "Reverse Osmosis (RO) ",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/RO2-538x390.jpg",
+        alt: "Reverse Osmosis (RO) system with blue filtration tanks and control panel",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "p",
+        content:
+          "Reverse osmosis differs from filtration in that the mechanism of fluid flow is by osmosis across a membrane. The predominant removal mechanism in membrane filtration is straining, or size exclusion, where the pores are 0.01 micrometre's or larger, so the process can theoretically achieve perfect efficiency regardless of parameters such as the solution's pressure and concentration. Reverse osmosis instead involves solvent diffusion across a membrane that is either nonporous or uses nanofiltration with pores 0.001 micrometre's in size.",
+      },
+      {
+        type: "p",
+        content:
+          "The predominant removal mechanism is from differences in solubility or diffusivity, and the process is dependent on pressure, solute concentration, and other conditions. Based on the raw water quality, the pre-treatment process for RO Plants may consist of all or some of the following treatment steps:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Clarification followed by Sand Filtration for Turbidity removal",
+          "Water disinfection with chlorine",
+          "Hardness reduction by Softening",
+          "Addition of scale inhibitor",
+          "Reduction of free chlorine using sodium bisulfite/ Activated carbon filters",
+          "Final removal of suspended particles using cartridge filters",
+        ],
+      },
+      {
+        type: "p",
+        content:
+          "SA Enviro Solutions designs RO plant for Industrial, Commercial, Institutional & Domestic use on small to large scale.",
+      },
+    ],
+  },
+  {
+    key: "demineralisation_plants",
+    main: {
+      title: "Demineralisation Plants [DM]",
+      description:
+        "It is the process of removing mineral salts from water by using the ion exchange process. Demineralisation produces water of a higher quality than conventional distillation.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/DMplants-585x340.gif",
+        alt: "Demineralisation [DM] Plant process diagram",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "p",
+        content:
+          "We SA Enviro Solutions manufacture a wide range of custom-built Demineralised Water plant for industrial process water applications, with inherent design to conserve water, and save costs. The DM Plants are available in different sizes and materials, manually operated or fully Automatic, ready to install & are available as standard models.",
+      },
+      {
+        type: "p",
+        content:
+          "Demineralized Water also known as Deionized Water; Water that has had its mineral ions removed. Mineral ions such as cations of sodium, calcium, iron, copper, etc and anions such as chloride, sulphate, nitrate, etc are common ions present in Water.",
+      },
+      {
+        type: "p",
+        content:
+          "Deionization is a physical process which uses specially-manufactured ion exchange resins which provides ion exchange site for the replacement of the mineral salts in Water with Water forming H+ and OH- ions. Because the majority of Water impurities are dissolved salts, deionization produces a high purity Water that is generally similar to distilled Water, and this process is quick and without scale build-up.",
+      },
+      {
+        type: "p",
+        content:
+          "De-mineralization technology is the proven process for treatment of Water. A DM Water System produces mineral free Water by operating on the principles of ion exchange, Degasification, and polishing. Demineralized Water System finds wide application in the field of steam, power, process, and cooling.",
+      },
+    ],
+  },
+  {
+    key: "water_softeners_plant",
+    main: {
+      title: "Water Softeners Plant",
+      description:
+        "The Water Softeners are available in different sizes and materials, manually operated or fully Automatic and ready to install. The Water Softening Plants are available as standard models or custom-built versions for specific needs.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+        alt: "SA Enviro Solutions Company Logo",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "subtitle",
+        content: "The Range of Water Softening Plants:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "FRP Water Softeners",
+          "MS Water Softeners",
+          "MS Rubber lined Water Softeners",
+        ],
+      },
+      {
+        type: "subtitle",
+        content: "Advantages of water softening",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "High capacity Cation exchange resin",
+          "Consistent treated water quality",
+          "Low operating costs",
+          "Easy to install and operate",
+          "Produces soft, non-scale forming water",
+        ],
       },
     ],
   },
