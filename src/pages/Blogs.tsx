@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SEO } from "@/components/layout/SEO";
 import { AnimatedSection } from "@/components/motion";
 import { siteConfig, seoData } from "@/constants/siteData";
-import BlogSection from "@/components/ui/Used/BloGSection";
+import BlogSection from "@/components/ui/Used/BlogSection";
 
 const Client = () => {
   return (
