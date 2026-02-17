@@ -7,7 +7,7 @@ import Image3 from "@/assets/hero2.jpg";
 import Image4 from "@/assets/hero3.jpg";
 import { Product } from "./type";
 import { Description } from "@radix-ui/react-toast";
-import { Layout } from "lucide-react";
+import { Layout, Navigation } from "lucide-react";
 
 interface SiteConfig {
   name: string;
@@ -28,7 +28,8 @@ interface SiteConfig {
 
 interface DropDown {
   name: string;
-  key: string;
+  key?: string;
+  href?: string;
 }
 
 export interface NavigationItem {
@@ -54,6 +55,13 @@ interface CTA {
 interface HeroData {
   cta: CTA;
   slides: HeroSlideItem[];
+}
+
+interface Team_Member {
+  name: string;
+  title: string;
+  details: string;
+  functionality: string;
 }
 
 export const siteConfig: SiteConfig = {
@@ -83,19 +91,101 @@ const Product_DropDown = [
     name: "Zero Liquid Discharge (ZLD)",
     key: "zero_liquid_discharge",
   },
+  {
+    name: "Effluent Treatment Plants",
+    key: "effluent_treatment_plants",
+  },
+  {
+    name: "Water Treatment Plants",
+    key: "water_treatment_plants",
+  },
+  {
+    name: "Ultra Filtration",
+    key: "ultra_filtration",
+  },
+  {
+    name: "Reverse Osmosis",
+    key: "reverse_osmosis",
+  },
+  {
+    name: "Demineralisation Plants",
+    key: "demineralisation_plants",
+  },
+  {
+    name: "Water Softeners Plant",
+    key: "water_softeners_plant",
+  },
+];
+
+const Option_Dropdown = [
+  { name: "Services", href: "/services" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Client", href: "/client" },
 ];
 
 export const navigation: NavigationItem[] = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   {
-    name: "Products",
+    name: "Product",
     href: "/products",
     dropdown: Product_DropDown,
   },
-  { name: "Services", href: "/services" },
-  { name: "Gallery", href: "/gallery" },
+
+  { name: "Team", href: "/team" },
+
+  { name: "Blogs", href: "/blogs" },
+  { name: "Options", href: "/", dropdown: Option_Dropdown },
+
   { name: "Contact", href: "/contact" },
+];
+
+export const team_member: Team_Member[] = [
+  {
+    name: "Santosh D. Urdukhe",
+    title: "Director & CEO",
+    details:
+      "Santosh Urdukhe, an expert in environmental aspects, has a Master’s degree in Environment Science. He has industrial experience in pollution control and allied services and products, specifically in designing, fabricating, setting up and maintaining water treatment plants. \n*Erection and commissioning of CETP 27.5MLD at Taloja MIDC, Mumbai. \n*Operation and Maintenance of CETP 27.5MLD at Taloja MIDC, Mumbai, Pune. \n*Erection and commissioning of ETP (HTDS) 120m3/day, ETP (LTDS) 360m3/day, UF and RO 360m3/day at Clariant India Ltd, Bonthapally, Telangana. \n*Erection and commissioning of STP 350m3/day at Chambal fertilisers and chemicals ltd, Kota Rajasthan. \n*In Mahindra Vehicle Manufacturing Ltd, Chakan, Pune Operation and Maintenance of ETP (1560m3/day), STP (480m3/day) & (168m3/day). \n*In Radico NV Distilleries Maharashtra Ltd, Shendra, Aurangabad Operation and Maintenance of ETP (1020m3/day). \n*In Mayuge Sugars & Distilleries Ltd, Uganda, Africa Operation and Maintenance of Biogas Plant (400m3/day), CPU (400m3/day) and Bio-Composting.",
+    functionality:
+      "Functionally he looks after Project Management, Procurement & Quality.",
+  },
+  {
+    name: "Amruta S. Urdukhe",
+    title: "Sales Co-ordinator",
+    details:
+      "She deals with Lab Co-ordination. Her expertise is in NABL certification, audit and water, soil, hazardous waste, air analysis. She did her masters in Environmental sciences from Pune University. Her involvement in Academic Co-ordination, Lectures, Practical’s, internal examination, project guide for M.Sc. Environment Science Students and EIA project work for nearly 6 years in at Dept. of Environmental Science, Vasantdada Sugar Institute, Manjri BK, Pune.",
+    functionality: "Functionally she looks after Finance and Sales.",
+  },
+  {
+    name: "Ganesh Gaikwad",
+    title: "HR & Admin Head",
+    details:
+      "His qualification D.E.E. 1994 Maharashtra Board and PGDBM in HR 2009 Pune University. Master in Business Study in HR 2010 Pune University Dip. Labour Law 2011 Pune University. Dip. Industrial Safety 2021 Maharashtra Board. DNV GL certified Lead Auditor for ISO 9001:2015. License holder for Electrical Supervisor. His total experience in manufacturing, process & service industry is for 25 years. He worked as a Deputy General Manager with M/s Sadguru Sugar Factory Ltd.",
+    functionality:
+      "Functionally he looks after Human Resource, Admin & Employee Relations.",
+  },
+  {
+    name: "Dr. Vikrant Aher",
+    title: "Process Head",
+    details:
+      "He is a Process Co-ordinator and expert in the field of Remote Sensing, GIS and Environmental Engineering. He did his masters in Environmental Science and Geoinformatics from Pune University and doing his doctorate from University of Pune, Pune. He also done post graduate diploma in Water & Wastewater. He has taught Geoinformatics, Land Use-Planning and Environmental Engineering courses at Dept. of Environmental Science, University of Pune for nearly 8 years. Since joining Rincon Environmental Consultancy in 2013, he has worked extensively in GIS based study for EIA project, Command area development study, Water Audit, Pollution studies and Environmental Management Studies, Environmental Audit, Design and Turnkey Installation of Air Pollution Control Systems and Effluent Treatment Plants.",
+    functionality: "Functionally he looks after Process and Technical support.",
+  },
+  {
+    name: "Raju B Wagaskar",
+    title: "EHS Manager",
+    details:
+      "Dynamic professional with nearly 24 years of experience in Safety, Utility Projects. Expert in Safety, Legal compliance in various Industries. He has done his Mechanical Engineering from Pune University and Advance Diploma in Industrial Safety from Mumbai Board. Expert in operation and maintenance of equipment in Facility management. Worked with Mahindra and Mahindra for 14 years as Project and Operational Manager. Prior to joining SA Enviro solutions also worked as Operations Manager in M/s Vibra Industries which is in wiring harness manufacturing.",
+    functionality:
+      "Functionally he looks after Operations, Maintenance & Safety.",
+  },
+  {
+    name: "Umakant Maharana",
+    title: "Technical Consultant",
+    details:
+      "He is a certified energy auditor. His qualification is in Mechanical Engineering. He has total 32 years of experience in the field of waste water treatment, research and development. Handling Trunkey projects. He is a Proprietor of EEcon Consulting Engineers.",
+    functionality: "Functionally he is a Third-Party Technical Advisor.",
+  },
 ];
 
 export const heroData: HeroData = {
@@ -469,6 +559,69 @@ export const seoData = {
   },
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Add this to your @/constants/siteData file
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const blogs = [
+  {
+    id: 1,
+    title: "Effluent Treatment Plant",
+    excerpt:
+      "SA Enviro Solutions provides custom-designed industrial effluent treatment plants utilizing physio-chemical and biological processes for various industrial applications.",
+    content:
+      "We at SA Enviro Solutions manufacture and supply effluent treatment plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent. The industrial effluent treatment plants involve different stages of treatment including physio-chemical treatment and biological treatment followed by tertiary treatment. Integrated functions with simple control make the operation much easier. Our engineers can also custom design the effluent treatment plants based on the specific application requirement of the customers. Our Industrial effluent treatment plants have a compact design and can be easily installed on the site.",
+    image:
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+    author: "SA Enviro Solutions",
+    authorAvatar: "",
+    date: "Oct 22, 2021",
+    readTime: "3 min read",
+    category: "Industrial Treatment",
+    tags: ["Manufacturing", "Pharmaceutical", "Chemical", "Textile", "Dairy"],
+    comments: [],
+  },
+  {
+    id: 2,
+    title: "Water Treatment Plants",
+    excerpt:
+      "SA Enviro Solutions supplies a wide range of water treatment plants and turnkey solutions for industries including API, Chemical, and Food processing.",
+    content:
+      "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants. We also offer effective turnkey solutions for these plants to our clients. Wide range of plants are demanded in API, Chemical, Paint, Food processing and Dye industries. Water Treatment Plants supplied by SAES include: Drinking Water Treatment Plants, Municipal Water Treatment Plants, Raw Water Treatment Plants, Packaged Drinking Water Treatment Plants, Sea Water Treatment Plants, Turnkey Water Treatment Plants, Process Water Treatment Plants, and Automatic (Scada operated) Water Treatment Plants.",
+    image:
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+    author: "SA Enviro Solutions",
+    authorAvatar: "",
+    date: "Oct 22, 2021",
+    readTime: "2 min read",
+    category: "Water Solutions",
+    tags: ["Drinking Water", "Municipal", "Raw Water", "Sea Water"],
+    comments: [],
+  },
+  {
+    id: 3,
+    title: "Ultra Filtration (UF)",
+    excerpt:
+      "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds from feed streams.",
+    content:
+      "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds colloidal and particulate matters from a feed stream. This technology provides an essential barrier for advanced water purification across industrial sectors.",
+    image:
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+    author: "SA Enviro Solutions",
+    authorAvatar: "",
+    date: "Oct 22, 2021",
+    readTime: "1 min read",
+    category: "Membrane Technology",
+    tags: [
+      "Ultrafiltration",
+      "Membrane",
+      "Bacteria Removal",
+      "Water Purification",
+    ],
+    comments: [],
+  },
+];
+
 export const products: Product[] = [
   {
     key: "sewage_treatment_plants",
@@ -628,6 +781,242 @@ export const products: Product[] = [
       {
         url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/zld-1024x332.png",
         alt: "Zero Liquid Discharge",
+      },
+    ],
+  },
+  {
+    key: "effluent_treatment_plants",
+    main: {
+      title: "Effluent Treatment Plant",
+      description:
+        "We at SA Enviro Solutions manufacture and supply effluent treatment plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent. The industrial effluent treatment plants involve different stages of treatment including physio-chemical treatment and biological treatment followed by tertiary treatment. Integrated functions with simple control make the operation much easier. Our engineers can also custom design the effluent treatment plants based on the specific application requirement of the customers. Our Industrial effluent treatment plants have a compact design and can be easily installed on the site.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp4-409x390.png",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp5-585x390.png",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp3.png",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp2.png",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp1.jpg",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "subtitle",
+        content: "The Effluent Treatment Plants Applications:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Manufacturing industry",
+          "Pharmaceutical industry",
+          "Chemical & Paint manufacturing companies",
+          "Textile, Paper & Dyes",
+          "Dairy industry",
+          "Plating & Coating industry",
+          "Coolant treatment",
+          "Pickling industry",
+          "Food Industries",
+          "Fertilizer Industries",
+          "Automobile Industries",
+          "Foundries",
+          "Sugar Industries",
+          "Distilleries",
+        ],
+      },
+    ],
+  },
+  {
+    key: "water_treatment_plants",
+    main: {
+      title: "Water Treatment Plants",
+      description:
+        "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants. We also offer effective turnkey solutions for these plants to our clients. Wide range of plants are demanded in API, Chemical, Paint, Food processing and Dye industries.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/WTP.png",
+        alt: "Industrial Water Treatment Plant System",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "subtitle",
+        content: "Water Treatment Plants supplied by SAES",
+      },
+      {
+        type: "list",
+        style: "number",
+        items: [
+          "Drinking Water Treatment Plants",
+          "Municipal Water Treatment Plants",
+          "Raw Water Treatment Plants",
+          "Packaged Drinking Water Treatment Plants",
+          "Sea Water Treatment Plants",
+          "Turnkey Water Treatment Plants",
+          "Process Water Treatment Plants",
+          "Automatic (Scada operated) Water Treatment Plants",
+        ],
+      },
+    ],
+  },
+  {
+    key: "ultra_filtration",
+    main: {
+      title: "Ultra Filtration (UF)",
+      description:
+        "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds colloidal and particulate matters from a feed stream.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF1.png",
+        alt: "Ultra Filtration (UF)",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF2.png",
+        alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",
+      },
+    ],
+    Page_Description: [],
+  },
+  {
+    key: "reverse_osmosis",
+    main: {
+      title: "Reverse osmosis (RO)",
+      description:
+        "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water. In reverse osmosis, an applied pressure is used to overcome osmotic pressure, a colligative property that is driven by chemical potential differences of the solvent, a thermodynamic parameter.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/RO1-585x390.png",
+        alt: "Reverse Osmosis (RO) ",
+      },
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/RO2-538x390.jpg",
+        alt: "Reverse Osmosis (RO) system with blue filtration tanks and control panel",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "p",
+        content:
+          "Reverse osmosis differs from filtration in that the mechanism of fluid flow is by osmosis across a membrane. The predominant removal mechanism in membrane filtration is straining, or size exclusion, where the pores are 0.01 micrometre's or larger, so the process can theoretically achieve perfect efficiency regardless of parameters such as the solution's pressure and concentration. Reverse osmosis instead involves solvent diffusion across a membrane that is either nonporous or uses nanofiltration with pores 0.001 micrometre's in size.",
+      },
+      {
+        type: "p",
+        content:
+          "The predominant removal mechanism is from differences in solubility or diffusivity, and the process is dependent on pressure, solute concentration, and other conditions. Based on the raw water quality, the pre-treatment process for RO Plants may consist of all or some of the following treatment steps:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Clarification followed by Sand Filtration for Turbidity removal",
+          "Water disinfection with chlorine",
+          "Hardness reduction by Softening",
+          "Addition of scale inhibitor",
+          "Reduction of free chlorine using sodium bisulfite/ Activated carbon filters",
+          "Final removal of suspended particles using cartridge filters",
+        ],
+      },
+      {
+        type: "p",
+        content:
+          "SA Enviro Solutions designs RO plant for Industrial, Commercial, Institutional & Domestic use on small to large scale.",
+      },
+    ],
+  },
+  {
+    key: "demineralisation_plants",
+    main: {
+      title: "Demineralisation Plants [DM]",
+      description:
+        "It is the process of removing mineral salts from water by using the ion exchange process. Demineralisation produces water of a higher quality than conventional distillation.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/DMplants-585x340.gif",
+        alt: "Demineralisation [DM] Plant process diagram",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "p",
+        content:
+          "We SA Enviro Solutions manufacture a wide range of custom-built Demineralised Water plant for industrial process water applications, with inherent design to conserve water, and save costs. The DM Plants are available in different sizes and materials, manually operated or fully Automatic, ready to install & are available as standard models.",
+      },
+      {
+        type: "p",
+        content:
+          "Demineralized Water also known as Deionized Water; Water that has had its mineral ions removed. Mineral ions such as cations of sodium, calcium, iron, copper, etc and anions such as chloride, sulphate, nitrate, etc are common ions present in Water.",
+      },
+      {
+        type: "p",
+        content:
+          "Deionization is a physical process which uses specially-manufactured ion exchange resins which provides ion exchange site for the replacement of the mineral salts in Water with Water forming H+ and OH- ions. Because the majority of Water impurities are dissolved salts, deionization produces a high purity Water that is generally similar to distilled Water, and this process is quick and without scale build-up.",
+      },
+      {
+        type: "p",
+        content:
+          "De-mineralization technology is the proven process for treatment of Water. A DM Water System produces mineral free Water by operating on the principles of ion exchange, Degasification, and polishing. Demineralized Water System finds wide application in the field of steam, power, process, and cooling.",
+      },
+    ],
+  },
+  {
+    key: "water_softeners_plant",
+    main: {
+      title: "Water Softeners Plant",
+      description:
+        "The Water Softeners are available in different sizes and materials, manually operated or fully Automatic and ready to install. The Water Softening Plants are available as standard models or custom-built versions for specific needs.",
+    },
+    images: [
+      {
+        url: "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+        alt: "SA Enviro Solutions Company Logo",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "subtitle",
+        content: "The Range of Water Softening Plants:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "FRP Water Softeners",
+          "MS Water Softeners",
+          "MS Rubber lined Water Softeners",
+        ],
+      },
+      {
+        type: "subtitle",
+        content: "Advantages of water softening",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "High capacity Cation exchange resin",
+          "Consistent treated water quality",
+          "Low operating costs",
+          "Easy to install and operate",
+          "Produces soft, non-scale forming water",
+        ],
       },
     ],
   },

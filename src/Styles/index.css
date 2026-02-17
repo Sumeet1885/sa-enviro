@@ -27,6 +27,13 @@
 }
 
 @layer components {
+
+  .card_active {
+    @apply bg-water-sky
+  }
+
+
+
   .dark-section {
     @apply bg-water-deep text-primary-foreground;
   }
