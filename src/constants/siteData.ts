@@ -7,7 +7,7 @@ import Image3 from "@/assets/hero2.jpg";
 import Image4 from "@/assets/hero3.jpg";
 import { Product } from "./type";
 import { Description } from "@radix-ui/react-toast";
-import { Layout } from "lucide-react";
+import { Layout, Navigation } from "lucide-react";
 
 interface SiteConfig {
   name: string;
@@ -28,7 +28,8 @@ interface SiteConfig {
 
 interface DropDown {
   name: string;
-  key: string;
+  key?: string;
+  href?: string;
 }
 
 export interface NavigationItem {
@@ -116,18 +117,25 @@ const Product_DropDown = [
   },
 ];
 
+const Option_Dropdown = [
+  { name: "Services", href: "/services" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Client", href: "/client" },
+];
+
 export const navigation: NavigationItem[] = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   {
-    name: "Products",
+    name: "Product",
     href: "/products",
     dropdown: Product_DropDown,
   },
-  { name: "Services", href: "/services" },
-  { name: "Gallery", href: "/gallery" },
+
   { name: "Team", href: "/team" },
-  { name: "Client", href: "/client" },
+
+  { name: "Blogs", href: "/blogs" },
+  { name: "Options", href: "/", dropdown: Option_Dropdown },
 
   { name: "Contact", href: "/contact" },
 ];
@@ -550,6 +558,69 @@ export const seoData = {
       "Get in touch with SA Enviro Solutions for your water treatment needs. Located in Chinchwad, Pune.",
   },
 };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Add this to your @/constants/siteData file
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const blogs = [
+  {
+    id: 1,
+    title: "Effluent Treatment Plant",
+    excerpt:
+      "SA Enviro Solutions provides custom-designed industrial effluent treatment plants utilizing physio-chemical and biological processes for various industrial applications.",
+    content:
+      "We at SA Enviro Solutions manufacture and supply effluent treatment plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent. The industrial effluent treatment plants involve different stages of treatment including physio-chemical treatment and biological treatment followed by tertiary treatment. Integrated functions with simple control make the operation much easier. Our engineers can also custom design the effluent treatment plants based on the specific application requirement of the customers. Our Industrial effluent treatment plants have a compact design and can be easily installed on the site.",
+    image:
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+    author: "SA Enviro Solutions",
+    authorAvatar: "",
+    date: "Oct 22, 2021",
+    readTime: "3 min read",
+    category: "Industrial Treatment",
+    tags: ["Manufacturing", "Pharmaceutical", "Chemical", "Textile", "Dairy"],
+    comments: [],
+  },
+  {
+    id: 2,
+    title: "Water Treatment Plants",
+    excerpt:
+      "SA Enviro Solutions supplies a wide range of water treatment plants and turnkey solutions for industries including API, Chemical, and Food processing.",
+    content:
+      "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants. We also offer effective turnkey solutions for these plants to our clients. Wide range of plants are demanded in API, Chemical, Paint, Food processing and Dye industries. Water Treatment Plants supplied by SAES include: Drinking Water Treatment Plants, Municipal Water Treatment Plants, Raw Water Treatment Plants, Packaged Drinking Water Treatment Plants, Sea Water Treatment Plants, Turnkey Water Treatment Plants, Process Water Treatment Plants, and Automatic (Scada operated) Water Treatment Plants.",
+    image:
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+    author: "SA Enviro Solutions",
+    authorAvatar: "",
+    date: "Oct 22, 2021",
+    readTime: "2 min read",
+    category: "Water Solutions",
+    tags: ["Drinking Water", "Municipal", "Raw Water", "Sea Water"],
+    comments: [],
+  },
+  {
+    id: 3,
+    title: "Ultra Filtration (UF)",
+    excerpt:
+      "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds from feed streams.",
+    content:
+      "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds colloidal and particulate matters from a feed stream. This technology provides an essential barrier for advanced water purification across industrial sectors.",
+    image:
+      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+    author: "SA Enviro Solutions",
+    authorAvatar: "",
+    date: "Oct 22, 2021",
+    readTime: "1 min read",
+    category: "Membrane Technology",
+    tags: [
+      "Ultrafiltration",
+      "Membrane",
+      "Bacteria Removal",
+      "Water Purification",
+    ],
+    comments: [],
+  },
+];
 
 export const products: Product[] = [
   {
