@@ -10,10 +10,10 @@ import About from "./pages/About";
 import Product from "./pages/product/Product";
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
-
+import Team from "@/pages/Team";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import GlassOctagonLogo from "./components/ui/Used/GlassLogo";
+import Client from "@/components/ui/Used/Team_Section";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +33,7 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/product" element={<Product />} />
               <Route path="/product/:slug" element={<Product />} />
+              <Route path="/team" element={<Team />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
