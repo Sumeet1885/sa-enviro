@@ -204,7 +204,11 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
                   transition={{ delay: 0.05 * idx }}
                 >
                   <Link
-                    to={`product/${dropItem.key}`}
+                    to={
+                      dropItem.key
+                        ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
+                        : dropItem.href
+                    }
                     className="flex flex-col px-4 py-3 rounded-xl transition-all duration-300 text-white font-medium hover:bg-gradient-to-r hover:from-violet-600/30 hover:to-purple-600/30 hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] group/item relative overflow-hidden whitespace-nowrap"
                   >
                     <motion.div
