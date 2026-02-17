@@ -11,9 +11,9 @@ import Product from "./pages/product/Product";
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Team from "@/pages/Team";
+import Client from "./pages/Client";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import Client from "@/components/ui/Used/Team_Section";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +34,8 @@ const App = () => (
               <Route path="/product" element={<Product />} />
               <Route path="/product/:slug" element={<Product />} />
               <Route path="/team" element={<Team />} />
+              <Route path="/client" element={<Client />} />
+
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

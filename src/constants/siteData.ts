@@ -127,6 +127,8 @@ export const navigation: NavigationItem[] = [
   { name: "Services", href: "/services" },
   { name: "Gallery", href: "/gallery" },
   { name: "Team", href: "/team" },
+  { name: "Client", href: "/client" },
+
   { name: "Contact", href: "/contact" },
 ];
 
@@ -135,7 +137,7 @@ export const team_member: Team_Member[] = [
     name: "Santosh D. Urdukhe",
     title: "Director & CEO",
     details:
-      "Santosh Urdukhe, an expert in environmental aspects, has a Master’s degree in Environment Science. He has industrial experience in pollution control and allied services and products, specifically in designing, fabricating, setting up and maintaining water treatment plants. \n*Erection and commissioning of CETP 27.5MLD at Taloja MIDC, Mumbai. \n*Operation and Maintenance of CETP 27.5MLD at Taloja MIDC, Mumbai, Pune. \n*Erection and commissioning of ETP (HTDS) 120m3/day, ETP (LTDS) 360m3/day, UF and RO 360m3/day at Clariant India Ltd, Bonthapally, Telangana. \n*Erection and commissioning of STP 350m3/day at Chambal fertilisers and chemicals ltd, Kota Rajasthan. \n*In Mahindra Vehicle Manufacturing Ltd, Chakan, Pune Operation and Maintenance of ETP (1560m3/day), STP (480m3/day) & (168m3/day). \n*In Radico NV Distilleries Maharashtra Ltd, Shendra, Aurangabad Operation and Maintenance of ETP (1020m3/day). \n*In Mayuge Sugars & Distilleries Ltd, Uganda, Africa Operation and Maintenance of Biogas Plant (400m3/day), CPU (400m3/day) and Bio-Composting",
+      "Santosh Urdukhe, an expert in environmental aspects, has a Master’s degree in Environment Science. He has industrial experience in pollution control and allied services and products, specifically in designing, fabricating, setting up and maintaining water treatment plants. \n*Erection and commissioning of CETP 27.5MLD at Taloja MIDC, Mumbai. \n*Operation and Maintenance of CETP 27.5MLD at Taloja MIDC, Mumbai, Pune. \n*Erection and commissioning of ETP (HTDS) 120m3/day, ETP (LTDS) 360m3/day, UF and RO 360m3/day at Clariant India Ltd, Bonthapally, Telangana. \n*Erection and commissioning of STP 350m3/day at Chambal fertilisers and chemicals ltd, Kota Rajasthan. \n*In Mahindra Vehicle Manufacturing Ltd, Chakan, Pune Operation and Maintenance of ETP (1560m3/day), STP (480m3/day) & (168m3/day). \n*In Radico NV Distilleries Maharashtra Ltd, Shendra, Aurangabad Operation and Maintenance of ETP (1020m3/day). \n*In Mayuge Sugars & Distilleries Ltd, Uganda, Africa Operation and Maintenance of Biogas Plant (400m3/day), CPU (400m3/day) and Bio-Composting.",
     functionality:
       "Functionally he looks after Project Management, Procurement & Quality.",
   },
