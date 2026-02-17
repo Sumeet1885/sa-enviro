@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Droplets, Waves, ChevronDown } from "lucide-react";
+import { Menu, X, Droplets, ChevronDown } from "lucide-react";
 import {
   motion,
   AnimatePresence,
@@ -8,20 +8,20 @@ import {
   useTransform,
 } from "framer-motion";
 import Logo from "@/assets/logo.webp";
-
 import { navigation, siteConfig } from "@/constants/siteData";
 
-// Navigation item type with optional dropdown
+// ── Types ─────────────────────────────────────────────────────────────────────
 export interface NavigationItem {
   name: string;
   href: string;
   dropdown?: {
     name: string;
     key: string;
+    description?: string;
   }[];
 }
 
-// Dropdown Component
+// ── Dropdown Component ────────────────────────────────────────────────────────
 interface DropdownProps {
   item: NavigationItem;
   isScrolled: boolean;
@@ -58,10 +58,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 * index }}
-        whileHover={{
-          scale: 1.08,
-          y: -2,
-        }}
+        whileHover={{ scale: 1.08, y: -2 }}
         className={`
           relative flex items-center
           transition-all duration-500 font-semibold whitespace-nowrap
@@ -74,7 +71,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
       >
         {item.name}
 
-        {/* Strong underline effect */}
+        {/* Underline on hover */}
         <motion.span
           className={`
             absolute -bottom-1 left-0 h-[2px] rounded-full
@@ -89,7 +86,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
           transition={{ duration: 0.3, ease: "easeOut" }}
         />
 
-        {/* Strong background glow on hover */}
         {isScrolled && (
           <>
             <motion.span
@@ -121,10 +117,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 * index }}
-        whileHover={{
-          scale: 1.08,
-          y: -2,
-        }}
+        whileHover={{ scale: 1.08, y: -2 }}
         className={`
           relative flex items-center gap-1.5
           transition-all duration-500 font-semibold whitespace-nowrap
@@ -143,7 +136,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
           <ChevronDown className="w-4 h-4" />
         </motion.div>
 
-        {/* Strong underline effect */}
         <motion.span
           className={`
             absolute -bottom-1 left-0 h-[2px] rounded-full
@@ -159,7 +151,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
           transition={{ duration: 0.3, ease: "easeOut" }}
         />
 
-        {/* Strong background glow on hover */}
         {isScrolled && (
           <>
             <motion.span
@@ -181,7 +172,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
       </motion.button>
 
       {/* Dropdown Menu */}
-
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -190,31 +180,24 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             className={`
-        absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-56 max-w-xs z-50
-        rounded-2xl overflow-hidden
-        ${
-          isScrolled
-            ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
-            : "bg-gradient-to-br from-slate-800/90 via-slate-900/85 to-slate-800/90 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.5)]"
-        }
-      `}
+              absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-56 max-w-xs z-50
+              rounded-2xl overflow-hidden
+              ${
+                isScrolled
+                  ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
+                  : "bg-gradient-to-br from-slate-800/90 via-slate-900/85 to-slate-800/90 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.5)]"
+              }
+            `}
           >
-            {/* Gradient overlay */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-br from-violet-600/10 via-purple-600/10 to-fuchsia-600/10"
-              animate={{
-                scale: [1, 1.02, 1],
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-              }}
+              animate={{ scale: [1, 1.02, 1], opacity: [0.3, 0.5, 0.3] }}
+              transition={{ duration: 4, repeat: Infinity }}
             />
 
             <ul className="p-2 relative z-10">
               {item.dropdown.map((dropItem, idx) => (
-                <motion.a
+                <motion.li
                   key={dropItem.key}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -222,32 +205,19 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
                 >
                   <Link
                     to={`product/${dropItem.key}`}
-                    className={`
-                flex flex-col px-4 py-3 rounded-xl
-                transition-all duration-300
-                text-white font-medium
-                hover:bg-gradient-to-r hover:from-violet-600/30 hover:to-purple-600/30
-                hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)]
-                hover:border-violet-400/40
-                group/item
-                relative overflow-hidden
-                whitespace-nowrap
-              `}
+                    className="flex flex-col px-4 py-3 rounded-xl transition-all duration-300 text-white font-medium hover:bg-gradient-to-r hover:from-violet-600/30 hover:to-purple-600/30 hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] group/item relative overflow-hidden whitespace-nowrap"
                   >
-                    {/* Shine effect */}
                     <motion.div
-                      id={dropItem.key}
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
                       initial={{ x: "-100%" }}
                       whileHover={{ x: "100%" }}
                       transition={{ duration: 0.5 }}
                     />
-
                     <span className="relative z-10 text-sm font-semibold">
                       {dropItem.name}
                     </span>
                   </Link>
-                </motion.a>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
@@ -257,7 +227,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
   );
 };
 
-// Mobile Menu Item Component with Dropdown
+// ── Mobile Menu Item ──────────────────────────────────────────────────────────
 interface MobileMenuItemProps {
   item: NavigationItem;
   location: ReturnType<typeof useLocation>;
@@ -277,13 +247,8 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{
-        delay: 0.08 * index,
-        type: "spring",
-        stiffness: 300,
-      }}
+      transition={{ delay: 0.08 * index, type: "spring", stiffness: 300 }}
     >
-      {/* Parent Link/Button */}
       {item.dropdown ? (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
@@ -304,14 +269,12 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             whileHover={{ x: "100%" }}
             transition={{ duration: 0.6 }}
           />
-
           <div className="flex items-center gap-3 relative z-10">
             {location.pathname === item.href && (
               <Droplets className="w-5 h-5 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
             )}
             <span>{item.name}</span>
           </div>
-
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
             transition={{ duration: 0.3 }}
@@ -341,31 +304,21 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             whileHover={{ x: "100%" }}
             transition={{ duration: 0.6 }}
           />
-
           {location.pathname === item.href && (
             <Droplets className="w-5 h-5 relative z-10 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
           )}
-
           <span className="relative z-10">{item.name}</span>
-
           {location.pathname === item.href && (
             <motion.span
               layoutId="mobile-active-pill"
               className="absolute right-4 w-3 h-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
-              animate={{
-                scale: [1, 1.3, 1],
-                opacity: [1, 0.8, 1],
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-              }}
+              animate={{ scale: [1, 1.3, 1], opacity: [1, 0.8, 1] }}
+              transition={{ duration: 2.5, repeat: Infinity }}
             />
           )}
         </Link>
       )}
 
-      {/* Mobile Dropdown Items - Collapsible */}
       <AnimatePresence>
         {item.dropdown && isExpanded && (
           <motion.div
@@ -387,14 +340,12 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
                   onClick={onClose}
                   className="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-violet-600/20 rounded-lg transition-all group/subitem relative overflow-hidden"
                 >
-                  {/* Shine effect for dropdown items */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
                     transition={{ duration: 0.5 }}
                   />
-
                   <span className="relative z-10 font-medium">
                     {dropItem.name}
                   </span>
@@ -413,22 +364,41 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
   );
 };
 
+// ── Main Header ───────────────────────────────────────────────────────────────
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // ── Hide / show on scroll ──────────────────────────────────────────────────
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  // ──────────────────────────────────────────────────────────────────────────
+
   const location = useLocation();
   const { scrollY } = useScroll();
-
-  // Transform values based on scroll
   const navPadding = useTransform(scrollY, [0, 100], [5, 5]);
   const logoScale = useTransform(scrollY, [0, 100], [1, 1.0]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      // Background change at 50px
+      setIsScrolled(currentScrollY > 50);
+
+      // ── Hide on scroll DOWN, show on scroll UP ───────────────
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        setIsVisible(false); // scrolling DOWN → hide
+      } else {
+        setIsVisible(true); // scrolling UP   → show
+      }
+
+      // Save position for next comparison
+      lastScrollY.current = currentScrollY;
+      // ────────────────────────────────────────────────────────
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -436,7 +406,9 @@ export function Header() {
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        // ── This is the key animation ──────────────────────────
+        animate={{ y: isVisible ? 0 : -120, opacity: isVisible ? 1 : 0 }}
+        // ───────────────────────────────────────────────────────
         transition={{
           type: "spring",
           stiffness: 100,
@@ -453,15 +425,12 @@ export function Header() {
           }
           rounded-full flex items-center justify-between px-4 sm:px-6 lg:px-8 text-sm
           shadow-[0_16px_48px_rgba(0,0,0,0.5)]
-          hover:shadow-[0_20px_64px_rgba(139,92,246,0.45)] 
+          hover:shadow-[0_20px_64px_rgba(139,92,246,0.45)]
           group
         `}
-        style={{
-          paddingTop: navPadding,
-          paddingBottom: navPadding,
-        }}
+        style={{ paddingTop: navPadding, paddingBottom: navPadding }}
       >
-        {/* Strong gradient overlay for depth */}
+        {/* Gradient overlay */}
         {isScrolled && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -470,15 +439,8 @@ export function Header() {
           >
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-violet-600/15 via-purple-600/15 to-fuchsia-600/15"
-              animate={{
-                scale: [1, 1.05, 1],
-                opacity: [0.5, 0.7, 0.5],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+              animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.7, 0.5] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.div>
         )}
@@ -496,7 +458,7 @@ export function Header() {
               transition: { duration: 0.7, ease: "easeInOut" },
             }}
             className={`
-              w-10 h-10 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center 
+              w-10 h-10 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center
               transition-all duration-700 relative flex-shrink-0
               ${
                 isScrolled
@@ -524,8 +486,6 @@ export function Header() {
                 ease: "easeInOut",
               }}
             />
-
-            {/* Glow effects */}
             {isScrolled && (
               <>
                 <motion.div
@@ -553,10 +513,7 @@ export function Header() {
                   className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/50 to-purple-600/50 blur-lg -z-20"
                 />
                 <motion.div
-                  animate={{
-                    opacity: [0.3, 0.6, 0.3],
-                    scale: [1.3, 1.6, 1.3],
-                  }}
+                  animate={{ opacity: [0.3, 0.6, 0.3], scale: [1.3, 1.6, 1.3] }}
                   transition={{
                     duration: 3.5,
                     repeat: Infinity,
@@ -565,10 +522,7 @@ export function Header() {
                   className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-600/40 via-purple-600/40 to-fuchsia-600/40 blur-2xl -z-30"
                 />
                 <motion.div
-                  animate={{
-                    opacity: [0.2, 0.5, 0.2],
-                    scale: [1.5, 2, 1.5],
-                  }}
+                  animate={{ opacity: [0.2, 0.5, 0.2], scale: [1.5, 2, 1.5] }}
                   transition={{
                     duration: 4,
                     repeat: Infinity,
@@ -580,22 +534,16 @@ export function Header() {
             )}
           </motion.div>
 
-          <motion.div
-            className="hidden sm:block"
-            animate={{
-              x: isScrolled ? 0 : 0,
-            }}
-            transition={{ duration: 0.3 }}
-          >
+          <motion.div className="hidden sm:block">
             <span
               className={`
-              font-display font-bold transition-all duration-500 whitespace-nowrap
-              ${
-                isScrolled
-                  ? "text-lg sm:text-2xl text-white drop-shadow-[0_3px_16px_rgba(139,92,246,0.8)]"
-                  : "text-base sm:text-xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
-              }
-            `}
+                font-display font-bold transition-all duration-500 whitespace-nowrap
+                ${
+                  isScrolled
+                    ? "text-lg sm:text-2xl text-white drop-shadow-[0_3px_16px_rgba(139,92,246,0.8)]"
+                    : "text-base sm:text-xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+                }
+              `}
             >
               {siteConfig.shortName}
             </span>
@@ -608,20 +556,15 @@ export function Header() {
                     : "text-[10px] sm:text-xs text-slate-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
                 }
               `}
-              animate={{
-                opacity: isScrolled ? [0.85, 1, 0.85] : 0.9,
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-              }}
+              animate={{ opacity: isScrolled ? [0.85, 1, 0.85] : 0.9 }}
+              transition={{ duration: 3, repeat: Infinity }}
             >
               Enviro Solutions
             </motion.span>
           </motion.div>
         </Link>
 
-        {/* Navigation Links with Dropdowns */}
+        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-6 flex-1 justify-center">
           {navigation.map((item, index) => (
             <Dropdown
@@ -650,16 +593,9 @@ export function Header() {
         >
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-            animate={{
-              x: ["-100%", "100%"],
-            }}
-            transition={{
-              duration: 2.5,
-              repeat: Infinity,
-              ease: "linear",
-            }}
+            animate={{ x: ["-100%", "100%"] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
           />
-
           <AnimatePresence mode="wait">
             {isOpen ? (
               <motion.div
@@ -687,7 +623,7 @@ export function Header() {
           </AnimatePresence>
         </motion.button>
 
-        {/* Mobile Menu Dropdown */}
+        {/* Mobile Dropdown */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -696,7 +632,7 @@ export function Header() {
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className={`
-                absolute top-full left-0 right-0 mt-4 
+                absolute top-full left-0 right-0 mt-4
                 lg:hidden rounded-3xl overflow-hidden
                 ${
                   isScrolled
@@ -707,16 +643,9 @@ export function Header() {
             >
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-violet-600/15 via-purple-600/15 to-fuchsia-600/15"
-                animate={{
-                  scale: [1, 1.02, 1],
-                  opacity: [0.4, 0.6, 0.4],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                }}
+                animate={{ scale: [1, 1.02, 1], opacity: [0.4, 0.6, 0.4] }}
+                transition={{ duration: 5, repeat: Infinity }}
               />
-
               <nav className="py-6 flex flex-col gap-2 px-6 relative z-10">
                 {navigation.map((item, index) => (
                   <MobileMenuItem
@@ -751,10 +680,7 @@ export function Header() {
                   delay: i * 0.5,
                   ease: "easeInOut",
                 }}
-                style={{
-                  left: `${20 + i * 15}%`,
-                  top: "100%",
-                }}
+                style={{ left: `${20 + i * 15}%`, top: "100%" }}
               />
             ))}
           </>
