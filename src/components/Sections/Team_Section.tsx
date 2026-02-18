@@ -95,12 +95,12 @@ export default function TestimonialSlider() {
             {/* Outer glow */}
             <div
               className="absolute w-28 h-28 rounded-full opacity-30 blur-xl"
-              style={{ background: waterSkyGradient }}
+              style={{ background: "var(--gradient-water-deep)" }}
             />
             {/* Mid ring */}
             <div
               className="absolute w-20 h-20 rounded-full opacity-20 blur-md"
-              style={{ background: waterSkyGradient }}
+              style={{ background: "var(--gradient-water-deep)" }}
             />
             {/* Main avatar */}
             <div
@@ -108,7 +108,7 @@ export default function TestimonialSlider() {
               className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-white font-extrabold text-2xl sm:text-3xl select-none"
               style={{
                 ...avatarStyle,
-                background: waterSkyGradient,
+                background: "var(--gradient-water-deep)",
                 boxShadow: waterSkyShadow,
               }}
             >
@@ -141,14 +141,14 @@ export default function TestimonialSlider() {
                   "py-2 pl-2 pr-4",
                   "min-w-[120px]",
                   isActive
-                    ? "text-white"
-                    : "bg-blue-100 text-blue-800 hover:bg-blue-200 hover:-translate-y-px",
+                    ? "text-popover"
+                    : "bg-blue-100 text-blue-800 hover:bg-primary/15 hover:-translate-y-px",
                 ].join(" ")}
                 style={
                   isActive
                     ? {
-                        background: waterSkyGradient,
-                        boxShadow: waterSkyBtnGlow,
+                        background: "var(--gradient-water-deep)",
+                        boxShadow: "var(--gradient-water-sky)",
                       }
                     : {}
                 }
@@ -159,13 +159,13 @@ export default function TestimonialSlider() {
                   style={
                     isActive
                       ? {
-                          background: "rgba(255,255,255,0.3)",
+                          background: "var(--gradient-water-deep)",
                           color: "#fff",
                         }
                       : {
-                          background: waterSkyGradient,
-                          color: "#fff",
-                          boxShadow: waterSkyGlow,
+                          background: "var(--gradient-water-deep)",
+                          color: "var(--popover)",
+                          boxShadow: "var(--gradient-water-sky)",
                         }
                   }
                 >
@@ -197,7 +197,7 @@ export default function TestimonialSlider() {
           {/* Divider */}
           <div className="flex items-center gap-3 px-4 mb-6">
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
-            <span className="text-[0.65rem] text-blue-400 font-semibold uppercase tracking-[0.14em] whitespace-nowrap">
+            <span className="text-[0.65rem] text-water-ocean font-semibold uppercase tracking-[0.14em] whitespace-nowrap">
               Work
             </span>
             <div className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
@@ -207,14 +207,17 @@ export default function TestimonialSlider() {
           <div className="flex justify-center mb-4">
             <span
               className="inline-block px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-white"
-              style={{ background: waterSkyGradient, boxShadow: waterSkyGlow }}
+              style={{
+                background: "var(--gradient-water-deep)",
+                boxShadow: "var(--gradient-water-sky)",
+              }}
             >
               {user.functionality}
             </span>
           </div>
 
           {/* Details paragraph */}
-          <p className="text-sm sm:text-base text-blue-900/60 leading-relaxed text-center px-4 pb-6 w-full mx-auto break-words">
+          <p className="text-sm sm:text-base text-water-ocean/60 leading-relaxed text-center px-4 pb-6 w-full mx-auto break-words">
             {user.details}
           </p>
         </div>

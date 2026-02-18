@@ -4,28 +4,6 @@ import { useParams } from "react-router-dom";
 import { AnimatedSection } from "@/components/motion/AnimatedSection";
 import { blogs } from "@/constants/siteData";
 
-/**
- * ============================================================
- * PRODUCTION-GRADE BLOG PAGE — v3
- * ============================================================
- * Major change: content field is now plain text only.
- * No HTML tags in the data whatsoever.
- *
- * Plain-text content conventions (simple, intuitive):
- *  ## Heading 2        → <h2> section heading
- *  ### Heading 3       → <h3> sub-heading
- *  > Quote text        → styled blockquote card
- *  - Item or * Item    → bullet list item (consecutive lines = one list)
- *  1. Item             → numbered list item
- *  ---                 → visual divider
- *  (blank line)        → paragraph break
- *  (normal text)       → paragraph
- *
- * The PlainTextRenderer component handles all of this — no HTML
- * ever needs to appear in the content string.
- * ============================================================
- */
-
 import { useState, useEffect } from "react";
 import {
   Twitter,
@@ -41,79 +19,7 @@ import {
   X,
   ChevronLeft,
   ChevronRight as NavRight,
-  Minus,
 } from "lucide-react";
-
-// ─── GLOBAL CSS (brand tokens + utilities only) ───────────────────────────────
-const globalCSS = `
-  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
-
-  :root {
-    --c-primary:       #2563EB;
-    --c-primary-light: #DBEAFE;
-    --c-primary-dark:  #1E3A8A;
-    --c-accent:        #0EA5E9;
-    --c-bg:            #F1F5F9;
-    --c-surface:       #FFFFFF;
-    --c-border:        #E2E8F0;
-    --c-text:          #0F172A;
-    --c-text-muted:    #64748B;
-    --c-tag-bg:        #EFF6FF;
-    --c-tag-text:      #1D4ED8;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--c-bg);
-    color: var(--c-text);
-    font-family: 'DM Sans', sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .ff-display { font-family: 'Lora', Georgia, serif; }
-
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: var(--c-bg); }
-  ::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 99px; }
-
-  /* Reading progress */
-  .progress-bar {
-    position: fixed; top: 0; left: 0; height: 3px; z-index: 9999;
-    background: linear-gradient(to right, var(--c-primary), var(--c-accent));
-    border-radius: 0 2px 2px 0;
-    transition: width .12s linear;
-  }
-
-  /* Sidebar: hide scrollbar visually */
-  .sidebar-scroll { scrollbar-width: none; }
-  .sidebar-scroll::-webkit-scrollbar { display: none; }
-
-  /* Fade-up entry animations */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .anim-0 { animation: fadeUp .5s ease both; }
-  .anim-1 { animation: fadeUp .5s .1s ease both; }
-  .anim-2 { animation: fadeUp .5s .2s ease both; }
-`;
-
-// ─── PLAIN-TEXT CONTENT RENDERER ──────────────────────────────────────────────
-/**
- * Parses a plain-text string line by line and produces styled React elements.
- *
- * Supported conventions:
- *   ## Text       → h2 heading with bottom border
- *   ### Text      → h3 sub-heading
- *   > Text        → blockquote card
- *   - Text        → unordered list item  (consecutive = one <ul>)
- *   * Text        → unordered list item
- *   1. Text       → ordered list item    (consecutive = one <ol>)
- *   ---           → <hr> divider
- *   (empty line)  → paragraph separator (groups text into <p> blocks)
- *   (plain text)  → paragraph text
- */
 
 // ─── READING PROGRESS ─────────────────────────────────────────────────────────
 function ReadingProgress() {
@@ -131,47 +37,57 @@ function ReadingProgress() {
   }, []);
   return (
     <div
-      className="progress-bar"
-      style={{ width: `${pct}%` }}
       role="progressbar"
       aria-valuenow={pct}
       aria-valuemin={0}
       aria-valuemax={100}
       aria-label="Reading progress"
+      className="fixed top-0 left-0 h-[3px] z-[9999] rounded-r-sm bg-gradient-to-r from-primary to-accent transition-[width] duration-100"
+      style={{ width: `${pct}%` }}
     />
   );
 }
 
 // ─── BLOG HEADER ──────────────────────────────────────────────────────────────
-function BlogHeader({ title, image }) {
+function BlogHeader({
+  title,
+  image,
+}: {
+  title: string;
+  image: string | string[];
+}) {
   const heroImg = Array.isArray(image) ? image[0] : image;
   return (
-    <header className="anim-0 relative overflow-hidden rounded-2xl mb-10">
+    <header className="relative overflow-hidden rounded-2xl mb-10 animate-fade-in-up">
       <img
         src={heroImg}
         alt={`Cover image for: ${title}`}
         className="w-full object-cover block"
         style={{ height: "clamp(280px, 46vw, 540px)" }}
       />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(15,23,42,0) 0%, rgba(15,23,42,.5) 52%, rgba(15,23,42,.92) 100%)",
-        }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-foreground/50 to-foreground/90" />
     </header>
   );
 }
 
 // ─── BLOG META ────────────────────────────────────────────────────────────────
-function BlogMeta({ author, authorAvatar, date, readTime }) {
+function BlogMeta({
+  author,
+  authorAvatar,
+  date,
+}: {
+  author: string;
+  authorAvatar?: string;
+  date: string;
+  readTime?: string;
+}) {
   const initials = author
     .split(" ")
     .map((n) => n[0])
     .join("")
     .slice(0, 2)
     .toUpperCase();
+
   const formatted = new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -179,143 +95,89 @@ function BlogMeta({ author, authorAvatar, date, readTime }) {
   });
 
   return (
-    <div
-      className="anim-1 flex flex-wrap items-center gap-4 pb-6 border-b"
-      style={{ borderColor: "var(--c-border)" }}
-    >
-      {/* Author avatar + name */}
+    <div className="animate-fade-in-up flex flex-wrap items-center gap-4 pb-6 border-b border-border">
+      {/* Author */}
       <div className="flex items-center gap-3">
         {authorAvatar ? (
           <img
             src={authorAvatar}
             alt={author}
-            className="w-11 h-11 rounded-full object-cover"
-            style={{ border: "2px solid var(--c-primary-light)" }}
+            className="w-11 h-11 rounded-full object-cover ring-2 ring-primary/30"
           />
         ) : (
-          <div
-            className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--c-primary), var(--c-accent))",
-            }}
-          >
+          <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 bg-gradient-to-br from-primary to-accent shadow-soft">
             {initials}
           </div>
         )}
         <div>
-          <p
-            className="text-sm font-semibold"
-            style={{ color: "var(--c-text)" }}
-          >
-            {author}
-          </p>
-          <p className="text-xs" style={{ color: "var(--c-text-muted)" }}>
-            Author
-          </p>
+          <p className="text-sm font-semibold text-foreground">{author}</p>
+          <p className="text-xs text-muted-foreground">Author</p>
         </div>
       </div>
 
-      <span
-        className="text-xl hidden sm:inline"
-        style={{ color: "var(--c-border)" }}
-        aria-hidden="true"
-      >
+      <span className="text-xl hidden sm:inline text-border" aria-hidden="true">
         ·
       </span>
 
-      <span
-        className="flex items-center gap-1.5 text-sm"
-        style={{ color: "var(--c-text-muted)" }}
-      >
+      <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
         <Calendar size={14} aria-hidden="true" />
         <time dateTime={date}>{formatted}</time>
       </span>
-
-      <span
-        className="text-xl hidden sm:inline"
-        style={{ color: "var(--c-border)" }}
-        aria-hidden="true"
-      >
-        ·
-      </span>
-
-      {/* <span
-        className="flex items-center gap-1.5 text-sm"
-        style={{ color: "var(--c-text-muted)" }}
-      >
-        <Clock size={14} aria-hidden="true" />
-        {readTime}
-      </span> */}
     </div>
   );
 }
 
 // ─── BLOG CONTENT ─────────────────────────────────────────────────────────────
-/**
- * BlogContent: renders the optional excerpt lead + the plain-text body
- * via PlainTextRenderer. Zero HTML in the data.
- */
-function BlogContent({ title, excerpt, content }) {
+function BlogContent({
+  title,
+  excerpt,
+  content,
+}: {
+  title?: string;
+  excerpt?: string;
+  content?: any;
+}) {
   return (
     <article aria-label="Blog post content">
       {title && (
-        <h1
-          className="anim-1 ff-display text-xl italic  my-7 pl-5 font-bold leading-tight"
-          style={{
-            color: "var(--c-text-muted)",
-            borderLeft: "4px solid var(--c-primary)",
-            lineHeight: "1.75",
-          }}
-        >
+        <h1 className="animate-fade-in-up font-display text-xl italic my-7 pl-5 font-bold leading-[1.75] text-muted-foreground border-l-4 border-primary">
           {title}
         </h1>
       )}
-      <h2
-        className="ff-display font-bold mt-10 mb-4 pb-3 "
-        style={{
-          fontSize: "1.45rem",
-          color: "var(--c-text)",
-          borderBottom: "2px solid var(--c-primary-light)",
-        }}
-      >
+
+      <h2 className="font-display font-bold mt-10 mb-4 pb-3 text-[1.45rem] text-foreground border-b-2 border-primary/20">
         Purpose
       </h2>
 
       <p
-        className="text-bold leading-loose mt-4"
-        style={{ color: "var(--c-text-muted)", lineHeight: "1.9" }}
+        className="font-bold leading-loose mt-4 text-muted-foreground"
+        style={{ lineHeight: "1.9" }}
       >
         {excerpt}
       </p>
-      <h2
-        className="ff-display font-bold mt-10 mb-4 pb-3 "
-        style={{
-          fontSize: "1.45rem",
-          color: "var(--c-text)",
-          borderBottom: "2px solid var(--c-primary-light)",
-        }}
-      >
+
+      <h2 className="font-display font-bold mt-10 mb-4 pb-3 text-[1.45rem] text-foreground border-b-2 border-primary/20">
         Content
       </h2>
+
       <Text extraContent={content} />
-      {/* <PlainTextRenderer content={content} /> */}
     </article>
   );
 }
 
 // ─── BLOG IMAGE GALLERY ───────────────────────────────────────────────────────
-function BlogImageGallery({ image }) {
+function BlogImageGallery({ image }: { image: string | string[] }) {
   const images = Array.isArray(image) ? image.slice(1) : [];
-  const [lightbox, setLightbox] = useState(null);
+  const [lightbox, setLightbox] = useState<number | null>(null);
 
   useEffect(() => {
     if (lightbox === null) return;
-    const onKey = (e) => {
+    const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setLightbox(null);
-      if (e.key === "ArrowRight") setLightbox((i) => (i + 1) % images.length);
+      if (e.key === "ArrowRight")
+        setLightbox((i) => ((i ?? 0) + 1) % images.length);
       if (e.key === "ArrowLeft")
-        setLightbox((i) => (i - 1 + images.length) % images.length);
+        setLightbox((i) => ((i ?? 0) - 1 + images.length) % images.length);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -325,16 +187,10 @@ function BlogImageGallery({ image }) {
 
   return (
     <section aria-label="Image gallery" className="my-10">
-      <h2
-        className="ff-display font-semibold mb-5 flex items-center gap-2"
-        style={{ color: "var(--c-text)", fontSize: "1.15rem" }}
-      >
-        <Bookmark size={18} style={{ color: "var(--c-primary)" }} />
+      <h2 className="font-display font-semibold mb-5 flex items-center gap-2 text-[1.15rem] text-foreground">
+        <Bookmark size={18} className="text-primary" />
         Photo Gallery
-        <span
-          className="text-sm font-normal ml-1"
-          style={{ color: "var(--c-text-muted)" }}
-        >
+        <span className="text-sm font-normal ml-1 text-muted-foreground">
           ({images.length} image{images.length !== 1 ? "s" : ""})
         </span>
       </h2>
@@ -346,14 +202,8 @@ function BlogImageGallery({ image }) {
           <button
             key={src + i}
             onClick={() => setLightbox(i)}
-            className="group relative overflow-hidden rounded-xl border block w-full text-left"
-            style={{
-              background: "var(--c-bg)",
-              borderColor: "var(--c-border)",
-              aspectRatio: "16 / 10",
-              boxShadow: "0 2px 8px rgba(0,0,0,.07)",
-              cursor: "zoom-in",
-            }}
+            className="group relative overflow-hidden rounded-xl border border-border bg-background block w-full text-left shadow-soft cursor-zoom-in"
+            style={{ aspectRatio: "16 / 10" }}
             aria-label={`Open image ${i + 2} in viewer`}
           >
             <img
@@ -362,13 +212,7 @@ function BlogImageGallery({ image }) {
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             />
-            <div
-              className="absolute inset-0 flex items-end justify-start p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-              style={{
-                background:
-                  "linear-gradient(to top, rgba(15,23,42,.7) 0%, transparent 60%)",
-              }}
-            >
+            <div className="absolute inset-0 flex items-end justify-start p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gradient-to-t from-foreground/70 to-transparent">
               <span className="text-white text-xs font-medium flex items-center gap-1.5 bg-white/20 backdrop-blur-sm px-2.5 py-1.5 rounded-lg border border-white/25">
                 <Bookmark size={11} /> View full size
               </span>
@@ -380,8 +224,7 @@ function BlogImageGallery({ image }) {
       {/* Lightbox */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center"
-          style={{ background: "rgba(0,0,0,.92)", backdropFilter: "blur(6px)" }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/90 backdrop-blur-md"
           onClick={() => setLightbox(null)}
           role="dialog"
           aria-modal="true"
@@ -409,8 +252,7 @@ function BlogImageGallery({ image }) {
             </p>
             <button
               onClick={() => setLightbox(null)}
-              className="absolute -top-4 -right-4 w-9 h-9 rounded-full flex items-center justify-center transition-transform hover:scale-110"
-              style={{ background: "var(--c-primary)", color: "#fff" }}
+              className="absolute -top-4 -right-4 w-9 h-9 rounded-full flex items-center justify-center text-white bg-primary hover:scale-110 transition-transform"
               aria-label="Close viewer"
             >
               <X size={16} />
@@ -419,26 +261,20 @@ function BlogImageGallery({ image }) {
               <>
                 <button
                   onClick={() =>
-                    setLightbox((i) => (i - 1 + images.length) % images.length)
+                    setLightbox(
+                      (i) => ((i ?? 0) - 1 + images.length) % images.length,
+                    )
                   }
-                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
-                  style={{
-                    background: "rgba(255,255,255,.15)",
-                    color: "#fff",
-                    border: "1px solid rgba(255,255,255,.2)",
-                  }}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 w-10 h-10 rounded-full flex items-center justify-center text-white bg-white/15 border border-white/20 hover:scale-110 transition-all"
                   aria-label="Previous image"
                 >
                   <ChevronLeft size={18} />
                 </button>
                 <button
-                  onClick={() => setLightbox((i) => (i + 1) % images.length)}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
-                  style={{
-                    background: "rgba(255,255,255,.15)",
-                    color: "#fff",
-                    border: "1px solid rgba(255,255,255,.2)",
-                  }}
+                  onClick={() =>
+                    setLightbox((i) => ((i ?? 0) + 1) % images.length)
+                  }
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 w-10 h-10 rounded-full flex items-center justify-center text-white bg-white/15 border border-white/20 hover:scale-110 transition-all"
                   aria-label="Next image"
                 >
                   <NavRight size={18} />
@@ -453,27 +289,19 @@ function BlogImageGallery({ image }) {
 }
 
 // ─── BLOG TAGS ────────────────────────────────────────────────────────────────
-function BlogTags({ tags }) {
+function BlogTags({ tags }: { tags?: string[] }) {
   if (!tags?.length) return null;
   return (
     <section aria-label="Post tags" className="mt-8">
       <div className="flex flex-wrap items-center gap-2">
-        <span
-          className="flex items-center gap-1 text-xs font-medium mr-1"
-          style={{ color: "var(--c-text-muted)" }}
-        >
+        <span className="flex items-center gap-1 text-xs font-medium mr-1 text-muted-foreground">
           <Tag size={13} /> Tags:
         </span>
         {tags.map((tag) => (
           <span
             key={tag}
-            className="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-full border cursor-default transition-all duration-150 hover:-translate-y-0.5"
-            style={{
-              background: "var(--c-tag-bg)",
-              color: "var(--c-tag-text)",
-              borderColor: "var(--c-primary-light)",
-            }}
             role="listitem"
+            className="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary cursor-default transition-all duration-150 hover:-translate-y-0.5"
           >
             #{tag}
           </span>
@@ -484,10 +312,10 @@ function BlogTags({ tags }) {
 }
 
 // ─── COMMENT CARD ─────────────────────────────────────────────────────────────
-function CommentCard({ comment }) {
+function CommentCard({ comment }: { comment: any }) {
   const initials = comment.name
     .split(" ")
-    .map((n) => n[0])
+    .map((n: string) => n[0])
     .join("")
     .slice(0, 2)
     .toUpperCase();
@@ -499,40 +327,28 @@ function CommentCard({ comment }) {
 
   return (
     <li
-      className="flex gap-4 p-5 rounded-xl border transition-shadow duration-200 hover:shadow-md list-none"
-      style={{ background: "var(--c-surface)", borderColor: "var(--c-border)" }}
+      className="flex gap-4 p-5 rounded-xl border border-border bg-card shadow-soft hover:shadow-water transition-shadow duration-200 list-none"
       aria-label={`Comment by ${comment.name}`}
     >
       <div
-        className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--c-primary), var(--c-accent))",
-        }}
+        className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 bg-gradient-to-br from-primary to-accent"
         aria-hidden="true"
       >
         {initials}
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex justify-between flex-wrap gap-1 mb-2">
-          <span
-            className="font-semibold text-sm"
-            style={{ color: "var(--c-text)" }}
-          >
+          <span className="font-semibold text-sm text-foreground">
             {comment.name}
           </span>
           <time
             dateTime={comment.date}
-            className="text-xs"
-            style={{ color: "var(--c-text-muted)" }}
+            className="text-xs text-muted-foreground"
           >
             {date}
           </time>
         </div>
-        <p
-          className="text-sm leading-relaxed"
-          style={{ color: "var(--c-text-muted)" }}
-        >
+        <p className="text-sm leading-relaxed text-muted-foreground">
           {comment.message}
         </p>
       </div>
@@ -548,46 +364,24 @@ function CommentForm() {
 
   if (done) {
     return (
-      <div
-        className="flex items-center gap-3 p-4 rounded-xl"
-        style={{ background: "var(--c-primary-light)" }}
-      >
-        <Check size={18} style={{ color: "var(--c-primary)" }} />
-        <p
-          className="text-sm font-semibold"
-          style={{ color: "var(--c-primary-dark)" }}
-        >
+      <div className="flex items-center gap-3 p-4 rounded-xl bg-primary/10">
+        <Check size={18} className="text-primary" />
+        <p className="text-sm font-semibold text-primary">
           Thanks! Your comment will appear after moderation.
         </p>
       </div>
     );
   }
 
-  const onFocus = (e) => {
-    e.target.style.borderColor = "var(--c-primary)";
-    e.target.style.boxShadow = "0 0 0 3px var(--c-primary-light)";
-    e.target.style.outline = "none";
-  };
-  const onBlur = (e) => {
-    e.target.style.borderColor = "var(--c-border)";
-    e.target.style.boxShadow = "none";
-  };
-
-  const fieldBase = {
-    borderColor: "var(--c-border)",
-    background: "var(--c-surface)",
-    color: "var(--c-text)",
-    fontFamily: "'DM Sans', sans-serif",
-    transition: "border-color .15s, box-shadow .15s",
-  };
+  const fieldClass =
+    "w-full px-4 py-2.5 text-sm rounded-lg border border-border bg-card text-foreground font-sans transition-all duration-150 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20";
 
   return (
     <div className="flex flex-col gap-4">
       <div>
         <label
           htmlFor="c-name"
-          className="block text-xs font-medium mb-1.5"
-          style={{ color: "var(--c-text-muted)" }}
+          className="block text-xs font-medium mb-1.5 text-muted-foreground"
         >
           Name *
         </label>
@@ -598,17 +392,13 @@ function CommentForm() {
           required
           placeholder="Your name"
           onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-2.5 text-sm rounded-lg border"
-          style={fieldBase}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          className={fieldClass}
         />
       </div>
       <div>
         <label
           htmlFor="c-msg"
-          className="block text-xs font-medium mb-1.5"
-          style={{ color: "var(--c-text-muted)" }}
+          className="block text-xs font-medium mb-1.5 text-muted-foreground"
         >
           Message *
         </label>
@@ -619,21 +409,14 @@ function CommentForm() {
           rows={4}
           placeholder="Share your thoughts…"
           onChange={(e) => setMsg(e.target.value)}
-          className="w-full px-4 py-2.5 text-sm rounded-lg border"
-          style={{ ...fieldBase, resize: "vertical" }}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          className={`${fieldClass} resize-y`}
         />
       </div>
       <button
         onClick={() => {
           if (name.trim() && msg.trim()) setDone(true);
         }}
-        className="self-start text-sm font-medium px-5 py-2.5 rounded-lg text-white transition-all duration-150 hover:-translate-y-0.5 active:translate-y-0"
-        style={{
-          background: "var(--c-primary)",
-          boxShadow: "0 2px 8px rgba(37,99,235,.25)",
-        }}
+        className="self-start text-sm font-medium px-5 py-2.5 rounded-lg text-white bg-primary shadow-water hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150"
       >
         Post Comment
       </button>
@@ -642,17 +425,13 @@ function CommentForm() {
 }
 
 // ─── BLOG COMMENTS ────────────────────────────────────────────────────────────
-function BlogComments({ comments }) {
+function BlogComments({ comments }: { comments: any[] }) {
   return (
     <section aria-label="Comments section" className="mt-12">
-      <h2
-        className="ff-display font-bold text-2xl mb-6 flex items-center gap-2.5"
-        style={{ color: "var(--c-text)" }}
-      >
-        <MessageCircle size={22} style={{ color: "var(--c-primary)" }} />
+      <h2 className="font-display font-bold text-2xl mb-6 flex items-center gap-2.5 text-foreground">
+        <MessageCircle size={22} className="text-primary" />
         {comments.length} Comment{comments.length !== 1 ? "s" : ""}
       </h2>
-
       {comments.length > 0 && (
         <ul className="flex flex-col gap-3 mb-8 pl-0">
           {comments.map((c) => (
@@ -660,19 +439,8 @@ function BlogComments({ comments }) {
           ))}
         </ul>
       )}
-
-      <div
-        className="rounded-xl border p-6"
-        style={{
-          background: "var(--c-surface)",
-          borderColor: "var(--c-border)",
-          boxShadow: "0 1px 4px rgba(0,0,0,.05)",
-        }}
-      >
-        <h3
-          className="ff-display font-bold text-lg mb-5"
-          style={{ color: "var(--c-text)" }}
-        >
+      <div className="rounded-xl border border-border bg-card shadow-soft p-6">
+        <h3 className="font-display font-bold text-lg mb-5 text-foreground">
           Leave a Comment
         </h3>
         <CommentForm />
@@ -682,57 +450,41 @@ function BlogComments({ comments }) {
 }
 
 // ─── AUTHOR CARD ──────────────────────────────────────────────────────────────
-function AuthorCard({ author, authorAvatar }) {
+function AuthorCard({
+  author,
+  authorAvatar,
+}: {
+  author: string;
+  authorAvatar?: string;
+}) {
   const initials = author
     .split(" ")
     .map((n) => n[0])
     .join("")
     .slice(0, 2)
     .toUpperCase();
+
   return (
-    <div
-      className="mt-10 rounded-2xl p-6 flex gap-5 items-center flex-wrap"
-      style={{
-        background: "var(--c-primary-light)",
-        border: "1px solid var(--c-primary-light)",
-      }}
-    >
+    <div className="mt-10 rounded-2xl p-6 flex gap-5 items-center flex-wrap bg-primary/10 border border-primary/20 animate-fade-in-up">
       {authorAvatar ? (
         <img
           src={authorAvatar}
           alt={author}
-          className="w-16 h-16 rounded-full object-cover flex-shrink-0"
-          style={{
-            border: "3px solid white",
-            boxShadow: "0 4px 14px rgba(0,0,0,.12)",
-          }}
+          className="w-16 h-16 rounded-full object-cover flex-shrink-0 ring-[3px] ring-white shadow-water"
         />
       ) : (
-        <div
-          className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--c-primary), var(--c-accent))",
-            boxShadow: "0 4px 14px rgba(0,0,0,.12)",
-          }}
-        >
+        <div className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0 bg-gradient-to-br from-primary to-accent shadow-water">
           {initials}
         </div>
       )}
       <div>
-        <p
-          className="text-xs font-semibold uppercase tracking-widest mb-0.5"
-          style={{ color: "var(--c-primary)" }}
-        >
+        <p className="text-xs font-semibold uppercase tracking-widest mb-0.5 text-primary">
           Written by
         </p>
-        <p
-          className="ff-display font-bold text-xl"
-          style={{ color: "var(--c-text)" }}
-        >
+        <p className="font-display font-bold text-xl text-foreground">
           {author}
         </p>
-        <p className="text-sm mt-1" style={{ color: "var(--c-text-muted)" }}>
+        <p className="text-sm mt-1 text-muted-foreground">
           Passionate writer & industry expert sharing insights on the latest
           trends and innovations.
         </p>
@@ -742,7 +494,7 @@ function AuthorCard({ author, authorAvatar }) {
 }
 
 // ─── SIDEBAR ─────────────────────────────────────────────────────────────────
-function Sidebar({ tags, category }) {
+function Sidebar({ tags, category }: { tags: string[]; category: string }) {
   const [copied, setCopied] = useState(false);
 
   const copyLink = () => {
@@ -758,60 +510,39 @@ function Sidebar({ tags, category }) {
   const tweetUrl = `https://twitter.com/intent/tweet?url=${enc}`;
   const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${enc}`;
 
-  const card = {
-    background: "var(--c-surface)",
-    borderColor: "var(--c-border)",
-    boxShadow: "0 1px 4px rgba(0,0,0,.05)",
-  };
+  const cardClass = "rounded-xl border border-border bg-card shadow-soft p-5";
 
   return (
     <aside
       aria-label="Sidebar"
-      className="sidebar-scroll hidden lg:flex flex-col gap-5"
+      className="hidden lg:flex flex-col gap-5 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       style={{
         top: "2.5rem",
         width: "272px",
         flexShrink: 0,
         position: "sticky",
-        // top: "5.5rem",
-        // maxHeight: "calc(100vh - 7rem)",
-        // overflowY: "auto",
       }}
     >
       {/* Category */}
-      <div className="rounded-xl border p-5" style={card}>
-        <p
-          className="text-xs font-semibold uppercase tracking-widest mb-3"
-          style={{ color: "var(--c-text-muted)" }}
-        >
+      <div className={cardClass}>
+        <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-muted-foreground">
           Category
         </p>
-        <span
-          className="inline-flex items-center text-xs font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full text-white"
-          style={{ background: "var(--c-primary)" }}
-        >
+        <span className="inline-flex items-center text-xs font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full text-white bg-primary">
           {category}
         </span>
       </div>
 
       {/* Tags */}
-      <div className="rounded-xl border p-5" style={card}>
-        <p
-          className="text-xs font-semibold uppercase tracking-widest mb-3"
-          style={{ color: "var(--c-text-muted)" }}
-        >
+      <div className={cardClass}>
+        <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-muted-foreground">
           Tags
         </p>
         <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full border cursor-default transition-all duration-150 hover:-translate-y-0.5"
-              style={{
-                background: "var(--c-tag-bg)",
-                color: "var(--c-tag-text)",
-                borderColor: "var(--c-primary-light)",
-              }}
+              className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary cursor-default transition-all duration-150 hover:-translate-y-0.5"
             >
               #{tag}
             </span>
@@ -820,11 +551,8 @@ function Sidebar({ tags, category }) {
       </div>
 
       {/* Share */}
-      <div className="rounded-xl border p-5" style={card}>
-        <p
-          className="text-xs font-semibold uppercase tracking-widest mb-4"
-          style={{ color: "var(--c-text-muted)" }}
-        >
+      <div className={cardClass}>
+        <p className="text-xs font-semibold uppercase tracking-widest mb-4 text-muted-foreground">
           Share Article
         </p>
         <div className="flex flex-col gap-2.5">
@@ -833,22 +561,7 @@ function Sidebar({ tags, category }) {
             href={tweetUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border w-full no-underline transition-all duration-150"
-            style={{
-              background: "var(--c-surface)",
-              borderColor: "var(--c-border)",
-              color: "var(--c-text-muted)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#1DA1F2";
-              e.currentTarget.style.color = "#1DA1F2";
-              e.currentTarget.style.background = "#F0F9FF";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "var(--c-border)";
-              e.currentTarget.style.color = "var(--c-text-muted)";
-              e.currentTarget.style.background = "var(--c-surface)";
-            }}
+            className="flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border border-border bg-card text-muted-foreground no-underline transition-all duration-150 hover:border-[#1DA1F2] hover:text-[#1DA1F2] hover:bg-sky-50 group"
             aria-label="Share on Twitter"
           >
             <Twitter size={15} />
@@ -861,22 +574,7 @@ function Sidebar({ tags, category }) {
             href={linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border w-full no-underline transition-all duration-150"
-            style={{
-              background: "var(--c-surface)",
-              borderColor: "var(--c-border)",
-              color: "var(--c-text-muted)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#0A66C2";
-              e.currentTarget.style.color = "#0A66C2";
-              e.currentTarget.style.background = "#EFF6FF";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "var(--c-border)";
-              e.currentTarget.style.color = "var(--c-text-muted)";
-              e.currentTarget.style.background = "var(--c-surface)";
-            }}
+            className="flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border border-border bg-card text-muted-foreground no-underline transition-all duration-150 hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-blue-50 group"
             aria-label="Share on LinkedIn"
           >
             <Linkedin size={15} />
@@ -887,28 +585,11 @@ function Sidebar({ tags, category }) {
           {/* Copy Link */}
           <button
             onClick={copyLink}
-            className="flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border w-full transition-all duration-150"
-            style={{
-              background: copied
-                ? "var(--c-primary-light)"
-                : "var(--c-surface)",
-              borderColor: copied ? "var(--c-primary)" : "var(--c-border)",
-              color: copied ? "var(--c-primary)" : "var(--c-text-muted)",
-            }}
-            onMouseEnter={(e) => {
-              if (!copied) {
-                e.currentTarget.style.borderColor = "var(--c-primary)";
-                e.currentTarget.style.color = "var(--c-primary)";
-                e.currentTarget.style.background = "var(--c-primary-light)";
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!copied) {
-                e.currentTarget.style.borderColor = "var(--c-border)";
-                e.currentTarget.style.color = "var(--c-text-muted)";
-                e.currentTarget.style.background = "var(--c-surface)";
-              }
-            }}
+            className={`flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border w-full transition-all duration-150 ${
+              copied
+                ? "bg-primary/10 border-primary text-primary"
+                : "bg-card border-border text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/10"
+            }`}
             aria-label="Copy article link"
           >
             {copied ? <Check size={15} /> : <Link2 size={15} />}
@@ -923,17 +604,12 @@ function Sidebar({ tags, category }) {
 // ─── ROOT BLOG PAGE ───────────────────────────────────────────────────────────
 function BlogPage() {
   const { slug } = useParams();
+  const blog = blogs.find((blog: any) => blog.id.toString() === slug);
 
-  const blog = blogs.find((blog) => blog.id.toString() === slug);
-
-  console.log(slug);
   return (
     <>
-      <style>{globalCSS}</style>
       <ReadingProgress />
-
-      <div className="min-h-screen" style={{ background: "var(--c-bg)" }}>
-        {/* Main */}
+      <div className="min-h-screen bg-background">
         <main
           className="mx-auto px-4 sm:px-6"
           style={{
@@ -961,20 +637,15 @@ function BlogPage() {
                 />
               </div>
               {blog.image.length > 1 && <BlogImageGallery image={blog.image} />}
-              <hr
-                className="border-0 my-8"
-                style={{
-                  height: "1px",
-                  background:
-                    "linear-gradient(to right, transparent, var(--c-border), transparent)",
-                }}
-              />
+
+              {/* Divider */}
+              <div className="my-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
               <BlogTags tags={blog.tags} />
               <AuthorCard
                 author={blog.author}
                 authorAvatar={blog.authorAvatar}
               />
-              {/* <BlogComments comments={blog.comments} /> */}
             </div>
 
             {/* Sticky sidebar */}
@@ -985,21 +656,5 @@ function BlogPage() {
     </>
   );
 }
-
-// ─── SAMPLE DATA (pure plain text — zero HTML) ────────────────────────────────
-/**
- * Notice how the content field is now just a normal multiline string.
- * Writers/editors can fill this from any CMS, textarea, or API field
- * without knowing any HTML at all.
- *
- * Supported markers a writer can use naturally:
- *   ## for section headings
- *   ### for sub-headings
- *   > for pull quotes
- *   - or * for bullet points
- *   1. for numbered steps
- *   --- for a divider line
- *   blank line to start a new paragraph
- */
 
 export default BlogPage;

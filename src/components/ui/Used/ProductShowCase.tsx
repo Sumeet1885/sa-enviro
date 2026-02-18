@@ -76,13 +76,7 @@ const Content_Section: React.FC<ContentSectionProps> = ({
     <motion.div className={className} variants={itemVariants}>
       {/* Header Section */}
       <motion.div className="mb-6 sm:mb-8" variants={itemVariants}>
-        <Text
-          variant="title"
-          size="xl"
-          weight="bold"
-          className="mb-2"
-          as={"h1"}
-        >
+        <Text variant="title" weight="bold" className="mb-2" as={"h1"}>
           {product.main.title}{" "}
         </Text>
         <Text

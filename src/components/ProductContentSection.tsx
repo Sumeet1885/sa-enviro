@@ -45,16 +45,10 @@ const Content_Text_Section = ({
 }) => {
   return (
     <div className={className}>
-      <Text variant="title" size="xl" weight="bold" className="mb-6" as={"h2"}>
+      <Text variant="title" className="mb-6" as={"h2"}>
         {content.title}{" "}
       </Text>
-      <Text
-        variant="body"
-        size="sm"
-        weight="normal"
-        className="mb-4 leading-relaxed"
-        as={"p"}
-      >
+      <Text variant="body" as={"p"}>
         {content.description}{" "}
       </Text>
     </div>
