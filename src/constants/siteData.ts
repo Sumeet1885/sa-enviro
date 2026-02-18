@@ -557,6 +557,30 @@ export const seoData = {
     description:
       "Get in touch with SA Enviro Solutions for your water treatment needs. Located in Chinchwad, Pune.",
   },
+
+  team: {
+    title: "Our Team | SA Enviro Solutions",
+    description:
+      "Meet the experienced professionals behind SA Enviro Solutions, dedicated to delivering innovative and sustainable water treatment solutions.",
+  },
+
+  blogs: {
+    title: "Blogs & Insights | SA Enviro Solutions",
+    description:
+      "Explore expert articles and insights on water treatment, wastewater management, zero liquid discharge, environmental compliance, and sustainability.",
+  },
+
+  products: {
+    title: "Our Products | SA Enviro Solutions",
+    description:
+      "Discover our range of advanced water treatment products including RO plants, sewage treatment plants, effluent treatment systems, and custom solutions.",
+  },
+
+  clients: {
+    title: "Our Clients | SA Enviro Solutions",
+    description:
+      "Trusted by leading industries and organizations across India for reliable and efficient water and environmental solutions.",
+  },
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
