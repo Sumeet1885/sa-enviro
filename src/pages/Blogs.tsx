@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SEO } from "@/components/layout/SEO";
 import { AnimatedSection } from "@/components/motion";
 import { siteConfig, seoData } from "@/constants/siteData";
-import BlogSection from "@/components/ui/Used/BlogSection";
+import BlogsSection from "@/components/Sections/BlogSection";
 import HeroSection from "@/components/Sections/HeroSection";
 import { useParams } from "react-router-dom";
 import BlogPage from "@/components/Sections/BlogPage";
@@ -25,7 +25,7 @@ const Client = () => {
         heading="SAES Knowledge Hub"
         subtitle="Insights, Innovations & Industry Updates in Water, Wastewater, ZLD & Environmental Engineering"
       />
-      {!slug ? <BlogSection /> : <BlogPage />}
+      {!slug ? <BlogsSection /> : <BlogPage />}
     </>
   );
 };

@@ -416,7 +416,7 @@ const BlogCard: React.FC<{
 };
 
 // ── Main Blog Section ─────────────────────────────────────────────────────────
-export default function BlogSection() {
+export default function BlogsSection() {
   const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
   const [activeCategory, setActiveCategory] = useState("All");
 

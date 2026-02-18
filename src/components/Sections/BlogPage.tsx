@@ -279,7 +279,7 @@ function BlogContent({ title, excerpt, content }) {
           borderBottom: "2px solid var(--c-primary-light)",
         }}
       >
-        Blog Heading
+        Purpose
       </h2>
 
       <p

@@ -7,7 +7,7 @@ import {
   StaggerItem,
 } from "@/components/motion";
 import { siteConfig, seoData } from "@/constants/siteData";
-import TeamSlider from "@/components/ui/Used/Team_Section";
+import TeamSlider from "@/components/Sections/Team_Section";
 import HeroSection from "@/components/Sections/HeroSection";
 
 const Team = () => {
