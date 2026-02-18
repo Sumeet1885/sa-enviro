@@ -6,7 +6,7 @@ import Text from "@/components/ui/Used/Text";
 import { log } from "console";
 
 type ServiceSectionProps = {
-  layout?: "1" | "2" | "3";
+  layout?: string;
   product: Product;
 };
 

@@ -16,8 +16,8 @@ const Client = () => {
   return (
     <>
       <SEO
-        title={seoData.contact.title}
-        description={seoData.contact.description}
+        title={seoData.blogs.title}
+        description={seoData.blogs.description}
       />
 
       <HeroSection

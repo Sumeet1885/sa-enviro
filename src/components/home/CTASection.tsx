@@ -34,7 +34,7 @@ export const CTASection = () => {
                 variant="outline"
                 className="border-water-light/30 bg-water-light/10"
               >
-                <a href={`tel:${siteConfig.contact.phone}`}>
+                <a href={`https://wa.me/${siteConfig.contact.phone}`}>
                   <Phone className="w-5 h-5 mr-2" />
                   Call Us Now
                 </a>

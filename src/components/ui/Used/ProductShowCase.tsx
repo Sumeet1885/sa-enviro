@@ -18,7 +18,7 @@ interface ImageItem {
 }
 
 interface RemoteTeamSectionProps {
-  layout?: "1" | "2";
+  layout?: string;
 
   images?: ImageItem[];
   product: Product;
