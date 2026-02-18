@@ -32,6 +32,14 @@
     @apply bg-water-sky
   }
 
+  .title-style {
+    @apply text-foreground text-5xl font-bold mt-10 mb-4 pb-3 border-b-[2px] border-solid border-border
+  }
+
+  .subtitle-style {
+    @apply text-foreground text-3xl font-medium mt-10 mb-4 pb-3 border-b-[1px] border-solid border-border
+  }
+
 
 
   .dark-section {

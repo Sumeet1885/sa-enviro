@@ -8,6 +8,7 @@ import {
 } from "@/components/motion";
 import { siteConfig, seoData } from "@/constants/siteData";
 import TeamSlider from "@/components/ui/Used/Team_Section";
+import HeroSection from "@/components/Sections/HeroSection";
 
 const Team = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -25,21 +26,11 @@ const Team = () => {
       />
 
       {/* Hero */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-water-deep to-water-ocean text-primary-foreground">
-        <div className="container-wide">
-          <AnimatedSection className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-water-sky/20 text-water-sky text-sm font-medium mb-4">
-              Our Team
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6">
-              The Team That Makes It Happen
-            </h1>
-            <p className="text-water-light/90 text-lg">
-              A team united by expertise, driven by results.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
+      <HeroSection
+        title="Our Team"
+        heading="🤝 The People Behind SAES"
+        subtitle="Experienced Professionals Committed to Excellence in Water, Wastewater & Pollution Control"
+      />
       <TeamSlider />
     </>
   );
