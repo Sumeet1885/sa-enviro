@@ -20,10 +20,7 @@ const Team = () => {
 
   return (
     <>
-      <SEO
-        title={seoData.contact.title}
-        description={seoData.contact.description}
-      />
+      <SEO title={seoData.team.title} description={seoData.team.description} />
 
       {/* Hero */}
       <HeroSection
