@@ -14,6 +14,7 @@ import Team from "@/pages/Team";
 import Client from "./pages/Client";
 import Contact from "./pages/Contact";
 import Blogs from "./pages/Blogs";
+import BlogPage from "@/components/Sections/BlogPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,7 +37,7 @@ const App = () => (
               <Route path="/team" element={<Team />} />
               <Route path="/client" element={<Client />} />
               <Route path="/blogs" element={<Blogs />} />
-
+              <Route path="/blog/:slug" element={<Blogs />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
