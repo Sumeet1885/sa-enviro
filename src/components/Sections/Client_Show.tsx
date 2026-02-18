@@ -205,13 +205,13 @@ const LogoCard: React.FC<LogoCardProps> = ({ logo }) => {
 
 const LogoShowcase: React.FC = () => {
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 py-16 sm:py-24">
+    <section className="w-full min-h-screen flex flex-col items-center justify-centerpx-4 py-16 sm:py-24">
       {/* Header text */}
       <div className="text-center mb-10 sm:mb-14 space-y-2">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em]     ">
+        <p className="text-[11px] text-foreground font-semibold uppercase tracking-[0.22em]     ">
           Trusted by world-class teams
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-bold text-foreground/80 tracking-tight">
           Companies that rely on us
         </h2>
       </div>

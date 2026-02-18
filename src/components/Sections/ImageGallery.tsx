@@ -100,7 +100,7 @@ const ImageGallery: React.FC = () => {
                   hoveredIndex === index ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <span className="bg-black/70 text-white px-3 py-1 rounded text-sm backdrop-blur-sm max-w-[90%] text-center truncate">
+                <span className="bg-foreground/70 text-popover px-3 py-1 rounded text-sm backdrop-blur-sm max-w-[90%] text-center truncate">
                   {image.alt}
                 </span>
               </div>
@@ -112,7 +112,7 @@ const ImageGallery: React.FC = () => {
       {/* Popup Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-[1000] p-4 backdrop-blur-sm"
+          className="fixed inset-0 bg-foreground/80 flex items-center justify-center z-[1000] p-4 backdrop-blur-sm"
           onClick={closePopup}
           style={{ animation: "fadeIn 200ms ease-out" }}
         >
@@ -133,13 +133,13 @@ const ImageGallery: React.FC = () => {
             }
           `}</style>
           <div
-            className="relative bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl object-contain"
+            className="relative bg-popover rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl object-contain"
             onClick={(e) => e.stopPropagation()}
             style={{ animation: "slideUp 300ms cubic-bezier(0.4, 0, 0.2, 1)" }}
           >
             <button
               onClick={closePopup}
-              className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-200 hover:scale-110"
+              className="absolute top-4 right-4 z-10 bg-foreground/50 hover:bg-foreground text-popover rounded-full w-10 h-10 flex items-center justify-center transition-all duration-200 hover:scale-110"
               aria-label="Close popup"
             >
               <svg

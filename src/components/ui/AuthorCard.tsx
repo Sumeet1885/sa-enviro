@@ -17,7 +17,7 @@ interface AuthorCardProps {
 export const AuthorCard: React.FC<AuthorCardProps> = ({ testimonial }) => {
   return (
     // <!-- Author card -->
-    <div className="author-card relative w-full max-w-2xl my-8 md:my-2 flex flex-col items-start space-y-4 sm:flex-row sm:space-y-0 sm:space-x-6 px-4 py-8 border-2 border-dashed border-gray-400 dark:border-gray-400 shadow-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+    <div className="author-card relative w-full max-w-2xl my-8 md:my-2 flex flex-col items-start space-y-4 sm:flex-row sm:space-y-0 sm:space-x-6 px-4 py-8 border-2 border-dashed border-card-foreground bg-card text-card-foreground dark:border-gray-400 shadow-lg rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
       {/* <!-- Author badge with animation --> */}
       <span className="author-badge absolute text-xs font-medium top-0 left-0 rounded-br-lg rounded-tl-lg px-2 py-1 bg-primary-100 dark:bg-gray-900 dark:text-gray-300 border-gray-400 dark:border-gray-400 border-b-2 border-r-2 border-dashed">
         author
@@ -32,16 +32,14 @@ export const AuthorCard: React.FC<AuthorCardProps> = ({ testimonial }) => {
 
           {/* <!-- Main avatar circle --> */}
           <motion.div
-            className="flex items-center justify-center w-20 h-20 mt-3 mr-3 rounded-full relative z-10 border border-white/40 overflow-hidden backdrop-blur-md"
+            className="flex items-center justify-center w-20 h-20 mt-3 mr-3 rounded-full relative z-10 border border-white/40 overflow-hidden backdrop-blur-md bg-gradient-ocean"
             style={{
-              background:
-                "linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.15) 100%)",
               boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.2)",
             }}
             whileHover={{
               scale: 1.08,
               rotate: 3,
-              borderColor: "rgba(168, 85, 247, 0.6)",
+              borderColor: "bg-gradient-ocean",
               boxShadow: "0 12px 40px rgba(168, 85, 247, 0.25)",
             }}
             transition={{
@@ -53,7 +51,7 @@ export const AuthorCard: React.FC<AuthorCardProps> = ({ testimonial }) => {
             <span
               className="text-2xl font-semibold uppercase tracking-wide"
               style={{
-                background: "linear-gradient(135deg, #6366f1 0%, #a855f7 100%)",
+                background: "var(--gradient-ocean)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",

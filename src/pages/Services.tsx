@@ -8,6 +8,7 @@ import {
 } from "@/components/motion";
 import { services, seoData } from "@/constants/siteData";
 import { ServiceCard } from "@/components/ui/ServiceCard";
+import HeroSection from "@/components/Sections/HeroSection";
 
 const Services = () => {
   return (
@@ -18,22 +19,11 @@ const Services = () => {
       />
 
       {/* Hero */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-water-deep to-water-ocean text-primary-foreground">
-        <div className="container-wide">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-water-sky/20 text-water-sky text-sm font-medium mb-4">
-              Our Services
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6">
-              Comprehensive Water Treatment Solutions
-            </h1>
-            <p className="text-water-light/90 text-lg">
-              From chemical dosing systems to complete water treatment plants,
-              we offer end-to-end solutions for all your water treatment needs.
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title="Our Service"
+        heading="💧 Integrated Environmental Solutions"
+        subtitle="Comprehensive Environmental Engineering Solutions for Water, Wastewater, ZLD & Pollution Control"
+      />
 
       {/* Services Grid */}
       <section className="section-padding bg-background">

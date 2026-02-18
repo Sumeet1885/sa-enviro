@@ -18,7 +18,8 @@ export const WhyChooseUsSection = () => {
                 {whyChooseUs.title}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-6">
-                Excellence in Every <span className="text-water-sky">Drop</span>
+                Excellence in Every{" "}
+                <span className="text-water-light">Drop</span>
               </h2>
               <p className="text-water-light/80 text-lg leading-relaxed">
                 {whyChooseUs.description}

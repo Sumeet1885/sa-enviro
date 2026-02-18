@@ -566,57 +566,252 @@ export const seoData = {
 export const blogs = [
   {
     id: 1,
-    title: "Effluent Treatment Plant",
+    title: "About Effluent Treatment Plant",
     excerpt:
-      "SA Enviro Solutions provides custom-designed industrial effluent treatment plants utilizing physio-chemical and biological processes for various industrial applications.",
-    content:
-      "We at SA Enviro Solutions manufacture and supply effluent treatment plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent. The industrial effluent treatment plants involve different stages of treatment including physio-chemical treatment and biological treatment followed by tertiary treatment. Integrated functions with simple control make the operation much easier. Our engineers can also custom design the effluent treatment plants based on the specific application requirement of the customers. Our Industrial effluent treatment plants have a compact design and can be easily installed on the site.",
+      "The Water Softeners are available in different sizes and materials, manually operated or fully automatic and ready to install.",
+    content: [
+      {
+        type: "p",
+        content:
+          "The Water Softeners are available in different sizes and materials, manually operated or fully automatic and ready to install. The Water Softening Plants are available as standard models or custom-built versions for specific needs.",
+      },
+      {
+        type: "subtitle",
+        content: "The Range of Water Softening Plants:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "FRP Water Softeners",
+          "MS Water Softeners",
+          "MS Rubber lined Water Softeners",
+        ],
+      },
+      {
+        type: "subtitle",
+        content: "Advantages of water softening",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "High capacity Cation exchange resin",
+          "Consistent treated water quality",
+          "Low operating costs",
+          "Easy to install and operate",
+          "Produces soft, non-scale forming water",
+        ],
+      },
+    ],
     image:
       "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
-    readTime: "3 min read",
-    category: "Industrial Treatment",
-    tags: ["Manufacturing", "Pharmaceutical", "Chemical", "Textile", "Dairy"],
+    category: "Uncategorized",
+    tags: [
+      "Water Softeners",
+      "Water Softening Plant",
+      "Industrial Water Softener",
+      "Commercial Water Softener",
+      "Automatic Water Softener",
+      "Manual Water Softener",
+    ],
     comments: [],
   },
   {
     id: 2,
-    title: "Water Treatment Plants",
+    title: "What is Sewage Treatment Plants",
     excerpt:
-      "SA Enviro Solutions supplies a wide range of water treatment plants and turnkey solutions for industries including API, Chemical, and Food processing.",
-    content:
-      "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants. We also offer effective turnkey solutions for these plants to our clients. Wide range of plants are demanded in API, Chemical, Paint, Food processing and Dye industries. Water Treatment Plants supplied by SAES include: Drinking Water Treatment Plants, Municipal Water Treatment Plants, Raw Water Treatment Plants, Packaged Drinking Water Treatment Plants, Sea Water Treatment Plants, Turnkey Water Treatment Plants, Process Water Treatment Plants, and Automatic (Scada operated) Water Treatment Plants.",
+      "The Water Softeners are available in different sizes and materials, manually operated or fully automatic and ready to install.",
+    content: [
+      {
+        type: "p",
+        content:
+          "On the Activated Sludge Process basis sewage treatment plants are designed. The advanced technologies involved to treat sewage such as MBBR technology, UASB technology and Sequential Batch Reactor (SBR). These technologies are discussed below:",
+      },
+      {
+        type: "p",
+        content:
+          "We offer a huge range of Sewage Treatment Plants, which are used in the national as well as international market. These products are manufactured using latest techniques using modern machines and we offer these products in a cost effective as well as reliable manner. Our products are easily available in different specifications and we check these on the basis of different quality parameter using various quality controller. These products are available with customized services to our clients.",
+      },
+      {
+        type: "subtitle",
+        content: "Sequential Batch Reactor (SBR)",
+      },
+      {
+        type: "p",
+        content:
+          "SBR is an application of Activated Sludge Process that is operated on a batch basis. It is used in small communities where space is limited. The design principles for this reactor are keyed to the following treatment steps:",
+      },
+      {
+        type: "keyValue",
+        items: [
+          {
+            key: "Fill",
+            value: "During this phase, the basin receives influent wastewater.",
+          },
+          {
+            key: "React",
+            value: "During this phase aeration and mixing units are on.",
+          },
+          {
+            key: "Settle",
+            value:
+              "Air and mixing are turned off. The activated sludge is allowed to settle.",
+          },
+        ],
+      },
+      {
+        type: "subtitle",
+        content: "Moving Bed Biofilm Reactor (MBBR)",
+      },
+      {
+        type: "p",
+        content:
+          "MBBR is an economical and efficient solution for wastewater treatment. MBBR system consists of an aeration tank containing special plastic elements called media, to support the growth of biofilm in the reactor. These media have a large surface area for optimal contact with water, air and bacteria. The bacteria grow on the surface of the media and break down the organic matter from the wastewater. It significantly increases the capacity and efficiency of the existing plant and decreases the carbon footprint.",
+      },
+      {
+        type: "subtitle",
+        content: "Membrane Bioreactor (MBR)",
+      },
+      {
+        type: "p",
+        content:
+          "MBR is used in biological treatment with membrane separation. Membrane Bioreactor consists of a biological reactor with suspended biomass and solids separation by Microfiltration (MF) or Ultrafiltration (UF) membranes.",
+      },
+      {
+        type: "subtitle",
+        content: "Anaerobic Treatment",
+      },
+      {
+        type: "p",
+        content:
+          "Anaerobic Treatment is an energy-efficient process in which bacteria transforms organic waste in the wastewater into biogas in the absence of oxygen. To achieve this oxygen-free environment, the entry of air into anaerobic tanks is prevented, typically by a gastight cover.",
+      },
+      {
+        type: "subtitle",
+        content: "Up flow Anaerobic Sludge Blanket (UASB)",
+      },
+      {
+        type: "p",
+        content:
+          "Up flow Anaerobic Sludge Blanket (UASB) technology, also known as UASB reactor is a form of an anaerobic digester that is used for wastewater treatment. In this process, wastewater flows upward through the blanket of sludge and microorganism degrade the organic matter and produces methane gas as a by-product, which further can be used as fuel.",
+      },
+      {
+        type: "subtitle",
+        content: "Integrated Sewage Treatment Plant",
+      },
+      {
+        type: "p",
+        content:
+          "We offer an excellent quality range of Integrated Sewage Treatment Plants, which are used for the treatment of both sewage water as well as solid wet waste together. These products are used as an alternative energy source and the treat water is used for different purposes such as farming, gardening, washing and flushing. Our products are available at genuine prices to our clients and these are available on the basis of latest techniques.",
+      },
+      {
+        type: "subtitle",
+        content: "Application:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Residential Buildings",
+          "Industries",
+          "Hotels & Resorts",
+          "Education Institutes",
+        ],
+      },
+      {
+        type: "subtitle",
+        content: "Combined Sewage Cum Effluent Treatment Plants",
+      },
+      {
+        type: "p",
+        content:
+          "We offer a wide range of Combined Sewage cum Effluent Treatment Plants that satisfies two purposes simultaneously. These are efficiently designed to treat and manage both sewage and effluent at the same time. This plant proficiently drains out water from sewage and effluents and hence making it usable for other application such as gardening, farming and washing. Our range of combined sewage cum effluent treatment plants is available in standard specification and can also be customized to meet the varied requirements of our clients.",
+      },
+      {
+        type: "subtitle",
+        content: "Features:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Low operating cost",
+          "Less manpower engaged",
+          "Compact in size",
+          "Low electrical consumption",
+        ],
+      },
+    ],
     image:
       "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
-    readTime: "2 min read",
-    category: "Water Solutions",
-    tags: ["Drinking Water", "Municipal", "Raw Water", "Sea Water"],
+    category: "Uncategorized",
+    tags: [
+      "Sewage Treatment Plant",
+      "STP Plant",
+      "Wastewater Treatment Plant",
+      "Industrial Sewage Treatment",
+      "Commercial STP",
+      "Integrated Sewage Treatment Plant",
+    ],
     comments: [],
   },
   {
     id: 3,
-    title: "Ultra Filtration (UF)",
+    title: "About Effluent Treatment Plant",
     excerpt:
-      "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds from feed streams.",
-    content:
-      "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds colloidal and particulate matters from a feed stream. This technology provides an essential barrier for advanced water purification across industrial sectors.",
+      "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent.",
+    content: [
+      {
+        type: "p",
+        content:
+          "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent. The industrial effluent treatment plants involve different stages of treatment including physio-chemical treatment and biological treatment followed by tertiary treatment. Integrated functions with simple control make the operation much easier. Our engineers can also custom design the effluent treatment plants based on the specific application requirement of the customers. Our Industrial effluent treatment plants have a compact design and can be easily installed on the site.",
+      },
+      {
+        type: "subtitle",
+        content: "The Effluent Treatment Plants Applications:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Manufacturing industry",
+          "Pharmaceutical industry",
+          "Chemical & Paint manufacturing companies",
+          "Textile, Paper & Dyes",
+          "Dairy industry",
+          "Plating & Coating industry",
+          "Coolant treatment",
+          "Pickling industry",
+          "Food Industries",
+          "Fertilizer Industries",
+          "Automobile Industries",
+          "Foundries",
+          "Sugar Industries",
+          "Distilleries",
+        ],
+      },
+    ],
     image:
       "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
     readTime: "1 min read",
-    category: "Membrane Technology",
+    category: "",
     tags: [
-      "Ultrafiltration",
-      "Membrane",
-      "Bacteria Removal",
-      "Water Purification",
+      "Effluent Treatment Plant",
+      "ETP Plant",
+      "Industrial Effluent Treatment",
+      "Wastewater Treatment System",
+      "Industrial Wastewater Management",
+      "Physico Chemical Treatment",
     ],
     comments: [],
   },

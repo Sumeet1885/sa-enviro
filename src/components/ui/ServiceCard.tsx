@@ -111,7 +111,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
 
         {/* Content Card with Animation */}
         <motion.div
-          className="lg:rounded-l-[30px] lg:rounded-t-[30px] bg-white lg:absolute bottom-3 -right-16 lg:w-[18rem] px-5 py-4 lg:h-[18rem] shadow-xl"
+          className="lg:rounded-l-[30px] lg:rounded-t-[30px] bg-card lg:absolute bottom-3 -right-16 lg:w-[18rem] px-5 py-4 lg:h-[18rem] shadow-xl"
           initial={{ x: 20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{
@@ -132,7 +132,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
         >
           {/* Title with Hover Effect */}
           <motion.h2
-            className="text-2xl lg:text-3xl font-bold leading-tight mt-3 text-gray-900"
+            className="text-2xl lg:text-3xl font-bold leading-tight mt-3 text-card-foreground"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -142,7 +142,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
 
           {/* Description */}
           <motion.p
-            className="text-gray-700 my-7 leading-relaxed text-sm lg:text-base line-clamp-3"
+            className="text-card-foreground/80 my-7 leading-relaxed text-sm lg:text-base line-clamp-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
@@ -153,7 +153,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
           {/* Read More Button - Enhanced */}
           <motion.button
             onClick={() => setIsPopupOpen(true)}
-            className="group/btn absolute bottom-5 right-5 flex justify-end items-center uppercase text-blue-800 font-bold text-sm overflow-hidden cursor-pointer"
+            className="group/btn absolute bottom-5 right-5 flex justify-end items-center uppercase text-primary font-bold text-sm overflow-hidden cursor-pointer"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8 }}
@@ -161,7 +161,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
           >
             {/* Animated line */}
             <motion.span
-              className="relative mr-4 block h-0.5 bg-blue-800 overflow-hidden"
+              className="relative mr-4 block h-0.5 bg-primary/80 overflow-hidden"
               variants={{
                 initial: { width: "2.5rem" },
                 hover: { width: "4rem" },
@@ -191,7 +191,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
               read more
               {/* Animated underline */}
               <motion.span
-                className="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-800"
+                className="absolute left-0 -bottom-1 w-full h-0.5 bg-primary/80"
                 initial={{ scaleX: 0 }}
                 variants={{
                   hover: { scaleX: 1 },
@@ -254,24 +254,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
               />
             ))}
           </motion.button>
-
-          {/* Bottom corner accent */}
-          <motion.div
-            className="absolute bottom-0 left-0 w-16 h-16 opacity-0"
-            animate={{
-              opacity: isHovered ? 0.05 : 0,
-            }}
-          >
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              <circle
-                cx="100"
-                cy="100"
-                r="100"
-                fill="currentColor"
-                className="text-gray-300"
-              />
-            </svg>
-          </motion.div>
         </motion.div>
 
         {/* Floating particles around card */}
@@ -279,7 +261,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
           [0, 1, 2, 3].map((i) => (
             <motion.div
               key={`particle-${i}`}
-              className="absolute w-1 h-1 bg-blue-400/60 rounded-full pointer-events-none"
+              className="absolute w-1 h-1 bg-primary/60 rounded-full pointer-events-none"
               style={{
                 left: `${20 + i * 20}%`,
                 top: `${30 + (i % 2) * 30}%`,
@@ -315,7 +297,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
           >
             {/* Backdrop with blur - Click to close */}
             <motion.div
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-foreground backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -324,7 +306,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
 
             {/* Modal Container - Rectangular and Centered */}
             <motion.div
-              className="relative w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-2xl mx-auto"
+              className="relative w-full max-w-5xl bg-popover rounded-2xl overflow-hidden shadow-2xl mx-auto"
               style={{ maxHeight: "85vh" }}
               initial={{ scale: 0.9, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -338,7 +320,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
               {/* Close Button - Top Left */}
               <motion.button
                 onClick={() => setIsPopupOpen(false)}
-                className="absolute top-6 left-6 z-10 w-10 h-10 bg-gray-800/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-gray-900 transition-colors group/close"
+                className="absolute top-6 left-6 z-10 w-10 h-10 bg-foreground/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-foreground transition-colors group/close"
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 exit={{ scale: 0, rotate: 180 }}
@@ -351,7 +333,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                 }}
               >
                 <X
-                  className="w-5 h-5 text-white group-hover/close:rotate-90 transition-transform duration-300"
+                  className="w-5 h-5 text-popover group-hover/close:rotate-90 transition-transform duration-300"
                   strokeWidth={2.5}
                 />
               </motion.button>
@@ -360,7 +342,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
               <div className="flex flex-col lg:flex-row h-full">
                 {/* Left Side - Image */}
                 <motion.div
-                  className="lg:w-1/2 relative overflow-hidden bg-gray-100 h-64 lg:h-auto"
+                  className="lg:w-1/2 relative overflow-hidden bg-card-foreground h-64 lg:h-auto"
                   initial={{ x: -50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}

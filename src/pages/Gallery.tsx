@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SEO } from "@/components/layout/SEO";
 
 import { galleryImages, seoData } from "@/constants/siteData";
+import HeroSection from "@/components/Sections/HeroSection";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -23,22 +24,11 @@ const Gallery = () => {
       />
 
       {/* Hero */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-water-deep to-water-ocean text-primary-foreground">
-        <div className="container-wide">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-water-sky/20 text-water-sky text-sm font-medium mb-4">
-              Gallery
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6">
-              Our Projects & Equipment
-            </h1>
-            <p className="text-water-light/90 text-lg">
-              Explore our portfolio of water treatment solutions and
-              installations.
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title="Gallery"
+        heading="📸 Project Gallery"
+        subtitle="A Visual Showcase of Our Water, Wastewater & Environmental Engineering Projects"
+      />
 
       {/* Filter */}
       <section className="py-8 bg-background border-b border-border relative top-20 z-30">

@@ -32,6 +32,14 @@
     @apply bg-water-sky
   }
 
+  .title-style {
+    @apply text-foreground text-4xl font-bold mt-10 mb-4 pb-3 border-b-[2px] border-solid border-border
+  }
+
+  .subtitle-style {
+    @apply text-accent-foreground text-3xl font-medium mt-10 mb-4 pb-3 border-b-[1px] border-solid border-border
+  }
+
 
 
   .dark-section {
@@ -99,7 +107,7 @@
     border: 1px solid var(--border);
   }
 
-  .gradient-text {
+  .gradient-text{
     background: var(--gradient-ocean);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
