@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   X,
   Clock,
@@ -315,99 +316,101 @@ const BlogCard: React.FC<{
         ${featured ? "md:col-span-2" : ""}
       `}
     >
-      {/* Image */}
-      <div
-        className={`relative overflow-hidden ${featured ? "h-64 sm:h-80" : "h-48 sm:h-52"}`}
-      >
-        <motion.img
-          src={blog.image}
-          alt={blog.title}
-          className="w-full h-full object-cover"
-          animate={{ scale: hovered ? 1.06 : 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-
-        {/* Category badge */}
-        <div className="absolute top-3 left-3">
-          <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-bold text-blue-600 shadow-sm">
-            {blog.category}
-          </span>
-        </div>
-
-        {/* Arrow button on hover */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.8 }}
-          transition={{ duration: 0.2 }}
-          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-md"
+      <Link to={`/blog/${blog.id}`}>
+        {/* Image */}
+        <div
+          className={`relative overflow-hidden ${featured ? "h-64 sm:h-80" : "h-48 sm:h-52"}`}
         >
-          <ArrowUpRight className="w-4 h-4 text-slate-700" />
-        </motion.div>
-      </div>
+          <motion.img
+            src={blog.image}
+            alt={blog.title}
+            className="w-full h-full object-cover"
+            animate={{ scale: hovered ? 1.06 : 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-      {/* Body */}
-      <div className="p-5">
-        {/* Meta */}
-        <div className="flex items-center gap-3 mb-3">
-          <div className="flex items-center gap-1.5">
-            {blog.authorAvatar ? (
-              <img
-                src={blog.authorAvatar}
-                alt={blog.author}
-                className="w-5 h-5 rounded-full object-cover"
-              />
-            ) : (
-              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-[0.6rem] font-bold shrink-0">
-                {blog.author.charAt(0)}
-              </div>
-            )}
-            <span className="text-xs font-medium text-slate-500">
-              {blog.author}
+          {/* Category badge */}
+          <div className="absolute top-3 left-3">
+            <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-bold text-blue-600 shadow-sm">
+              {blog.category}
             </span>
           </div>
-          <span className="text-slate-200">·</span>
-          <div className="flex items-center gap-1 text-slate-400 text-xs">
+
+          {/* Arrow button on hover */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.8 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-md"
+          >
+            <ArrowUpRight className="w-4 h-4 text-slate-700" />
+          </motion.div>
+        </div>
+
+        {/* Body */}
+        <div className="p-5">
+          {/* Meta */}
+          <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-1.5">
+              {blog.authorAvatar ? (
+                <img
+                  src={blog.authorAvatar}
+                  alt={blog.author}
+                  className="w-5 h-5 rounded-full object-cover"
+                />
+              ) : (
+                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-[0.6rem] font-bold shrink-0">
+                  {blog.author.charAt(0)}
+                </div>
+              )}
+              <span className="text-xs font-medium text-slate-500">
+                {blog.author}
+              </span>
+            </div>
+            <span className="text-slate-200">·</span>
+            {/* <div className="flex items-center gap-1 text-slate-400 text-xs">
             <Clock className="w-3 h-3" />
             {blog.readTime}
-          </div>
-          <span className="text-slate-200">·</span>
-          <div className="flex items-center gap-1 text-slate-400 text-xs">
+          </div> */}
+            <span className="text-slate-200">·</span>
+            {/* <div className="flex items-center gap-1 text-slate-400 text-xs">
             <MessageCircle className="w-3 h-3" />
             {blog.comments.length}
+          </div> */}
+          </div>
+
+          {/* Title */}
+          <h3
+            className={`font-bold text-slate-900 leading-snug mb-2 group-hover:text-blue-600 transition-colors ${
+              featured ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
+            }`}
+          >
+            {blog.title}
+          </h3>
+
+          {/* Excerpt */}
+          <p className="text-sm text-slate-500 leading-relaxed line-clamp-2 mb-4">
+            {blog.excerpt}
+          </p>
+
+          {/* Footer */}
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-slate-400">{blog.date}</span>
+            <span className="inline-flex items-center gap-1 text-xs font-semibold text-blue-500 group-hover:gap-2 transition-all">
+              Read more <ChevronRight className="w-3.5 h-3.5" />
+            </span>
           </div>
         </div>
 
-        {/* Title */}
-        <h3
-          className={`font-bold text-slate-900 leading-snug mb-2 group-hover:text-blue-600 transition-colors ${
-            featured ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
-          }`}
-        >
-          {blog.title}
-        </h3>
-
-        {/* Excerpt */}
-        <p className="text-sm text-slate-500 leading-relaxed line-clamp-2 mb-4">
-          {blog.excerpt}
-        </p>
-
-        {/* Footer */}
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-slate-400">{blog.date}</span>
-          <span className="inline-flex items-center gap-1 text-xs font-semibold text-blue-500 group-hover:gap-2 transition-all">
-            Read more <ChevronRight className="w-3.5 h-3.5" />
-          </span>
-        </div>
-      </div>
-
-      {/* Bottom accent line on hover */}
-      <motion.div
-        className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-r from-blue-500 to-cyan-400"
-        initial={{ width: "0%" }}
-        animate={{ width: hovered ? "100%" : "0%" }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-      />
+        {/* Bottom accent line on hover */}
+        <motion.div
+          className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-r from-blue-500 to-cyan-400"
+          initial={{ width: "0%" }}
+          animate={{ width: hovered ? "100%" : "0%" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        />
+      </Link>
     </motion.article>
   );
 };
@@ -529,7 +532,7 @@ export default function BlogSection() {
         </motion.div>
 
         {/* ── Category Filter ── */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -552,7 +555,7 @@ export default function BlogSection() {
               {cat}
             </button>
           ))}
-        </motion.div>
+        </motion.div> */}
       </div>
 
       {/* ── Blog Grid ── */}

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SEO } from "@/components/layout/SEO";
+import HeroSection from "@/components/Sections/HeroSection";
 import {
   AnimatedSection,
   StaggerContainer,
@@ -27,22 +28,12 @@ const Contact = () => {
       />
 
       {/* Hero */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-water-deep to-water-ocean text-primary-foreground">
-        <div className="container-wide">
-          <AnimatedSection className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-water-sky/20 text-water-sky text-sm font-medium mb-4">
-              Contact Us
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6">
-              Get In Touch
-            </h1>
-            <p className="text-water-light/90 text-lg">
-              Have questions about our water treatment solutions? We'd love to
-              hear from you.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
+
+      <HeroSection
+        title="Contact Us"
+        heading="📩 Get in Touch"
+        subtitle="Connect with Our Environmental Experts for Customized Water, Wastewater & Pollution Control Solutions"
+      />
 
       {/* Contact Content */}
       <section className="section-padding bg-background">
