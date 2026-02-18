@@ -98,197 +98,6 @@ const CommentItem: React.FC<{ comment: Comment; index: number }> = ({
   );
 };
 
-// ── Blog Modal ────────────────────────────────────────────────────────────────
-const BlogModal: React.FC<{ blog: Blog; onClose: () => void }> = ({
-  blog,
-  onClose,
-}) => {
-  const [comment, setComment] = useState("");
-  const [comments, setComments] = useState<Comment[]>(blog.comments);
-  const [bookmarked, setBookmarked] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!comment.trim()) return;
-    const newComment: Comment = {
-      id: Date.now(),
-      author: "You",
-      avatar: "",
-      date: "Just now",
-      text: comment.trim(),
-      likes: 0,
-    };
-    setComments([...comments, newComment]);
-    setComment("");
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
-      onClick={onClose}
-    >
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" />
-
-      {/* Modal */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.96, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.96, y: 20 }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-3xl max-h-[92vh] bg-white rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.18)] overflow-hidden flex flex-col"
-      >
-        {/* Hero Image */}
-        <div className="relative h-52 sm:h-72 shrink-0 overflow-hidden">
-          <img
-            src={blog.image}
-            alt={blog.title}
-            className="w-full h-full object-cover"
-          />
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-
-          {/* Top bar */}
-          <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-semibold border border-white/30">
-              {blog.category}
-            </span>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setBookmarked(!bookmarked)}
-                className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors"
-              >
-                <Bookmark
-                  className={`w-4 h-4 ${bookmarked ? "fill-white" : ""}`}
-                />
-              </button>
-              <button
-                onClick={onClose}
-                className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
-          {/* Title overlay */}
-          <div className="absolute bottom-4 left-5 right-5">
-            <h2 className="text-xl sm:text-2xl font-bold text-white leading-tight drop-shadow-md">
-              {blog.title}
-            </h2>
-          </div>
-        </div>
-
-        {/* Scrollable content */}
-        <div className="flex-1 overflow-y-auto">
-          {/* Meta bar */}
-          <div className="flex flex-wrap items-center gap-4 px-6 py-4 border-b border-slate-100 bg-slate-50/60">
-            <div className="flex items-center gap-2">
-              {blog.authorAvatar ? (
-                <img
-                  src={blog.authorAvatar}
-                  alt={blog.author}
-                  className="w-7 h-7 rounded-full object-cover"
-                />
-              ) : (
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xs font-bold">
-                  {blog.author.charAt(0)}
-                </div>
-              )}
-              <span className="text-sm font-semibold text-slate-700">
-                {blog.author}
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5 text-slate-400 text-xs">
-              <Clock className="w-3.5 h-3.5" />
-              {blog.readTime}
-            </div>
-            <div className="flex items-center gap-1.5 text-slate-400 text-xs">
-              <User className="w-3.5 h-3.5" />
-              {blog.date}
-            </div>
-          </div>
-
-          {/* Blog content */}
-          <div className="px-6 py-6">
-            <p className="text-base text-slate-600 leading-relaxed mb-5 font-medium">
-              {blog.excerpt}
-            </p>
-            <div className="text-sm text-slate-600 leading-[1.9] space-y-4 whitespace-pre-line">
-              {blog.content}
-            </div>
-
-            {/* Tags */}
-            {blog.tags?.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-6">
-                {blog.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-medium border border-blue-100"
-                  >
-                    <Tag className="w-3 h-3" />
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* ── Comments ── */}
-          <div className="px-6 pb-6 border-t border-slate-100">
-            <div className="flex items-center gap-2 pt-5 mb-4">
-              <MessageCircle className="w-5 h-5 text-blue-500" />
-              <h3 className="text-base font-bold text-slate-800">
-                Comments
-                <span className="ml-2 text-sm font-normal text-slate-400">
-                  ({comments.length})
-                </span>
-              </h3>
-            </div>
-
-            {/* Comment list */}
-            <div className="mb-5">
-              {comments.length > 0 ? (
-                comments.map((c, i) => (
-                  <CommentItem key={c.id} comment={c} index={i} />
-                ))
-              ) : (
-                <p className="text-sm text-slate-400 text-center py-6">
-                  No comments yet. Be the first!
-                </p>
-              )}
-            </div>
-
-            {/* Add comment */}
-            <form onSubmit={handleSubmit} className="flex gap-3 items-end">
-              <div className="flex-1">
-                <textarea
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  placeholder="Share your thoughts..."
-                  rows={2}
-                  className="w-full px-4 py-3 rounded-2xl border border-slate-200 bg-slate-50 text-sm text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-300 resize-none transition-all"
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={!comment.trim()}
-                className="mb-0.5 w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white shadow-[0_4px_14px_rgba(59,130,246,0.4)] hover:shadow-[0_6px_20px_rgba(59,130,246,0.5)] transition-all hover:-translate-y-0.5 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0 shrink-0"
-              >
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-};
-
 // ── Blog Card ─────────────────────────────────────────────────────────────────
 const BlogCard: React.FC<{
   blog: Blog;
@@ -308,8 +117,8 @@ const BlogCard: React.FC<{
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
       className={`
-        group relative bg-white rounded-2xl overflow-hidden cursor-pointer
-        border border-slate-100
+        group relative bg-card rounded-2xl overflow-hidden cursor-pointer
+        border-border
         shadow-[0_2px_16px_rgba(0,0,0,0.06)]
         hover:shadow-[0_16px_48px_rgba(0,0,0,0.12)]
         transition-all duration-500 hover:-translate-y-1.5
@@ -328,11 +137,11 @@ const BlogCard: React.FC<{
             animate={{ scale: hovered ? 1.06 : 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
 
           {/* Category badge */}
           <div className="absolute top-3 left-3">
-            <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs font-bold text-blue-600 shadow-sm">
+            <span className="px-2.5 py-1 rounded-full bg-popover backdrop-blur-sm text-xs font-bold text-primary shadow-sm">
               {blog.category}
             </span>
           </div>
@@ -342,9 +151,9 @@ const BlogCard: React.FC<{
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.8 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-md"
+            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-popover flex items-center justify-center shadow-md"
           >
-            <ArrowUpRight className="w-4 h-4 text-slate-700" />
+            <ArrowUpRight className="w-4 h-4 text-foreground" />
           </motion.div>
         </div>
 
@@ -360,20 +169,20 @@ const BlogCard: React.FC<{
                   className="w-5 h-5 rounded-full object-cover"
                 />
               ) : (
-                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-[0.6rem] font-bold shrink-0">
+                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-water-deep/50 to-cyan-400 flex items-center justify-center text-white text-[0.6rem] font-bold shrink-0">
                   {blog.author.charAt(0)}
                 </div>
               )}
-              <span className="text-xs font-medium text-slate-500">
+              <span className="text-xs font-medium text-card-foreground">
                 {blog.author}
               </span>
             </div>
-            <span className="text-slate-200">·</span>
+            <span className="text-card-foreground">·</span>
             {/* <div className="flex items-center gap-1 text-slate-400 text-xs">
             <Clock className="w-3 h-3" />
             {blog.readTime}
           </div> */}
-            <span className="text-slate-200">·</span>
+            <span className="text-card-foreground">·</span>
             {/* <div className="flex items-center gap-1 text-slate-400 text-xs">
             <MessageCircle className="w-3 h-3" />
             {blog.comments.length}
@@ -382,7 +191,7 @@ const BlogCard: React.FC<{
 
           {/* Title */}
           <h3
-            className={`font-bold text-slate-900 leading-snug mb-2 group-hover:text-blue-600 transition-colors ${
+            className={`font-bold text-foreground leading-snug mb-2 group-hover:text-water-deep/90 transition-colors ${
               featured ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
             }`}
           >
@@ -390,14 +199,14 @@ const BlogCard: React.FC<{
           </h3>
 
           {/* Excerpt */}
-          <p className="text-sm text-slate-500 leading-relaxed line-clamp-2 mb-4">
+          <p className="text-sm text-card-foreground leading-relaxed line-clamp-2 mb-4">
             {blog.excerpt}
           </p>
 
           {/* Footer */}
           <div className="flex items-center justify-between">
-            <span className="text-xs text-slate-400">{blog.date}</span>
-            <span className="inline-flex items-center gap-1 text-xs font-semibold text-blue-500 group-hover:gap-2 transition-all">
+            <span className="text-xs text-card-foreground">{blog.date}</span>
+            <span className="inline-flex items-center gap-1 text-xs font-semibold gradient-text group-hover:gap-2 transition-all">
               Read more <ChevronRight className="w-3.5 h-3.5" />
             </span>
           </div>
@@ -474,14 +283,14 @@ export default function BlogsSection() {
         >
           <div>
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 mb-4">
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-              <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border-border border-2 mb-4 bg-water-deep/15 ">
+              <div className="w-1.5 h-1.5 rounded-full bg-water-sea animate-pulse" />
+              <span className="text-xs font-semibold text-primary uppercase tracking-widest">
                 Latest Articles
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground leading-tight tracking-tight">
               Stories &amp;{" "}
               <span className="relative inline-block">
                 Insights
@@ -514,7 +323,7 @@ export default function BlogsSection() {
                 </svg>
               </span>
             </h2>
-            <p className="mt-3 text-slate-500 text-base sm:text-lg max-w-lg">
+            <p className="mt-3 text-foreground text-base sm:text-lg max-w-lg">
               Explore our latest articles, ideas, and perspectives from the
               team.
             </p>
@@ -522,10 +331,10 @@ export default function BlogsSection() {
 
           {/* Post count */}
           <div className="shrink-0 text-right hidden sm:block">
-            <span className="text-4xl font-extrabold text-blue-500">
+            <span className="text-4xl font-extrabold gradient-text">
               {filtered.length}
             </span>
-            <p className="text-xs text-slate-400 font-medium mt-0.5 uppercase tracking-wider">
+            <p className="text-xs text-foreground font-medium mt-0.5 uppercase tracking-wider">
               Articles
             </p>
           </div>
@@ -585,7 +394,7 @@ export default function BlogsSection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-20 text-slate-400"
+            className="text-center py-20 text-card-foreground"
           >
             <MessageCircle className="w-12 h-12 mx-auto mb-3 opacity-30" />
             <p className="text-lg font-medium">
@@ -596,14 +405,6 @@ export default function BlogsSection() {
       </div>
 
       {/* ── Modal ── */}
-      <AnimatePresence>
-        {selectedBlog && (
-          <BlogModal
-            blog={selectedBlog}
-            onClose={() => setSelectedBlog(null)}
-          />
-        )}
-      </AnimatePresence>
     </section>
   );
 }

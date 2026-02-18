@@ -18,7 +18,7 @@ export const AboutSection = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className=" section-padding light-section relative overflow-hidden">
+    <section className=" section-padding light-section relative overflow-hidden border-border border-2">
       <div className="container-wide">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <AnimatedSection direction="left">

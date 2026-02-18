@@ -16,8 +16,8 @@ interface TextProps {
 export default function Text({
   children,
   variant = "body",
-  size = "md",
-  weight = "normal",
+  size,
+  weight,
   className,
   as: Component = "p",
 }: TextProps) {
