@@ -87,7 +87,7 @@ export default function TestimonialSlider() {
 
   return (
     <div className="relative min-h-screen flex flex-col justify-center bg-blue-50 overflow-hidden px-4 py-12 sm:px-6 sm:py-16">
-      <div className="w-full max-w-5xl mx-auto">
+      <div className="w-full max-w-6xl mx-auto">
         {/* ══ Avatar halo + Title ═══════════════════════════════════════════ */}
         <div className="flex flex-col items-center text-center mb-8">
           {/* Halo glow ring behind avatar */}
@@ -214,7 +214,7 @@ export default function TestimonialSlider() {
           </div>
 
           {/* Details paragraph */}
-          <p className="text-sm sm:text-base text-blue-900/60 leading-relaxed text-center px-4 pb-6 max-w-3xl mx-auto break-words">
+          <p className="text-sm sm:text-base text-blue-900/60 leading-relaxed text-center px-4 pb-6 w-full mx-auto break-words">
             {user.details}
           </p>
         </div>
