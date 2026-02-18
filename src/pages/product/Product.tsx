@@ -17,8 +17,8 @@ function Product() {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title={seoData.gallery.title}
-        description={seoData.gallery.description}
+        title={seoData.products.title}
+        description={seoData.products.description}
       />
       <section className="py-24 lg:py-32 bg-gradient-to-br from-water-deep to-water-ocean text-primary-foreground">
         <div className="container-wide">

@@ -10,8 +10,8 @@ const Client = () => {
   return (
     <>
       <SEO
-        title={seoData.contact.title}
-        description={seoData.contact.description}
+        title={seoData.clients.title}
+        description={seoData.clients.description}
       />
 
       {/* Hero */}
