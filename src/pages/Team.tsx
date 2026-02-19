@@ -1,12 +1,6 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Clock, CheckCircle2 } from "lucide-react";
 import { SEO } from "@/components/layout/SEO";
-import {
-  AnimatedSection,
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/motion";
-import { siteConfig, seoData } from "@/constants/siteData";
+import { seoData } from "@/constants/siteData";
 import TeamSlider from "@/components/Sections/Team_Section";
 import HeroSection from "@/components/Sections/HeroSection";
 

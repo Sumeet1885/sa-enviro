@@ -1,68 +1,17 @@
 // Site data extracted from JSON - all content comes from here
 
-import Image from "../assets/about-hero.jpg";
 import Image1 from "@/assets/about-hero.webp";
 import Image2 from "@/assets/hero-water-treatment.webp";
 import Image3 from "@/assets/hero2.webp";
 import Image4 from "@/assets/hero3.webp";
-import { Product } from "./type";
-import { Description } from "@radix-ui/react-toast";
-import { Layout, Navigation } from "lucide-react";
-
-interface SiteConfig {
-  name: string;
-  shortName: string;
-  tagline: string;
-  description: string;
-  contact: {
-    phone: string;
-    email: string;
-    address: string;
-  };
-  social: {
-    facebook: string;
-    linkedin: string;
-    twitter: string;
-  };
-}
-
-interface DropDown {
-  name: string;
-  key?: string;
-  href?: string;
-}
-
-export interface NavigationItem {
-  name: string;
-  href: string;
-  dropdown?: DropDown[];
-}
-interface HeroSlideItem {
-  id: number;
-  title: string;
-  subtitle: string;
-  desc: string;
-  img: string;
-}
-
-interface CTA {
-  primary: {
-    text: string;
-    href: string;
-  };
-}
-
-interface HeroData {
-  cta: CTA;
-  slides: HeroSlideItem[];
-}
-
-interface Team_Member {
-  name: string;
-  title: string;
-  details: string;
-  functionality: string;
-}
+import {
+  Product,
+  SiteConfig,
+  NavigationItem,
+  HeroData,
+  Team_Member,
+  LogoItem,
+} from "./type";
 
 export const siteConfig: SiteConfig = {
   name: "SA Enviro Solutions",
@@ -838,6 +787,159 @@ export const blogs = [
       "Physico Chemical Treatment",
     ],
     comments: [],
+  },
+];
+
+export const LOGOS: LogoItem[] = [
+  {
+    id: "picture-1",
+    alt: "Industrial water treatment equipment setup view 1",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture1-585x439.jpg",
+  },
+  {
+    id: "picture-2",
+    alt: "Wastewater treatment facility filtration units",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture2-1-585x439.jpg",
+  },
+  {
+    id: "picture-3",
+    alt: "Effluent treatment plant piping and tank system",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture3-1-585x439.jpg",
+  },
+  {
+    id: "picture-4",
+    alt: "Water purification system technical diagram or view",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture4.png",
+  },
+  {
+    id: "picture-5",
+    alt: "Commercial sewage treatment plant installation",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture5-585x439.jpg",
+  },
+  {
+    id: "picture-6",
+    alt: "Multi-stage water filtration assembly",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture6-585x439.jpg",
+  },
+  {
+    id: "picture-7",
+    alt: "Industrial RO plant membrane housing",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture7-585x439.jpg",
+  },
+  {
+    id: "picture-8",
+    alt: "Sewage treatment plant aerator and tank system",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture8-585x439.jpg",
+  },
+  {
+    id: "picture-13",
+    alt: "Reverse osmosis water purification system",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture13-1-585x439.jpg",
+  },
+  {
+    id: "picture-14",
+    alt: "Package sewage treatment plant outdoor unit",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture14-1-585x439.jpg",
+  },
+  {
+    id: "picture-15",
+    alt: "Demineralization plant ion exchange columns",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture15-1-585x439.jpg",
+  },
+  {
+    id: "picture-16",
+    alt: "Effluent treatment system control valves and tanks",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture16-1-585x439.jpg",
+  },
+  {
+    id: "picture-17",
+    alt: "Industrial sand and carbon filter units",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture17-585x439.jpg",
+  },
+  {
+    id: "picture-18",
+    alt: "UF membrane filtration system assembly",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture18-585x439.jpg",
+  },
+  {
+    id: "picture-19",
+    alt: "Water softening plant setup",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture19-1-585x439.jpg",
+  },
+  {
+    id: "picture-20",
+    alt: "Wastewater recycling plant components",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture20-585x439.jpg",
+  },
+  {
+    id: "web-7",
+    alt: "Modular sewage treatment plant view 7",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/7-585x439.webp",
+  },
+  {
+    id: "web-8",
+    alt: "Industrial effluent treatment tank view 8",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/8-585x439.webp",
+  },
+  {
+    id: "web-9",
+    alt: "Water purification plant instrumentation view 9",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/9-585x439.webp",
+  },
+  {
+    id: "web-5",
+    alt: "Activated sludge process system view 5",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/5-585x439.webp",
+  },
+  {
+    id: "web-4",
+    alt: "Commercial water treatment solution view 4",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/4-585x439.webp",
+  },
+  {
+    id: "web-6",
+    alt: "Filtration media tank assembly view 6",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/6-585x439.webp",
+  },
+  {
+    id: "web-3",
+    alt: "Compact sewage treatment plant design view 3",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/3-585x439.webp",
+  },
+  {
+    id: "web-1",
+    alt: "Standard water treatment plant setup view 1",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/1-585x439.webp",
+  },
+  {
+    id: "web-2",
+    alt: "Clarifier tank system view 2",
+    imgUrl:
+      "https://saenvirosolutions.com/wp-content/uploads/2025/12/2-585x439.webp",
   },
 ];
 

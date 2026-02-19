@@ -2,15 +2,10 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Product } from "@/constants/type";
 import Extra_Text_Section from "@/components/ui/dynamic_Text";
-import Text from "@/components/ui/Used/Text";
-import { products } from "@/constants/siteData";
-import Image_Section from "@/components/Sections/Image_Section";
+import Text from "@/components/ui/Text";
+
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface StatItem {
-  number: string;
-  label: string;
-}
 
 interface ImageItem {
   url: string;
@@ -69,7 +64,6 @@ const ANIMATION_VARIANTS = {
 const Content_Section: React.FC<ContentSectionProps> = ({
   className,
   itemVariants,
-  containerVariants,
   product,
 }) => {
   return (

@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { SEO } from "@/components/layout/SEO";
-import {
-  AnimatedSection,
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/motion";
+
 import { services, seoData } from "@/constants/siteData";
 import { ServiceCard } from "@/components/ui/ServiceCard";
 import HeroSection from "@/components/Sections/HeroSection";

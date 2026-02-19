@@ -1,13 +1,8 @@
-import React from "react";
 import { SEO } from "@/components/layout/SEO";
-import Carousel from "@/components/ui/carousel";
-import ProductInfo from "@/components/ui/productInfo";
 import { seoData, products } from "@/constants/siteData";
-import ProductContentSection from "@/components/ProductContentSection";
-import ProductShowCase from "@/components/ui/Used/ProductShowCase";
+import ProductContentSection from "@/components/ui/ProductContentSection";
+import ProductShowCase from "@/components/ui/ProductShowCase";
 import { useParams } from "react-router-dom";
-import { randomInt } from "crypto";
-import { log } from "console";
 
 function Product() {
   const { slug } = useParams();

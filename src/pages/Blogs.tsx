@@ -1,8 +1,8 @@
-import { useState } from "react";
+
 
 import { SEO } from "@/components/layout/SEO";
-import { AnimatedSection } from "@/components/motion";
-import { siteConfig, seoData } from "@/constants/siteData";
+
+import {  seoData } from "@/constants/siteData";
 import BlogsSection from "@/components/Sections/BlogSection";
 import HeroSection from "@/components/Sections/HeroSection";
 import { useParams } from "react-router-dom";
