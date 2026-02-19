@@ -3,8 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig(({ mode }) => ({
-  base: "/", // Ensures assets are referenced correctly relative to the root
-  },
+  base: "/",
   plugins: [react()].filter(Boolean),
   resolve: {
     alias: {
