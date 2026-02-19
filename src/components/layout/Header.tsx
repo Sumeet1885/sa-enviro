@@ -364,7 +364,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
                       dropItem.key
                         ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
                         : dropItem.href
-                    }
+                    } 
                     onClick={onClose}
                     className={`block px-4 py-3 text-sm rounded-lg transition-all group/subitem relative overflow-hidden font-medium
                       ${
