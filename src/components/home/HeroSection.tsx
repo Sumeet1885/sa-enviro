@@ -144,7 +144,12 @@ export function HeroSection() {
           exit={{ scale: 1.05, y: -30, opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
-          <img src={active.img} alt="" className="w-full h-full object-cover" />
+          <img
+            rel="preload"
+            src={active.img}
+            alt=""
+            className="w-full h-full object-cover"
+          />
         </motion.div>
       </AnimatePresence>
 
