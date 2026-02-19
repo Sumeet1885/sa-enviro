@@ -48,3 +48,65 @@ export interface Product {
   images: ProductImage[];
   Page_Description?: PageDescriptionBlock[];
 }
+
+
+export interface SiteConfig {
+  name: string;
+  shortName: string;
+  tagline: string;
+  description: string;
+  contact: {
+    phone: string;
+    email: string;
+    address: string;
+  };
+  social: {
+    facebook: string;
+    linkedin: string;
+    twitter: string;
+  };
+}
+
+export interface DropDown {
+  name: string;
+  key?: string;
+  href?: string;
+}
+
+export interface NavigationItem {
+  name: string;
+  href: string;
+  dropdown?: DropDown[];
+}
+export interface HeroSlideItem {
+  id: number;
+  title: string;
+  subtitle: string;
+  desc: string;
+  img: string;
+}
+
+export interface CTA {
+  primary: {
+    text: string;
+    href: string;
+  };
+}
+
+export interface HeroData {
+  cta: CTA;
+  slides: HeroSlideItem[];
+}
+
+export interface Team_Member {
+  name: string;
+  title: string;
+  details: string;
+  functionality: string;
+}
+
+export interface LogoItem {
+  id: string;
+  alt: string;
+  imgUrl: string;
+}

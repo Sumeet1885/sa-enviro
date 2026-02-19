@@ -7,12 +7,7 @@ import aboutImage from "@/assets/about-hero.webp";
 import { AnimatedImgCard } from "@/components/ui/AnimatedImgCard";
 import { useState } from "react";
 
-{
-  /* Separate Component for Better Organization */
-}
-{
-  /* Complete Component */
-}
+
 
 export const AboutSection = () => {
   const [isHovered, setIsHovered] = useState(false);

@@ -154,12 +154,7 @@ const About = () => {
             <h2 className="text-3xl font-display font-bold mb-6">
               Ready to Work With Us?
             </h2>
-            <Button
-              variant="link"
-              asChild
-              size="lg"
-              className="bg-water-sky hover:bg-water-sea text-water-deep"
-            >
+            <Button variant="default" asChild size="lg" className=" ">
               <Link to="/contact">
                 Contact Us Today
                 <ArrowRight className="w-5 h-5 ml-2" />

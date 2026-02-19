@@ -23,13 +23,7 @@ export default function Text({
 }: TextProps) {
   const baseStyles = "text-foreground mb-2 ";
 
-  // className="ff-display font-bold mt-10 mb-4 pb-3"
-  //               style={{
-  //                 fontSize: "1.45rem",
-  //                 color: "var(--c-text)",
-  //                 borderBottom: "2px solid var(--c-primary-light)",
-  //               }}
-
+  
   const variantStyles = {
     title: "title-style",
     subtitle: "subtitle-style",
