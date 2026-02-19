@@ -177,13 +177,15 @@ export function HeroSection() {
       <div className="absolute inset-x-0 bottom-20 flex justify-between px-8 z-30 pointer-events-none">
         <button
           onClick={prev}
-          className="pointer-events-auto bg-white/70 p-3 rounded-full hover:bg-white transition"
+          className="pointer-events-auto  p-3 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-sm border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-focus:ring-2 group-focus:ring-white/50 group-focus:outline-nonetransition"
         >
           <ChevronLeft />
         </button>
+
+        {/* inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-sm border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-focus:ring-2 group-focus:ring-white/50 group-focus:outline-none transition-all duration-200 */}
         <button
           onClick={next}
-          className="pointer-events-auto bg-white/70 p-3 rounded-full hover:bg-white transition"
+          className="pointer-events-auto  p-3 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-sm border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-focus:ring-2 group-focus:ring-white/50 group-focus:outline-none transition"
         >
           <ChevronRight />
         </button>

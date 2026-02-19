@@ -128,7 +128,7 @@ export default function TestimonialSlider() {
         </div>
 
         {/* ══ Selector Buttons ════════════════════════════════════════════ */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 px-2">
+        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-3 mb-8 px-2">
           {team_member.map((u, index) => {
             const isActive = active === index;
             return (
@@ -136,10 +136,10 @@ export default function TestimonialSlider() {
                 key={index}
                 onClick={() => handleButtonClick(index)}
                 className={[
-                  "inline-flex items-center gap-2.5 rounded-full outline-none",
+                  "inline-flex items-center gap-1.5 sm:gap-2.5 rounded-full outline-none",
                   "transition-all duration-[250ms] cursor-pointer",
-                  "py-2 pl-2 pr-4",
-                  "min-w-[120px]",
+                  "py-1.5 pl-1.5 pr-2.5 sm:py-2 sm:pl-2 sm:pr-4",
+                  "min-w-0",
                   isActive
                     ? "text-popover"
                     : "bg-blue-100 text-blue-800 hover:bg-primary/15 hover:-translate-y-px",
@@ -155,7 +155,7 @@ export default function TestimonialSlider() {
               >
                 {/* Mini letter avatar */}
                 <div
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-extrabold shrink-0"
+                  className="w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[0.6rem] sm:text-xs font-extrabold shrink-0"
                   style={
                     isActive
                       ? {
@@ -173,13 +173,13 @@ export default function TestimonialSlider() {
                 </div>
 
                 {/* Name */}
-                <span className="text-[0.8rem] font-semibold tracking-tight whitespace-nowrap">
+                <span className="text-[0.7rem] sm:text-[0.8rem] font-semibold tracking-tight whitespace-nowrap">
                   {u.name}
                 </span>
 
                 {/* Active indicator dot */}
                 {isActive && (
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/80 shrink-0 ml-auto" />
+                  <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-white/80 shrink-0 ml-auto" />
                 )}
               </button>
             );
