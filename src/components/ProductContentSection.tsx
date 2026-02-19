@@ -1,6 +1,6 @@
 import React from "react";
 import Extra_Text_Section from "@/components/ui/dynamic_Text";
-import Image_Section from "@/assets/Small Section/Image_Section";
+import Image_Section from "@/components/Sections/Image_Section";
 import { Product } from "@/constants/type";
 import Text from "@/components/ui/Used/Text";
 import { log } from "console";

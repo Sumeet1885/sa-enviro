@@ -4,7 +4,7 @@ import { Product } from "@/constants/type";
 import Extra_Text_Section from "@/components/ui/dynamic_Text";
 import Text from "@/components/ui/Used/Text";
 import { products } from "@/constants/siteData";
-import Image_Section from "@/assets/Small Section/Image_Section";
+import Image_Section from "@/components/Sections/Image_Section";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface StatItem {

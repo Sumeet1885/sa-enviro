@@ -8,7 +8,7 @@ import {
   StaggerItem,
 } from "@/components/motion";
 import { aboutData, seoData, certifications } from "@/constants/siteData";
-import aboutImage from "@/assets/about-hero.jpg";
+import aboutImage from "@/assets/about-hero.webp";
 
 const About = () => {
   return (
