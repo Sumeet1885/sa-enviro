@@ -1,10 +1,10 @@
 // Site data extracted from JSON - all content comes from here
 
 import Image from "../assets/about-hero.jpg";
-import Image1 from "@/assets/about-hero.jpg";
-import Image2 from "@/assets/hero-water-treatment.jpg";
-import Image3 from "@/assets/hero2.jpg";
-import Image4 from "@/assets/hero3.jpg";
+import Image1 from "@/assets/about-hero.webp";
+import Image2 from "@/assets/hero-water-treatment.webp";
+import Image3 from "@/assets/hero2.webp";
+import Image4 from "@/assets/hero3.webp";
 import { Product } from "./type";
 import { Description } from "@radix-ui/react-toast";
 import { Layout, Navigation } from "lucide-react";
