@@ -2,20 +2,15 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-    hmr: {
-      overlay: false,
-    },
-  },
-  // Remove the .filter(Boolean) here
-  plugins: [react()], 
+  base: "/",
+  plugins: [react()].filter(Boolean),
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./src"), // Correctly maps the @ alias to the src folder
     },
+  },
+  build: {
+    outDir: "dist", // Explicitly define the output directory for Vercel
   },
 }));
