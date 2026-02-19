@@ -1,6 +1,6 @@
-import Text from "@/components/ui/Used/Text";
-import List from "@/components/ui/Used/List";
-import { PageDescriptionBlock, Product } from "@/constants/type";
+import Text from "@/components/ui/Text";
+import List from "@/components/ui/List";
+import { PageDescriptionBlock} from "@/constants/type";
 
 const Extra_Text_Section = ({
   extraContent,

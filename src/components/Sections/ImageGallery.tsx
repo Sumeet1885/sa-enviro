@@ -12,7 +12,7 @@ const ImageGallery: React.FC = () => {
 
   const images: Image[] = galleryImages;
 
-  // Calculate grid columns dynamically - grows horizontally, keeps 4 rows
+
   const gridColumns = useMemo(() => {
     const itemsPerRow = Math.ceil(images.length / 4);
     return Math.max(6, itemsPerRow * 2); // Each image spans 2 columns

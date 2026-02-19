@@ -2,18 +2,13 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  X,
-  Clock,
-  User,
-  Tag,
   MessageCircle,
-  Send,
   Heart,
-  Bookmark,
   ArrowUpRight,
   ChevronRight,
 } from "lucide-react";
 import { blogs } from "@/constants/siteData";
+import { PageDescriptionBlock } from "@/constants/type";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 export interface Comment {
@@ -29,7 +24,7 @@ export interface Blog {
   id: number;
   title: string;
   excerpt: string;
-  content: string;
+  content: PageDescriptionBlock[];
   image: string;
   author: string;
   authorAvatar: string;
@@ -178,15 +173,8 @@ const BlogCard: React.FC<{
               </span>
             </div>
             <span className="text-card-foreground">·</span>
-            {/* <div className="flex items-center gap-1 text-slate-400 text-xs">
-            <Clock className="w-3 h-3" />
-            {blog.readTime}
-          </div> */}
+
             <span className="text-card-foreground">·</span>
-            {/* <div className="flex items-center gap-1 text-slate-400 text-xs">
-            <MessageCircle className="w-3 h-3" />
-            {blog.comments.length}
-          </div> */}
           </div>
 
           {/* Title */}
@@ -260,15 +248,7 @@ export default function BlogsSection() {
   }, [selectedBlog]);
   // ─────────────────────────────────────────────────────────────────────────
 
-  const categories = [
-    "All",
-    ...Array.from(new Set(blogs.map((b: Blog) => b.category))),
-  ];
-
-  const filtered: Blog[] =
-    activeCategory === "All"
-      ? blogs
-      : blogs.filter((b: Blog) => b.category === activeCategory);
+  const filtered: Blog[] = blogs;
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 py-16 sm:py-24 px-4 sm:px-6">
@@ -332,7 +312,7 @@ export default function BlogsSection() {
           {/* Post count */}
           <div className="shrink-0 text-right hidden sm:block">
             <span className="text-4xl font-extrabold gradient-text">
-              {filtered.length}
+              {blogs.length}
             </span>
             <p className="text-xs text-foreground font-medium mt-0.5 uppercase tracking-wider">
               Articles
@@ -340,31 +320,6 @@ export default function BlogsSection() {
           </div>
         </motion.div>
 
-        {/* ── Category Filter ── */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15, duration: 0.4 }}
-          className="flex flex-wrap gap-2 mt-8"
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`
-                px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200
-                ${
-                  activeCategory === cat
-                    ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-[0_4px_14px_rgba(59,130,246,0.35)] scale-105"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-blue-200 hover:text-blue-600 hover:bg-blue-50"
-                }
-              `}
-            >
-              {cat}
-            </button>
-          ))}
-        </motion.div> */}
       </div>
 
       {/* ── Blog Grid ── */}

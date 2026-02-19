@@ -3,16 +3,11 @@ import { ArrowRight, Award, Users, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/motion";
 import { aboutData } from "@/constants/siteData";
-import aboutImage from "@/assets/about-hero.jpg";
+import aboutImage from "@/assets/about-hero.webp";
 import { AnimatedImgCard } from "@/components/ui/AnimatedImgCard";
 import { useState } from "react";
 
-{
-  /* Separate Component for Better Organization */
-}
-{
-  /* Complete Component */
-}
+
 
 export const AboutSection = () => {
   const [isHovered, setIsHovered] = useState(false);

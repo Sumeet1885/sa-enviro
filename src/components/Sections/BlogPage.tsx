@@ -1,7 +1,6 @@
 import React from "react";
 import Text from "@/components/ui/dynamic_Text";
 import { useParams } from "react-router-dom";
-import { AnimatedSection } from "@/components/motion/AnimatedSection";
 import { blogs } from "@/constants/siteData";
 
 import { useState, useEffect } from "react";
@@ -12,7 +11,6 @@ import {
   Check,
   Tag,
   MessageCircle,
-  Clock,
   Calendar,
   Bookmark,
   ChevronRight,
@@ -524,31 +522,35 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
       }}
     >
       {/* Category */}
-      <div className={cardClass}>
-        <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-muted-foreground">
-          Category
-        </p>
-        <span className="inline-flex items-center text-xs font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full text-white bg-primary">
-          {category}
-        </span>
-      </div>
+      {category && (
+        <div className={cardClass}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-muted-foreground">
+            Category
+          </p>
+          <span className="inline-flex items-center text-xs font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full text-white bg-primary">
+            {category}
+          </span>
+        </div>
+      )}
 
       {/* Tags */}
-      <div className={cardClass}>
-        <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-muted-foreground">
-          Tags
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary cursor-default transition-all duration-150 hover:-translate-y-0.5"
-            >
-              #{tag}
-            </span>
-          ))}
+      {tags.length > 0 && (
+        <div className={cardClass}>
+          <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-muted-foreground">
+            Tags
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary cursor-default transition-all duration-150 hover:-translate-y-0.5"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Share */}
       <div className={cardClass}>

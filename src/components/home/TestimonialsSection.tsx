@@ -1,4 +1,4 @@
-import { Quote } from "lucide-react";
+
 import {
   AnimatedSection,
   StaggerContainer,
