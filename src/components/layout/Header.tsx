@@ -33,6 +33,21 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  // Lock body scroll when dropdown is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const handleMouseEnter = () => {
     if (timeoutId) clearTimeout(timeoutId);
     const id = setTimeout(() => setIsOpen(true), 300);
@@ -72,32 +87,25 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         {item.name}
 
         {/* Underline on hover */}
-        <motion.span
+        <span
           className={`
             absolute -bottom-1 left-0 h-[2px] rounded-full
             ${
-              isScrolled
+              pathname.includes(item.href)
                 ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
                 : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
             }
           `}
-          initial={{ width: 0 }}
-          whileHover={{ width: "100%" }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
         />
 
-        {isScrolled && (
+        {pathname === item.href && (
           <>
             <motion.span
               className="absolute inset-0 -inset-x-4 -inset-y-2 rounded-2xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 backdrop-blur-sm border border-violet-400/30 -z-10"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileHover={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
             />
             <motion.span
               className="absolute inset-0 rounded-2xl bg-violet-500/20 blur-xl -z-20"
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             />
           </>
@@ -114,10 +122,10 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
       onMouseLeave={handleMouseLeave}
     >
       <motion.button
-        initial={{ opacity: 0, y: -20 }}
+        whileHover={{ scale: 1.08, y: -2 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 * index }}
-        whileHover={{ scale: 1.08, y: -2 }}
+        initial={{ opacity: 0, y: -20 }}
         className={`
           relative flex items-center gap-1.5
           transition-all duration-500 font-semibold whitespace-nowrap
@@ -140,14 +148,12 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
           className={`
             absolute -bottom-1 left-0 h-[2px] rounded-full
             ${
-              isScrolled
+              pathname.includes(item.href)
                 ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
                 : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
             }
           `}
-          initial={{ width: 0 }}
           animate={{ width: isOpen ? "100%" : 0 }}
-          whileHover={{ width: "100%" }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         />
 
@@ -209,7 +215,13 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
                         ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
                         : dropItem.href
                     }
-                    className="flex flex-col px-4 py-3 rounded-xl transition-all duration-300 text-white font-medium hover:bg-gradient-to-r hover:from-violet-600/30 hover:to-purple-600/30 hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] group/item relative overflow-hidden whitespace-nowrap"
+                    className={`flex flex-col px-3 py-4 rounded-xl transition-all duration-300 text-white font-medium  group/item relative overflow-hidden whitespace-nowrap my-1
+                      ${
+                        pathname.includes(dropItem.key || dropItem.href)
+                          ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
+                          : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
+                      }
+                      drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]`}
                   >
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
@@ -246,6 +258,12 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
   index,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const pathname = location.pathname;
+
+  // Check if this item or any of its children is active
+  const isActive = item.dropdown
+    ? item.dropdown.some((d) => pathname.includes(d.key))
+    : pathname === item.href;
 
   return (
     <motion.div
@@ -260,7 +278,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             w-full px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
             flex items-center justify-between relative overflow-hidden group/link
             ${
-              location.pathname === item.href
+              isActive
                 ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
                 : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
             }
@@ -274,7 +292,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             transition={{ duration: 0.6 }}
           />
           <div className="flex items-center gap-3 relative z-10">
-            {location.pathname === item.href && (
+            {isActive && (
               <Droplets className="w-5 h-5 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
             )}
             <span>{item.name}</span>
@@ -295,7 +313,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
             flex items-center gap-3 relative overflow-hidden group/link
             ${
-              location.pathname === item.href
+              isActive
                 ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
                 : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
             }
@@ -308,11 +326,11 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             whileHover={{ x: "100%" }}
             transition={{ duration: 0.6 }}
           />
-          {location.pathname === item.href && (
+          {isActive && (
             <Droplets className="w-5 h-5 relative z-10 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
           )}
           <span className="relative z-10">{item.name}</span>
-          {location.pathname === item.href && (
+          {isActive && (
             <motion.span
               layoutId="mobile-active-pill"
               className="absolute right-4 w-3 h-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
@@ -332,35 +350,52 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             transition={{ duration: 0.3 }}
             className="mt-2 ml-4 pl-4 border-l-2 border-violet-400/30 space-y-1 overflow-hidden"
           >
-            {item.dropdown.map((dropItem, idx) => (
-              <motion.div
-                key={dropItem.name}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.05 * idx }}
-              >
-                <Link
-                  to={`product/${dropItem.key}`}
-                  onClick={onClose}
-                  className="block px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-violet-600/20 rounded-lg transition-all group/subitem relative overflow-hidden"
+            {item.dropdown.map((dropItem, idx) => {
+              const isDropActive = pathname.includes(dropItem.key);
+              return (
+                <motion.div
+                  key={dropItem.name}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 * idx }}
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.5 }}
-                  />
-                  <span className="relative z-10 font-medium">
-                    {dropItem.name}
-                  </span>
-                  {dropItem.description && (
-                    <span className="relative z-10 block text-xs text-slate-400 mt-0.5 group-hover/subitem:text-violet-300 transition-colors">
-                      {dropItem.description}
+                  <Link
+                    to={
+                      dropItem.key
+                        ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
+                        : dropItem.href
+                    }
+                    onClick={onClose}
+                    className={`block px-4 py-3 text-sm rounded-lg transition-all group/subitem relative overflow-hidden font-medium
+                      ${
+                        isDropActive
+                          ? "bg-gradient-to-r from-violet-600/25 to-purple-600/25 text-white shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-violet-400/40"
+                          : "text-slate-300 hover:text-white hover:bg-violet-600/20 border-2 border-transparent"
+                      }
+                    `}
+                  >
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent"
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "100%" }}
+                      transition={{ duration: 0.5 }}
+                    />
+                    <span className="relative z-10 font-medium">
+                      {dropItem.name}
                     </span>
-                  )}
-                </Link>
-              </motion.div>
-            ))}
+                    {dropItem.description && (
+                      <span
+                        className={`relative z-10 block text-xs mt-0.5 transition-colors
+                          ${isDropActive ? "text-violet-300" : "text-slate-400 group-hover/subitem:text-violet-300"}
+                        `}
+                      >
+                        {dropItem.description}
+                      </span>
+                    )}
+                  </Link>
+                </motion.div>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
@@ -382,6 +417,18 @@ export function Header() {
   const { scrollY } = useScroll();
   const navPadding = useTransform(scrollY, [0, 100], [5, 5]);
   const logoScale = useTransform(scrollY, [0, 100], [1, 1.0]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
