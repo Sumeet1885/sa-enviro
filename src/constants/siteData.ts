@@ -128,14 +128,14 @@ export const navigation: NavigationItem[] = [
   { name: "About", href: "/about" },
   {
     name: "Product",
-    href: "/products",
+    href: "/product",
     dropdown: Product_DropDown,
   },
 
   { name: "Team", href: "/team" },
 
   { name: "Blogs", href: "/blogs" },
-  { name: "Options", href: "/", dropdown: Option_Dropdown },
+  { name: "Option", href: "/option", dropdown: Option_Dropdown },
 
   { name: "Contact", href: "/contact" },
 ];
