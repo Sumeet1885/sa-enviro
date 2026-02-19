@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useRef,
   useCallback,
-  MouseEvent,
+
 } from "react";
 import { team_member } from "@/constants/siteData";
 
@@ -15,7 +15,7 @@ export default function TestimonialSlider() {
   const [phase, setPhase] = useState<"idle" | "exit" | "enter-start" | "enter">(
     "idle",
   );
-  const [detailShown, setDetailShown] = useState(true);
+  const [detailShown] = useState(true);
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -44,7 +44,7 @@ export default function TestimonialSlider() {
       });
     }, 420);
     return () => clearTimeout(swapTimer);
-  }, [active, displayed]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [active, displayed]); 
 
   const handleButtonClick = (index: number): void => {
     stopAutorotate();

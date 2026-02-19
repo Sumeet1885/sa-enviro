@@ -1,5 +1,4 @@
 export { HeroSection } from "./HeroSection";
-// export { HeroSection } from "../layout/New/HeroSection";
 export { AboutSection } from "./AboutSection";
 export { ServicesSection } from "./ServicesSection";
 export { WhyChooseUsSection } from "./WhyChooseUsSection";

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SEO } from "@/components/layout/SEO";
-
 import { galleryImages, seoData } from "@/constants/siteData";
 import HeroSection from "@/components/Sections/HeroSection";
 

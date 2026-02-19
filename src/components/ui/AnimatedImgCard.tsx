@@ -277,15 +277,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             rotateX: useTransform(mouseY, [-0.5, 0.5], [-15, 15]),
             rotateY: useTransform(mouseX, [-0.5, 0.5], [15, -15]),
           }}
-          // animate={{
-          //   boxShadow: isHovered
-          //     ? [
-          //         "0 20px 40px rgba(var(--primary-rgb), 0.6)",
-          //         "0 30px 60px rgba(255, 0, 128, 0.8)",
-          //         "0 20px 40px rgba(var(--primary-rgb), 0.6)",
-          //       ]
-          //     : "0 20px 40px rgba(var(--primary-rgb), 0.4)",
-          // }}
+
           whileHover={{
             scale: 1.2,
             rotateZ: [0, -10, 10, 0],
