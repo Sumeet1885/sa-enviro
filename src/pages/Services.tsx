@@ -35,13 +35,13 @@ const Services = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-muted/30 border-t border-border">
+      <section className="py-16 bg-muted/30 bg-water-deep">
         <div className="container-wide text-center">
           <div>
-            <h2 className="text-2xl font-display font-bold text-foreground mb-4">
+            <h2 className="text-2xl font-display font-bold text-primary-foreground mb-4">
               Need a Custom Solution?
             </h2>
-            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+            <p className="text-primary-foreground mb-6 max-w-xl mx-auto">
               Contact us to discuss your specific requirements and get a
               tailored solution.
             </p>
