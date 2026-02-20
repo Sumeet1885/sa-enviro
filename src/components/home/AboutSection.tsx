@@ -18,6 +18,7 @@ export const AboutSection = () => {
             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-water">
               <img
                 src={aboutImage}
+                loading="lazy"
                 alt="Our Facility"
                 className="w-full h-full object-cover"
               />

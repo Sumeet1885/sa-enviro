@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Award, Users, Building2, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/layout/SEO";
+
+
 import {
   AnimatedSection,
   StaggerContainer,
@@ -25,6 +27,7 @@ const About = () => {
             src={aboutImage}
             alt="About SA Enviro Solutions"
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
         <div className="container-wide relative z-10">
@@ -50,6 +53,7 @@ const About = () => {
                   src={aboutImage}
                   alt="Our Facility"
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
             </AnimatedSection>

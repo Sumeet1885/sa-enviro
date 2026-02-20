@@ -59,6 +59,7 @@ function BlogHeader({
     <header className="relative overflow-hidden rounded-2xl mb-10 animate-fade-in-up">
       <img
         src={heroImg}
+        loading="lazy"
         alt={`Cover image for: ${title}`}
         className="w-full object-cover block"
         style={{ height: "clamp(280px, 46vw, 540px)" }}
@@ -98,6 +99,7 @@ function BlogMeta({
       <div className="flex items-center gap-3">
         {authorAvatar ? (
           <img
+            loading="lazy"
             src={authorAvatar}
             alt={author}
             className="w-11 h-11 rounded-full object-cover ring-2 ring-primary/30"
@@ -206,6 +208,7 @@ function BlogImageGallery({ image }: { image: string | string[] }) {
           >
             <img
               src={src}
+              
               alt={`Gallery image ${i + 2}`}
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
@@ -237,6 +240,7 @@ function BlogImageGallery({ image }: { image: string | string[] }) {
               src={images[lightbox]}
               alt={`Full size gallery image ${lightbox + 2}`}
               className="rounded-xl shadow-2xl block"
+              loading="lazy"
               style={{
                 maxWidth: "88vw",
                 maxHeight: "80vh",
@@ -468,6 +472,7 @@ function AuthorCard({
         <img
           src={authorAvatar}
           alt={author}
+          loading="lazy"
           className="w-16 h-16 rounded-full object-cover flex-shrink-0 ring-[3px] ring-white shadow-water"
         />
       ) : (

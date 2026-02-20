@@ -8,6 +8,7 @@ const Image_Section = ({ images }: ProductImage) => {
       <img
         src={images.url}
         alt={images.alt}
+        loading="lazy"
         className="w-full h-full object-contain"
       />
     </div>
