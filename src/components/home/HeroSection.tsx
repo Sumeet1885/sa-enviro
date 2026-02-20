@@ -146,6 +146,7 @@ export function HeroSection() {
         >
           <img
             rel="preload"
+            loading="lazy"
             src={active.img}
             alt=""
             className="w-full h-full object-cover"
@@ -182,14 +183,16 @@ export function HeroSection() {
       <div className="absolute inset-x-0 bottom-20 flex justify-between px-8 z-30 pointer-events-none">
         <button
           onClick={prev}
-          className="pointer-events-auto  p-3 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-sm border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-focus:ring-2 group-focus:ring-white/50 group-focus:outline-nonetransition"
+          aria-label="Previous slide"
+          className="pointer-events-auto p-3 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-sm border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-focus:ring-2 group-focus:ring-white/50 group-focus:outline-none transition"
         >
           <ChevronLeft />
         </button>
 
         <button
           onClick={next}
-          className="pointer-events-auto  p-3 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-sm border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-focus:ring-2 group-focus:ring-white/50 group-focus:outline-none transition"
+          aria-label="Next slide"
+          className="pointer-events-auto p-3 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-sm border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-focus:ring-2 group-focus:ring-white/50 group-focus:outline-none transition"
         >
           <ChevronRight />
         </button>

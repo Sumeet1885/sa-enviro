@@ -4,6 +4,7 @@ import {
   StaggerItem,
 } from "@/components/motion";
 import { stats } from "@/constants/siteData";
+import Counter from "@/components/ui/Counter";
 
 export const StatsSection = () => {
   return (
@@ -15,7 +16,19 @@ export const StatsSection = () => {
               <AnimatedSection direction="scale" delay={i * 0.1}>
                 <div className="text-center">
                   <div className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold  mb-2">
-                    {stat.value}
+                    {!isNaN(
+                      Number(stat.value.substring(0, stat.value.length - 1)),
+                    ) ? (
+                      <>
+                        <Counter
+                          end={Number(
+                            stat.value.substring(0, stat.value.length - 1),
+                          )}
+                        />
+                      </>
+                    ) : (
+                      stat.value
+                    )}
                   </div>
                   <div className=" font-medium">{stat.label}</div>
                 </div>
