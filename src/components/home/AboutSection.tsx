@@ -7,8 +7,6 @@ import aboutImage from "@/assets/about-hero.webp";
 import { AnimatedImgCard } from "@/components/ui/AnimatedImgCard";
 import { useState } from "react";
 
-
-
 export const AboutSection = () => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -16,7 +14,16 @@ export const AboutSection = () => {
     <section className=" section-padding light-section relative overflow-hidden border-border border-2">
       <div className="container-wide">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <AnimatedSection direction="left">
+          <AnimatedSection direction="left" className="lg:hidden">
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-water">
+              <img
+                src={aboutImage}
+                alt="Our Facility"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </AnimatedSection>
+          <AnimatedSection direction="left" className="hidden lg:block">
             <AnimatedImgCard aboutImage={aboutImage} />
           </AnimatedSection>
 
