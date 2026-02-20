@@ -398,8 +398,8 @@ export const testimonials = [
 ];
 
 export const stats = [
-  { value: "10+", label: "Completed Projects" },
-  { value: "30+", label: "Workers" },
+  { value: "66+", label: "Completed Projects" },
+  { value: "45+", label: "Workers" },
   { value: "2+", label: "Office Locations" },
   { value: "Free", label: "Consulting Service" },
 ];
