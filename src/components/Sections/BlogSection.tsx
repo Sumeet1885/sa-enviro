@@ -54,6 +54,7 @@ const CommentItem: React.FC<{ comment: Comment; index: number }> = ({
       <div className="shrink-0">
         {comment.avatar ? (
           <img
+          loading="lazy"
             src={comment.avatar}
             alt={comment.author}
             className="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100"
@@ -159,6 +160,7 @@ const BlogCard: React.FC<{
             <div className="flex items-center gap-1.5">
               {blog.authorAvatar ? (
                 <img
+                loading="lazy"
                   src={blog.authorAvatar}
                   alt={blog.author}
                   className="w-5 h-5 rounded-full object-cover"

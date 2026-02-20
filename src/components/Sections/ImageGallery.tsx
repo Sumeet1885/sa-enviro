@@ -161,6 +161,7 @@ const ImageGallery: React.FC = () => {
               src={selectedImage.src.replace("w=800", "w=1600")}
               alt={selectedImage.alt}
               className="w-full h-auto "
+              loading="lazy"
             />
             <div className="p-6 bg-gray-50">
               <h3 className="text-xl font-semibold text-gray-800">

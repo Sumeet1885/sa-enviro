@@ -350,6 +350,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                   <img
                     src={service.image}
                     alt={service.title}
+                    loading="lazy"
                     className="w-full h-full object-obtain"
                   />
 

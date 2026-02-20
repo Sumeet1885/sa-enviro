@@ -29,6 +29,7 @@ const LogoCard: React.FC<LogoCardProps> = ({ logo }) => {
     >
       <img
         src={logo.imgUrl}
+        loading="lazy"
         alt={logo.alt}
         className="w-full h-full s object-contain select-none pointer-events-none"
         style={{

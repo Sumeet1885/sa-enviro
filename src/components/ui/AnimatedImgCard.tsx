@@ -188,6 +188,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
               <img
                 src={aboutImage}
                 alt="SA Enviro Solutions Facility"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </motion.div>
