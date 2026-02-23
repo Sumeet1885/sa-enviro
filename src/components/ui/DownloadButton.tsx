@@ -116,7 +116,7 @@ export default function DownloadButton() {
 
       {/* ── Outer wrapper — sets button dimensions + clips overflow ── */}
       <div
-        className="relative w-[250px] h-12 select-none"
+        className="relative w-[250px] h-12 select-none hover:-translate-y-2 hover:shadow-xl shadow-sm transition-all duration-300 ease-out"
         style={{ overflow: "visible" }}
       >
         {/* ── Main button surface (clips fill + ripple inside) ── */}
@@ -170,7 +170,7 @@ export default function DownloadButton() {
               <a
                 href="/Broucher.pdf"
                 download
-                className="flex items-center justify-evenly w-full font-medium text-base tracking-tight transition-colors duration-75"
+                className="flex items-center justify-evenly w-full font-normal text-pretty tracking-tight transition-colors duration-75"
                 style={{
                   color: textWhite
                     ? "hsl(var(--popover))"
