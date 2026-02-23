@@ -1,13 +1,12 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-
-} from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { team_member } from "@/constants/siteData";
 
 const AUTOROTATE_TIMING = 7000;
+const BIO_CLAMP_LINES = 3;
+
+const HIGHLIGHT_INDEX = team_member.flatMap((user, i) =>
+  user.highlight ? i : [],
+);
 
 export default function TestimonialSlider() {
   const [active, setActive] = useState(0);
@@ -15,10 +14,14 @@ export default function TestimonialSlider() {
   const [phase, setPhase] = useState<"idle" | "exit" | "enter-start" | "enter">(
     "idle",
   );
-  const [detailShown] = useState(true);
+  const [expanded, setExpanded] = useState(false);
+  const [isTruncated, setIsTruncated] = useState(false);
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const bioRef = useRef<HTMLParagraphElement>(null);
 
+  /* ── autorotate ── */
   const stopAutorotate = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -26,202 +29,351 @@ export default function TestimonialSlider() {
     }
   }, []);
 
-  useEffect(() => {
+  const startAutorotate = useCallback(() => {
+    stopAutorotate();
     intervalRef.current = setInterval(() => {
-      setActive((prev) => (prev + 1 === team_member.length ? 0 : prev + 1));
+      setActive((p) => (p + 1 === team_member.length ? 0 : p + 1));
     }, AUTOROTATE_TIMING);
-    return () => stopAutorotate();
   }, [stopAutorotate]);
 
+  // Start autorotate on mount
+  useEffect(() => {
+    startAutorotate();
+    return () => {
+      stopAutorotate();
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [startAutorotate, stopAutorotate]);
+
+  /* ── slide transition ── */
   useEffect(() => {
     if (active === displayed) return;
     setPhase("exit");
-    const swapTimer = setTimeout(() => {
+    const t = setTimeout(() => {
       setDisplayed(active);
+      setExpanded(false);
       setPhase("enter-start");
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => setPhase("enter"));
-      });
-    }, 420);
-    return () => clearTimeout(swapTimer);
-  }, [active, displayed]); 
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => setPhase("enter")),
+      );
+    }, 340);
+    return () => clearTimeout(t);
+  }, [active, displayed]);
 
-  const handleButtonClick = (index: number): void => {
+  /* ── bio overflow detection ── */
+  useEffect(() => {
+    const el = bioRef.current;
+    if (!el) return;
+    const check = () => setIsTruncated(el.scrollHeight > el.clientHeight + 2);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [displayed, expanded, phase]);
+
+  const handleClick = (i: number) => {
+    // Clear any pending restart timeout from a previous click
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+
+    // Stop the running interval
     stopAutorotate();
-    setActive(index);
+    setActive(i);
+
+    // After the progress bar finishes for the clicked member, restart autorotate
+    timeoutRef.current = setTimeout(() => {
+      startAutorotate();
+      timeoutRef.current = null;
+    }, AUTOROTATE_TIMING);
   };
 
-  const avatarStyle = ((): React.CSSProperties => {
-    const ease = "cubic-bezier(0.4, 0, 0.2, 1)";
+  /* ── phase → inline transition styles ── */
+  const ease = "cubic-bezier(0.4,0,0.2,1)";
+  const contentFade = ((): React.CSSProperties => {
     if (phase === "exit")
       return {
         opacity: 0,
-        transform: "translateX(80px) translateY(30px) scale(0.7)",
-        transition: `opacity 420ms ${ease}, transform 420ms ${ease}`,
+        transform: "translateY(10px)",
+        transition: `opacity 300ms ${ease}, transform 300ms ${ease}`,
       };
     if (phase === "enter-start")
-      return {
-        opacity: 0,
-        transform: "translateX(-80px) translateY(30px) scale(0.6)",
-        transition: "none",
-      };
+      return { opacity: 0, transform: "translateY(-10px)", transition: "none" };
     if (phase === "enter")
       return {
         opacity: 1,
-        transform: "translateX(0px) translateY(0px) scale(1)",
-        transition: `opacity 600ms ${ease}, transform 700ms cubic-bezier(0.22, 1.2, 0.36, 1)`,
+        transform: "translateY(0)",
+        transition: `opacity 460ms ${ease}, transform 480ms cubic-bezier(0.22,1.2,0.36,1)`,
       };
-    return {
-      opacity: 1,
-      transform: "translateX(0) translateY(0) scale(1)",
-      transition: `opacity 600ms ${ease}, transform 700ms cubic-bezier(0.22, 1.2, 0.36, 1)`,
-    };
+    return { opacity: 1, transform: "translateY(0)" };
   })();
 
-  const user = team_member[displayed];
+  /* ── avatar size / pop transition ── */
+  const avatarTransition: React.CSSProperties = {
+    transition:
+      "width 420ms cubic-bezier(0.4,0,0.2,1), transform 420ms cubic-bezier(0.4,0,0.2,1)",
+  };
 
-  const waterSkyGradient = "linear-gradient(135deg, #1d4ed8, #38bdf8)";
-  const waterSkyShadow = "0 4px 20px rgba(56,189,248,0.45)";
-  const waterSkyGlow = "0 2px 8px rgba(56,189,248,0.35)";
-  const waterSkyBtnGlow = "0 4px 20px rgba(56,189,248,0.4)";
+  const user = team_member[displayed];
+  const isHighlight = (i: number) => HIGHLIGHT_INDEX.includes(i);
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-center bg-blue-50 overflow-hidden px-4 py-12 sm:px-6 sm:py-16">
-      <div className="w-full max-w-6xl mx-auto">
-        {/* ══ Avatar halo + Title ═══════════════════════════════════════════ */}
-        <div className="flex flex-col items-center text-center mb-8">
-          {/* Halo glow ring behind avatar */}
-          <div className="relative flex items-center justify-center mb-5">
-            {/* Outer glow */}
-            <div
-              className="absolute w-28 h-28 rounded-full opacity-30 blur-xl"
-              style={{ background: "var(--gradient-water-deep)" }}
-            />
-            {/* Mid ring */}
-            <div
-              className="absolute w-20 h-20 rounded-full opacity-20 blur-md"
-              style={{ background: "var(--gradient-water-deep)" }}
-            />
-            {/* Main avatar */}
-            <div
-              key={displayed}
-              className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-white font-extrabold text-2xl sm:text-3xl select-none"
-              style={{
-                ...avatarStyle,
-                background: "var(--gradient-water-deep)",
-                boxShadow: waterSkyShadow,
-              }}
-            >
-              {user.name.charAt(0).toUpperCase()}
-            </div>
+    <>
+      <style>{`
+        @keyframes fillBar {
+          from { transform: scaleX(0); }
+          to   { transform: scaleX(1); }
+        }
+        .ts-fill { animation: fillBar 7s linear forwards; transform-origin: left; }
+
+        @keyframes popIn {
+          from { transform: scale(0.88); opacity: 0.3; }
+          to   { transform: scale(1);    opacity: 1;   }
+        }
+        .ts-pop { animation: popIn 400ms cubic-bezier(0.22,1.2,0.36,1) forwards; }
+
+        @keyframes hlPulse {
+          0%,100% { box-shadow: 0 0 0 2px rgba(251,191,36,.75), 0 0 0 5px rgba(251,191,36,.12); }
+          50%      { box-shadow: 0 0 0 3px rgba(251,191,36,.9),  0 0 0 9px rgba(251,191,36,.06); }
+        }
+        .ts-hl { animation: hlPulse 2.4s ease-in-out infinite; }
+
+        .ts-bio::-webkit-scrollbar       { width: 2px; }
+        .ts-bio::-webkit-scrollbar-track  { background: transparent; }
+        .ts-bio::-webkit-scrollbar-thumb  { background: var(--primary,#1d4ed8); border-radius: 999px; }
+      `}</style>
+
+      {/* ── Page shell ── */}
+      <div className="w-full bg-background flex items-start justify-center px-4 py-6 sm:px-6 sm:py-12">
+        <div className="w-full max-w-[1000px] flex flex-col">
+          {/* ── Top bar ── */}
+          <div className="flex items-center justify-between pb-3 mb-5 sm:mb-8 border-b border-foreground/10">
+            <span className="font-mono text-[0.55rem] tracking-[0.22em] uppercase text-foreground/50">
+              Our Team
+            </span>
+            <span className="font-mono text-[0.55rem] tracking-[0.15em] text-foreground/50">
+              {String(displayed + 1).padStart(2, "0")} /{" "}
+              {String(team_member.length).padStart(2, "0")}
+            </span>
           </div>
 
-          {/* Name */}
-          <h3 className="text-xl sm:text-2xl font-extrabold text-blue-950 mb-1 tracking-tight">
-            {user.name}
-          </h3>
+          {/* ══ AVATAR ROW ══════════════════════════════════════════════ */}
+          <div className="flex items-end justify-center gap-3 sm:gap-5 md:gap-7 mb-6 sm:mb-10 flex-wrap">
+            {team_member.map((u, i) => {
+              const isActive = active === i;
+              const isFeatured = isHighlight(i);
 
-          {/* Title */}
-          <p className="text-sm sm:text-base font-medium text-blue-500 px-4 leading-snug break-words max-w-xl">
-            {user.title}
-          </p>
-        </div>
-
-        {/* ══ Selector Buttons ════════════════════════════════════════════ */}
-        <div className="flex flex-wrap justify-center gap-1.5 sm:gap-3 mb-8 px-2">
-          {team_member.map((u, index) => {
-            const isActive = active === index;
-            return (
-              <button
-                key={index}
-                onClick={() => handleButtonClick(index)}
-                className={[
-                  "inline-flex items-center gap-1.5 sm:gap-2.5 rounded-full outline-none",
-                  "transition-all duration-[250ms] cursor-pointer",
-                  "py-1.5 pl-1.5 pr-2.5 sm:py-2 sm:pl-2 sm:pr-4",
-                  "min-w-0",
-                  isActive
-                    ? "text-popover"
-                    : "bg-blue-100 text-blue-800 hover:bg-primary/15 hover:-translate-y-px",
-                ].join(" ")}
-                style={
-                  isActive
-                    ? {
-                        background: "var(--gradient-water-deep)",
-                        boxShadow: "var(--gradient-water-sky)",
-                      }
-                    : {}
-                }
-              >
-                {/* Mini letter avatar */}
-                <div
-                  className="w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[0.6rem] sm:text-xs font-extrabold shrink-0"
-                  style={
-                    isActive
-                      ? {
-                          background: "var(--gradient-water-deep)",
-                          color: "#fff",
-                        }
-                      : {
-                          background: "var(--gradient-water-deep)",
-                          color: "var(--popover)",
-                          boxShadow: "var(--gradient-water-sky)",
-                        }
-                  }
+              return (
+                <button
+                  key={i}
+                  onClick={() => handleClick(i)}
+                  className="relative flex flex-col items-center gap-2 cursor-pointer outline-none border-none bg-transparent p-0 flex-shrink-0 group"
+                  style={{
+                    width: isActive
+                      ? "clamp(64px,13vw,130px)"
+                      : "clamp(40px,7vw,76px)",
+                    transform: isActive ? "translateY(-10px)" : "translateY(0)",
+                    zIndex: isActive ? 10 : 1,
+                    ...avatarTransition,
+                  }}
                 >
-                  {u.name.charAt(0).toUpperCase()}
-                </div>
+                  {/* ── Featured star badge ── */}
+                  {isFeatured && (
+                    <div className="absolute -top-2 -right-1 z-20 w-[18px] h-[18px] flex items-center justify-center rounded-full bg-amber-400 text-white shadow-md text-[0.52rem] font-semibold">
+                      ★
+                    </div>
+                  )}
 
-                {/* Name */}
-                <span className="text-[0.7rem] sm:text-[0.8rem] font-semibold tracking-tight whitespace-nowrap">
-                  {u.name}
+                  {/* ── Circle avatar ── */}
+                  <div
+                    className={[
+                      "relative rounded-full overflow-hidden w-full aspect-square transition-all duration-500",
+                      isActive
+                        ? [
+                            "ts-pop shadow-xl",
+                            isFeatured
+                              ? "ring-2 ring-amber-400/80 ring-offset-2 ring-offset-background"
+                              : "ring-2 ring-primary/40 ring-offset-2 ring-offset-background",
+                          ].join(" ")
+                        : [
+                            "opacity-45 grayscale group-hover:opacity-70 group-hover:grayscale-0",
+                            isFeatured ? "ts-hl" : "",
+                          ].join(" "),
+                    ].join(" ")}
+                  >
+                    {u.image ? (
+                      <img
+                        src={u.image}
+                        alt={u.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div
+                        className="w-full h-full flex items-center justify-center text-white font-light italic"
+                        style={{
+                          background:
+                            "var(--gradient-water-deep, linear-gradient(135deg,#1d4ed8,#38bdf8))",
+                          fontSize: isActive
+                            ? "clamp(1.6rem,4vw,2.8rem)"
+                            : "clamp(0.9rem,2vw,1.4rem)",
+                        }}
+                      >
+                        {u.name.charAt(0).toUpperCase()}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ── Name label ── */}
+                  <span
+                    className={[
+                      "text-center font-mono leading-tight truncate w-full px-0.5 transition-colors duration-200",
+                      isActive
+                        ? "text-foreground/80"
+                        : "text-foreground/35 group-hover:text-foreground/55",
+                    ].join(" ")}
+                    style={{
+                      fontSize: isActive
+                        ? "clamp(0.58rem,1.2vw,0.68rem)"
+                        : "clamp(0.48rem,1vw,0.56rem)",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    {isActive ? u.name : u.name.split(" ")[0]}
+                  </span>
+
+                  {/* ── Progress bar under active ── */}
+                  {isActive && (
+                    <div className="w-full h-[2px] rounded-full overflow-hidden bg-foreground/8">
+                      <div
+                        key={active}
+                        className="ts-fill h-full rounded-full"
+                        style={{
+                          background:
+                            "var(--gradient-water-deep, linear-gradient(90deg,#1d4ed8,#38bdf8))",
+                        }}
+                      />
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* ══ CONTENT PANEL ═══════════════════════════════════════════ */}
+          <div
+            className="border-t border-foreground/10 pt-4 sm:pt-5"
+            style={contentFade}
+          >
+            {/* Featured banner */}
+            {isHighlight(displayed) && (
+              <div className="flex items-center gap-2 mb-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-amber-700 bg-amber-50 border border-amber-200 text-[0.6rem] tracking-[0.15em] uppercase font-medium font-mono">
+                  <span>★</span> Featured Member
+                </span>
+              </div>
+            )}
+
+            {/* Name + role row */}
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4 mb-4 sm:mb-6">
+              <h2 className="font-light italic gradient-text leading-tight text-[clamp(1.5rem,4vw,2.2rem)]">
+                {user.name}
+              </h2>
+              <span className="font-sans text-xs tracking-[0.18em] uppercase font-light text-primary/70 flex-shrink-0 flex items-center gap-2">
+                <span className="block h-px w-4 flex-shrink-0 gradient-text" />
+                {user.title}
+              </span>
+            </div>
+
+            {/* Accent divider */}
+            <div
+              className="w-10 h-px mb-4"
+              style={{
+                background:
+                  "var(--gradient-water-deep, linear-gradient(90deg,#1d4ed8,#38bdf8))",
+              }}
+            />
+
+            {/* Two-col: Speciality | About */}
+            <div className="grid grid-cols-1 sm:grid-cols-[1fr_1.6fr] gap-5 sm:gap-12 lg:gap-16 items-start">
+              {/* Left — functionality */}
+              <div className="flex flex-col gap-3">
+                <span className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-foreground/80">
+                  Speciality
+                </span>
+                <p className="font-semibold font-display leading-snug text-foreground text-[clamp(1.05rem,2.4vw,1.38rem)]">
+                  {user.functionality}
+                </p>
+              </div>
+
+              {/* Right — bio */}
+              <div className="flex flex-col">
+                <span className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-foreground/80 mb-3">
+                  About
                 </span>
 
-                {/* Active indicator dot */}
-                {isActive && (
-                  <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-white/80 shrink-0 ml-auto" />
+                <div className="relative">
+                  <p
+                    ref={bioRef}
+                    className={[
+                      "font-light leading-[1.9] text-foreground text-sm sm:text-[0.95rem] transition-all duration-500 font-display",
+                      expanded
+                        ? "ts-bio overflow-y-auto max-h-[150px] sm:max-h-[180px] pr-2"
+                        : "overflow-hidden",
+                    ].join(" ")}
+                    style={
+                      !expanded
+                        ? {
+                            display: "-webkit-box",
+                            WebkitLineClamp: BIO_CLAMP_LINES,
+                            WebkitBoxOrient: "vertical" as const,
+                            overflow: "hidden",
+                          }
+                        : undefined
+                    }
+                  >
+                    {user.details}
+                  </p>
+
+                  {/* Fade hint */}
+                  {!expanded && isTruncated && (
+                    <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+                  )}
+                </div>
+
+                {/* Read more / Read less */}
+                {isTruncated && (
+                  <button
+                    onClick={() => setExpanded((v) => !v)}
+                    className="mt-3 flex items-center gap-2 cursor-pointer outline-none border-none bg-transparent p-0 w-fit group"
+                  >
+                    <span
+                      className="block h-px w-4 transition-all duration-300 group-hover:w-6"
+                      style={{
+                        background:
+                          "var(--gradient-water-deep, linear-gradient(90deg,#1d4ed8,#38bdf8))",
+                      }}
+                    />
+                    <span className="font-mono text-[0.58rem] tracking-[0.15em] uppercase font-light text-primary/70 group-hover:text-primary transition-colors duration-200">
+                      {expanded ? "Read less" : "Read more"}
+                    </span>
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 10 10"
+                      className={`transition-transform duration-300 text-primary/60 ${expanded ? "rotate-180" : "rotate-0"}`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    >
+                      <polyline points="2,3 5,7 8,3" />
+                    </svg>
+                  </button>
                 )}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* ══ Detail Panel ════════════════════════════════════════════════ */}
-        <div
-          className="overflow-hidden transition-[max-height,opacity] duration-500 ease-in-out"
-          style={{
-            maxHeight: detailShown ? "600px" : "0px",
-            opacity: detailShown ? 1 : 0,
-          }}
-        >
-          {/* Divider */}
-          <div className="flex items-center gap-3 px-4 mb-6">
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
-            <span className="text-[0.65rem] text-water-ocean font-semibold uppercase tracking-[0.14em] whitespace-nowrap">
-              Work
-            </span>
-            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+              </div>
+            </div>
           </div>
-
-          {/* Functionality badge */}
-          <div className="flex justify-center mb-4">
-            <span
-              className="inline-block px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-white"
-              style={{
-                background: "var(--gradient-water-deep)",
-                boxShadow: "var(--gradient-water-sky)",
-              }}
-            >
-              {user.functionality}
-            </span>
-          </div>
-
-          {/* Details paragraph */}
-          <p className="text-sm sm:text-base text-water-ocean/60 leading-relaxed text-center px-4 pb-6 w-full mx-auto break-words">
-            {user.details}
-          </p>
         </div>
       </div>
-    </div>
+    </>
   );
 }
