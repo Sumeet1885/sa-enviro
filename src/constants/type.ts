@@ -49,7 +49,6 @@ export interface Product {
   Page_Description?: PageDescriptionBlock[];
 }
 
-
 export interface SiteConfig {
   name: string;
   shortName: string;
@@ -103,6 +102,7 @@ export interface Team_Member {
   title: string;
   details: string;
   functionality: string;
+  highlight: boolean;
 }
 
 export interface LogoItem {

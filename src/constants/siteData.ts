@@ -97,6 +97,7 @@ export const team_member: Team_Member[] = [
       "Santosh Urdukhe, an expert in environmental aspects, has a Master’s degree in Environment Science. He has industrial experience in pollution control and allied services and products, specifically in designing, fabricating, setting up and maintaining water treatment plants. \n*Erection and commissioning of CETP 27.5MLD at Taloja MIDC, Mumbai. \n*Operation and Maintenance of CETP 27.5MLD at Taloja MIDC, Mumbai, Pune. \n*Erection and commissioning of ETP (HTDS) 120m3/day, ETP (LTDS) 360m3/day, UF and RO 360m3/day at Clariant India Ltd, Bonthapally, Telangana. \n*Erection and commissioning of STP 350m3/day at Chambal fertilisers and chemicals ltd, Kota Rajasthan. \n*In Mahindra Vehicle Manufacturing Ltd, Chakan, Pune Operation and Maintenance of ETP (1560m3/day), STP (480m3/day) & (168m3/day). \n*In Radico NV Distilleries Maharashtra Ltd, Shendra, Aurangabad Operation and Maintenance of ETP (1020m3/day). \n*In Mayuge Sugars & Distilleries Ltd, Uganda, Africa Operation and Maintenance of Biogas Plant (400m3/day), CPU (400m3/day) and Bio-Composting.",
     functionality:
       "Functionally he looks after Project Management, Procurement & Quality.",
+    highlight: false,
   },
   {
     name: "Amruta S. Urdukhe",
@@ -104,6 +105,7 @@ export const team_member: Team_Member[] = [
     details:
       "She deals with Lab Co-ordination. Her expertise is in NABL certification, audit and water, soil, hazardous waste, air analysis. She did her masters in Environmental sciences from Pune University. Her involvement in Academic Co-ordination, Lectures, Practical’s, internal examination, project guide for M.Sc. Environment Science Students and EIA project work for nearly 6 years in at Dept. of Environmental Science, Vasantdada Sugar Institute, Manjri BK, Pune.",
     functionality: "Functionally she looks after Finance and Sales.",
+    highlight: false,
   },
   {
     name: "Ganesh Gaikwad",
@@ -112,6 +114,7 @@ export const team_member: Team_Member[] = [
       "His qualification D.E.E. 1994 Maharashtra Board and PGDBM in HR 2009 Pune University. Master in Business Study in HR 2010 Pune University Dip. Labour Law 2011 Pune University. Dip. Industrial Safety 2021 Maharashtra Board. DNV GL certified Lead Auditor for ISO 9001:2015. License holder for Electrical Supervisor. His total experience in manufacturing, process & service industry is for 25 years. He worked as a Deputy General Manager with M/s Sadguru Sugar Factory Ltd.",
     functionality:
       "Functionally he looks after Human Resource, Admin & Employee Relations.",
+    highlight: false,
   },
   {
     name: "Dr. Vikrant Aher",
@@ -119,6 +122,7 @@ export const team_member: Team_Member[] = [
     details:
       "He is a Process Co-ordinator and expert in the field of Remote Sensing, GIS and Environmental Engineering. He did his masters in Environmental Science and Geoinformatics from Pune University and doing his doctorate from University of Pune, Pune. He also done post graduate diploma in Water & Wastewater. He has taught Geoinformatics, Land Use-Planning and Environmental Engineering courses at Dept. of Environmental Science, University of Pune for nearly 8 years. Since joining Rincon Environmental Consultancy in 2013, he has worked extensively in GIS based study for EIA project, Command area development study, Water Audit, Pollution studies and Environmental Management Studies, Environmental Audit, Design and Turnkey Installation of Air Pollution Control Systems and Effluent Treatment Plants.",
     functionality: "Functionally he looks after Process and Technical support.",
+    highlight: false,
   },
   {
     name: "Raju B Wagaskar",
@@ -127,6 +131,7 @@ export const team_member: Team_Member[] = [
       "Dynamic professional with nearly 24 years of experience in Safety, Utility Projects. Expert in Safety, Legal compliance in various Industries. He has done his Mechanical Engineering from Pune University and Advance Diploma in Industrial Safety from Mumbai Board. Expert in operation and maintenance of equipment in Facility management. Worked with Mahindra and Mahindra for 14 years as Project and Operational Manager. Prior to joining SA Enviro solutions also worked as Operations Manager in M/s Vibra Industries which is in wiring harness manufacturing.",
     functionality:
       "Functionally he looks after Operations, Maintenance & Safety.",
+    highlight: false,
   },
   {
     name: "Umakant Maharana",
@@ -134,6 +139,7 @@ export const team_member: Team_Member[] = [
     details:
       "He is a certified energy auditor. His qualification is in Mechanical Engineering. He has total 32 years of experience in the field of waste water treatment, research and development. Handling Trunkey projects. He is a Proprietor of EEcon Consulting Engineers.",
     functionality: "Functionally he is a Third-Party Technical Advisor.",
+    highlight: true,
   },
 ];
 
