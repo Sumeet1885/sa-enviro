@@ -5,6 +5,7 @@ import { AnimatedSection } from "@/components/motion";
 import { aboutData } from "@/constants/siteData";
 import aboutImage from "@/assets/about-hero.webp";
 import { AnimatedImgCard } from "@/components/ui/AnimatedImgCard";
+import DownloadButton from "@/components/ui/DownloadButton";
 import { useState } from "react";
 
 export const AboutSection = () => {
@@ -39,7 +40,6 @@ export const AboutSection = () => {
                 <span className="gradient-text">Water Treatment</span>
               </h2>
             </AnimatedSection>
-
             <AnimatedSection direction="right" delay={0.1}>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
                 {aboutData.intro}
@@ -48,7 +48,6 @@ export const AboutSection = () => {
                 {aboutData.description}
               </p>
             </AnimatedSection>
-
             <AnimatedSection direction="right" delay={0.2}>
               <div className="grid sm:grid-cols-3 gap-4 mb-8">
                 {[
@@ -73,13 +72,18 @@ export const AboutSection = () => {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection direction="up" delay={0.3}>
+            <AnimatedSection
+              direction="up"
+              className="flex items-center justify-between"
+              delay={0.3}
+            >
               <Button className="button-primary" asChild size="lg">
                 <Link to="/about">
                   Learn More About Us
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
+              <DownloadButton />
             </AnimatedSection>
           </div>
         </div>
