@@ -65,7 +65,8 @@ export interface SiteConfig {
     twitter: string;
   };
   stats: {
-    experience: string;
+    Experience: string;
+    Members: string;
   };
 }
 

@@ -8,6 +8,7 @@ import {
   StatsSection,
   TestimonialsSection,
   CTASection,
+  Certification_Section,
 } from "@/components/home";
 import { seoData } from "@/constants/siteData";
 
@@ -21,6 +22,7 @@ const Home = () => {
       <BrochureSection />
       <ServicesSection />
       <WhyChooseUsSection />
+      <Certification_Section />
       <TestimonialsSection />
       <CTASection />
     </>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Award, Users, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/motion";
-import { aboutData } from "@/constants/siteData";
+import { aboutData, siteConfig } from "@/constants/siteData";
 import aboutImage from "@/assets/about-hero.webp";
 import { AnimatedImgCard } from "@/components/ui/AnimatedImgCard";
 
@@ -52,7 +52,7 @@ export const AboutSection = () => {
               <div className="grid sm:grid-cols-3 gap-4 mb-8">
                 {[
                   { icon: Award, label: "ISO Certified", value: "Quality" },
-                  { icon: Users, label: "Expert Team", value: "30+ Members" },
+                  { icon: Users, label: "Expert Team", value: `${siteConfig.stats.Members}+ Members` },
                   {
                     icon: Wrench,
                     label: "Custom Solutions",
