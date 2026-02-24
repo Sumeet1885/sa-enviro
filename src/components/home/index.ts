@@ -3,6 +3,7 @@ export { AboutSection } from "./AboutSection";
 export { BrochureSection } from "./BrochureSection";
 export { ServicesSection } from "./ServicesSection";
 export { WhyChooseUsSection } from "./WhyChooseUsSection";
+export { Certification_Section } from "./Certification";
 export { StatsSection } from "./StatsSection";
 export { TestimonialsSection } from "./TestimonialsSection";
 export { CTASection } from "./CTASection";

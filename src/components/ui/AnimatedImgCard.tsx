@@ -502,7 +502,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
                 }}
                 transition={{ duration: 4, repeat: Infinity }}
               >
-                {siteConfig.stats.experience}+
+                {siteConfig.stats.Experience}+
               </motion.span>
 
               {/* Pulsing Glow Behind Number */}

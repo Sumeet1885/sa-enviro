@@ -328,7 +328,7 @@ export const BrochureSection = () => {
           style={{ fontFamily: "'Playfair Display', serif" }}
           className="text-8xl sm:text-9xl font-bold  leading-none mb-2"
         >
-          {siteConfig.stats.experience}
+          {siteConfig.stats.Experience}
           <span className="text-water-light">+</span>
         </motion.p>
         <motion.p

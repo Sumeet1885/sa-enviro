@@ -30,7 +30,8 @@ export const siteConfig: SiteConfig = {
     twitter: "https://twitter.com/saenvirosolutions",
   },
   stats: {
-    experience:"16"
+    Experience: "16",
+    Members: "45",
   },
 };
 
@@ -70,7 +71,6 @@ const Product_DropDown = [
 ];
 
 const Option_Dropdown = [
-  { name: "Services", href: "/services" },
   { name: "Gallery", href: "/gallery" },
   { name: "Client", href: "/client" },
 ];
@@ -87,6 +87,7 @@ export const navigation: NavigationItem[] = [
   { name: "Team", href: "/team" },
 
   { name: "Blogs", href: "/blogs" },
+  { name: "Services", href: "/services" },
   { name: "Option", href: "/option", dropdown: Option_Dropdown },
 
   { name: "Contact", href: "/contact" },
