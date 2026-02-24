@@ -5,7 +5,7 @@ import { AnimatedSection } from "@/components/motion";
 import { aboutData } from "@/constants/siteData";
 import aboutImage from "@/assets/about-hero.webp";
 import { AnimatedImgCard } from "@/components/ui/AnimatedImgCard";
-import DownloadButton from "@/components/ui/DownloadButton";
+
 import { useState } from "react";
 
 export const AboutSection = () => {
@@ -83,7 +83,7 @@ export const AboutSection = () => {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
-              <DownloadButton />
+
             </AnimatedSection>
           </div>
         </div>

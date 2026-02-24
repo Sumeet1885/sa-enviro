@@ -64,6 +64,9 @@ export interface SiteConfig {
     linkedin: string;
     twitter: string;
   };
+  stats: {
+    experience: string;
+  };
 }
 
 export interface DropDown {

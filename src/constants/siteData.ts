@@ -29,6 +29,9 @@ export const siteConfig: SiteConfig = {
     linkedin: "https://linkedin.com/company/saenvirosolutions",
     twitter: "https://twitter.com/saenvirosolutions",
   },
+  stats: {
+    experience:"16"
+  },
 };
 
 const Product_DropDown = [
@@ -404,12 +407,17 @@ export const testimonials = [
 ];
 
 export const stats = [
-  { value: "66+", label: "Completed Projects" },
-  { value: "45+", label: "Workers" },
-  { value: "2+", label: "Office Locations" },
+  { value: "66", label: "Completed Projects" },
+  { value: "45", label: "Workers" },
+  { value: "2", label: "Office Locations" },
   { value: "Free", label: "Consulting Service" },
 ];
 
+export const BroucherStats = [
+  { value: "66", label: "Completed Projects" },
+  { value: "45", label: "Workers" },
+  { value: "16", label: "Experience" },
+];
 export const certifications = [
   {
     title: "ISO Certification 1",
