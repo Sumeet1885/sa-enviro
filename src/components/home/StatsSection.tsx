@@ -17,12 +17,12 @@ export const StatsSection = () => {
                 <div className="text-center">
                   <div className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold  mb-2">
                     {!isNaN(
-                      Number(stat.value.substring(0, stat.value.length - 1)),
+                      Number(stat.value.substring(0, stat.value.length)),
                     ) ? (
                       <>
                         <Counter
                           end={Number(
-                            stat.value.substring(0, stat.value.length - 1),
+                            stat.value.substring(0, stat.value.length),
                           )}
                         />
                       </>
