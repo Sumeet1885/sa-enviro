@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { heroData } from "@/constants/siteData";
+import ButtonGrid from "../ui/ButtonGrid";
 
 const extended = [...heroData.slides, ...heroData.slides, ...heroData.slides];
 const CENTER = heroData.slides.length;
@@ -175,7 +176,7 @@ export function HeroSection() {
             <p className="mt-6 text-sm sm:text-base opacity-80">
               {active.desc}
             </p>
-            <FrostedWhiteButton />
+            <ButtonGrid ButtonRow={active.buttons} />
           </motion.div>
         </AnimatePresence>
       </div>

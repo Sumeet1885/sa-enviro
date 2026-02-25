@@ -87,6 +87,7 @@ export interface HeroSlideItem {
   subtitle: string;
   desc: string;
   img: string;
+  buttons: ButtonItem[];
 }
 
 export interface CTA {
@@ -96,9 +97,16 @@ export interface CTA {
   };
 }
 
+export interface ButtonItem {
+  label: string;
+  action: string;
+  icon?: string;
+}
+
 export interface HeroData {
   cta: CTA;
   slides: HeroSlideItem[];
+  buttons: ButtonItem[];
 }
 
 export interface Team_Member {
