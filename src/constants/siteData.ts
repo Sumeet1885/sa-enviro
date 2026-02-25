@@ -159,11 +159,21 @@ export const heroData: HeroData = {
       desc: "An aerial view of an advanced wastewater treatment plant featuring large circular clarifier tanks, interconnected pipelines.",
       img: Image1,
       buttons: [
-        { label: "Aurora", action: "aurora", icon: "✦" },
-        { label: "Dark Sky", action: "darksky", icon: "🌌" },
-        { label: "Stargazing", action: "stargazing", icon: "🔭" },
-        { label: "Photography", action: "photography", icon: "📷" },
-        { label: "Solstice", action: "solstice", icon: "🌑" },
+        {
+          label: "STP",
+          name: "Sewage Treatment Plants",
+          key: "sewage_treatment_plants",
+        },
+        {
+          label: "ZLD",
+          name: "Zero Liquid Discharge ",
+          key: "zero_liquid_discharge",
+        },
+        {
+          label: "ETP",
+          name: "Effluent Treatment Plants",
+          key: "effluent_treatment_plants",
+        },
       ],
     },
     {
@@ -173,11 +183,21 @@ export const heroData: HeroData = {
       desc: "Interior view of a high-grade industrial filtration plant featuring stainless steel pressure vessels, interconnected pipe networks.",
       img: Image2,
       buttons: [
-        { label: "Pressure Vessels", action: "pressure", icon: "🛢️" },
-        { label: "Pipe Network", action: "pipes", icon: "🔩" },
-        { label: "Filtration Units", action: "filtration", icon: "💧" },
-        { label: "Flow Control", action: "flow", icon: "🔄" },
-        { label: "System Monitoring", action: "monitoring", icon: "📊" },
+        {
+          label: "WTP",
+          name: "Water Treatment Plants",
+          key: "water_treatment_plants",
+        },
+        {
+          label: "ZLD",
+          name: "Zero Liquid Discharge ",
+          key: "zero_liquid_discharge",
+        },
+        {
+          label: "UF",
+          name: "Ultra Filtration",
+          key: "ultra_filtration",
+        },
       ],
     },
     {
@@ -186,12 +206,23 @@ export const heroData: HeroData = {
       subtitle: "Compact ecological water management",
       desc: "Top-down aerial view of a community-scale wastewater treatment plant featuring circular settling tanks, sludge basins.",
       img: Image3,
+
       buttons: [
-        { label: "Settling Tanks", action: "settling", icon: "🌊" },
-        { label: "Sludge Basins", action: "sludge", icon: "🛢️" },
-        { label: "Eco Treatment", action: "eco", icon: "🌿" },
-        { label: "Water Recycling", action: "recycle", icon: "♻️" },
-        { label: "Community Plant", action: "community", icon: "🏘️" },
+        {
+          label: "RO",
+          name: "Reverse Osmosis",
+          key: "reverse_osmosis",
+        },
+        {
+          label: "DP",
+          name: "Demineralisation Plants",
+          key: "demineralisation_plants",
+        },
+        {
+          label: "WSP",
+          name: "Water Softeners Plant",
+          key: "water_softeners_plant",
+        },
       ],
     },
     {
@@ -201,11 +232,21 @@ export const heroData: HeroData = {
       desc: "Modern abstract forms and human emotion.",
       img: Image4,
       buttons: [
-        { label: "Symmetry", action: "symmetry", icon: "⚖️" },
-        { label: "Chaos", action: "chaos", icon: "🌪️" },
-        { label: "Geometry", action: "geometry", icon: "🔷" },
-        { label: "Emotion", action: "emotion", icon: "💭" },
-        { label: "Minimalism", action: "minimalism", icon: "⬜" },
+        {
+          label: "WTP",
+          name: "Water Treatment Plants",
+          key: "water_treatment_plants",
+        },
+        {
+          label: "ZLD",
+          name: "Zero Liquid Discharge ",
+          key: "zero_liquid_discharge",
+        },
+        {
+          label: "UF",
+          name: "Ultra Filtration",
+          key: "ultra_filtration",
+        },
       ],
     },
     {
@@ -215,11 +256,21 @@ export const heroData: HeroData = {
       desc: "Ground-level view of a circular secondary clarifier where treated water is separated from residual solids using a slow rotating bridge and scraper system.",
       img: Image4,
       buttons: [
-        { label: "Sedimentation", action: "sedimentation", icon: "🌊" },
-        { label: "Sludge Removal", action: "sludge", icon: "🛢️" },
-        { label: "Rotating Bridge", action: "bridge", icon: "🔄" },
-        { label: "Water Discharge", action: "discharge", icon: "🚰" },
-        { label: "Effluent Quality", action: "quality", icon: "🧪" },
+        {
+          label: "RO",
+          name: "Reverse Osmosis",
+          key: "reverse_osmosis",
+        },
+        {
+          label: "DP",
+          name: "Demineralisation Plants",
+          key: "demineralisation_plants",
+        },
+        {
+          label: "WSP",
+          name: "Water Softeners Plant",
+          key: "water_softeners_plant",
+        },
       ],
     },
   ],

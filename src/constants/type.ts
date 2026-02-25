@@ -99,14 +99,13 @@ export interface CTA {
 
 export interface ButtonItem {
   label: string;
-  action: string;
-  icon?: string;
+  name: string;
+  key: string;
 }
 
 export interface HeroData {
   cta: CTA;
   slides: HeroSlideItem[];
-  buttons: ButtonItem[];
 }
 
 export interface Team_Member {

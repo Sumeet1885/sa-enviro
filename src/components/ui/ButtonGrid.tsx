@@ -14,19 +14,19 @@ import { useRef, useState } from "react";
 
 export interface ButtonItem {
   label: string;
-  action: string;
-  icon?: string;
+  name: string;
+  key: string;
 }
 
 interface ButtonGridProps {
   ButtonRow: ButtonItem[];
-  onAction?: (action: string, label: string) => void;
+  onClick: (value: { label: string; key: string }) => void;
 }
 
 const SPRING =
   "linear(0,0.008 1.1%,0.031 2.2%,0.129 4.8%,0.257 7.2%,0.671 14.2%,0.789 16.5%,0.881 18.6%,0.957 20.7%,1.019 22.9%,1.063 25.1%,1.094 27.4%,1.114 30.7%,1.112 34.5%,1.018 49.9%,0.99 59.1%,1)";
 
-export default function ButtonGrid({ ButtonRow, onAction }: ButtonGridProps) {
+export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const rowRef = useRef<HTMLDivElement>(null);
@@ -95,14 +95,14 @@ export default function ButtonGrid({ ButtonRow, onAction }: ButtonGridProps) {
             const isHovered = hoveredIndex === i;
             return (
               <button
-                key={btn.action}
+                key={btn.key}
                 ref={(el) => {
                   buttonRefs.current[i] = el;
                 }}
                 type="button"
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(-1)}
-                onClick={() => onAction?.(btn.action, btn.label)}
+                onClick={() => onClick({ label: btn.name, key: btn.key })}
                 className={[
                   "relative z-10",
                   "flex items-center justify-center gap-2",
@@ -137,7 +137,7 @@ export default function ButtonGrid({ ButtonRow, onAction }: ButtonGridProps) {
                   transition: `all 220ms ${SPRING}`,
                 }}
               >
-                <span>{btn.label}</span>
+                <span>{btn.name}</span>
               </button>
             );
           })}
