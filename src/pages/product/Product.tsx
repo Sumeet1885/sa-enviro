@@ -2,6 +2,7 @@ import { SEO } from "@/components/layout/SEO";
 import { seoData, products } from "@/constants/siteData";
 import ProductContentSection from "@/components/ui/ProductContentSection";
 import ProductShowCase from "@/components/ui/ProductShowCase";
+import Product_Content from "@/components/Sections/ProductContent";
 import { useParams } from "react-router-dom";
 
 function Product() {
@@ -31,18 +32,7 @@ function Product() {
           </div>
         </div>
       </section>
-      {product.images.length > 1 ? (
-        <ProductShowCase
-          layout={Math.floor(Math.random() * 3).toString()}
-          product={product}
-          images={product.images}
-        />
-      ) : (
-        <ProductContentSection
-          layout={Math.floor(Math.random() * 4).toString()}
-          product={product}
-        />
-      )}
+      <Product_Content slug={slug} />
     </div>
   );
 }

@@ -6,7 +6,6 @@ import Text from "@/components/ui/Text";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-
 interface ImageItem {
   url: string;
   alt: string;
@@ -331,7 +330,7 @@ const ProductShowCase: React.FC<RemoteTeamSectionProps> = ({
   return (
     <div className="min-h-screen">
       <motion.div
-        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-12 sm:py-16 md:py-20"
+        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-16 md:py-8"
         initial="hidden"
         animate="visible"
         variants={ANIMATION_VARIANTS.container}

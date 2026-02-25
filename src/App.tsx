@@ -14,14 +14,15 @@ import Team from "@/pages/Team";
 import Client from "./pages/Client";
 import Contact from "./pages/Contact";
 import Blogs from "./pages/Blogs";
-import BlogPage from "@/components/Sections/BlogPage";
+
 import NotFound from "./pages/NotFound";
-import VisionSection from "./components/Sections/VisionSection";
+
+
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  // <VisionSection />
+
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
       <TooltipProvider>
