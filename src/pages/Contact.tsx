@@ -11,6 +11,7 @@ import {
   StaggerItem,
 } from "@/components/motion";
 import { siteConfig, seoData } from "@/constants/siteData";
+import { ContactForm } from "@/components/Sections/ContactForm";
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -118,79 +119,9 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className="lg:col-span-3">
-              <AnimatedSection direction="right">
-                <div className="bg-card rounded-2xl p-8 border border-border shadow-soft">
-                  <h2 className="text-2xl font-display font-bold text-foreground mb-6">
-                    Send Us a Message
-                  </h2>
-                  {isSubmitted ? (
-                    <div className="text-center py-12">
-                      <CheckCircle2 className="w-16 h-16 text-success mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-foreground mb-2">
-                        Thank You!
-                      </h3>
-                      <p className="text-muted-foreground">
-                        We'll get back to you as soon as possible.
-                      </p>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">
-                            Name *
-                          </label>
-                          <Input placeholder="Your name" required />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">
-                            Email *
-                          </label>
-                          <Input
-                            type="email"
-                            placeholder="your@email.com"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">
-                            Phone
-                          </label>
-                          <Input type="tel" placeholder="+91 00000 00000" />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-foreground mb-2">
-                            Company
-                          </label>
-                          <Input placeholder="Company name" />
-                        </div>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Service Interested In
-                        </label>
-                        <Input placeholder="e.g., Water Treatment Plant, RO System" />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Message *
-                        </label>
-                        <Textarea
-                          placeholder="Tell us about your requirements..."
-                          rows={5}
-                          required
-                        />
-                      </div>
-                      <Button type="submit" size="lg" className="w-full">
-                        Send Message
-                        <Send className="w-5 h-5 ml-2" />
-                      </Button>
-                    </form>
-                  )}
-                </div>
-              </AnimatedSection>
+              {/* <AnimatedSection direction="right"> */}
+              <ContactForm />
+              {/* </AnimatedSection> */}
             </div>
           </div>
         </div>
@@ -200,7 +131,7 @@ const Contact = () => {
 
       <section className="h-96 bg-muted/50">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7560.953207737685!2d73.755293!3d18.642597!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b971516a19ef%3A0x3ea59c22a36936fe!2sHarmony%20society!5e0!3m2!1sen!2sus!4v1771304158041!5m2!1sen!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.1756641332554!2d73.7718946!3d18.5209623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0fd0cfe2717%3A0xe534b896a7893206!2sSA%20ENVIRO%20SOLUTIONS!5e0!3m2!1sen!2sin!4v1771998843750!5m2!1sen!2sin"
           width="100%"
           height="100%"
           style={{ border: 0 }}

@@ -19,7 +19,7 @@ export default function HeroSection({
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6">
             {heading}
           </h1>
-          <p className="text-water-light/90 text-lg">{subtitle}</p>
+          <p className="text-water-light/90 text-lg max-w-xl">{subtitle}</p>
         </AnimatedSection>
       </div>
     </section>
