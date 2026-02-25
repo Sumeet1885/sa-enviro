@@ -158,6 +158,13 @@ export const heroData: HeroData = {
       subtitle: "Engineering clean water for a sustainable future",
       desc: "An aerial view of an advanced wastewater treatment plant featuring large circular clarifier tanks, interconnected pipelines.",
       img: Image1,
+      buttons: [
+        { label: "Aurora", action: "aurora", icon: "✦" },
+        { label: "Dark Sky", action: "darksky", icon: "🌌" },
+        { label: "Stargazing", action: "stargazing", icon: "🔭" },
+        { label: "Photography", action: "photography", icon: "📷" },
+        { label: "Solstice", action: "solstice", icon: "🌑" },
+      ],
     },
     {
       id: 2,
@@ -165,6 +172,13 @@ export const heroData: HeroData = {
       subtitle: "Precision-engineered purification infrastructure",
       desc: "Interior view of a high-grade industrial filtration plant featuring stainless steel pressure vessels, interconnected pipe networks.",
       img: Image2,
+      buttons: [
+        { label: "Pressure Vessels", action: "pressure", icon: "🛢️" },
+        { label: "Pipe Network", action: "pipes", icon: "🔩" },
+        { label: "Filtration Units", action: "filtration", icon: "💧" },
+        { label: "Flow Control", action: "flow", icon: "🔄" },
+        { label: "System Monitoring", action: "monitoring", icon: "📊" },
+      ],
     },
     {
       id: 3,
@@ -172,6 +186,13 @@ export const heroData: HeroData = {
       subtitle: "Compact ecological water management",
       desc: "Top-down aerial view of a community-scale wastewater treatment plant featuring circular settling tanks, sludge basins.",
       img: Image3,
+      buttons: [
+        { label: "Settling Tanks", action: "settling", icon: "🌊" },
+        { label: "Sludge Basins", action: "sludge", icon: "🛢️" },
+        { label: "Eco Treatment", action: "eco", icon: "🌿" },
+        { label: "Water Recycling", action: "recycle", icon: "♻️" },
+        { label: "Community Plant", action: "community", icon: "🏘️" },
+      ],
     },
     {
       id: 3,
@@ -179,6 +200,13 @@ export const heroData: HeroData = {
       subtitle: "Finding symmetry in chaos",
       desc: "Modern abstract forms and human emotion.",
       img: Image4,
+      buttons: [
+        { label: "Symmetry", action: "symmetry", icon: "⚖️" },
+        { label: "Chaos", action: "chaos", icon: "🌪️" },
+        { label: "Geometry", action: "geometry", icon: "🔷" },
+        { label: "Emotion", action: "emotion", icon: "💭" },
+        { label: "Minimalism", action: "minimalism", icon: "⬜" },
+      ],
     },
     {
       id: 4,
@@ -186,6 +214,13 @@ export const heroData: HeroData = {
       subtitle: "Final stage sedimentation for clean discharge",
       desc: "Ground-level view of a circular secondary clarifier where treated water is separated from residual solids using a slow rotating bridge and scraper system.",
       img: Image4,
+      buttons: [
+        { label: "Sedimentation", action: "sedimentation", icon: "🌊" },
+        { label: "Sludge Removal", action: "sludge", icon: "🛢️" },
+        { label: "Rotating Bridge", action: "bridge", icon: "🔄" },
+        { label: "Water Discharge", action: "discharge", icon: "🚰" },
+        { label: "Effluent Quality", action: "quality", icon: "🧪" },
+      ],
     },
   ],
 };
