@@ -17,12 +17,9 @@ import Blogs from "./pages/Blogs";
 
 import NotFound from "./pages/NotFound";
 
-
-
 const queryClient = new QueryClient();
 
 const App = () => (
-
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
       <TooltipProvider>
@@ -41,7 +38,6 @@ const App = () => (
               <Route path="/client" element={<Client />} />
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/blog/:slug" element={<Blogs />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
