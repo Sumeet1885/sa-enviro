@@ -33,7 +33,7 @@ function useInView(threshold = 0.12) {
 export const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   // const { ref, inView } = useInView();
-  const { ref, translateY } = useSlideInParallax(500);
+  const { ref, translateY } = useSlideInParallax(400);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
