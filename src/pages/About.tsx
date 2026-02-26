@@ -3,14 +3,14 @@ import { ArrowRight, Award, Users, Building2, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/layout/SEO";
 
-
 import {
   AnimatedSection,
   StaggerContainer,
   StaggerItem,
 } from "@/components/motion";
-import { aboutData, seoData, certifications } from "@/constants/siteData";
+import { aboutData, seoData } from "@/constants/siteData";
 import aboutImage from "@/assets/about-hero.webp";
+import { VisionSection } from "@/components/Sections/VisionSection";
 
 const About = () => {
   return (
@@ -83,6 +83,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <VisionSection />
 
       {/* Info Cards */}
       <section className="section-padding bg-muted/30">
@@ -119,31 +120,6 @@ const About = () => {
                     {item.title}
                   </h3>
                   <p className="text-muted-foreground text-sm">{item.desc}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="section-padding bg-background">
-        <div className="container-wide">
-          <AnimatedSection className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground">
-              Our <span className="gradient-text">Certifications</span>
-            </h2>
-          </AnimatedSection>
-          <StaggerContainer className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {certifications.map((cert, i) => (
-              <StaggerItem key={i}>
-                <div className="bg-card rounded-2xl p-4 border border-border card-hover">
-                  <img
-                    src={cert.image}
-                    alt={cert.title}
-                    className="w-full rounded-lg"
-                    loading="lazy"
-                  />
                 </div>
               </StaggerItem>
             ))}
