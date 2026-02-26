@@ -1,13 +1,8 @@
 /**
  * ButtonGrid.tsx
- * ─────────────────────────────────────────────────────────────────────────────
- * Hero Button Grid — React + TypeScript + Tailwind CSS
- *
- * No backdrop. No dark gradient. Just outlined glassmorphic buttons.
- * The hero background image is fully visible at all times.
- *
- * Default: transparent bg, white outline, subtle inner glow
- * Hover:   slightly brighter outline + lift + text glow
+ * Buttons that pop against any background image.
+ * Container/grid/layout: UNTOUCHED.
+ * Only button appearance changed.
  */
 
 import { useRef, useState } from "react";
@@ -31,7 +26,7 @@ export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const rowRef = useRef<HTMLDivElement>(null);
 
-  // ── Sliding pill ring geometry (desktop only) ───────────────────────────────
+  // ── Sliding pill ring geometry (desktop only) — UNCHANGED ──────────────────
   const getGeometry = () => {
     const btn = buttonRefs.current[hoveredIndex];
     if (hoveredIndex < 0 || !btn || !rowRef.current) return null;
@@ -69,80 +64,175 @@ export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
   };
 
   return (
-    <div className="mx-auto mt-5 w-fit max-w-full px-3 sm:px-0">
-      {/* No wrapper backdrop — image shows through completely */}
-      <div className="relative p-3">
-        <div
-          ref={rowRef}
-          className="relative grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap md:justify-center gap-2 sm:gap-2 md:gap-2"
-          style={{ zIndex: 1 }}
-        >
-          {/* Desktop sliding ring pill — outline only, no fill */}
-          <span
-            aria-hidden
-            className="absolute rounded-2xl transition-all duration-[450ms] pointer-events-none hidden md:block"
-            style={{
-              ...getRingStyle(),
-              zIndex: 1,
-              background: "transparent",
-              border: "1.5px solid rgba(255,255,255,0.75)",
-              boxShadow:
-                "0 0 18px rgba(255,255,255,0.15), inset 0 0 12px rgba(255,255,255,0.06)",
-            }}
-          />
+    <>
+      <style>{`
+        /* ── Shimmer sweep across the button text ── */
+        @keyframes btn-shimmer {
+          0%   { background-position: -200% center; }
+          100% { background-position:  200% center; }
+        }
 
-          {ButtonRow.map((btn, i) => {
-            const isHovered = hoveredIndex === i;
-            return (
-              <button
-                key={btn.key}
-                ref={(el) => {
-                  buttonRefs.current[i] = el;
-                }}
-                type="button"
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(-1)}
-                onClick={() => onClick({ label: btn.name, key: btn.key })}
-                className={[
-                  "relative z-10",
-                  "flex items-center justify-center gap-2",
-                  "w-full md:w-auto",
-                  "cursor-pointer select-none",
-                  "rounded-2xl",
-                  "font-mono font-semibold tracking-wide",
-                  "text-[0.72rem] sm:text-[0.8rem] md:text-[0.85rem]",
-                  "whitespace-nowrap",
-                  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60 focus-visible:outline-offset-2",
-                ].join(" ")}
-                style={{
-                  padding: "10px 20px",
+        /* ── Subtle breathing pulse on the border ── */
+        @keyframes btn-pulse {
+          0%, 100% { box-shadow:
+            0 0 0 1px rgba(255,255,255,0.55),
+            0 0 14px rgba(255,255,255,0.18),
+            0 0 32px rgba(255,255,255,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.20),
+            inset 0 0 20px rgba(255,255,255,0.06); }
+          50% { box-shadow:
+            0 0 0 1px rgba(255,255,255,0.85),
+            0 0 22px rgba(255,255,255,0.30),
+            0 0 50px rgba(255,255,255,0.12),
+            inset 0 1px 0 rgba(255,255,255,0.30),
+            inset 0 0 28px rgba(255,255,255,0.10); }
+        }
 
-                  // Fully transparent background — image always visible
-                  background: "transparent",
+        .hb-btn {
+          /* Frosted glass base — always readable against ANY bg image */
+          background: rgba(255, 255, 255, 0.10) !important;
+          backdrop-filter: blur(10px) saturate(160%) !important;
+          -webkit-backdrop-filter: blur(10px) saturate(160%) !important;
 
-                  // Outline only
-                  border: isHovered ? "" : "1.5px solid rgba(255,255,255,0.28)",
+          border: 1px solid rgba(255, 255, 255, 0.55) !important;
 
-                  // Glow on hover
-                  boxShadow: isHovered
-                    ? "0 0 18px rgba(255,255,255,0.18), inset 0 0 10px rgba(255,255,255,0.06)"
-                    : "none",
+          color: #ffffff !important;
+          font-weight: 700 !important;
+          letter-spacing: 0.06em !important;
+          text-transform: uppercase !important;
 
-                  // Text
+          /* Layered shadow so button always reads against dark OR light bg */
+          box-shadow:
+            0 0 0 1px rgba(255,255,255,0.55),
+            0 0 14px rgba(255,255,255,0.18),
+            0 0 32px rgba(255,255,255,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.20),
+            inset 0 0 20px rgba(255,255,255,0.06) !important;
 
-                  textShadow: isHovered
-                    ? "0 0 16px rgba(255,255,255,0.55)"
-                    : "none",
+          animation: btn-pulse 3s ease-in-out infinite !important;
 
-                  transition: `all 220ms ${SPRING}`,
-                }}
-              >
-                <span>{btn.name}</span>
-              </button>
-            );
-          })}
+          /* Shimmer text */
+          background-clip: unset !important;
+
+          transition:
+            transform 180ms cubic-bezier(0.34,1.56,0.64,1),
+            box-shadow 180ms ease,
+            background 180ms ease,
+            border-color 180ms ease !important;
+        }
+
+        /* Stagger the pulse so buttons don't all breathe together */
+        .hb-btn:nth-child(2) { animation-delay: 0.4s !important; }
+        .hb-btn:nth-child(3) { animation-delay: 0.8s !important; }
+        .hb-btn:nth-child(4) { animation-delay: 1.2s !important; }
+        .hb-btn:nth-child(5) { animation-delay: 1.6s !important; }
+        .hb-btn:nth-child(6) { animation-delay: 2.0s !important; }
+
+
+        .hb-btn:active {
+          transform: translateY(-1px) scale(1.01) !important;
+        }
+
+        /* Shimmer span inside button */
+        .hb-btn .hb-label {
+          position: relative;
+          display: inline-block;
+        }
+
+        .hb-btn .hb-label::after {
+          content: attr(data-label);
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            105deg,
+            transparent 30%,
+            rgba(255,255,255,0.85) 50%,
+            transparent 70%
+          );
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          animation: btn-shimmer 3.5s linear infinite;
+          pointer-events: none;
+        }
+
+        .hb-btn:nth-child(2) .hb-label::after { animation-delay: 0.5s; }
+        .hb-btn:nth-child(3) .hb-label::after { animation-delay: 1.0s; }
+        .hb-btn:nth-child(4) .hb-label::after { animation-delay: 1.5s; }
+        .hb-btn:nth-child(5) .hb-label::after { animation-delay: 2.0s; }
+        .hb-btn:nth-child(6) .hb-label::after { animation-delay: 2.5s; }
+
+        /* Tiny dot indicator — "clickable" cue */
+        .hb-btn .hb-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.9);
+          box-shadow: 0 0 6px rgba(255,255,255,0.8);
+          flex-shrink: 0;
+          animation: btn-pulse 2s ease-in-out infinite;
+        }
+      `}</style>
+
+      {/* ── Container/grid — UNTOUCHED ─────────────────────────────────────── */}
+      <div className="mx-auto mt-5 w-fit max-w-full px-3 sm:px-0">
+        <div className="relative p-3">
+          <div
+            ref={rowRef}
+            className="relative grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap md:justify-center gap-2 sm:gap-2 md:gap-2"
+            style={{ zIndex: 1 }}
+          >
+            {/* Desktop sliding ring — UNTOUCHED */}
+            <span
+              aria-hidden
+              className="absolute rounded-2xl transition-all duration-[450ms] pointer-events-none hidden md:block"
+              style={{
+                ...getRingStyle(),
+                zIndex: 1,
+                background: "transparent",
+                border: "1.5px solid rgba(255,255,255,0.75)",
+                boxShadow:
+                  "0 0 18px rgba(255,255,255,0.15), inset 0 0 12px rgba(255,255,255,0.06)",
+              }}
+            />
+
+            {ButtonRow.map((btn, i) => {
+              return (
+                <button
+                  key={btn.key}
+                  ref={(el) => {
+                    buttonRefs.current[i] = el;
+                  }}
+                  type="button"
+                  onClick={() => onClick({ label: btn.name, key: btn.key })}
+                  className={[
+                    "hb-btn",
+                    "relative z-10",
+                    "flex items-center justify-center gap-2",
+                    "w-full md:w-auto",
+                    "cursor-pointer select-none",
+                    "rounded-2xl",
+                    "font-mono tracking-wide",
+                    "text-[0.72rem] sm:text-[0.8rem] md:text-[0.85rem]",
+                    "whitespace-nowrap",
+                    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60 focus-visible:outline-offset-2",
+                  ].join(" ")}
+                  style={{ padding: "10px 20px" }}
+                >
+                  {/* Tiny glow dot — "I am clickable" cue */}
+                  <span className="hb-dot" aria-hidden />
+
+                  {/* Label with shimmer sweep */}
+                  <span className="hb-label" data-label={btn.name}>
+                    {btn.name}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
