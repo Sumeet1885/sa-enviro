@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { siteConfig } from "@/constants/siteData";
 
 export const AnimatedImgCard = ({ aboutImage }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -278,7 +279,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             rotateX: useTransform(mouseY, [-0.5, 0.5], [-15, 15]),
             rotateY: useTransform(mouseX, [-0.5, 0.5], [15, -15]),
           }}
-
           whileHover={{
             scale: 1.2,
             rotateZ: [0, -10, 10, 0],
@@ -502,7 +502,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
                 }}
                 transition={{ duration: 4, repeat: Infinity }}
               >
-                10+
+                {siteConfig.stats.Experience}+
               </motion.span>
 
               {/* Pulsing Glow Behind Number */}

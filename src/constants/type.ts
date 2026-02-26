@@ -49,7 +49,6 @@ export interface Product {
   Page_Description?: PageDescriptionBlock[];
 }
 
-
 export interface SiteConfig {
   name: string;
   shortName: string;
@@ -64,6 +63,10 @@ export interface SiteConfig {
     facebook: string;
     linkedin: string;
     twitter: string;
+  };
+  stats: {
+    Experience: string;
+    Members: string;
   };
 }
 
@@ -84,6 +87,7 @@ export interface HeroSlideItem {
   subtitle: string;
   desc: string;
   img: string;
+  buttons: ButtonItem[];
 }
 
 export interface CTA {
@@ -91,6 +95,12 @@ export interface CTA {
     text: string;
     href: string;
   };
+}
+
+export interface ButtonItem {
+  label: string;
+  name: string;
+  key: string;
 }
 
 export interface HeroData {
@@ -103,6 +113,7 @@ export interface Team_Member {
   title: string;
   details: string;
   functionality: string;
+  highlight: boolean;
 }
 
 export interface LogoItem {
