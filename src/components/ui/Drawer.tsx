@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type DrawerSide = "right" | "left" | "bottom";
+type DrawerSide = "bottom";
 
 interface DrawerProps {
   side?: DrawerSide;
@@ -52,8 +52,6 @@ const backdropVariants = {
 
 const panelShape: Record<DrawerSide, string> = {
   bottom: "inset-x-0 bottom-0 w-full max-h-[90vh] rounded-t-3xl",
-  right: "inset-y-0 right-0 h-full max-w-md w-full rounded-l-3xl",
-  left: "inset-y-0 left-0  h-full max-w-md w-full rounded-r-3xl",
 };
 
 // ─── Drawer ───────────────────────────────────────────────────────────────────
@@ -104,12 +102,7 @@ export default function Drawer({
             // GPU layer — no layout thrashing during animation
             style={{
               willChange: "transform",
-              boxShadow:
-                side === "right"
-                  ? "-12px 0 80px rgba(0,0,0,0.6)"
-                  : side === "left"
-                    ? "12px 0 80px rgba(0,0,0,0.6)"
-                    : "0 -12px 80px rgba(0,0,0,0.6)",
+              boxShadow: "0 -12px 80px rgba(0,0,0,0.6)",
             }}
           >
             {/* Top accent line */}

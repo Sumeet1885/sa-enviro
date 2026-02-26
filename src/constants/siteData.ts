@@ -73,6 +73,7 @@ const Product_DropDown = [
 const Option_Dropdown = [
   { name: "Gallery", href: "/gallery" },
   { name: "Client", href: "/client" },
+  { name: "Team", href: "/team" },
 ];
 
 export const navigation: NavigationItem[] = [
@@ -83,11 +84,10 @@ export const navigation: NavigationItem[] = [
     href: "/product",
     dropdown: Product_DropDown,
   },
-
-  { name: "Team", href: "/team" },
+  { name: "Services", href: "/services" },
 
   { name: "Blogs", href: "/blogs" },
-  { name: "Services", href: "/services" },
+
   { name: "Option", href: "/option", dropdown: Option_Dropdown },
 
   { name: "Contact", href: "/contact" },
