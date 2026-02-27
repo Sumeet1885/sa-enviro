@@ -147,7 +147,7 @@ export const ContactForm = () => {
       This is ${name}, representing ${company || "N/A"}.
       I would like to inquire about ${service || "your services"}.
 
-      You may reach me at ${phone.slice(0, 3) + " " + phone.slice(3) || "N/A"} or ${email}.
+      You may reach me at ${phone.slice(0, 3) + " " + phone.slice(4) || "N/A"} or ${email}.
 
       Message:
       ${message}
