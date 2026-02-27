@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import Logo from "@/assets/logo.webp";
 import { navigation, siteConfig } from "@/constants/siteData";
+import WhatsAppButton from "../ui/Whatsapp";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 export interface NavigationItem {
@@ -364,7 +365,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
                       dropItem.key
                         ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
                         : dropItem.href
-                    } 
+                    }
                     onClick={onClose}
                     className={`block px-4 py-3 text-sm rounded-lg transition-all group/subitem relative overflow-hidden font-medium
                       ${
@@ -737,6 +738,7 @@ export function Header() {
           </>
         )}
       </motion.nav>
+      <WhatsAppButton />
     </div>
   );
 }

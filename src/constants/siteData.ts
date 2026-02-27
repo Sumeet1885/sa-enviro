@@ -20,7 +20,7 @@ export const siteConfig: SiteConfig = {
   description:
     "SA Enviro Solutions (SAES) provides quality and customized services to address Environmental Aspects, specifically in Water and Wastewater Treatment, Zero Liquid Discharge, Air Pollution Control, Energy, Safety & Solid-Waste Management.",
   contact: {
-    phone: "+91 8087758585",
+    phone: "+91 8087748585",
     email: "sales@saenvirosolutions.com",
     address: "Chinchwad, Pune, Maharashtra, India",
   },
