@@ -1,14 +1,39 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+// TeamSlider.tsx
+// Your original TestimonialSlider — 100% your styles, zero changes to visuals.
+// Only additions:
+//   • 3 new props: firstAvatarRef, holdPrimaryDetails, freezeCarousel
+//   • ref attached to i===0 avatar div for scroll animation target
+//   • panelIndex uses holdPrimaryDetails to lock content on member[0] mid-flight
+//   • freezeCarousel pauses auto-rotate while card is in flight
+
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  RefObject,
+} from "react";
 import { team_member } from "@/constants/siteData";
 
 const AUTOROTATE_TIMING = 7000;
 const BIO_CLAMP_LINES = 3;
 
 const HIGHLIGHT_INDEX = team_member.flatMap((user, i) =>
-  user.highlight ? i : [],
+  user.highlight ? [i] : [],
 );
 
-export default function TestimonialSlider() {
+// ─── Props ────────────────────────────────────────────────────────────────────
+interface TeamSliderProps {
+  firstAvatarRef?: RefObject<HTMLDivElement>; // attached to i===0 avatar circle
+  holdPrimaryDetails?: boolean; // lock content panel on member[0]
+  freezeCarousel?: boolean; // pause auto-rotate
+}
+
+export default function TeamSlider({
+  firstAvatarRef,
+  holdPrimaryDetails = false,
+  freezeCarousel = false,
+}: TeamSliderProps) {
   const [active, setActive] = useState(0);
   const [displayed, setDisplayed] = useState(0);
   const [phase, setPhase] = useState<"idle" | "exit" | "enter-start" | "enter">(
@@ -31,12 +56,27 @@ export default function TestimonialSlider() {
 
   const startAutorotate = useCallback(() => {
     stopAutorotate();
+    if (freezeCarousel) return; // paused while spotlight card is in flight
     intervalRef.current = setInterval(() => {
       setActive((p) => (p + 1 === team_member.length ? 0 : p + 1));
     }, AUTOROTATE_TIMING);
-  }, [stopAutorotate]);
+  }, [stopAutorotate, freezeCarousel]);
 
-  // Start autorotate on mount
+  // When the scroll animation lands (freezeCarousel flips false → true → false):
+  // reset active back to member[0] so the progress bar restarts from that user.
+  useEffect(() => {
+    if (freezeCarousel) {
+      stopAutorotate();
+    } else {
+      // Card just landed — snap back to member[0] and restart the timer fresh
+      setActive(0);
+      setDisplayed(0);
+      setPhase("idle");
+      startAutorotate();
+    }
+  }, [freezeCarousel, startAutorotate, stopAutorotate]);
+
+  // Start on mount
   useEffect(() => {
     startAutorotate();
     return () => {
@@ -71,17 +111,12 @@ export default function TestimonialSlider() {
   }, [displayed, expanded, phase]);
 
   const handleClick = (i: number) => {
-    // Clear any pending restart timeout from a previous click
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
-
-    // Stop the running interval
     stopAutorotate();
     setActive(i);
-
-    // After the progress bar finishes for the clicked member, restart autorotate
     timeoutRef.current = setTimeout(() => {
       startAutorotate();
       timeoutRef.current = null;
@@ -114,7 +149,9 @@ export default function TestimonialSlider() {
       "width 420ms cubic-bezier(0.4,0,0.2,1), transform 420ms cubic-bezier(0.4,0,0.2,1)",
   };
 
-  const user = team_member[displayed];
+  // When holdPrimaryDetails is true, always show member[0] in content panel
+  const panelIndex = holdPrimaryDetails ? 0 : displayed;
+  const user = team_member[panelIndex];
   const isHighlight = (i: number) => HIGHLIGHT_INDEX.includes(i);
 
   return (
@@ -157,7 +194,7 @@ export default function TestimonialSlider() {
             </span>
           </div>
 
-          {/* ══ AVATAR ROW ══════════════════════════════════════════════ */}
+          {/* ══ AVATAR ROW ══════════════════════════════════════════════════ */}
           <div className="flex items-end justify-center gap-3 sm:gap-5 md:gap-7 mb-6 sm:mb-10 flex-wrap">
             {team_member.map((u, i) => {
               const isActive = active === i;
@@ -185,7 +222,13 @@ export default function TestimonialSlider() {
                   )}
 
                   {/* ── Circle avatar ── */}
+                  {/*
+                    i === 0 gets firstAvatarRef so Team.tsx can read its
+                    bounding rect as the scroll animation target.
+                    Styles are 100% your original — no changes.
+                  */}
                   <div
+                    ref={i === 0 ? firstAvatarRef : undefined}
                     className={[
                       "relative rounded-full overflow-hidden w-full aspect-square transition-all duration-500",
                       isActive
@@ -259,13 +302,13 @@ export default function TestimonialSlider() {
             })}
           </div>
 
-          {/* ══ CONTENT PANEL ═══════════════════════════════════════════ */}
+          {/* ══ CONTENT PANEL ════════════════════════════════════════════════ */}
           <div
             className="border-t border-foreground/10 pt-4 sm:pt-5"
             style={contentFade}
           >
             {/* Featured banner */}
-            {isHighlight(displayed) && (
+            {isHighlight(panelIndex) && (
               <div className="flex items-center gap-2 mb-3">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-amber-700 bg-amber-50 border border-amber-200 text-[0.6rem] tracking-[0.15em] uppercase font-medium font-mono">
                   <span>★</span> Featured Member
@@ -340,7 +383,7 @@ export default function TestimonialSlider() {
                   )}
                 </div>
 
-                {/* Read more / Read less */}
+                {/* Read more / less */}
                 {isTruncated && (
                   <button
                     onClick={() => setExpanded((v) => !v)}

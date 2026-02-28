@@ -119,9 +119,7 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className="lg:col-span-3">
-              {/* <AnimatedSection direction="right"> */}
               <ContactForm />
-              {/* </AnimatedSection> */}
             </div>
           </div>
         </div>
