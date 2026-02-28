@@ -16,10 +16,13 @@ import Contact from "./pages/Contact";
 import Blogs from "./pages/Blogs";
 
 import NotFound from "./pages/NotFound";
+import Sample from "@/components/Sections/Sample";
 
 const queryClient = new QueryClient();
 
 const App = () => (
+  // <Sample />
+
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
       <TooltipProvider>
