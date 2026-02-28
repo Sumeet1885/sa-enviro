@@ -129,123 +129,77 @@ export default function HeroSection({
             {showCard && (
               <div className="hidden lg:block flex-shrink-0">
                 <div
-                  className="hs-card hs-border relative overflow-hidden"
+                  className="relative overflow-hidden rounded-[22px] border border-white/95 backdrop-blur-xl"
                   style={{
                     width: 268,
-                    borderRadius: 22,
                     padding: "28px 22px 24px",
-                    background:
-                      "linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 55%, rgba(10,25,60,0.45) 100%)",
-                    backdropFilter: "blur(22px) saturate(1.5)",
-                    WebkitBackdropFilter: "blur(22px) saturate(1.5)",
-                    border: "1px solid rgba(255,255,255,0.11)",
+                    background: "rgba(255,255,255,0.82)",
+                    backdropFilter: "blur(28px) saturate(1.6)",
+                    WebkitBackdropFilter: "blur(28px) saturate(1.6)",
                     boxShadow: [
-                      "0 0 0 1px rgba(56,189,248,0.06)",
-                      "0 30px 60px rgba(0,0,0,0.5)",
-                      "0 10px 24px rgba(0,0,0,0.3)",
-                      "inset 0 1px 0 rgba(255,255,255,0.13)",
-                      "inset 0 -1px 0 rgba(0,0,0,0.18)",
+                      "0 16px 50px rgba(0,0,0,0.09)",
+                      "0 4px 16px rgba(0,0,0,0.05)",
+                      "0 0 0 1px rgba(160,140,220,0.15)",
+                      "inset 0 1px 0 #fff",
                     ].join(", "),
                   }}
                 >
-                  {/* Shimmer sweep */}
+                  {/* Shimmer bar */}
                   <div className="hs-shimmer-bar" />
 
                   {/* Top radial glow */}
                   <div
-                    className="absolute inset-x-0 top-0 pointer-events-none"
+                    className="absolute inset-x-0 top-0 pointer-events-none h-[110px]"
                     style={{
-                      height: 110,
                       background:
-                        "radial-gradient(ellipse 80% 70% at 50% 0%, rgba(56,189,248,0.14), transparent)",
+                        "radial-gradient(ellipse 80% 70% at 50% 0%, rgba(120,90,255,0.07), transparent)",
                     }}
                   />
 
-                  {/* ── Label ───────────────────────────────────────────────── */}
+                  {/* ── Label ── */}
                   <div className="relative flex items-center gap-2 mb-5">
                     <div
+                      className="flex-1 h-px"
                       style={{
-                        flex: 1,
-                        height: 1,
                         background:
-                          "linear-gradient(to right, transparent, rgba(56,189,248,0.45))",
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontFamily: "monospace",
-                        fontSize: "0.47rem",
-                        letterSpacing: "0.3em",
-                        textTransform: "uppercase",
-                        color: "rgba(147,210,240,0.6)",
-                      }}
-                    >
-                      Team Spotlight
-                    </span>
-                    <div
-                      style={{
-                        flex: 1,
-                        height: 1,
-                        background:
-                          "linear-gradient(to left, transparent, rgba(56,189,248,0.45))",
+                          "linear-gradient(to left, transparent, rgba(100,80,200,0.2))",
                       }}
                     />
                   </div>
 
-                  {/* ── Avatar ──────────────────────────────────────────────── */}
+                  {/* ── Avatar ── */}
                   <div className="relative flex justify-center mb-5">
                     {/* Pulse rings */}
                     <div
-                      className="hs-pulse-a absolute rounded-full"
+                      className="hs-pulse-a absolute rounded-full pointer-events-none top-1/2 left-1/2"
                       style={{
                         width: 162,
                         height: 162,
-                        top: "50%",
-                        left: "50%",
-                        border: "1.5px solid rgba(56,189,248,0.32)",
-                        pointerEvents: "none",
+                        border: "1.5px solid rgba(120,90,220,0.22)",
                       }}
                     />
                     <div
-                      className="hs-pulse-b absolute rounded-full"
+                      className="hs-pulse-b absolute rounded-full pointer-events-none top-1/2 left-1/2"
                       style={{
                         width: 190,
                         height: 190,
-                        top: "50%",
-                        left: "50%",
-                        border: "1px solid rgba(56,189,248,0.14)",
-                        pointerEvents: "none",
+                        border: "1px solid rgba(120,90,220,0.10)",
                       }}
                     />
 
-                    {/*
-                      Avatar container — 140×140.
-                      rightContent (heroSpotRef anchor) is placed INSIDE here
-                      position:absolute so it sits exactly over the circle.
-                      The scroll animation reads this element's bounding rect.
-                    */}
-                    <div
-                      className="hs-avatar-pop relative"
-                      style={{ width: 140, height: 140 }}
-                    >
-                      {/*
-                        When avatarFlying=false: show the real circle.
-                        When avatarFlying=true:  floating clone is in the air,
-                        show a dimmed placeholder ring so the card stays beautiful
-                        but clearly signals the avatar has "left" the card.
-                      */}
+                    {/* Avatar container */}
+                    <div className="hs-avatar-pop relative w-[140px] h-[140px]">
                       {!avatarFlying ? (
-                        /* ── Real circle ── */
+                        /* Real circle */
                         <div
-                          className="absolute inset-0 rounded-full overflow-hidden"
+                          className="absolute inset-0 rounded-full overflow-hidden transition-opacity duration-200"
                           style={{
                             boxShadow: [
-                              "0 0 0 2.5px rgba(56,189,248,0.45)",
-                              "0 0 0 5px rgba(56,189,248,0.12)",
-                              "0 0 35px rgba(56,189,248,0.4)",
-                              "0 10px 28px rgba(0,0,0,0.45)",
+                              "0 0 0 2.5px rgba(120,90,220,0.3)",
+                              "0 0 0 5px rgba(120,90,220,0.08)",
+                              "0 0 35px rgba(120,90,220,0.2)",
+                              "0 10px 28px rgba(80,50,180,0.12)",
                             ].join(", "),
-                            transition: "opacity 200ms ease",
                           }}
                         >
                           {spotlightMember.image ? (
@@ -256,13 +210,11 @@ export default function HeroSection({
                             />
                           ) : (
                             <div
-                              className="w-full h-full flex items-center justify-center text-white font-semibold"
+                              className="w-full h-full flex items-center justify-center text-white font-light italic text-[2.2rem]"
                               style={{
                                 background:
-                                  "linear-gradient(135deg, #1d4ed8 0%, #0ea5e9 100%)",
-                                fontSize: "2.2rem",
-                                fontFamily: "serif",
-                                fontStyle: "italic",
+                                  "linear-gradient(135deg, #ddd6fe 0%, #a78bfa 55%, #818cf8 100%)",
+                                fontFamily: "Georgia, serif",
                               }}
                             >
                               {spotlightMember.name.charAt(0).toUpperCase()}
@@ -270,25 +222,20 @@ export default function HeroSection({
                           )}
                         </div>
                       ) : (
-                        /* ── Placeholder hole while avatar is flying ── */
+                        /* Placeholder hole while avatar is flying */
                         <div
-                          className="absolute inset-0 rounded-full opacity-0"
+                          className="absolute inset-0 rounded-full opacity-0 transition-all duration-200"
                           style={{
-                            background: "rgba(255,255,255,0.03)",
-                            border: "1.5px dashed rgba(56,189,248,0.25)",
-                            boxShadow: "inset 0 0 20px rgba(56,189,248,0.06)",
-                            transition: "all 200ms ease",
+                            background: "rgba(120,90,220,0.03)",
+                            border: "1.5px dashed rgba(120,90,220,0.2)",
+                            boxShadow: "inset 0 0 20px rgba(120,90,220,0.06)",
                           }}
                         >
-                          {/* Faint initial letter as ghost */}
                           <div
-                            className="w-full h-full flex items-center justify-center"
+                            className="w-full h-full flex items-center justify-center italic text-[2.2rem] select-none"
                             style={{
-                              fontFamily: "serif",
-                              fontStyle: "italic",
-                              fontSize: "2.2rem",
-                              color: "rgba(56,189,248,0.15)",
-                              userSelect: "none",
+                              fontFamily: "Georgia, serif",
+                              color: "rgba(120,90,220,0.15)",
                             }}
                           >
                             {spotlightMember.name.charAt(0).toUpperCase()}
@@ -296,94 +243,65 @@ export default function HeroSection({
                         </div>
                       )}
 
-                      {/* Invisible scroll anchor — always present for rAF ref reads */}
+                      {/* Invisible scroll anchor */}
                       {rightContent}
                     </div>
                   </div>
 
-                  {/* ── Name ────────────────────────────────────────────────── */}
+                  {/* ── Name ── */}
                   <div className="hs-name-in text-center mb-1">
                     <p
+                      className="italic font-light text-[1.18rem] leading-tight tracking-[0.01em] text-foreground"
                       style={{
-                        fontFamily: "'Georgia', 'Times New Roman', serif",
-                        fontStyle: "italic",
-                        fontWeight: 300,
-                        fontSize: "1.18rem",
-                        color: "rgba(255,255,255,0.95)",
-                        letterSpacing: "0.01em",
-                        lineHeight: 1.25,
+                        fontFamily: "Georgia, 'Times New Roman', serif",
                       }}
                     >
                       {spotlightMember.name}
                     </p>
                   </div>
 
-                  {/* ── Title ───────────────────────────────────────────────── */}
-                  <div className="hs-title-in text-center mb-4">
+                  {/* ── Title ── */}
+                  <div className="hs-title-in text-center mb-4 text-foreground">
                     <span
-                      style={{
-                        fontFamily: "monospace",
-                        fontSize: "0.56rem",
-                        letterSpacing: "0.22em",
-                        textTransform: "uppercase",
-                        color: "rgba(56,189,248,0.85)",
-                      }}
+                      className="font-mono uppercase text-[0.56rem] tracking-[0.22em]"
+                      style={{ color: "rgba(109,70,220,0.7)" }}
                     >
                       {spotlightMember.title}
                     </span>
                   </div>
 
-                  {/* ── Divider ─────────────────────────────────────────────── */}
+                  {/* ── Divider ── */}
                   <div className="flex items-center gap-3 mb-4">
                     <div
+                      className="flex-1 h-px"
+                      style={{ background: "rgba(100,80,160,0.09)" }}
+                    />
+                    <div
+                      className="w-[5px] h-[5px] rounded-full"
                       style={{
-                        flex: 1,
-                        height: 1,
-                        background: "rgba(255,255,255,0.07)",
+                        background: "rgba(120,90,220,0.55)",
+                        boxShadow: "0 0 8px rgba(120,90,220,0.5)",
                       }}
                     />
                     <div
-                      style={{
-                        width: 5,
-                        height: 5,
-                        borderRadius: "50%",
-                        background: "rgba(56,189,248,0.55)",
-                        boxShadow: "0 0 8px rgba(56,189,248,0.7)",
-                      }}
-                    />
-                    <div
-                      style={{
-                        flex: 1,
-                        height: 1,
-                        background: "rgba(255,255,255,0.07)",
-                      }}
+                      className="flex-1 h-px"
+                      style={{ background: "rgba(100,80,160,0.09)" }}
                     />
                   </div>
 
-                  {/* ── Bio ─────────────────────────────────────────────────── */}
-                  <div className="hs-bio-in">
-                    <p
-                      style={{
-                        fontFamily: "sans-serif",
-                        fontSize: "0.71rem",
-                        lineHeight: 1.8,
-                        color: "rgba(200,228,245,0.7)",
-                        textAlign: "center",
-                        fontWeight: 300,
-                      }}
-                    >
+                  {/* ── Bio ── */}
+                  <div className="hs-bio-in text-black">
+                    <p className="font-sans text-center font-light text-[0.85rem] leading-[1.8]">
                       {bio}
                     </p>
                   </div>
 
-                  {/* ── Bottom gradient bar ──────────────────────────────────── */}
+                  {/* ── Bottom gradient bar ── */}
                   <div
-                    className="absolute bottom-0 inset-x-10 pointer-events-none"
+                    className="absolute bottom-0 inset-x-10 pointer-events-none h-[2px] rounded-b-[2px]"
                     style={{
-                      height: 2,
                       background:
-                        "linear-gradient(90deg, transparent, rgba(56,189,248,0.55), transparent)",
-                      borderRadius: "0 0 2px 2px",
+                        "linear-gradient(90deg, transparent, rgba(120,90,220,0.45), transparent)",
                     }}
                   />
                 </div>
