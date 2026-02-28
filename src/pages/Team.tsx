@@ -170,7 +170,7 @@ export default function Team() {
       {float.active && float.opacity > 0.005 && (
         <div
           aria-hidden="true"
-          className="hidden lg:block fixed z-30 pointer-events-none"
+          className="hidden lg:block fixed z-30 pointer-events-none font-serif"
           style={{
             top: 0,
             left: 0,
