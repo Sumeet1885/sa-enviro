@@ -17,9 +17,9 @@ interface HeroSectionProps {
   title: string;
   heading: string;
   subtitle: string;
-  rightContent?: ReactNode; // avatar anchor for scroll animation
-  spotlightMember?: SpotlightMember; // data for the card text
-  avatarFlying?: boolean; // true while circle is in mid-flight
+  rightContent?: ReactNode;
+  spotlightMember?: SpotlightMember; 
+  avatarFlying?: boolean;
 }
 
 export default function HeroSection({
