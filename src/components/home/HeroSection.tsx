@@ -86,7 +86,7 @@ export function HeroSection() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
                 {active.title}
               </h1>
-              <h2 className="text-xl sm:text-2xl lg:text-3xl italic mt-4 opacity-90">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl  mt-4 opacity-90">
                 {active.subtitle}
               </h2>
               <p className="mt-6 text-sm sm:text-base opacity-80">
