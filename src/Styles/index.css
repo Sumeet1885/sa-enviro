@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+
+  .card_active {
+    @apply bg-water-sky
+  }
+
+  .title-style {
+    @apply text-foreground text-4xl font-bold mt-10 mb-4 pb-3 border-b-[2px] border-solid border-border
+  }
+
+  .subtitle-style {
+    @apply text-accent-foreground text-3xl font-medium mt-10 mb-4 pb-3 border-b-[1px] border-solid border-border
+  }
+
+
+
+  .dark-section {
+    @apply bg-water-deep text-primary-foreground;
+  }
+
+  .dark-section .card {
+    @apply bg-card rounded-xl border-sidebar-border text-card-foreground hover:-translate-y-2 hover:shadow-xl shadow-sm transition-all duration-300 ease-out border-2;
+  }
+
+  .dark-section .button {
+    @apply bg-card rounded-xl border-sidebar-border text-card-foreground hover:-translate-y-2 hover:shadow-xl shadow-sm transition-all duration-300 ease-out border-2;
+  }
+
+  .light-section .subtext {
+    @apply text-muted;
+  }
+
+  .light-section .subtext {
+    @apply text-muted;
+  }
+
+  .light-section {
+    @apply bg-background text-foreground;
+  }
+
+  .light-section .card {
+    @apply bg-muted rounded-xl border-card-foreground text-muted-foreground hover:-translate-y-2 hover:shadow-xl shadow-sm transition-all duration-300 ease-out border-2;
+  }
+
+  .light-section .button {
+    @apply bg-muted rounded-xl border-card-foreground text-muted-foreground hover:-translate-y-2 hover:shadow-xl shadow-sm transition-all duration-300 ease-out border-2;
+  }
+
+
+
+
+
+  .card .bg-surface-alter {
+    background: linear-gradient(135deg, var(--water-light), var(--water-foam));
+  }
+
+  /* from-water-ocean via-water-sea to-water-deep */
+  .hero-overlay {
+    background: var(--gradient-hero);
+  }
+
+
+  .water-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .water-ripple::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 100%, var(--water-light), transparent 70%);
+    pointer-events: none;
+  }
+
+  .glass {
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+  }
+
+  .gradient-text {
+    background: var(--gradient-ocean);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-water-deep {
+    background: linear-gradient(270deg,
+        #0A4275,
+        #1a7fd1,
+        #4fb3ff,
+        #0A4275);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: waterFlow 6s ease infinite;
+  }
+
+  @keyframes waterFlow {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+  .card-hover {
+    @apply bg-card text-card-foreground;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .section-padding {
+    @apply py-8 md:py-24 lg:py-12;
+  }
+
+
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .white-glass {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.85),
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.2));
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 40px rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+  }
+
+  .button-primary {
+    @apply bg-red-700;
+  }
+
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-wave {
+    animation: wave 8s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+
+  25% {
+    transform: translateX(5px) translateY(-5px);
+  }
+
+  50% {
+    transform: translateX(0) translateY(-10px);
+  }
+
+  75% {
+    transform: translateX(-5px) translateY(-5px);
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { siteConfig } from "@/constants/siteData";
 
 export const AnimatedImgCard = ({ aboutImage }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -188,6 +189,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
               <img
                 src={aboutImage}
                 alt="SA Enviro Solutions Facility"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -277,15 +279,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             rotateX: useTransform(mouseY, [-0.5, 0.5], [-15, 15]),
             rotateY: useTransform(mouseX, [-0.5, 0.5], [15, -15]),
           }}
-          // animate={{
-          //   boxShadow: isHovered
-          //     ? [
-          //         "0 20px 40px rgba(var(--primary-rgb), 0.6)",
-          //         "0 30px 60px rgba(255, 0, 128, 0.8)",
-          //         "0 20px 40px rgba(var(--primary-rgb), 0.6)",
-          //       ]
-          //     : "0 20px 40px rgba(var(--primary-rgb), 0.4)",
-          // }}
           whileHover={{
             scale: 1.2,
             rotateZ: [0, -10, 10, 0],
@@ -410,7 +403,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
         {/* FLOATING 3D STATS CARD - IN FRONT */}
         {/* ========================================== */}
         <motion.div
-          className="absolute -bottom-8 -right-8 bg-gradient-to-br from-card/95 via-card to-card/90 rounded-2xl shadow-2xl border-2 border-primary/40 overflow-hidden backdrop-blur-xl"
+          className="absolute -bottom-8 -right-8 bg-gradient-to-br from-card/95 via-card to-card/90 rounded-2xl shadow-2xl  border-primary/40 overflow-hidden card-hover"
           style={{
             transformStyle: "preserve-3d",
             transform: "translateZ(80px)",
@@ -509,7 +502,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
                 }}
                 transition={{ duration: 4, repeat: Infinity }}
               >
-                10+
+                {siteConfig.stats.Experience}+
               </motion.span>
 
               {/* Pulsing Glow Behind Number */}

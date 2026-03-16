@@ -1,0 +1,221 @@
+:root {
+
+    /* Background - Very Light Cool Blue */
+    --background: 210 60% 97%;
+
+    /* Foreground - Dark Blue Black */
+    --foreground: 200 35% 8%;
+
+    /* Card - Pure White */
+    --card: 0 0% 100%;
+
+    /* Card Text - Dark Blue Black */
+    --card-foreground: 200 35% 8%;
+
+    /* Popover - Pure White */
+    --popover: 0 0% 100%;
+
+    /* Popover Text - Dark Blue Black */
+    --popover-foreground: 200 35% 8%;
+
+    /* Primary - Deep Ocean Blue */
+    --primary: 208 79% 35%;
+
+    /* Primary Text - White */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Sky Blue */
+    --secondary: 200 69% 49%;
+
+    /* Secondary Text - White */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted - Soft Blue Gray */
+    --muted: 210 25% 95%;
+
+    /* Muted Text - Medium Blue Gray */
+    --muted-foreground: 210 19% 44%;
+
+    /* Accent - Teal */
+    --accent: 185 73% 38%;
+
+    /* Accent Text - White */
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive - Bright Red */
+    --destructive: 0 86% 60%;
+
+    /* Destructive Text - White */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border - Light Blue Gray */
+    --border: 210 23% 89%;
+
+    /* Input - Light Blue Gray */
+    --input: 210 23% 89%;
+
+    /* Ring - Deep Ocean Blue */
+    --ring: 208 79% 35%;
+
+    --radius: 0.75rem;
+
+    /* Water Deep - Navy Blue */
+    --water-deep: 208 85% 25%;
+
+    /* Water Ocean - Ocean Blue */
+    --water-ocean: 208 79% 35%;
+
+    /* Water Sea - Clean Blue */
+    --water-sea: 200 75% 45%;
+
+    /* Water Sky - Bright Sky Blue */
+    --water-sky: 195 93% 60%;
+
+    /* Water Light - Soft Aqua */
+    --water-light: 192 78% 84%;
+
+    /* Water Foam - Very Light Aqua */
+    --water-foam: 190 67% 96%;
+
+    /* Steel - Neutral Gray */
+    --steel: 210 17% 65%;
+
+    /* Steel Dark - Dark Industrial Gray */
+    --steel-dark: 210 20% 35%;
+
+    /* Success - Green */
+    --success: 155 70% 41%;
+
+    /* Warning - Orange */
+    --warning: 38 96% 51%;
+
+    /* Error - Red */
+    --error: 7 80% 57%;
+
+    /* Sidebar Background - Deep Blue Black */
+    --sidebar-background: 200 35% 8%;
+
+    /* Sidebar Foreground - Light Gray */
+    --sidebar-foreground: 210 25% 95%;
+
+    /* Sidebar Primary - Sky Blue */
+    --sidebar-primary: 200 69% 49%;
+
+    /* Sidebar Primary Text - White */
+    --sidebar-primary-foreground: 0 0% 100%;
+
+    /* Sidebar Accent - Dark Blue */
+    --sidebar-accent: 205 35% 19%;
+
+    /* Sidebar Accent Text - Light Gray */
+    --sidebar-accent-foreground: 210 25% 95%;
+
+    /* Sidebar Border - Dark Slate */
+    --sidebar-border: 205 30% 25%;
+
+    /* Sidebar Ring - Sky Blue */
+    --sidebar-ring: 200 69% 49%;
+
+    /* Glass Surface - Transparent White */
+    --bg-surface-glass: 0 0% 100% / 0.1;
+
+    /* Shadows (unchanged format because they already use hsl) */
+
+    /* Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(210 85% 25%) 0%, hsl(200 75% 45%) 70%);
+    --gradient-sky: linear-gradient(180deg, hsl(195 85% 55%) 0%, hsl(210 80% 35%) 100%);
+    --gradient-water: linear-gradient(135deg, hsl(200 75% 45%) 0%, hsl(185 75% 40%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 85% 25% / 0.9) 0%, hsl(200 75% 45% / 0.8) 100%);
+    --gradient-water-deep: linear-gradient(120deg, #0A4275 0%, #0f5c9e 35%, #4fb3ff 55%, #0A4275 100%);
+
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px hsl(210 50% 10% / 0.05);
+    --shadow-md: 0 4px 16px hsl(210 50% 10% / 0.1);
+    --shadow-lg: 0 8px 32px hsl(210 50% 10% / 0.15);
+    --shadow-water: 0 10px 40px hsl(200 75% 45% / 0.2);
+}
+
+.dark {
+
+    /* Background - Very Dark Blue */
+    --background: 200 35% 6%;
+
+    /* Foreground - Light Gray */
+    --foreground: 210 25% 95%;
+
+    /* Card - Dark Slate */
+    --card: 205 35% 11%;
+
+    /* Card Text - Light Gray */
+    --card-foreground: 210 25% 95%;
+
+    /* Popover - Dark Slate */
+    --popover: 205 35% 11%;
+
+    /* Popover Text - Light Gray */
+    --popover-foreground: 210 25% 95%;
+
+    /* Primary - Bright Sky Blue */
+    --primary: 200 69% 49%;
+
+    /* Primary Text - White */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Deep Blue */
+    --secondary: 215 60% 30%;
+
+    /* Secondary Text - Light Gray */
+    --secondary-foreground: 210 25% 95%;
+
+    /* Muted - Dark Slate */
+    --muted: 210 35% 18%;
+
+    /* Muted Text - Soft Gray */
+    --muted-foreground: 210 28% 64%;
+
+    /* Accent - Bright Teal */
+    --accent: 185 75% 46%;
+
+    /* Accent Text - White */
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive - Dark Red */
+    --destructive: 0 70% 45%;
+
+    /* Destructive Text - White */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border - Dark Slate */
+    --border: 210 35% 22%;
+
+    /* Input - Dark Slate */
+    --input: 210 35% 22%;
+
+    /* Ring - Sky Blue */
+    --ring: 200 69% 49%;
+
+    /* Sidebar Background - Almost Black */
+    --sidebar-background: 210 35% 5%;
+
+    /* Sidebar Foreground - Light Gray */
+    --sidebar-foreground: 210 25% 95%;
+
+    /* Sidebar Primary - Sky Blue */
+    --sidebar-primary: 200 69% 49%;
+
+    /* Sidebar Primary Text - White */
+    --sidebar-primary-foreground: 0 0% 100%;
+
+    /* Sidebar Accent - Dark Navy */
+    --sidebar-accent: 205 35% 13%;
+
+    /* Sidebar Accent Text - Light Gray */
+    --sidebar-accent-foreground: 210 25% 95%;
+
+    /* Sidebar Border - Dark Slate */
+    --sidebar-border: 210 35% 18%;
+
+    /* Sidebar Ring - Sky Blue */
+    --sidebar-ring: 200 69% 49%;
+}
