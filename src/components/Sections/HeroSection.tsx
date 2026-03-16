@@ -14,9 +14,15 @@ interface HeroSectionProps {
   title: string;
   heading: string;
   subtitle: string;
+<<<<<<< Final-Branch
   rightContent?: ReactNode; 
   spotlightMember?: SpotlightMember; 
   avatarFlying?: boolean; 
+=======
+  rightContent?: ReactNode;
+  spotlightMember?: SpotlightMember; 
+  avatarFlying?: boolean;
+>>>>>>> master
 }
 
 export default function HeroSection({
