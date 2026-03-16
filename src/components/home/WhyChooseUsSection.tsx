@@ -19,7 +19,60 @@ export const WhyChooseUsSection = () => {
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-6">
                 Excellence in Every{" "}
-                <span className="text-water-light">Drop</span>
+                <span className="inline-flex items-baseline">
+                  <svg
+                    viewBox="0 0 420 90"
+                    className="overflow-visible font-3xl"
+                    aria-label="Drop."
+                    style={{ height: "1.875rem", width: "auto" }}
+                  >
+                    <defs>
+                      <linearGradient
+                        id="textGrad"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" stopColor="hsl(var(--water-ocean))" />
+                        <stop offset="45%" stopColor="hsl(var(--water-sky))" />
+                        <stop
+                          offset="100%"
+                          stopColor="hsl(var(--water-deep))"
+                        />
+                      </linearGradient>
+                    </defs>
+
+                    {/* ── Layer 1: stroke only (painted first = behind) ── */}
+                    <text
+                      x="0"
+                      y="78"
+                      fontFamily="'Playfair Display', serif"
+                      fontStyle="italic"
+                      fontWeight="700"
+                      fontSize="150"
+                      fill="none"
+                      stroke="#ffffff"
+                      strokeWidth="1.5"
+                      strokeLinejoin="round"
+                    >
+                      Drop.
+                    </text>
+
+                    {/* ── Layer 2: gradient fill on top ── */}
+                    <text
+                      x="0"
+                      y="78"
+                      fontFamily="'Playfair Display', serif"
+                      fontStyle="italic"
+                      fontWeight="700"
+                      fontSize="150"
+                      fill="url(#textGrad)"
+                    >
+                      Drop.
+                    </text>
+                  </svg>
+                </span>
               </h2>
               <p className="text-water-light/80 text-lg leading-relaxed">
                 {whyChooseUs.description}

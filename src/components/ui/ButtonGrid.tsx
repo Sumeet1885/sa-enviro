@@ -220,9 +220,6 @@ export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
                   ].join(" ")}
                   style={{ padding: "10px 20px" }}
                 >
-                  {/* Tiny glow dot — "I am clickable" cue */}
-                  <span className="hb-dot" aria-hidden />
-
                   {/* Label with shimmer sweep */}
                   <span className="hb-label" data-label={btn.name}>
                     {btn.name}
