@@ -14,7 +14,6 @@ const Client = () => {
         description={seoData.clients.description}
       />
 
-      {/* Hero */}
       <HeroSection
         title="Our Clients"
         heading="Our Esteemed Clients"

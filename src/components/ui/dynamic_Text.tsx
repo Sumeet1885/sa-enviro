@@ -9,7 +9,6 @@ const Extra_Text_Section = ({
 }) => {
   return (
     <>
-      {/* Extra Content Section */}
       {extraContent.map((block, index) => {
         if (block.type === "p") {
           return (

@@ -1,8 +1,4 @@
-/**
- * ButtonGrid.tsx
- * Wave-fill hover effect — pure Tailwind + React state.
- * Container/grid/layout: MOBILE RESPONSIVE.
- */
+
 
 import { useRef, useState } from "react";
 
@@ -107,25 +103,19 @@ export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
     <>
       <style>{WAVE_STYLE}</style>
 
-      {/* ── Outer wrapper: full width on mobile, centered fit on desktop ── */}
       <div className="w-full px-3 sm:px-4 md:px-0 md:w-fit md:mx-auto mt-5 max-w-full">
         <div className="relative p-2 sm:p-3">
           <div
             ref={rowRef}
             className={[
               "relative",
-              // Mobile: 2 equal columns, no overflow
               "grid grid-cols-2",
-              // Tablet: 3 columns
               "sm:grid-cols-3",
-              // Desktop: flex row, wraps naturally
               "md:flex md:flex-wrap md:justify-center",
-              // Gaps per breakpoint
               "gap-2 sm:gap-2 md:gap-2",
             ].join(" ")}
             style={{ zIndex: 1 }}
           >
-            {/* Desktop sliding ring — UNTOUCHED */}
             <span
               aria-hidden
               className="absolute rounded-2xl transition-all duration-[450ms] pointer-events-none hidden md:block"
@@ -153,55 +143,40 @@ export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
                   onMouseEnter={() => setHoveredIndex(i)}
                   onMouseLeave={() => setHoveredIndex(-1)}
                   className={[
-                    // ── Layout ──
                     "relative z-10",
                     "flex items-center justify-center gap-1.5",
 
-                    // ── Width: full in grid, auto in flex ──
                     "w-full md:w-auto",
 
-                    // ── Height: fixed so rows are uniform on mobile ──
                     "min-h-[40px] sm:min-h-[44px]",
 
-                    // ── Padding scales with screen ──
                     "px-3 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-2.5",
 
-                    // ── Text: fluid scaling, never overflows ──
                     "font-mono font-bold uppercase tracking-[0.05em]",
                     "text-[0.62rem] sm:text-[0.72rem] md:text-[0.85rem]",
 
-                    // ── Prevents text wrapping inside button ──
                     "whitespace-nowrap",
 
-                    // ── Prevents long labels from breaking the grid column ──
                     "overflow-hidden",
                     "min-w-0",
 
-                    // ── Shape ──
                     "rounded-xl sm:rounded-2xl",
 
-                    // ── Glass base ──
                     "bg-white/5",
                     "backdrop-blur-md",
                     "border border-white/20",
 
-                    // ── Cursor ──
                     "cursor-pointer select-none",
 
-                    // ── Focus ring ──
                     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60 focus-visible:outline-offset-2",
 
-                    // ── Pulse (paused on hover) ──
-                    // !isHovered ? `btn-pulse ${delayClass}` : "",
 
-                    // ── Active press ──
                     "active:-translate-y-px active:scale-[1.01]",
                     "transition-transform duration-150",
                   ]
                     .filter(Boolean)
                     .join(" ")}
                 >
-                  {/* ── White wave fill layer ── */}
                   <span
                     aria-hidden
                     className="absolute inset-0 bg-white pointer-events-none z-0 transition-[clip-path] duration-[700ms] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"
@@ -212,13 +187,11 @@ export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
                     }}
                   />
 
-                  {/* ── Label: sits above wave, flips black on hover ── */}
                   <span
                     className={[
                       "btn-shimmer-after",
                       "relative z-10",
                       "inline-block",
-                      // Truncate if label is extremely long
                       "truncate max-w-full",
                       "transition-colors duration-[700ms] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]",
                       isHovered ? "text-black" : "text-white",

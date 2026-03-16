@@ -1,4 +1,3 @@
-// Site data extracted from JSON - all content comes from here
 
 import Image1 from "@/assets/about-hero.webp";
 import Image2 from "@/assets/hero-water-treatment.webp";

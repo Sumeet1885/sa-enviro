@@ -6,11 +6,9 @@ export const AnimatedImgCard = ({ aboutImage }) => {
   const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef(null);
 
-  // Mouse position tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Smooth spring animations for mouse movement
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), {
     stiffness: 150,
     damping: 20,
@@ -20,7 +18,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
     damping: 20,
   });
 
-  // Parallax effects for floating elements
   const statsX = useSpring(useTransform(mouseX, [-1, 1], [-25, 25]), {
     stiffness: 100,
     damping: 15,
@@ -38,7 +35,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
     damping: 15,
   });
 
-  // Handle mouse move for 3D tilt effect
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
 
@@ -61,7 +57,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
 
   return (
     <>
-      {/* Main Container */}
       <motion.div
         ref={containerRef}
         className="relative cursor-pointer"
@@ -72,7 +67,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
           perspective: 1200,
         }}
       >
-        {/* Animated Background Glow with Mouse Following */}
         <motion.div
           className="absolute -inset-8 bg-gradient-to-r from-primary/30 via-primary/50 to-primary/30 rounded-3xl blur-3xl"
           animate={{
@@ -86,7 +80,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
           transition={{ duration: 0.3 }}
         />
 
-        {/* Floating Particles that Follow Mouse */}
         {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
@@ -117,7 +110,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
           />
         ))}
 
-        {/* Main 3D Tilting Card */}
         <motion.div
           className="relative z-0"
           style={{
@@ -131,7 +123,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
           }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          {/* Animated Rainbow Border */}
           <motion.div
             className="absolute -inset-1 rounded-2xl opacity-75 z-0 bg-gradient-to-r from-cyan-500/40 via-blue-600/40 to-teal-500/40"
             style={{
@@ -151,7 +142,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             }}
           />
 
-          {/* Main Image Container */}
           <motion.div
             className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-black z-0"
             style={{
@@ -159,7 +149,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
               transform: "translateZ(20px)",
             }}
           >
-            {/* Holographic Overlay Effect */}
             <motion.div
               className="absolute inset-0 pointer-events-none z-10"
               style={{
@@ -176,7 +165,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
               transition={{ duration: 2, repeat: isHovered ? Infinity : 0 }}
             />
 
-            {/* Image with Parallax */}
             <motion.div
               className="relative w-full h-full z-0"
               style={{
@@ -194,7 +182,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
               />
             </motion.div>
 
-            {/* Spotlight Effect Following Mouse */}
             <motion.div
               className="absolute inset-0 pointer-events-none z-10"
               style={{
@@ -203,7 +190,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
               }}
             />
 
-            {/* Scan Lines Effect */}
             <motion.div
               className="absolute inset-0 pointer-events-none z-10"
               style={{
@@ -216,7 +202,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
               transition={{ duration: 0.5, repeat: isHovered ? Infinity : 0 }}
             />
 
-            {/* Glitch Effect on Hover */}
             {isHovered && (
               <motion.div
                 className="absolute inset-0 pointer-events-none z-10"
@@ -239,7 +224,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             )}
           </motion.div>
 
-          {/* Click to Expand Hint */}
           <motion.div
             className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/80 text-white px-5 py-2.5 rounded-full text-sm font-medium backdrop-blur-md border border-white/20 z-30"
             initial={{ opacity: 0, y: 10 }}
@@ -266,9 +250,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
           </motion.div>
         </motion.div>
 
-        {/* ========================================== */}
-        {/* FLOATING 3D TROPHY BADGE - TOP LEFT - IN FRONT */}
-        {/* ========================================== */}
+
         <motion.div
           className="absolute -top-8 -left-8 bg-gradient-to-r from-cyan-500/40 via-blue-600/40 to-teal-500/40 text-white px-6 py-3 rounded-2xl font-bold shadow-2xl border-2 border-white/30 overflow-hidden backdrop-blur-sm"
           style={{
@@ -290,7 +272,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             scale: { type: "spring", stiffness: 300 },
           }}
         >
-          {/* Animated Shimmer Effect */}
           <motion.div
             className="absolute inset-0"
             style={{
@@ -308,7 +289,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             }}
           />
 
-          {/* Glowing Particles Inside Badge */}
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
@@ -331,7 +311,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
           ))}
 
           <div className="relative flex items-center gap-2.5 z-10">
-            {/* Animated Trophy Icon */}
             <motion.span
               className="text-3xl"
               animate={{
@@ -350,7 +329,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
               🏆
             </motion.span>
 
-            {/* Animated Text */}
             <motion.span
               className="text-base font-black tracking-wider"
               style={{
@@ -368,7 +346,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             </motion.span>
           </div>
 
-          {/* Pulsing Ring Effect */}
           <motion.div
             className="absolute inset-0 rounded-2xl border-2 border-white/50"
             animate={{
@@ -382,7 +359,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             }}
           />
 
-          {/* Corner Glow */}
           <motion.div
             className="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full"
             animate={{
@@ -399,9 +375,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
           />
         </motion.div>
 
-        {/* ========================================== */}
-        {/* FLOATING 3D STATS CARD - IN FRONT */}
-        {/* ========================================== */}
+
         <motion.div
           className="absolute -bottom-8 -right-8 bg-gradient-to-br from-card/95 via-card to-card/90 rounded-2xl shadow-2xl  border-primary/40 overflow-hidden card-hover"
           style={{
@@ -425,7 +399,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             damping: 20,
           }}
         >
-          {/* Animated Mesh Background */}
           <motion.div
             className="absolute inset-0"
             style={{
@@ -447,7 +420,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             }}
           />
 
-          {/* Glowing Animated Border */}
           <motion.div
             className="absolute inset-0 rounded-2xl"
             style={{
@@ -459,7 +431,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
             transition={{ duration: 2, repeat: Infinity }}
           />
 
-          {/* Radial Gradient Pulse */}
           <motion.div
             className="absolute top-0 right-0 w-32 h-32 rounded-full"
             style={{
@@ -475,7 +446,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
           />
 
           <div className="relative p-8">
-            {/* Animated Counter with 3D Effect */}
             <motion.div
               className="text-6xl font-display font-black mb-3 relative"
               style={{
@@ -505,7 +475,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
                 {siteConfig.stats.Experience}+
               </motion.span>
 
-              {/* Pulsing Glow Behind Number */}
               <motion.div
                 className="absolute inset-0 -z-10"
                 style={{
@@ -521,7 +490,6 @@ export const AnimatedImgCard = ({ aboutImage }) => {
               />
             </motion.div>
 
-            {/* Text with Wave Animation */}
             <motion.div
               className="text-black font-semibold mb-4"
               style={{
@@ -539,10 +507,8 @@ export const AnimatedImgCard = ({ aboutImage }) => {
               Years of Excellence
             </motion.div>
 
-            {/* Animated Multi-Layer Progress Bar */}
           </div>
 
-          {/* 3D Corner Accent with Pulse */}
           <motion.div
             className="absolute top-0 right-0 w-24 h-24 pointer-events-none"
             style={{

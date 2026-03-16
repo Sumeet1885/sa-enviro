@@ -1,4 +1,4 @@
-import React from "react";
+
 import ProductContentSection from "@/components/ui/ProductContentSection";
 import ProductShowCase from "@/components/ui/ProductShowCase";
 import { products } from "@/constants/siteData";

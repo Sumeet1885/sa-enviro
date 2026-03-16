@@ -3,19 +3,16 @@ interface main {
   description: string;
 }
 
-// Paragraph Block
 interface ParagraphBlock {
   type: "p";
   content: string;
 }
 
-// Subtitle Block
 interface SubtitleBlock {
   type: "subtitle";
   content: string;
 }
 
-// Key-Value Block
 interface KeyValueBlock {
   type: "keyValue";
   items: {
@@ -24,7 +21,6 @@ interface KeyValueBlock {
   }[];
 }
 
-// List Block
 interface ListBlock {
   type: "list";
   style: "bullet" | "number";
