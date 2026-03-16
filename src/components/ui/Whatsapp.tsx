@@ -1,5 +1,4 @@
 import { siteConfig } from "@/constants/siteData";
-import {} from "lucide-react";
 
 const WhatsAppButton = () => {
   const PhoneNumber = siteConfig.contact.phone.slice(4);

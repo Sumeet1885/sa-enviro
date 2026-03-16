@@ -2,9 +2,6 @@ import React, { useState, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Droplets } from "lucide-react";
 
-// ============================================================================
-// TYPES
-// ============================================================================
 
 interface Service {
   image: string;
@@ -17,15 +14,12 @@ interface ServiceCardProps {
   service: Service;
 }
 
-// ============================================================================
-// MINIMALIST ANIMATED ARTICLE CARD WITH READ MORE POPUP
-// ============================================================================
+
 
 export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  // Close popup on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (isPopupOpen) {
@@ -35,7 +29,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
 
     if (isPopupOpen) {
       window.addEventListener("scroll", handleScroll);
-      // Prevent body scroll when popup is open
       document.body.style.overflow = "hidden";
     }
 
@@ -45,7 +38,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
     };
   }, [isPopupOpen]);
 
-  // Use fullContent if provided, otherwise use description
   const displayContent = service.fullContent || service.description;
 
   return (
@@ -62,7 +54,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
           damping: 20,
         }}
       >
-        {/* Image Container with Hover Effect */}
         <motion.div
           className="relative overflow-hidden rounded-2xl lg:rounded-3xl"
           whileHover={{ scale: 1.02 }}
@@ -85,7 +76,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
             }}
           />
 
-          {/* Overlay gradient on hover */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
             initial={{ opacity: 0 }}
@@ -95,7 +85,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
             transition={{ duration: 0.3 }}
           />
 
-          {/* Animated shine effect */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
             initial={{ x: "-100%" }}
@@ -109,7 +98,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
           />
         </motion.div>
 
-        {/* Content Card with Animation */}
         <motion.div
           className="lg:rounded-l-[30px] lg:rounded-t-[30px] bg-card lg:absolute bottom-3 -right-16 lg:w-[18rem] px-5 py-4 lg:h-[18rem] shadow-xl"
           initial={{ x: 20, opacity: 0 }}
@@ -130,7 +118,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
             },
           }}
         >
-          {/* Title with Hover Effect */}
           <motion.h2
             className="text-2xl lg:text-3xl font-bold leading-tight mt-3 text-card-foreground"
             initial={{ opacity: 0, y: 10 }}
@@ -140,7 +127,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
             {service.title}
           </motion.h2>
 
-          {/* Description */}
           <motion.p
             className="text-card-foreground/80 my-7 leading-relaxed text-sm lg:text-base line-clamp-3"
             initial={{ opacity: 0 }}
@@ -150,7 +136,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
             {service.description}
           </motion.p>
 
-          {/* Read More Button - Enhanced */}
           <motion.button
             onClick={() => setIsPopupOpen(true)}
             className="group/btn absolute bottom-5 right-5 flex justify-end items-center uppercase text-primary font-bold text-sm overflow-hidden cursor-pointer"
@@ -159,7 +144,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
             transition={{ delay: 0.8 }}
             whileHover="hover"
           >
-            {/* Animated line */}
             <motion.span
               className="relative mr-4 block h-0.5 bg-primary/80 overflow-hidden"
               variants={{
@@ -172,7 +156,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                 damping: 25,
               }}
             >
-              {/* Shine effect on line */}
               <motion.span
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-300 to-transparent"
                 animate={{
@@ -186,10 +169,8 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
               />
             </motion.span>
 
-            {/* Text with underline effect */}
             <span className="relative">
               read more
-              {/* Animated underline */}
               <motion.span
                 className="absolute left-0 -bottom-1 w-full h-0.5 bg-primary/80"
                 initial={{ scaleX: 0 }}
@@ -205,7 +186,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
               />
             </span>
 
-            {/* Arrow Icon */}
             <motion.svg
               className="ml-2 w-4 h-4"
               fill="none"
@@ -229,7 +209,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
               />
             </motion.svg>
 
-            {/* Dot particles on hover */}
             {[0, 1, 2].map((i) => (
               <motion.span
                 key={i}
@@ -256,7 +235,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
           </motion.button>
         </motion.div>
 
-        {/* Floating particles around card */}
         {isHovered &&
           [0, 1, 2, 3].map((i) => (
             <motion.div
@@ -283,9 +261,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
           ))}
       </motion.div>
 
-      {/* ====================================================================== */}
-      {/* CONTENT POPUP MODAL - Similar to Reference Image */}
-      {/* ====================================================================== */}
       <AnimatePresence>
         {isPopupOpen && (
           <motion.div
@@ -295,7 +270,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {/* Backdrop with blur - Click to close */}
             <motion.div
               className="absolute inset-0 bg-foreground backdrop-blur-sm"
               initial={{ opacity: 0 }}
@@ -304,7 +278,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
               onClick={() => setIsPopupOpen(false)}
             />
 
-            {/* Modal Container - Rectangular and Centered */}
             <motion.div
               className="relative w-full max-w-5xl bg-popover rounded-2xl overflow-hidden shadow-2xl mx-auto"
               style={{ maxHeight: "85vh" }}
@@ -317,7 +290,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                 damping: 30,
               }}
             >
-              {/* Close Button - Top Left */}
               <motion.button
                 onClick={() => setIsPopupOpen(false)}
                 className="absolute top-6 left-6 z-10 w-10 h-10 bg-foreground/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-foreground transition-colors group/close"
@@ -338,9 +310,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                 />
               </motion.button>
 
-              {/* Content Layout - Similar to Reference Image */}
               <div className="flex flex-col lg:flex-row h-full">
-                {/* Left Side - Image */}
                 <motion.div
                   className="lg:w-1/2 relative overflow-hidden bg-card-foreground h-64 lg:h-auto"
                   initial={{ x: -50, opacity: 0 }}
@@ -354,11 +324,9 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                     className="w-full h-full object-obtain"
                   />
 
-                  {/* Decorative gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </motion.div>
 
-                {/* Right Side - Content */}
                 <motion.div
                   className="lg:w-1/2 p-6 lg:p-10 flex flex-col justify-center overflow-y-auto"
                   style={{ maxHeight: "85vh" }}
@@ -366,7 +334,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
                 >
-                  {/* Logo/Icon placeholder */}
                   <motion.div
                     className="mb-6"
                     initial={{ scale: 0 }}
@@ -378,7 +345,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                     </div>
                   </motion.div>
 
-                  {/* Title */}
                   <motion.h2
                     className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight"
                     initial={{ y: 20, opacity: 0 }}
@@ -388,7 +354,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                     {service.title}
                   </motion.h2>
 
-                  {/* Subtitle */}
                   <motion.p
                     className="text-sm text-gray-500 mb-6 font-medium"
                     initial={{ y: 20, opacity: 0 }}
@@ -398,7 +363,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                     Get started today!
                   </motion.p>
 
-                  {/* Full Content */}
                   <motion.div
                     className="text-gray-700 leading-relaxed space-y-4 mb-8 max-h-48 overflow-y-auto pr-2 custom-scrollbar"
                     initial={{ y: 20, opacity: 0 }}
@@ -412,7 +376,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                     ))}
                   </motion.div>
 
-                  {/* Decorative elements */}
                   <motion.div
                     className="absolute bottom-8 right-8 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl"
                     initial={{ scale: 0 }}
@@ -422,7 +385,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                 </motion.div>
               </div>
 
-              {/* Animated border accent */}
               <motion.div
                 className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"
                 initial={{ scaleX: 0 }}
@@ -431,7 +393,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
               />
             </motion.div>
 
-            {/* Floating particles around modal */}
             {[0, 1, 2, 3, 4, 5].map((i) => (
               <motion.div
                 key={`modal-particle-${i}`}
@@ -459,7 +420,6 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
         )}
       </AnimatePresence>
 
-      {/* Custom Scrollbar Styles */}
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;

@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { LOGOS, LogoItem } from "@/constants/siteData";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-// ─── Constant Data ─────────────────────────────────────────────────────────────
-// Each entry needs only: id, alt text, and an image URL.
-// Swap in your own URLs — any PNG, SVG, or WebP works.
-
-// ─── Logo Card ────────────────────────────────────────────────────────────────
 
 interface LogoCardProps {
   logo: LogoItem;
@@ -33,7 +26,6 @@ const LogoCard: React.FC<LogoCardProps> = ({ logo }) => {
         alt={logo.alt}
         className="w-full h-full s object-contain select-none pointer-events-none"
         style={{
-          /* Default: fully grayscale + dimmed */
           filter: "grayscale(0%)",
           opacity: 1,
           transition: "filter 0.45s ease, opacity 0.45s ease",
@@ -44,12 +36,10 @@ const LogoCard: React.FC<LogoCardProps> = ({ logo }) => {
   );
 };
 
-// ─── Main LogoShowcase ────────────────────────────────────────────────────────
 
 const LogoShowcase: React.FC = () => {
   return (
     <section className="w-full min-h-screen flex flex-col items-center justify-centerpx-4 py-16 sm:py-24">
-      {/* Header text */}
       <div className="text-center mb-10 sm:mb-14 space-y-2">
         <p className="text-[11px] text-foreground font-semibold uppercase tracking-[0.22em]     ">
           Trusted by world-class teams
@@ -59,13 +49,7 @@ const LogoShowcase: React.FC = () => {
         </h2>
       </div>
 
-      {/*
-        Responsive grid:
-          xs  (default) → 2 cols
-          sm  (≥640px)  → 3 cols
-          lg  (≥1024px) → 4 cols
-          xl  (≥1280px) → 6 cols
-      */}
+
       <div className="w-full max-w-6xl mx-auto grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
         {LOGOS.map((logo) => (
           <LogoCard key={logo.id} logo={logo} />

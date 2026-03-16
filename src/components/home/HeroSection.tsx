@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight} from "lucide-react";
 import { heroData } from "@/constants/siteData";
 import ButtonGrid from "../ui/ButtonGrid";
 import Product_Content from "../Sections/ProductContent";

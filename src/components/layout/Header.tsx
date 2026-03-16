@@ -11,7 +11,6 @@ import Logo from "@/assets/logo.webp";
 import { navigation, siteConfig } from "@/constants/siteData";
 import WhatsAppButton from "../ui/Whatsapp";
 
-// ── Types ─────────────────────────────────────────────────────────────────────
 export interface NavigationItem {
   name: string;
   href: string;
@@ -22,7 +21,6 @@ export interface NavigationItem {
   }[];
 }
 
-// ── Dropdown Component ────────────────────────────────────────────────────────
 interface DropdownProps {
   item: NavigationItem;
   isScrolled: boolean;
@@ -37,7 +35,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  // Lock body scroll when dropdown is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -87,7 +84,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
       >
         {item.name}
 
-        {/* Underline on hover */}
         <span
           className={`
             absolute -bottom-1 left-0 h-[2px] rounded-full
@@ -178,7 +174,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         )}
       </motion.button>
 
-      {/* Dropdown Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -244,7 +239,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
   );
 };
 
-// ── Mobile Menu Item ──────────────────────────────────────────────────────────
 interface MobileMenuItemProps {
   item: NavigationItem;
   location: ReturnType<typeof useLocation>;
@@ -404,22 +398,18 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
   );
 };
 
-// ── Main Header ───────────────────────────────────────────────────────────────
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // ── Hide / show on scroll ──────────────────────────────────────────────────
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
-  // ──────────────────────────────────────────────────────────────────────────
 
   const location = useLocation();
   const { scrollY } = useScroll();
   const navPadding = useTransform(scrollY, [0, 100], [5, 5]);
   const logoScale = useTransform(scrollY, [0, 100], [1, 1.0]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -435,19 +425,15 @@ export function Header() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Background change at 50px
       setIsScrolled(currentScrollY > 50);
 
-      // ── Hide on scroll DOWN, show on scroll UP ───────────────
       if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-        setIsVisible(false); // scrolling DOWN → hide
+        setIsVisible(false); 
       } else {
-        setIsVisible(true); // scrolling UP   → show
+        setIsVisible(true); 
       }
 
-      // Save position for next comparison
       lastScrollY.current = currentScrollY;
-      // ────────────────────────────────────────────────────────
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -458,9 +444,7 @@ export function Header() {
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
-        // ── This is the key animation ──────────────────────────
         animate={{ y: isVisible ? 0 : -120, opacity: isVisible ? 1 : 0 }}
-        // ───────────────────────────────────────────────────────
         transition={{
           type: "spring",
           stiffness: 100,
@@ -482,7 +466,6 @@ export function Header() {
         `}
         style={{ paddingTop: navPadding, paddingBottom: navPadding }}
       >
-        {/* Gradient overlay */}
         {isScrolled && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -497,7 +480,6 @@ export function Header() {
           </motion.div>
         )}
 
-        {/* Logo */}
         <Link
           to="/"
           className="flex items-center gap-2 sm:gap-3 group/logo relative transition-all duration-500 flex-shrink-0"
@@ -616,7 +598,6 @@ export function Header() {
           </motion.div>
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-6 flex-1 justify-center">
           {navigation.map((item, index) => (
             <Dropdown
@@ -628,7 +609,6 @@ export function Header() {
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
         <motion.button
           whileHover={{ scale: 1.15, rotate: 90 }}
           whileTap={{ scale: 0.95 }}
@@ -675,7 +655,6 @@ export function Header() {
           </AnimatePresence>
         </motion.button>
 
-        {/* Mobile Dropdown */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -713,7 +692,6 @@ export function Header() {
           )}
         </AnimatePresence>
 
-        {/* Floating particles */}
         {isScrolled && (
           <>
             {[...Array(5)].map((_, i) => (

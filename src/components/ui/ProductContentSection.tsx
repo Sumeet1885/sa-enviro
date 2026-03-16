@@ -66,19 +66,16 @@ const LayoutRenderer = ({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className={config.containerClass}>
-        {/* Image Section */}
         <div className={config.imageClass}>
           <Image_Section images={product.images[0]} />
         </div>
 
-        {/* Content Section */}
         <Content_Text_Section
           className={config.contentClass}
           content={product.main}
         />
       </div>
 
-      {/* Extra Content Section */}
       {product.Page_Description && (
         <Extra_Text_Section extraContent={product.Page_Description} />
       )}

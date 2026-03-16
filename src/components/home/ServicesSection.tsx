@@ -15,7 +15,6 @@ export const ServicesSection = () => {
   return (
     <section className="section-padding bg-muted/30 light-section">
       <div className="container-wide">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <AnimatedSection>
             <span className="inline-block px-4 py-1.5 rounded-full gradient-water-deep text-sm font-medium mb-4">
@@ -33,7 +32,6 @@ export const ServicesSection = () => {
           </AnimatedSection>
         </div>
 
-        {/* Services Grid */}
         <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {featuredServices.map((service) => (
             <StaggerItem className="h-[80%]" key={service.id}>
@@ -42,7 +40,6 @@ export const ServicesSection = () => {
           ))}
         </StaggerContainer>
 
-        {/* CTA */}
         <AnimatedSection className="text-center">
           <Button asChild size="lg">
             <Link to="/services">

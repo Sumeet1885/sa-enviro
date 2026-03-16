@@ -6,10 +6,10 @@ import { aboutData, siteConfig } from "@/constants/siteData";
 import aboutImage from "@/assets/about-hero.webp";
 import { AnimatedImgCard } from "@/components/ui/AnimatedImgCard";
 
-import { useState } from "react";
+
 
 export const AboutSection = () => {
-  const [isHovered, setIsHovered] = useState(false);
+
 
   return (
     <section className=" section-padding light-section relative overflow-hidden border-border border-2">
@@ -29,7 +29,6 @@ export const AboutSection = () => {
             <AnimatedImgCard aboutImage={aboutImage} />
           </AnimatedSection>
 
-          {/* Content */}
           <div>
             <AnimatedSection direction="right">
               <span className="inline-block px-4 py-1.5 rounded-full gradient-water-deep  text-sm font-medium mb-4">
