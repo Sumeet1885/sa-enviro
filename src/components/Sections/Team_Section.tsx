@@ -1,10 +1,4 @@
-// TeamSlider.tsx
-// Your original TestimonialSlider — 100% your styles, zero changes to visuals.
-// Only additions:
-//   • 3 new props: firstAvatarRef, holdPrimaryDetails, freezeCarousel
-//   • ref attached to i===0 avatar div for scroll animation target
-//   • panelIndex uses holdPrimaryDetails to lock content on member[0] mid-flight
-//   • freezeCarousel pauses auto-rotate while card is in flight
+// TeamSlider.tsx — full rewrite of autorotate/waiting logic, zero visual changes
 
 import React, {
   useState,
@@ -15,18 +9,15 @@ import React, {
 } from "react";
 import { team_member } from "@/constants/siteData";
 
-const AUTOROTATE_TIMING = 7000;
+const AUTOROTATE_MS = 7000;
 const BIO_CLAMP_LINES = 3;
 
-const HIGHLIGHT_INDEX = team_member.flatMap((user, i) =>
-  user.highlight ? [i] : [],
-);
+const HIGHLIGHT_INDEX = team_member.flatMap((u, i) => (u.highlight ? [i] : []));
 
-// ─── Props ────────────────────────────────────────────────────────────────────
 interface TeamSliderProps {
-  firstAvatarRef?: RefObject<HTMLDivElement>; // attached to i===0 avatar circle
-  holdPrimaryDetails?: boolean; // lock content panel on member[0]
-  freezeCarousel?: boolean; // pause auto-rotate
+  firstAvatarRef?: RefObject<HTMLDivElement>;
+  holdPrimaryDetails?: boolean;
+  freezeCarousel?: boolean;
 }
 
 export default function TeamSlider({
@@ -41,51 +32,74 @@ export default function TeamSlider({
   );
   const [expanded, setExpanded] = useState(false);
   const [isTruncated, setIsTruncated] = useState(false);
+  // barKey forces the progress bar CSS animation to restart even when
+  // active is already 0 (e.g. user scrolls up then back down).
+  const [barKey, setBarKey] = useState(0);
 
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const bioRef = useRef<HTMLParagraphElement>(null);
 
-  /* ── autorotate ── */
-  const stopAutorotate = useCallback(() => {
+  // ── Single source of truth for the interval ──────────────────────────────
+  // All autorotate logic reads/writes this ref directly — no stale closures.
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const freezeRef = useRef(freezeCarousel); // mirror of prop, always current
+  const isMountedRef = useRef(false); // skip reset on very first render
+
+  // Keep freezeRef in sync with the prop every render (no effect needed)
+  freezeRef.current = freezeCarousel;
+
+  // ── Core interval helpers (stable — never recreated) ─────────────────────
+  const stopInterval = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
   }, []);
 
-  const startAutorotate = useCallback(() => {
-    stopAutorotate();
-    if (freezeCarousel) return; // paused while spotlight card is in flight
+  const startInterval = useCallback(() => {
+    stopInterval();
+    if (freezeRef.current) return; // respect current freeze state via ref
     intervalRef.current = setInterval(() => {
-      setActive((p) => (p + 1 === team_member.length ? 0 : p + 1));
-    }, AUTOROTATE_TIMING);
-  }, [stopAutorotate, freezeCarousel]);
+      setActive((p) => (p + 1 >= team_member.length ? 0 : p + 1));
+    }, AUTOROTATE_MS);
+  }, [stopInterval]);
 
-  // When the scroll animation lands (freezeCarousel flips false → true → false):
-  // reset active back to member[0] so the progress bar restarts from that user.
+  // ── Mount: start autorotate once, clean up on unmount ────────────────────
   useEffect(() => {
+    startInterval();
+    isMountedRef.current = true;
+    return () => {
+      stopInterval();
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, [startInterval, stopInterval]);
+
+  // ── React to freezeCarousel prop changes ─────────────────────────────────
+  // This is the only place that controls the pause/resume cycle.
+  // A ref guards against firing on first mount so we don't reset member[0]
+  // before the user has even seen the page.
+  useEffect(() => {
+    if (!isMountedRef.current) return; // skip initial render
+
     if (freezeCarousel) {
-      stopAutorotate();
+      // Avatar is flying — pause rotation, keep current member visible
+      stopInterval();
     } else {
-      // Card just landed — snap back to member[0] and restart the timer fresh
+      // Avatar just landed — reset to member[0] with a clean state, then
+      // start a fresh interval so the progress bar begins from zero.
+      // barKey increments so the bar CSS animation remounts even if
+      // active is already 0 (scroll-up then scroll-down scenario).
       setActive(0);
       setDisplayed(0);
       setPhase("idle");
-      startAutorotate();
+      setExpanded(false);
+      setBarKey((k) => k + 1);
+      startInterval();
     }
-  }, [freezeCarousel, startAutorotate, stopAutorotate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [freezeCarousel]); // intentionally omit start/stop — they're stable
 
-  // Start on mount
-  useEffect(() => {
-    startAutorotate();
-    return () => {
-      stopAutorotate();
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, [startAutorotate, stopAutorotate]);
-
-  /* ── slide transition ── */
+  // ── Slide transition (active changes → animate content out then in) ──────
   useEffect(() => {
     if (active === displayed) return;
     setPhase("exit");
@@ -100,7 +114,7 @@ export default function TeamSlider({
     return () => clearTimeout(t);
   }, [active, displayed]);
 
-  /* ── bio overflow detection ── */
+  // ── Bio overflow check ────────────────────────────────────────────────────
   useEffect(() => {
     const el = bioRef.current;
     if (!el) return;
@@ -110,20 +124,30 @@ export default function TeamSlider({
     return () => window.removeEventListener("resize", check);
   }, [displayed, expanded, phase]);
 
-  const handleClick = (i: number) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-    stopAutorotate();
-    setActive(i);
-    timeoutRef.current = setTimeout(() => {
-      startAutorotate();
-      timeoutRef.current = null;
-    }, AUTOROTATE_TIMING);
-  };
+  // ── Manual avatar click ───────────────────────────────────────────────────
+  // Stop autorotate, switch member, then resume after one full cycle of inactivity
+  const handleClick = useCallback(
+    (i: number) => {
+      if (resumeTimerRef.current) {
+        clearTimeout(resumeTimerRef.current);
+        resumeTimerRef.current = null;
+      }
+      stopInterval();
+      setActive(i);
+      setBarKey((k) => k + 1); // restart bar animation for the newly selected member
+      resumeTimerRef.current = setTimeout(() => {
+        startInterval();
+        resumeTimerRef.current = null;
+      }, AUTOROTATE_MS);
+    },
+    [startInterval, stopInterval],
+  );
 
-  /* ── phase → inline transition styles ── */
+  // ── Derived ───────────────────────────────────────────────────────────────
+  const panelIndex = holdPrimaryDetails ? 0 : displayed;
+  const user = team_member[panelIndex];
+  const isHighlight = (i: number) => HIGHLIGHT_INDEX.includes(i);
+
   const ease = "cubic-bezier(0.4,0,0.2,1)";
   const contentFade = ((): React.CSSProperties => {
     if (phase === "exit")
@@ -143,17 +167,12 @@ export default function TeamSlider({
     return { opacity: 1, transform: "translateY(0)" };
   })();
 
-  /* ── avatar size / pop transition ── */
   const avatarTransition: React.CSSProperties = {
     transition:
       "width 420ms cubic-bezier(0.4,0,0.2,1), transform 420ms cubic-bezier(0.4,0,0.2,1)",
   };
 
-  // When holdPrimaryDetails is true, always show member[0] in content panel
-  const panelIndex = holdPrimaryDetails ? 0 : displayed;
-  const user = team_member[panelIndex];
-  const isHighlight = (i: number) => HIGHLIGHT_INDEX.includes(i);
-
+  // ── Render ────────────────────────────────────────────────────────────────
   return (
     <>
       <style>{`
@@ -180,7 +199,6 @@ export default function TeamSlider({
         .ts-bio::-webkit-scrollbar-thumb  { background: var(--primary,#1d4ed8); border-radius: 999px; }
       `}</style>
 
-      {/* ── Page shell ── */}
       <div className="w-full bg-background flex items-start justify-center px-4 py-6 sm:px-6 sm:py-12">
         <div className="w-full max-w-[1000px] flex flex-col">
           {/* ── Top bar ── */}
@@ -199,7 +217,6 @@ export default function TeamSlider({
             {team_member.map((u, i) => {
               const isActive = active === i;
               const isFeatured = isHighlight(i);
-
               return (
                 <button
                   key={i}
@@ -214,19 +231,12 @@ export default function TeamSlider({
                     ...avatarTransition,
                   }}
                 >
-                  {/* ── Featured star badge ── */}
                   {isFeatured && (
                     <div className="absolute -top-2 -right-1 z-20 w-[18px] h-[18px] flex items-center justify-center rounded-full bg-amber-400 text-white shadow-md text-[0.52rem] font-semibold">
                       ★
                     </div>
                   )}
 
-                  {/* ── Circle avatar ── */}
-                  {/*
-                    i === 0 gets firstAvatarRef so Team.tsx can read its
-                    bounding rect as the scroll animation target.
-                    Styles are 100% your original — no changes.
-                  */}
                   <div
                     ref={i === 0 ? firstAvatarRef : undefined}
                     className={[
@@ -266,7 +276,6 @@ export default function TeamSlider({
                     )}
                   </div>
 
-                  {/* ── Name label ── */}
                   <span
                     className={[
                       "text-center font-mono leading-tight truncate w-full px-0.5 transition-colors duration-200",
@@ -284,11 +293,10 @@ export default function TeamSlider({
                     {isActive ? u.name : u.name.split(" ")[0]}
                   </span>
 
-                  {/* ── Progress bar under active ── */}
                   {isActive && (
                     <div className="w-full h-[2px] rounded-full overflow-hidden bg-foreground/8">
                       <div
-                        key={active}
+                        key={barKey}
                         className="ts-fill h-full rounded-full"
                         style={{
                           background:
@@ -307,7 +315,6 @@ export default function TeamSlider({
             className="border-t border-foreground/10 pt-4 sm:pt-5"
             style={contentFade}
           >
-            {/* Featured banner */}
             {isHighlight(panelIndex) && (
               <div className="flex items-center gap-2 mb-3">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-amber-700 bg-amber-50 border border-amber-200 text-[0.6rem] tracking-[0.15em] uppercase font-medium font-mono">
@@ -316,8 +323,7 @@ export default function TeamSlider({
               </div>
             )}
 
-            {/* Name + role row */}
-            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4 mb-4 sm:mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4 mb-2s sm:mb-6">
               <h2 className="font-light italic gradient-text leading-tight text-[clamp(1.5rem,4vw,2.2rem)]">
                 {user.name}
               </h2>
@@ -327,7 +333,6 @@ export default function TeamSlider({
               </span>
             </div>
 
-            {/* Accent divider */}
             <div
               className="w-10 h-px mb-4"
               style={{
@@ -336,9 +341,7 @@ export default function TeamSlider({
               }}
             />
 
-            {/* Two-col: Speciality | About */}
             <div className="grid grid-cols-1 sm:grid-cols-[1fr_1.6fr] gap-5 sm:gap-12 lg:gap-16 items-start">
-              {/* Left — functionality */}
               <div className="flex flex-col gap-3">
                 <span className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-foreground/80">
                   Speciality
@@ -348,12 +351,10 @@ export default function TeamSlider({
                 </p>
               </div>
 
-              {/* Right — bio */}
               <div className="flex flex-col">
                 <span className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-foreground/80 mb-3">
                   About
                 </span>
-
                 <div className="relative">
                   <p
                     ref={bioRef}
@@ -376,14 +377,11 @@ export default function TeamSlider({
                   >
                     {user.details}
                   </p>
-
-                  {/* Fade hint */}
                   {!expanded && isTruncated && (
                     <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none" />
                   )}
                 </div>
 
-                {/* Read more / less */}
                 {isTruncated && (
                   <button
                     onClick={() => setExpanded((v) => !v)}
