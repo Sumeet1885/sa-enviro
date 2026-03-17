@@ -66,6 +66,10 @@ const Product_DropDown = [
     name: "Water Softeners Plant",
     key: "water_softeners_plant",
   },
+  {
+    name: "AMC Services",
+    key: "amc_services",
+  },
 ];
 
 const Option_Dropdown = [
@@ -152,10 +156,39 @@ export const heroData: HeroData = {
   slides: [
     {
       id: 1,
-      title: "Modern Wastewater Treatment Facility",
-      subtitle: "Engineering clean water for a sustainable future",
-      desc: "An aerial view of an advanced wastewater treatment plant featuring large circular clarifier tanks, interconnected pipelines.",
-      img: Image1,
+      title: "Water Treatment Plant",
+      subtitle: "Reliable Water Purification Solutions",
+      desc: "Our Water Treatment Plant ensures the efficient purification and management of water using advanced technologies, delivering safe, sustainable, and high-quality water for industrial and community needs.",
+      img: Image3,
+      buttons: [
+        {
+          label: "UF",
+          name: "Ultra Filtration",
+          key: "ultra_filtration",
+        },
+        {
+          label: "RO",
+          name: "Reverse Osmosis",
+          key: "reverse_osmosis",
+        },
+        {
+          label: "DP",
+          name: "Demineralisation Plants",
+          key: "demineralisation_plants",
+        },
+        {
+          label: "WSP",
+          name: "Water Softeners Plant",
+          key: "water-softeners-plant",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Waste Water Treatment",
+      subtitle: "Efficient Wastewater Management Solutions",
+      desc: "Our wastewater treatment systems are designed to effectively remove contaminants, ensuring environmentally safe discharge and sustainable water reuse through advanced treatment technologies.",
+      img: Image3,
       buttons: [
         {
           label: "STP",
@@ -175,99 +208,17 @@ export const heroData: HeroData = {
       ],
     },
     {
-      id: 2,
-      title: "Industrial Water Filtration System",
-      subtitle: "Precision-engineered purification infrastructure",
-      desc: "Interior view of a high-grade industrial filtration plant featuring stainless steel pressure vessels, interconnected pipe networks.",
-      img: Image2,
-      buttons: [
-        {
-          label: "WTP",
-          name: "Water Treatment Plants",
-          key: "water_treatment_plants",
-        },
-        {
-          label: "ZLD",
-          name: "Zero Liquid Discharge ",
-          key: "zero_liquid_discharge",
-        },
-        {
-          label: "UF",
-          name: "Ultra Filtration",
-          key: "ultra_filtration",
-        },
-      ],
-    },
-    {
       id: 3,
-      title: "Rural Wastewater Treatment Site",
-      subtitle: "Compact ecological water management",
-      desc: "Top-down aerial view of a community-scale wastewater treatment plant featuring circular settling tanks, sludge basins.",
-      img: Image3,
+      title: "Service",
+      subtitle: "Reliable Annual Maintenance Solutions",
+      desc: "Our AMC services ensure regular inspection, maintenance, and timely support to keep your systems operating efficiently, minimizing downtime and extending equipment lifespan.",
+      img: Image1,
 
       buttons: [
         {
-          label: "RO",
-          name: "Reverse Osmosis",
-          key: "reverse_osmosis",
-        },
-        {
-          label: "DP",
-          name: "Demineralisation Plants",
-          key: "demineralisation_plants",
-        },
-        {
-          label: "WSP",
-          name: "Water Softeners Plant",
-          key: "water_softeners_plant",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Abstract Perspectives",
-      subtitle: "Finding symmetry in chaos",
-      desc: "Modern abstract forms and human emotion.",
-      img: Image4,
-      buttons: [
-        {
-          label: "WTP",
-          name: "Water Treatment Plants",
-          key: "water_treatment_plants",
-        },
-        {
-          label: "ZLD",
-          name: "Zero Liquid Discharge ",
-          key: "zero_liquid_discharge",
-        },
-        {
-          label: "UF",
-          name: "Ultra Filtration",
-          key: "ultra_filtration",
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: "Municipal Clarifier Basin",
-      subtitle: "Final stage sedimentation for clean discharge",
-      desc: "Ground-level view of a circular secondary clarifier where treated water is separated from residual solids using a slow rotating bridge and scraper system.",
-      img: Image4,
-      buttons: [
-        {
-          label: "RO",
-          name: "Reverse Osmosis",
-          key: "reverse_osmosis",
-        },
-        {
-          label: "DP",
-          name: "Demineralisation Plants",
-          key: "demineralisation_plants",
-        },
-        {
-          label: "WSP",
-          name: "Water Softeners Plant",
-          key: "water_softeners_plant",
+          label: "AMC",
+          name: "AMC Services",
+          key: "amc_services",
         },
       ],
     },
@@ -887,7 +838,6 @@ export const blogs = [
 ];
 
 export const LOGOS: LogoItem[] = [
-
   {
     id: "picture-1",
     alt: "Industrial water treatment equipment setup view 1",
@@ -1435,6 +1385,36 @@ export const products: Product[] = [
           "Easy to install and operate",
           "Produces soft, non-scale forming water",
         ],
+      },
+    ],
+  },
+  {
+    key: "amc_services",
+    main: {
+      title: "AMC Services",
+      description:
+        'SA Enviro Solutions provide Annual Maintenance Contract (AMC) Services for ETP (Effluent Treatment Plants), WTP (Water Treatment Plants), WWTP (Wastewater Treatment Plants), STP (Sewage Treatment Plants), DM (Demineralization) Plants, RO (Reverse Osmosis) Plants and our setup is situated in Pune, Maharashtra, India. We are specialized in providing "Operation and Maintenance" (AMC) facility including of Health, Safety & Water and Wastewater Treatment Plants.',
+    },
+    images: [
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
+        alt: "SA Enviro Solutions Company Logo",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "subtitle",
+        content: "AMC Service:",
+      },
+      {
+        type: "p",
+        content:
+          "We have a dedicated expert service department as well as highly trained plant operators who have been given extensive responsibilities on the plant sites. This staff ensures that all the plants are operated as per the required standards and to the fullest capacity. The water that is treated in these plants has been analysed in labs approved by the Government. They take care that all the maintenance schedules are adhered to do and all guidelines followed. When we undertake Annual maintenance contracts, the service engineers we have hired make plant visits and see if all the jobs are being completed as per the requirements.",
+      },
+      {
+        type: "p",
+        content:
+          "The arrangement and supply of Spare parts for such plants is also a part of the AMC contracts.",
       },
     ],
   },
