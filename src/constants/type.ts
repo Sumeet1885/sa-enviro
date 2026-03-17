@@ -1,6 +1,22 @@
+interface SCHEMA {
+  "@context": string;
+  "@type": string;
+  [key: string]: any;
+}
+
+interface SEO {
+  title: string;
+  description: string;
+  keywords: string;
+  url: string;
+  image: string;
+  schema: SCHEMA;
+}
+
 interface main {
   title: string;
   description: string;
+  seo: SEO;
 }
 
 interface ParagraphBlock {
