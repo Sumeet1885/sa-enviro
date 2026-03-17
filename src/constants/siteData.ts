@@ -997,6 +997,35 @@ export const products: Product[] = [
       title: "Sewage Treatment Plants",
       description:
         "On the Activated Sludge Process basis sewage treatment plants are designed. The advanced technologies involved to treat sewage such as MBBR technology, UASB technology and Sequential Batch Reactor (SBR). These technologies are discussed below:",
+      seo: {
+        title:
+          "Sewage Treatment Plant (STP) Manufacturer in India | SA Enviro Solutions",
+        description:
+          "Advanced Sewage Treatment Plants using SBR, MBBR & UASB technology for residential, industrial and commercial wastewater treatment.",
+        keywords:
+          "sewage treatment plant, STP plant manufacturer, wastewater treatment system, sewage water treatment plant India, SBR STP, MBBR STP, UASB technology",
+        url: "https://yourdomain.com/products/sewage-treatment-plants",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Sewage Treatment Plant",
+          name: "Sewage Treatment Plant (STP)",
+          description:
+            "Design, manufacturing and installation of Sewage Treatment Plants using SBR, MBBR and UASB technologies for residential, industrial and commercial wastewater treatment.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Pune",
+              addressCountry: "India",
+            },
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
@@ -1144,6 +1173,30 @@ export const products: Product[] = [
       title: "Zero Liquid Discharge (ZLD)",
       description:
         "ZLD is a strategic wastewater management system that ensures that there will be no discharge of industrial wastewater into the environment. It is achieved by treating wastewater through recycling and then recovery and reuse for industrial purpose.",
+      seo: {
+        title:
+          "Zero Liquid Discharge (ZLD) System | Industrial Wastewater Recycling",
+        description:
+          "Zero Liquid Discharge (ZLD) systems designed to recycle industrial wastewater and eliminate liquid discharge while maximizing water reuse.",
+        keywords:
+          "zero liquid discharge system, ZLD plant, industrial wastewater recycling, water reuse system, ZLD wastewater treatment",
+        url: "https://yourdomain.com/products/zero-liquid-discharge",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725965/zld-1024x332_b4pteu.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Zero Liquid Discharge System",
+          name: "Zero Liquid Discharge (ZLD) System",
+          description:
+            "Industrial Zero Liquid Discharge systems designed to recycle wastewater and eliminate liquid discharge through advanced water recovery technologies.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
@@ -1158,6 +1211,30 @@ export const products: Product[] = [
       title: "Effluent Treatment Plant",
       description:
         "We at SA Enviro Solutions manufacture and supply effluent treatment plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent. The industrial effluent treatment plants involve different stages of treatment including physio-chemical treatment and biological treatment followed by tertiary treatment. Integrated functions with simple control make the operation much easier. Our engineers can also custom design the effluent treatment plants based on the specific application requirement of the customers. Our Industrial effluent treatment plants have a compact design and can be easily installed on the site.",
+      seo: {
+        title:
+          "Effluent Treatment Plant (ETP) Manufacturer | Industrial Wastewater Treatment",
+        description:
+          "Effluent Treatment Plants designed for industries like chemical, pharma, textile and food processing to treat industrial wastewater safely.",
+        keywords:
+          "effluent treatment plant, ETP plant manufacturer, industrial wastewater treatment, effluent treatment system, ETP plant India",
+        url: "https://yourdomain.com/products/effluent-treatment-plants",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/etp5-585x390_kxoqs6.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Effluent Treatment Plant",
+          name: "Industrial Effluent Treatment Plant (ETP)",
+          description:
+            "Industrial effluent treatment plants designed to treat wastewater from chemical, pharmaceutical, textile and manufacturing industries.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
@@ -1214,6 +1291,30 @@ export const products: Product[] = [
       title: "Water Treatment Plants",
       description:
         "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants. We also offer effective turnkey solutions for these plants to our clients. Wide range of plants are demanded in API, Chemical, Paint, Food processing and Dye industries.",
+      seo: {
+        title:
+          "Water Treatment Plant Manufacturer | Industrial & Municipal WTP",
+        description:
+          "High quality water treatment plants for industrial, municipal and commercial applications including packaged and turnkey WTP solutions.",
+        keywords:
+          "water treatment plant, WTP plant manufacturer, industrial water treatment system, municipal water treatment plant, packaged WTP",
+        url: "https://yourdomain.com/products/water-treatment-plants",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Water Treatment Plant",
+          name: "Industrial Water Treatment Plants",
+          description:
+            "Design and supply of industrial and municipal water treatment plants including packaged and turnkey water purification systems.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
@@ -1248,6 +1349,30 @@ export const products: Product[] = [
       title: "Ultra Filtration (UF)",
       description:
         "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds colloidal and particulate matters from a feed stream.",
+      seo: {
+        title:
+          "Ultra Filtration (UF) System | Industrial Water Filtration Solutions",
+        description:
+          "Ultrafiltration (UF) membrane systems for removing bacteria, viruses and suspended particles from water for industrial and commercial use.",
+        keywords:
+          "ultra filtration system, UF water treatment plant, UF membrane filtration, ultrafiltration plant India",
+        url: "https://yourdomain.com/products/ultra-filtration",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/UF1_cbo64i.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Ultra Filtration System",
+          name: "Ultra Filtration (UF) Water Treatment System",
+          description:
+            "Ultrafiltration membrane systems for removing bacteria, viruses and suspended particles from water for industrial and commercial use.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
@@ -1267,6 +1392,30 @@ export const products: Product[] = [
       title: "Reverse osmosis (RO)",
       description:
         "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water. In reverse osmosis, an applied pressure is used to overcome osmotic pressure, a colligative property that is driven by chemical potential differences of the solvent, a thermodynamic parameter.",
+      seo: {
+        title:
+          "Reverse Osmosis (RO) Plant | Industrial RO Water Purification Systems",
+        description:
+          "Reverse Osmosis (RO) plants for industrial, commercial and domestic water purification with advanced membrane filtration technology.",
+        keywords:
+          "reverse osmosis plant, RO water treatment system, industrial RO plant manufacturer, RO water purification system",
+        url: "https://yourdomain.com/products/reverse-osmosis",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725957/RO1-585x390_u0sgvg.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Reverse Osmosis Plant",
+          name: "Industrial Reverse Osmosis (RO) Water Treatment Plant",
+          description:
+            "Industrial reverse osmosis water purification systems designed for commercial, institutional and industrial water treatment.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
@@ -1314,6 +1463,30 @@ export const products: Product[] = [
       title: "Demineralisation Plants [DM]",
       description:
         "It is the process of removing mineral salts from water by using the ion exchange process. Demineralisation produces water of a higher quality than conventional distillation.",
+      seo: {
+        title:
+          "Demineralisation Plant (DM Plant) | Industrial Deionized Water Systems",
+        description:
+          "Demineralisation plants designed to remove mineral salts from water using ion exchange technology for industrial applications.",
+        keywords:
+          "demineralisation plant, DM water plant, deionized water system, industrial DM plant manufacturer",
+        url: "https://yourdomain.com/products/demineralisation-plants",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/DMplants-585x340_dih1yh.gif",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Demineralisation Plant",
+          name: "Demineralisation (DM) Water Treatment Plant",
+          description:
+            "Demineralisation plants using ion exchange technology to remove dissolved mineral salts and produce high purity industrial water.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
@@ -1350,6 +1523,29 @@ export const products: Product[] = [
       title: "Water Softeners Plant",
       description:
         "The Water Softeners are available in different sizes and materials, manually operated or fully Automatic and ready to install. The Water Softening Plants are available as standard models or custom-built versions for specific needs.",
+      seo: {
+        title: "Industrial Water Softener Plant | Hard Water Treatment Systems",
+        description:
+          "Water softening plants designed to remove hardness from water using ion exchange resin for industrial and commercial use.",
+        keywords:
+          "water softener plant, industrial water softener system, hard water treatment plant, water softening system India",
+        url: "https://yourdomain.com/products/water-softeners-plant",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Water Softening System",
+          name: "Industrial Water Softener Plant",
+          description:
+            "Water softening plants designed to remove hardness from water using ion exchange resin technology for industrial and commercial applications.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
@@ -1394,6 +1590,35 @@ export const products: Product[] = [
       title: "AMC Services",
       description:
         'SA Enviro Solutions provide Annual Maintenance Contract (AMC) Services for ETP (Effluent Treatment Plants), WTP (Water Treatment Plants), WWTP (Wastewater Treatment Plants), STP (Sewage Treatment Plants), DM (Demineralization) Plants, RO (Reverse Osmosis) Plants and our setup is situated in Pune, Maharashtra, India. We are specialized in providing "Operation and Maintenance" (AMC) facility including of Health, Safety & Water and Wastewater Treatment Plants.',
+      seo: {
+        title:
+          "AMC Services for STP, ETP, WTP & RO Plants | SA Enviro Solutions",
+        description:
+          "Professional Annual Maintenance Contract (AMC) services for STP, ETP, WTP, RO and DM plants ensuring smooth and efficient plant operation.",
+        keywords:
+          "AMC services for water treatment plants, STP maintenance service, ETP AMC service, wastewater treatment plant maintenance",
+        url: "https://yourdomain.com/products/amc-services",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Water Treatment Plant Maintenance",
+          name: "AMC Services for Water Treatment Plants",
+          description:
+            "Annual Maintenance Contract (AMC) services for STP, ETP, WTP, RO and DM plants ensuring efficient operation and long-term reliability.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Pune",
+              addressCountry: "India",
+            },
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
