@@ -586,7 +586,7 @@ export const seoData = {
 export const blogs = [
   {
     id: 1,
-    title: "About Effluent Treatment Plant",
+    title: "Learn about Water Softeners Plant",
     excerpt:
       "The Water Softeners are available in different sizes and materials, manually operated or fully automatic and ready to install.",
     content: [

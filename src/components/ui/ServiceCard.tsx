@@ -2,7 +2,6 @@ import React, { useState, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Droplets } from "lucide-react";
 
-
 interface Service {
   image: string;
   title: string;
@@ -14,26 +13,16 @@ interface ServiceCardProps {
   service: Service;
 }
 
-
-
 export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (isPopupOpen) {
-        setIsPopupOpen(false);
-      }
-    };
-
     if (isPopupOpen) {
-      window.addEventListener("scroll", handleScroll);
       document.body.style.overflow = "hidden";
     }
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       document.body.style.overflow = "unset";
     };
   }, [isPopupOpen]);
@@ -41,7 +30,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
   const displayContent = service.fullContent || service.description;
 
   return (
-    <article className="mx-auto lg:max-w-2xl w-[80%]">
+    <article className="mx-auto lg:max-w-2xl w-[90%] sm:w-[80%]">
       <motion.div
         className="relative"
         onMouseEnter={() => setIsHovered(true)}
@@ -65,7 +54,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
         >
           <motion.img
             src={service.image}
-            className="w-full aspect-[3/2] lg:aspect-[4/5] h-48 lg:h-[28rem] object-obtain"
+            className="w-full h-80 sm:h-96 lg:h-[28rem] object-cover object-center"
             alt={service.title}
             animate={{
               scale: isHovered ? 1.05 : 1,
@@ -99,7 +88,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
         </motion.div>
 
         <motion.div
-          className="lg:rounded-l-[30px] lg:rounded-t-[30px] bg-card lg:absolute bottom-3 -right-16 lg:w-[18rem] px-5 py-4 lg:h-[18rem] shadow-xl"
+          className="rounded-3xl lg:rounded-l-[30px] lg:rounded-tr-none lg:rounded-br-[30px] bg-card/95 border border-white/10 lg:absolute bottom-3 -right-16 lg:w-[18rem] px-6 py-5 lg:h-[18rem] shadow-[0_8px_30px_rgb(0,0,0,0.12)] -mt-12 lg:mt-0 relative z-10 mx-4 lg:mx-0 backdrop-blur-xl"
           initial={{ x: 20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{
@@ -128,7 +117,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
           </motion.h2>
 
           <motion.p
-            className="text-card-foreground/80 my-7 leading-relaxed text-sm lg:text-base line-clamp-3"
+            className="text-card-foreground/80 mt-4 mb-10 leading-relaxed text-sm lg:text-base line-clamp-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
@@ -279,7 +268,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
             />
 
             <motion.div
-              className="relative w-full max-w-5xl bg-popover rounded-2xl overflow-hidden shadow-2xl mx-auto"
+              className="relative w-full max-w-5xl bg-popover rounded-2xl overflow-hidden shadow-2xl mx-auto flex flex-col"
               style={{ maxHeight: "85vh" }}
               initial={{ scale: 0.9, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -310,9 +299,9 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                 />
               </motion.button>
 
-              <div className="flex flex-col lg:flex-row h-full">
+              <div className="flex flex-col lg:flex-row flex-1 min-h-0">
                 <motion.div
-                  className="lg:w-1/2 relative overflow-hidden bg-card-foreground h-64 lg:h-auto"
+                  className="lg:w-1/2 relative flex-shrink-0 overflow-hidden bg-card-foreground h-64 lg:h-auto"
                   initial={{ x: -50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
@@ -321,67 +310,72 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
                     src={service.image}
                     alt={service.title}
                     loading="lazy"
-                    className="w-full h-full object-obtain"
+                    className="w-full h-full object-cover"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </motion.div>
 
                 <motion.div
-                  className="lg:w-1/2 p-6 lg:p-10 flex flex-col justify-center overflow-y-auto"
-                  style={{ maxHeight: "85vh" }}
+                  className="lg:w-1/2 p-6 lg:p-10 flex flex-col overflow-y-auto flex-1 min-h-0 custom-scrollbar"
                   initial={{ x: 50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
                 >
-                  <motion.div
-                    className="mb-6"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.4, type: "spring", stiffness: 300 }}
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
-                      <Droplets className="w-6 h-6 text-white" />
-                    </div>
-                  </motion.div>
+                  <div className="my-auto relative">
+                    <motion.div
+                      className="mb-6"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{
+                        delay: 0.4,
+                        type: "spring",
+                        stiffness: 300,
+                      }}
+                    >
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
+                        <Droplets className="w-6 h-6 text-white" />
+                      </div>
+                    </motion.div>
 
-                  <motion.h2
-                    className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    {service.title}
-                  </motion.h2>
+                    <motion.h2
+                      className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      {service.title}
+                    </motion.h2>
 
-                  <motion.p
-                    className="text-sm text-gray-500 mb-6 font-medium"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                  >
-                    Get started today!
-                  </motion.p>
+                    <motion.p
+                      className="text-sm text-gray-500 mb-6 font-medium"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      Get started today!
+                    </motion.p>
 
-                  <motion.div
-                    className="text-gray-700 leading-relaxed space-y-4 mb-8 max-h-48 overflow-y-auto pr-2 custom-scrollbar"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.7 }}
-                  >
-                    {displayContent.split("\n\n").map((paragraph, index) => (
-                      <p key={index} className="text-sm lg:text-base">
-                        {paragraph}
-                      </p>
-                    ))}
-                  </motion.div>
+                    <motion.div
+                      className="text-gray-700 leading-relaxed space-y-4 mb-8 pr-2"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      {displayContent.split("\n\n").map((paragraph, index) => (
+                        <p key={index} className="text-sm lg:text-base">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </motion.div>
 
-                  <motion.div
-                    className="absolute bottom-8 right-8 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.9 }}
-                  />
+                    <motion.div
+                      className="absolute bottom-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.9 }}
+                    />
+                  </div>
                 </motion.div>
               </div>
 
