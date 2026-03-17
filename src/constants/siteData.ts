@@ -1,4 +1,3 @@
-
 import Image1 from "@/assets/about-hero.webp";
 import Image2 from "@/assets/hero-water-treatment.webp";
 import Image3 from "@/assets/hero2.webp";
@@ -316,7 +315,7 @@ export const services = [
     description:
       "The Chemical dosing system is designed for adding of chemicals into water to separate solids by conditioning.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Chemical-Dosing-System-1.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Chemical-Dosing-System_m9hwjp.webp",
     link: "/services/chemical-dosing",
   },
   {
@@ -325,7 +324,7 @@ export const services = [
     description:
       "The Clarifiers are settling tanks used to separate solid particulates from liquids. SA Enviro Solutions provide variety of Clarifiers to suit various solid separation methods in settling of solids.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/The-Clarifier.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/The-Clarifier_sf5j93.webp",
     link: "/services/clarifier",
   },
   {
@@ -334,7 +333,7 @@ export const services = [
     description:
       "The biologically accomplishment of waste water is done by using a variety of microorganisms.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Biological-MBBR-Treatment.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
     link: "/services/biological-treatment",
   },
   {
@@ -343,7 +342,7 @@ export const services = [
     description:
       "The Tube settlers are designed to enter flocculated water through multiple tube deck from the bottom and flow upward in angle of 60°.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Tube-settlers-2.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
     link: "/services/tube-settlers",
   },
   {
@@ -352,7 +351,7 @@ export const services = [
     description:
       "These Filters are custom designed to suit the process requirement. The backwash is taken after every interval to maintain the efficiency of filter and filtrate water quality.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Pressure-Sand-Filter-activated-carbon-filter1.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Pressure-Sand-Filter-activated-carbon-filter1_yqs77v.webp",
     link: "/services/pressure-sand-filters",
   },
   {
@@ -361,7 +360,7 @@ export const services = [
     description:
       "The Activated Carbon Filters consist of Activated carbon granules supported by very fine quartz filter media. The various grades of carbon are available for specialized treatments.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Activated-Carbon-Filters.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Activated-Carbon-Filters_pyagph.webp",
     link: "/services/activated-carbon-filters",
   },
   {
@@ -370,7 +369,7 @@ export const services = [
     description:
       "The Dual Media Filter are utilized for higher flow rates with a smaller footprint. High filtration velocities are achieved by proper selection of Media, and designing of Distribution.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725955/logosaeenviro_o9itfb.gif",
     link: "/services/dual-media-filters",
   },
   {
@@ -379,7 +378,7 @@ export const services = [
     description:
       "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Reverse-Osmosis-RO-2.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Reverse-Osmosis-RO-2_ttxitp.webp",
     link: "/services/reverse-osmosis",
   },
   {
@@ -388,7 +387,7 @@ export const services = [
     description:
       "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Water-Treatment-Plants-WTP1.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773727163/Water-Treatment-Plants-WTP1_ggis8i.webp",
     link: "/services/water-treatment-plants",
   },
   {
@@ -397,7 +396,7 @@ export const services = [
     description:
       "We offer a huge range of Sewage Treatment Plants, which are used in the national as well as international market.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
     link: "/services/sewage-treatment",
   },
   {
@@ -406,7 +405,7 @@ export const services = [
     description:
       "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Effluent-Treatment-Plant.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/Effluent-Treatment-Plant_e9js1o.webp",
     link: "/services/effluent-treatment",
   },
   {
@@ -415,7 +414,7 @@ export const services = [
     description:
       "It is the process of removing mineral salts from water by using the ion exchange process. Demineralization produces water of a higher quality than conventional distillation.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/DMplants-585x340_dih1yh.gif",
     link: "/services/dm-plants",
   },
   {
@@ -424,7 +423,7 @@ export const services = [
     description:
       "The Water Softeners are available in different sizes and materials, manually operated or fully Automatic and ready to install.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725955/logosaeenviro_o9itfb.gif",
     link: "/services/water-softeners",
   },
   {
@@ -433,7 +432,7 @@ export const services = [
     description:
       "UV disinfection systems for water treatment, providing chemical-free sterilization.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/ULTRAVIOLET-UNITS.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     link: "/services/ultraviolet-units",
   },
   {
@@ -442,7 +441,7 @@ export const services = [
     description:
       "We offer a large variety of Pool Filtration Systems, Dosing Systems & Accessories. The skimmer and level deck techniques ensure perfect water quality at all times.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Swimming-Pool-Water-Filtration-Plants.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/Swimming-Pool-Water-Filtration-Plants_vokkvx.webp",
     link: "/services/swimming-pool-filtration",
   },
   {
@@ -450,7 +449,8 @@ export const services = [
     title: "Ultra Filtration (UF)",
     description:
       "Advanced membrane filtration technology for removing suspended solids, bacteria, and other contaminants.",
-    image: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF1.png",
+    image:
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/UF1_cbo64i.webp",
     link: "/services/ultra-filtration",
   },
 ];
@@ -508,73 +508,73 @@ export const certifications = [
   {
     title: "ISO Certification 1",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/ISO-CERTIFICATION-1-449x650.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/ISO-CERTIFICATION-1-449x650_ndrbmd.webp",
   },
   {
     title: "ISO Certification 2",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/ISO-CERTIFICATION-2-449x650.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/ISO-CERTIFICATION-2-449x650_cbdcgb.webp",
   },
   {
     title: "ISO Certification 3",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/ISO-CERTIFICATION-3-434x650.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/ISO-CERTIFICATION-3-434x650_g7uik2.webp",
   },
 ];
 
 export const galleryImages = [
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Chemical-Dosing-System-1.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Chemical-Dosing-System_m9hwjp.webp",
     alt: "Chemical Dosing System",
     category: "equipment",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/The-Clarifier.png",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/The-Clarifier_sf5j93.webp",
     alt: "The Clarifier",
     category: "equipment",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Biological-MBBR-Treatment.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
     alt: "Biological MBBR Treatment",
     category: "treatment",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Tube-settlers-2.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
     alt: "Tube Settlers",
     category: "equipment",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Pressure-Sand-Filter-activated-carbon-filter1.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Pressure-Sand-Filter-activated-carbon-filter1_yqs77v.webp",
     alt: "Pressure Sand Filter",
     category: "filters",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Activated-Carbon-Filters.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Activated-Carbon-Filters_pyagph.webp",
     alt: "Activated Carbon Filters",
     category: "filters",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Water-Treatment-Plants-WTP1.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773727163/Water-Treatment-Plants-WTP1_ggis8i.webp",
     alt: "Water Treatment Plants",
     category: "plants",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
     alt: "Sewage Treatment Plants",
     category: "plants",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Effluent-Treatment-Plant.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/Effluent-Treatment-Plant_e9js1o.webp",
     alt: "Effluent Treatment Plant",
     category: "plants",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2021/10/ULTRAVIOLET-UNITS.png",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     alt: "Ultraviolet Units",
     category: "equipment",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2021/10/Swimming-Pool-Water-Filtration-Plants.png",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/Swimming-Pool-Water-Filtration-Plants_vokkvx.webp",
     alt: "Swimming Pool Filtration",
     category: "plants",
   },
@@ -632,7 +632,6 @@ export const seoData = {
   },
 };
 
-
 export const blogs = [
   {
     id: 1,
@@ -675,7 +674,7 @@ export const blogs = [
       },
     ],
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
@@ -817,7 +816,7 @@ export const blogs = [
       },
     ],
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
@@ -869,7 +868,7 @@ export const blogs = [
       },
     ],
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
@@ -888,155 +887,156 @@ export const blogs = [
 ];
 
 export const LOGOS: LogoItem[] = [
+
   {
     id: "picture-1",
     alt: "Industrial water treatment equipment setup view 1",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture1-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726344/Picture1-585x439_w28rjd.webp",
   },
   {
     id: "picture-2",
     alt: "Wastewater treatment facility filtration units",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture2-1-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726345/Picture2-1-585x439_to7rpo.webp",
   },
   {
     id: "picture-3",
     alt: "Effluent treatment plant piping and tank system",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture3-1-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726346/Picture3-1-585x439_n8fzlk.webp",
   },
   {
     id: "picture-4",
     alt: "Water purification system technical diagram or view",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture4.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726348/Picture4_iwjefs.webp",
   },
   {
     id: "picture-5",
     alt: "Commercial sewage treatment plant installation",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture5-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726349/Picture5-585x439_zryxb9.webp",
   },
   {
     id: "picture-6",
     alt: "Multi-stage water filtration assembly",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture6-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726350/Picture6-585x439_eyiyb9.webp",
   },
   {
     id: "picture-7",
     alt: "Industrial RO plant membrane housing",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture7-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726353/Picture8-585x439_dzubk3.webp",
   },
   {
     id: "picture-8",
     alt: "Sewage treatment plant aerator and tank system",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture8-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726353/Picture8-585x439_dzubk3.webp",
   },
   {
     id: "picture-13",
     alt: "Reverse osmosis water purification system",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture13-1-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726356/Picture13-1-585x439_gh4pb1.webp",
   },
   {
     id: "picture-14",
     alt: "Package sewage treatment plant outdoor unit",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture14-1-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726357/Picture14-1-585x439_jvd1ov.webp",
   },
   {
     id: "picture-15",
     alt: "Demineralization plant ion exchange columns",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture15-1-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726359/Picture15-1-585x439_outf58.webp",
   },
   {
     id: "picture-16",
     alt: "Effluent treatment system control valves and tanks",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture16-1-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726360/Picture16-1-585x439_qnbtal.webp",
   },
   {
     id: "picture-17",
     alt: "Industrial sand and carbon filter units",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture17-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726362/Picture17-585x439_zskpcz.webp",
   },
   {
     id: "picture-18",
     alt: "UF membrane filtration system assembly",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture18-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726363/Picture18-585x439_t9uska.webp",
   },
   {
     id: "picture-19",
     alt: "Water softening plant setup",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture19-1-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726365/Picture19-1-585x439_qxrveh.webp",
   },
   {
     id: "picture-20",
     alt: "Wastewater recycling plant components",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture20-585x439.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726366/Picture20-585x439_y1krni.webp",
   },
   {
     id: "web-7",
     alt: "Modular sewage treatment plant view 7",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/7-585x439.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726340/7-585x439_nt9hkx.webp",
   },
   {
     id: "web-8",
     alt: "Industrial effluent treatment tank view 8",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/8-585x439.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726343/9-585x439_y4qrly.webp",
   },
   {
     id: "web-9",
     alt: "Water purification plant instrumentation view 9",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/9-585x439.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726343/9-585x439_y4qrly.webp",
   },
   {
     id: "web-5",
     alt: "Activated sludge process system view 5",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/5-585x439.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726337/5-585x439_eptnq7.webp",
   },
   {
     id: "web-4",
     alt: "Commercial water treatment solution view 4",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/4-585x439.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726335/4-585x439_co3eap.webp",
   },
   {
     id: "web-6",
     alt: "Filtration media tank assembly view 6",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/6-585x439.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726338/6-585x439_yqalth.webp",
   },
   {
     id: "web-3",
     alt: "Compact sewage treatment plant design view 3",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/3-585x439.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726333/3-585x439_fhul1z.webp",
   },
   {
     id: "web-1",
     alt: "Standard water treatment plant setup view 1",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/1-585x439.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726332/1-585x439_qbewgv.webp",
   },
   {
     id: "web-2",
     alt: "Clarifier tank system view 2",
     imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/2-585x439.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726333/2-585x439_ub9vgm.webp",
   },
 ];
 
@@ -1050,23 +1050,23 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp1-585x390.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725959/stp1-585x390_qdovao.webp",
         alt: "Sewage Treatment Plant - View 1",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
         alt: "Sewage Treatment Plant - Overview",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp3-585x390.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725959/stp3-585x390_xu5ct9.webp",
         alt: "Sewage Treatment Plant - View 2",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp4-585x390.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725960/stp4-585x390_haxc9t.webp",
         alt: "Sewage Treatment Plant - View 3",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp6-585x390.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725960/stp6-585x390_gsjiju.webp",
         alt: "Sewage Treatment Plant - View 4",
       },
     ],
@@ -1197,7 +1197,7 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/zld-1024x332.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725965/zld-1024x332_b4pteu.webp",
         alt: "Zero Liquid Discharge",
       },
     ],
@@ -1211,23 +1211,23 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp4-409x390.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp5-585x390.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/etp5-585x390_kxoqs6.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp3.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp2.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/etp2_sdicc6.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp1.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/etp1_jty4yv.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
     ],
@@ -1267,7 +1267,7 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/WTP.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp",
         alt: "Industrial Water Treatment Plant System",
       },
     ],
@@ -1301,11 +1301,11 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF1.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/UF1_cbo64i.webp",
         alt: "Ultra Filtration (UF)",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF2.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/UF2_imr2jn.webp",
         alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",
       },
     ],
@@ -1320,11 +1320,11 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/RO1-585x390.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725957/RO1-585x390_u0sgvg.webp",
         alt: "Reverse Osmosis (RO) ",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/RO2-538x390.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/RO2-538x390_bjubd5.webp",
         alt: "Reverse Osmosis (RO) system with blue filtration tanks and control panel",
       },
     ],
@@ -1367,7 +1367,7 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/DMplants-585x340.gif",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/DMplants-585x340_dih1yh.gif",
         alt: "Demineralisation [DM] Plant process diagram",
       },
     ],
@@ -1403,7 +1403,7 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
         alt: "SA Enviro Solutions Company Logo",
       },
     ],
