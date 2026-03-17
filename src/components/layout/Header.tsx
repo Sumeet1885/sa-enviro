@@ -11,6 +11,21 @@ import Logo from "@/assets/logo.webp";
 import { navigation, siteConfig } from "@/constants/siteData";
 import WhatsAppButton from "../ui/Whatsapp";
 
+let scrollLockCount = 0;
+const updateScrollLock = (lock: boolean) => {
+  if (lock) {
+    scrollLockCount++;
+  } else {
+    scrollLockCount--;
+  }
+  if (scrollLockCount > 0) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+    scrollLockCount = 0;
+  }
+};
+
 export interface NavigationItem {
   name: string;
   href: string;
@@ -37,13 +52,9 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      updateScrollLock(true);
+      return () => updateScrollLock(false);
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [isOpen]);
 
   const handleMouseEnter = () => {
@@ -197,7 +208,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
               transition={{ duration: 4, repeat: Infinity }}
             />
 
-            <ul className="p-2 relative z-10">
+            <ul className="p-2 relative z-10 max-h-[500px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full">
               {item.dropdown.map((dropItem, idx) => (
                 <motion.li
                   key={dropItem.key}
@@ -343,7 +354,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="mt-2 ml-4 pl-4 border-l-2 border-violet-400/30 space-y-1 overflow-hidden"
+            className="mt-2 ml-4 pl-4 border-l-2 border-violet-400/30 space-y-1 overflow-y-auto max-h-[500px] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
           >
             {item.dropdown.map((dropItem, idx) => {
               const isDropActive = pathname.includes(dropItem.key);
@@ -412,13 +423,9 @@ export function Header() {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      updateScrollLock(true);
+      return () => updateScrollLock(false);
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -677,7 +684,7 @@ export function Header() {
                 animate={{ scale: [1, 1.02, 1], opacity: [0.4, 0.6, 0.4] }}
                 transition={{ duration: 5, repeat: Infinity }}
               />
-              <nav className="py-6 flex flex-col gap-2 px-6 relative z-10">
+              <nav className="py-6 flex flex-col gap-2 px-6 relative z-10 max-h-[500px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full">
                 {navigation.map((item, index) => (
                   <MobileMenuItem
                     key={item.name}
