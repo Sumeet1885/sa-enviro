@@ -14,15 +14,7 @@ interface HeroSectionProps {
   title: string;
   heading: string;
   subtitle: string;
-<<<<<<< Final-Branch
-  rightContent?: ReactNode; 
-  spotlightMember?: SpotlightMember; 
-  avatarFlying?: boolean; 
-=========
-  rightContent?: ReactNode;
-  spotlightMember?: SpotlightMember; 
-  avatarFlying?: boolean;
->>>>>>>>> Temporary merge branch 2
+s
 }
 
 export default function HeroSection({
