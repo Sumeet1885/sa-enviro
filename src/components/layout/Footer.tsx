@@ -76,7 +76,7 @@ export const Footer = () => {
             <div className="flex gap-4">
               {Object.entries(siteConfig.social).map(([platform, url]) => {
                 const Icon = socialIconMap[platform.toLowerCase()];
-                if (!Icon) return null; // skip if no matching icon found
+                if (!Icon) return null;
 
                 return (
                   <a

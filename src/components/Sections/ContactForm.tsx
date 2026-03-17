@@ -313,7 +313,7 @@ export const ContactForm = () => {
               type="submit"
               size="lg"
               className="w-full"
-              disabled={isLoading} // 👈 Disabled while loading
+              disabled={isLoading} 
             >
               {isLoading ? (
                 <>

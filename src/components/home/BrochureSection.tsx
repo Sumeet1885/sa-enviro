@@ -10,7 +10,6 @@ import {
 import { Download, ArrowRight, ArrowLeft, Leaf } from "lucide-react";
 import { siteConfig, stats } from "@/constants/siteData";
 
-
 const BROCHURE_PDF_URL = "/Broucher.pdf";
 
 const PARTICLES = [
@@ -62,8 +61,6 @@ const Spine = ({ delay }: { delay: number }) => (
   </motion.div>
 );
 
-
-
 const up = {
   hidden: { opacity: 0, y: 22 },
   visible: (i: number) => ({
@@ -72,7 +69,6 @@ const up = {
     transition: { duration: 0.72, delay: i * 0.14, ease: [0.22, 1, 0.36, 1] },
   }),
 };
-
 
 export const BrochureSection = () => {
   const ref = useRef<HTMLElement>(null);
@@ -99,10 +95,6 @@ export const BrochureSection = () => {
   const [page, setPage] = useState(0);
 
   const [dl, setDl] = useState(false);
-
-
-
-  
 
   const Page1 = () => (
     <motion.div
@@ -301,7 +293,7 @@ export const BrochureSection = () => {
       className="flex-1 flex flex-col justify-between
                  px-7 sm:px-10 py-10 md:py-14 min-h-[420px] md:min-h-0"
     >
-      {/* Label */}
+
       <motion.p
         custom={0}
         variants={up}
@@ -478,7 +470,7 @@ export const BrochureSection = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Prev / Next */}
+
           <div className="flex justify-between items-center px-7 pb-6 pt-0 z-10 relative">
             <motion.button
               onClick={() => setPage((p) => Math.max(0, p - 1))}
