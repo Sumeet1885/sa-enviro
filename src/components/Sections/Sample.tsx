@@ -17,7 +17,7 @@ interface Particle {
   opacity: number;
 }
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+
 const MEMBERS: Member[] = [
   {
     name: "Arjun Mehta",

@@ -255,7 +255,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const pathname = location.pathname;
 
-  // Check if this item or any of its children is active
+
   const isActive = item.dropdown
     ? item.dropdown.some((d) => pathname.includes(d.key))
     : pathname === item.href;

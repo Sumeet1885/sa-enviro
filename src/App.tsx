@@ -21,7 +21,6 @@ import Sample from "@/components/Sections/Sample";
 const queryClient = new QueryClient();
 
 const App = () => (
-  // <Sample />
 
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>

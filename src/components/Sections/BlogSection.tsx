@@ -230,7 +230,7 @@ export default function BlogsSection() {
       document.body.style.overflowY = "";
     };
   }, [selectedBlog]);
-  // ─────────────────────────────────────────────────────────────────────────
+
 
   const filtered: Blog[] = blogs;
 
