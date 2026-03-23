@@ -6,6 +6,8 @@ interface SEOProps {
   description?: string;
   image?: string;
   url?: string;
+  keywords?: string;
+  schema?: Record<string, any> | Record<string, any>[];
 }
 
 export const SEO = ({
@@ -13,6 +15,8 @@ export const SEO = ({
   description = siteConfig.description,
   image = "/",
   url = "",
+  keywords,
+  schema,
 }: SEOProps) => {
   const fullTitle = title.includes(siteConfig.name)
     ? title
@@ -20,8 +24,10 @@ export const SEO = ({
 
   return (
     <Helmet>
+      {/* Primary SEO */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
 
       {/* Open Graph */}
       <meta property="og:type" content="website" />
@@ -36,9 +42,16 @@ export const SEO = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
 
-      {/* Additional SEO */}
+      {/* Robots */}
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={url} />
+
+      {/* JSON-LD Schema */}
+      {schema && (
+        <script type="applicatiosn/ld+json">
+          {JSON.stringify(Array.isArray(schema) ? schema : [schema])}
+        </script>
+      )}
     </Helmet>
   );
 };

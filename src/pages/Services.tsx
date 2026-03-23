@@ -14,14 +14,12 @@ const Services = () => {
         description={seoData.services.description}
       />
 
-      {/* Hero */}
       <HeroSection
         title="Our Service"
         heading="💧 Integrated Environmental Solutions"
         subtitle="Comprehensive Environmental Engineering Solutions for Water, Wastewater, ZLD & Pollution Control"
       />
 
-      {/* Services Grid */}
       <section className="section-padding bg-background">
         <div className="container-wide">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -34,7 +32,6 @@ const Services = () => {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-16 bg-muted/30 bg-water-deep">
         <div className="container-wide text-center">
           <div>

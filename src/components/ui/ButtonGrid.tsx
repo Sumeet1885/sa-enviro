@@ -1,9 +1,4 @@
-/**
- * ButtonGrid.tsx
- * Buttons that pop against any background image.
- * Container/grid/layout: UNTOUCHED.
- * Only button appearance changed.
- */
+
 
 import { useRef, useState } from "react";
 
@@ -21,12 +16,53 @@ interface ButtonGridProps {
 const SPRING =
   "linear(0,0.008 1.1%,0.031 2.2%,0.129 4.8%,0.257 7.2%,0.671 14.2%,0.789 16.5%,0.881 18.6%,0.957 20.7%,1.019 22.9%,1.063 25.1%,1.094 27.4%,1.114 30.7%,1.112 34.5%,1.018 49.9%,0.99 59.1%,1)";
 
+const WAVE_STYLE = `
+  @keyframes btn-pulse {
+    0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.25), 0 0 14px rgba(255,255,255,0.08), 0 0 32px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.10), inset 0 0 20px rgba(255,255,255,0.03); }
+    50%       { box-shadow: 0 0 0 1px rgba(255,255,255,0.55), 0 0 22px rgba(255,255,255,0.18), 0 0 50px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.20), inset 0 0 28px rgba(255,255,255,0.06); }
+  }
+  @keyframes btn-shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position:  200% center; }
+  }
+  .btn-pulse { animation: btn-pulse 3s ease-in-out infinite; }
+  .btn-shimmer-after::after {
+    content: attr(data-label);
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.85) 50%, transparent 70%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: btn-shimmer 3.5s linear infinite;
+    pointer-events: none;
+  }
+`;
+
+const PULSE_DELAYS = [
+  "delay-0",
+  "[animation-delay:0.4s]",
+  "[animation-delay:0.8s]",
+  "[animation-delay:1.2s]",
+  "[animation-delay:1.6s]",
+  "[animation-delay:2.0s]",
+];
+
+const SHIMMER_DELAYS = [
+  "[animation-delay:0s]",
+  "[animation-delay:0.5s]",
+  "[animation-delay:1.0s]",
+  "[animation-delay:1.5s]",
+  "[animation-delay:2.0s]",
+  "[animation-delay:2.5s]",
+];
+
 export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const rowRef = useRef<HTMLDivElement>(null);
 
-  // ── Sliding pill ring geometry (desktop only) — UNCHANGED ──────────────────
   const getGeometry = () => {
     const btn = buttonRefs.current[hoveredIndex];
     if (hoveredIndex < 0 || !btn || !rowRef.current) return null;
@@ -65,125 +101,21 @@ export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
 
   return (
     <>
-      <style>{`
-        /* ── Shimmer sweep across the button text ── */
-        @keyframes btn-shimmer {
-          0%   { background-position: -200% center; }
-          100% { background-position:  200% center; }
-        }
+      <style>{WAVE_STYLE}</style>
 
-        /* ── Subtle breathing pulse on the border ── */
-        @keyframes btn-pulse {
-          0%, 100% { box-shadow:
-            0 0 0 1px rgba(255,255,255,0.55),
-            0 0 14px rgba(255,255,255,0.18),
-            0 0 32px rgba(255,255,255,0.08),
-            inset 0 1px 0 rgba(255,255,255,0.20),
-            inset 0 0 20px rgba(255,255,255,0.06); }
-          50% { box-shadow:
-            0 0 0 1px rgba(255,255,255,0.85),
-            0 0 22px rgba(255,255,255,0.30),
-            0 0 50px rgba(255,255,255,0.12),
-            inset 0 1px 0 rgba(255,255,255,0.30),
-            inset 0 0 28px rgba(255,255,255,0.10); }
-        }
-
-        .hb-btn {
-          /* Frosted glass base — always readable against ANY bg image */
-          background: rgba(255, 255, 255, 0.10) !important;
-          backdrop-filter: blur(10px) saturate(160%) !important;
-          -webkit-backdrop-filter: blur(10px) saturate(160%) !important;
-
-          border: 1px solid rgba(255, 255, 255, 0.55) !important;
-
-          color: #ffffff !important;
-          font-weight: 700 !important;
-          letter-spacing: 0.06em !important;
-          text-transform: uppercase !important;
-
-          /* Layered shadow so button always reads against dark OR light bg */
-          box-shadow:
-            0 0 0 1px rgba(255,255,255,0.55),
-            0 0 14px rgba(255,255,255,0.18),
-            0 0 32px rgba(255,255,255,0.08),
-            inset 0 1px 0 rgba(255,255,255,0.20),
-            inset 0 0 20px rgba(255,255,255,0.06) !important;
-
-          animation: btn-pulse 3s ease-in-out infinite !important;
-
-          /* Shimmer text */
-          background-clip: unset !important;
-
-          transition:
-            transform 180ms cubic-bezier(0.34,1.56,0.64,1),
-            box-shadow 180ms ease,
-            background 180ms ease,
-            border-color 180ms ease !important;
-        }
-
-        /* Stagger the pulse so buttons don't all breathe together */
-        .hb-btn:nth-child(2) { animation-delay: 0.4s !important; }
-        .hb-btn:nth-child(3) { animation-delay: 0.8s !important; }
-        .hb-btn:nth-child(4) { animation-delay: 1.2s !important; }
-        .hb-btn:nth-child(5) { animation-delay: 1.6s !important; }
-        .hb-btn:nth-child(6) { animation-delay: 2.0s !important; }
-
-
-        .hb-btn:active {
-          transform: translateY(-1px) scale(1.01) !important;
-        }
-
-        /* Shimmer span inside button */
-        .hb-btn .hb-label {
-          position: relative;
-          display: inline-block;
-        }
-
-        .hb-btn .hb-label::after {
-          content: attr(data-label);
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            105deg,
-            transparent 30%,
-            rgba(255,255,255,0.85) 50%,
-            transparent 70%
-          );
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          animation: btn-shimmer 3.5s linear infinite;
-          pointer-events: none;
-        }
-
-        .hb-btn:nth-child(2) .hb-label::after { animation-delay: 0.5s; }
-        .hb-btn:nth-child(3) .hb-label::after { animation-delay: 1.0s; }
-        .hb-btn:nth-child(4) .hb-label::after { animation-delay: 1.5s; }
-        .hb-btn:nth-child(5) .hb-label::after { animation-delay: 2.0s; }
-        .hb-btn:nth-child(6) .hb-label::after { animation-delay: 2.5s; }
-
-        /* Tiny dot indicator — "clickable" cue */
-        .hb-btn .hb-dot {
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background: rgba(255,255,255,0.9);
-          box-shadow: 0 0 6px rgba(255,255,255,0.8);
-          flex-shrink: 0;
-          animation: btn-pulse 2s ease-in-out infinite;
-        }
-      `}</style>
-
-      {/* ── Container/grid — UNTOUCHED ─────────────────────────────────────── */}
-      <div className="mx-auto mt-5 w-fit max-w-full px-3 sm:px-0">
-        <div className="relative p-3">
+      <div className="w-full px-3 sm:px-4 md:px-0 md:w-fit md:mx-auto mt-5 max-w-full">
+        <div className="relative p-2 sm:p-3">
           <div
             ref={rowRef}
-            className="relative grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap md:justify-center gap-2 sm:gap-2 md:gap-2"
+            className={[
+              "relative",
+              "grid grid-cols-2",
+              "sm:grid-cols-3",
+              "md:flex md:flex-wrap md:justify-center",
+              "gap-2 sm:gap-2 md:gap-2",
+            ].join(" ")}
             style={{ zIndex: 1 }}
           >
-            {/* Desktop sliding ring — UNTOUCHED */}
             <span
               aria-hidden
               className="absolute rounded-2xl transition-all duration-[450ms] pointer-events-none hidden md:block"
@@ -191,13 +123,15 @@ export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
                 ...getRingStyle(),
                 zIndex: 1,
                 background: "transparent",
-                border: "1.5px solid rgba(255,255,255,0.75)",
-                boxShadow:
-                  "0 0 18px rgba(255,255,255,0.15), inset 0 0 12px rgba(255,255,255,0.06)",
               }}
             />
 
             {ButtonRow.map((btn, i) => {
+              const isHovered = hoveredIndex === i;
+              const delayClass = PULSE_DELAYS[i] ?? "[animation-delay:0s]";
+              const shimmerDelayClass =
+                SHIMMER_DELAYS[i] ?? "[animation-delay:0s]";
+
               return (
                 <button
                   key={btn.key}
@@ -206,25 +140,65 @@ export default function ButtonGrid({ ButtonRow, onClick }: ButtonGridProps) {
                   }}
                   type="button"
                   onClick={() => onClick({ label: btn.name, key: btn.key })}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(-1)}
                   className={[
-                    "hb-btn",
                     "relative z-10",
-                    "flex items-center justify-center gap-2",
-                    "w-full md:w-auto",
-                    "cursor-pointer select-none",
-                    "rounded-2xl",
-                    "font-mono tracking-wide",
-                    "text-[0.72rem] sm:text-[0.8rem] md:text-[0.85rem]",
-                    "whitespace-nowrap",
-                    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60 focus-visible:outline-offset-2",
-                  ].join(" ")}
-                  style={{ padding: "10px 20px" }}
-                >
-                  {/* Tiny glow dot — "I am clickable" cue */}
-                  <span className="hb-dot" aria-hidden />
+                    "flex items-center justify-center gap-1.5",
 
-                  {/* Label with shimmer sweep */}
-                  <span className="hb-label" data-label={btn.name}>
+                    "w-full md:w-auto",
+
+                    "min-h-[40px] sm:min-h-[44px]",
+
+                    "px-3 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-2.5",
+
+                    "font-mono font-bold uppercase tracking-[0.05em]",
+                    "text-[0.62rem] sm:text-[0.72rem] md:text-[0.85rem]",
+
+                    "whitespace-nowrap",
+
+                    "overflow-hidden",
+                    "min-w-0",
+
+                    "rounded-xl sm:rounded-2xl",
+
+                    "bg-white/5",
+                    "backdrop-blur-md",
+                    "border border-white/20",
+
+                    "cursor-pointer select-none",
+
+                    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60 focus-visible:outline-offset-2",
+
+
+                    "active:-translate-y-px active:scale-[1.01]",
+                    "transition-transform duration-150",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 bg-white pointer-events-none z-0 transition-[clip-path] duration-[700ms] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"
+                    style={{
+                      clipPath: isHovered
+                        ? "inset(0 0 0% 0)"
+                        : "inset(0 0 100% 0)",
+                    }}
+                  />
+
+                  <span
+                    className={[
+                      "btn-shimmer-after",
+                      "relative z-10",
+                      "inline-block",
+                      "truncate max-w-full",
+                      "transition-colors duration-[700ms] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]",
+                      isHovered ? "text-black" : "text-white",
+                      shimmerDelayClass,
+                    ].join(" ")}
+                    data-label={btn.name}
+                  >
                     {btn.name}
                   </span>
                 </button>

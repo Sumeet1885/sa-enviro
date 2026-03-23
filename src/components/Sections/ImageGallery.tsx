@@ -15,7 +15,7 @@ const ImageGallery: React.FC = () => {
 
   const gridColumns = useMemo(() => {
     const itemsPerRow = Math.ceil(images.length / 4);
-    return Math.max(6, itemsPerRow * 2); // Each image spans 2 columns
+    return Math.max(6, itemsPerRow * 2); 
   }, [images.length]);
 
   const handleImageClick = (image: Image) => {
@@ -109,7 +109,6 @@ const ImageGallery: React.FC = () => {
         })}
       </article>
 
-      {/* Popup Modal */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-foreground/80 flex items-center justify-center z-[1000] p-4 backdrop-blur-sm"

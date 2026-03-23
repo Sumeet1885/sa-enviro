@@ -16,12 +16,10 @@ export const VisionSection = () => {
       <section className="section-padding dark-section">
         <div className="container-wide max-w-4xl mx-auto">
           <AnimatedSection>
-            {/* ── Eyebrow ── */}
             <p className="f-up text-[11px] tracking-[0.35em] uppercase  font-sans mb-10">
               {siteConfig.name ?? "AquaCare"} · Vision
             </p>
 
-            {/* ── Headline ── */}
             <h2
               className="f-up text-4xl sm:text-5xl lg:text-6xl font-bold font-serif text-popover leading-[1.06] mb-12"
               style={{ letterSpacing: "-0.025em", animationDelay: "0.08s" }}
@@ -48,7 +46,6 @@ export const VisionSection = () => {
                   </linearGradient>
                 </defs>
 
-                {/* ── Layer 1: stroke only (painted first = behind) ── */}
                 <text
                   x="0"
                   y="78"
@@ -64,7 +61,6 @@ export const VisionSection = () => {
                   to the future.
                 </text>
 
-                {/* ── Layer 2: gradient fill on top ── */}
                 <text
                   x="0"
                   y="78"
@@ -79,9 +75,7 @@ export const VisionSection = () => {
               </svg>
             </h2>
 
-            {/* ── Body ── */}
             <div className="f-up" style={{ animationDelay: "0.16s" }}>
-              {/* First block — icon left, text right */}
               <div className="flex items-start gap-5 mb-8">
                 <Droplets
                   className="w-5 h-5  flex-shrink-0 mt-1"
@@ -94,10 +88,8 @@ export const VisionSection = () => {
                 </p>
               </div>
 
-              {/* Divider */}
               <div className="w-full h-px bg-popover mb-8" />
 
-              {/* Second block */}
               <div className="flex items-start gap-5 mb-8">
                 <Leaf
                   className="w-5 h-5 text-popover flex-shrink-0 mt-1"
@@ -110,10 +102,8 @@ export const VisionSection = () => {
                 </p>
               </div>
 
-              {/* Divider */}
               <div className="w-full h-px bg-popover mb-8" />
 
-              {/* Third block */}
               <div className="flex items-start gap-5">
                 <Waves
                   className="w-5 h-5 text-popover flex-shrink-0 mt-1"

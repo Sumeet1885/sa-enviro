@@ -11,7 +11,21 @@ import Logo from "@/assets/logo.webp";
 import { navigation, siteConfig } from "@/constants/siteData";
 import WhatsAppButton from "../ui/Whatsapp";
 
-// ── Types ─────────────────────────────────────────────────────────────────────
+let scrollLockCount = 0;
+const updateScrollLock = (lock: boolean) => {
+  if (lock) {
+    scrollLockCount++;
+  } else {
+    scrollLockCount--;
+  }
+  if (scrollLockCount > 0) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+    scrollLockCount = 0;
+  }
+};
+
 export interface NavigationItem {
   name: string;
   href: string;
@@ -22,7 +36,6 @@ export interface NavigationItem {
   }[];
 }
 
-// ── Dropdown Component ────────────────────────────────────────────────────────
 interface DropdownProps {
   item: NavigationItem;
   isScrolled: boolean;
@@ -37,16 +50,11 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  // Lock body scroll when dropdown is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      updateScrollLock(true);
+      return () => updateScrollLock(false);
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [isOpen]);
 
   const handleMouseEnter = () => {
@@ -87,7 +95,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
       >
         {item.name}
 
-        {/* Underline on hover */}
         <span
           className={`
             absolute -bottom-1 left-0 h-[2px] rounded-full
@@ -178,7 +185,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         )}
       </motion.button>
 
-      {/* Dropdown Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -202,7 +208,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
               transition={{ duration: 4, repeat: Infinity }}
             />
 
-            <ul className="p-2 relative z-10">
+            <ul className="p-2 relative z-10 max-h-[500px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full">
               {item.dropdown.map((dropItem, idx) => (
                 <motion.li
                   key={dropItem.key}
@@ -244,7 +250,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
   );
 };
 
-// ── Mobile Menu Item ──────────────────────────────────────────────────────────
 interface MobileMenuItemProps {
   item: NavigationItem;
   location: ReturnType<typeof useLocation>;
@@ -261,7 +266,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const pathname = location.pathname;
 
-  // Check if this item or any of its children is active
+
   const isActive = item.dropdown
     ? item.dropdown.some((d) => pathname.includes(d.key))
     : pathname === item.href;
@@ -349,7 +354,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="mt-2 ml-4 pl-4 border-l-2 border-violet-400/30 space-y-1 overflow-hidden"
+            className="mt-2 ml-4 pl-4 border-l-2 border-violet-400/30 space-y-1 overflow-y-auto max-h-[500px] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
           >
             {item.dropdown.map((dropItem, idx) => {
               const isDropActive = pathname.includes(dropItem.key);
@@ -404,50 +409,38 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
   );
 };
 
-// ── Main Header ───────────────────────────────────────────────────────────────
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // ── Hide / show on scroll ──────────────────────────────────────────────────
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
-  // ──────────────────────────────────────────────────────────────────────────
 
   const location = useLocation();
   const { scrollY } = useScroll();
   const navPadding = useTransform(scrollY, [0, 100], [5, 5]);
   const logoScale = useTransform(scrollY, [0, 100], [1, 1.0]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      updateScrollLock(true);
+      return () => updateScrollLock(false);
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [isOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Background change at 50px
       setIsScrolled(currentScrollY > 50);
 
-      // ── Hide on scroll DOWN, show on scroll UP ───────────────
       if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-        setIsVisible(false); // scrolling DOWN → hide
+        setIsVisible(false); 
       } else {
-        setIsVisible(true); // scrolling UP   → show
+        setIsVisible(true); 
       }
 
-      // Save position for next comparison
       lastScrollY.current = currentScrollY;
-      // ────────────────────────────────────────────────────────
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -458,9 +451,7 @@ export function Header() {
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
-        // ── This is the key animation ──────────────────────────
         animate={{ y: isVisible ? 0 : -120, opacity: isVisible ? 1 : 0 }}
-        // ───────────────────────────────────────────────────────
         transition={{
           type: "spring",
           stiffness: 100,
@@ -482,7 +473,6 @@ export function Header() {
         `}
         style={{ paddingTop: navPadding, paddingBottom: navPadding }}
       >
-        {/* Gradient overlay */}
         {isScrolled && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -497,7 +487,6 @@ export function Header() {
           </motion.div>
         )}
 
-        {/* Logo */}
         <Link
           to="/"
           className="flex items-center gap-2 sm:gap-3 group/logo relative transition-all duration-500 flex-shrink-0"
@@ -616,7 +605,6 @@ export function Header() {
           </motion.div>
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-6 flex-1 justify-center">
           {navigation.map((item, index) => (
             <Dropdown
@@ -628,7 +616,6 @@ export function Header() {
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
         <motion.button
           whileHover={{ scale: 1.15, rotate: 90 }}
           whileTap={{ scale: 0.95 }}
@@ -675,7 +662,6 @@ export function Header() {
           </AnimatePresence>
         </motion.button>
 
-        {/* Mobile Dropdown */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -698,7 +684,7 @@ export function Header() {
                 animate={{ scale: [1, 1.02, 1], opacity: [0.4, 0.6, 0.4] }}
                 transition={{ duration: 5, repeat: Infinity }}
               />
-              <nav className="py-6 flex flex-col gap-2 px-6 relative z-10">
+              <nav className="py-6 flex flex-col gap-2 px-6 relative z-10 max-h-[500px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full">
                 {navigation.map((item, index) => (
                   <MobileMenuItem
                     key={item.name}
@@ -713,7 +699,6 @@ export function Header() {
           )}
         </AnimatePresence>
 
-        {/* Floating particles */}
         {isScrolled && (
           <>
             {[...Array(5)].map((_, i) => (
