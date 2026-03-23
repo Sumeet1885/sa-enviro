@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight} from "lucide-react";
 import { heroData } from "@/constants/siteData";
 import ButtonGrid from "../ui/ButtonGrid";
 import Product_Content from "../Sections/ProductContent";
@@ -86,7 +85,7 @@ export function HeroSection() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
                 {active.title}
               </h1>
-              <h2 className="text-xl sm:text-2xl lg:text-3xl italic mt-4 opacity-90">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl  mt-4 opacity-90">
                 {active.subtitle}
               </h2>
               <p className="mt-6 text-sm sm:text-base opacity-80">

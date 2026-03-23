@@ -1,11 +1,7 @@
-// TeamSection.tsx
-// Drop this into any React + Vite + TypeScript + Tailwind project.
-// Add to index.css or main.tsx:
-//   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Mono:wght@300;400&display=swap');
+
 
 import { useEffect, useRef, useState, useCallback } from "react";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 interface Member {
   name: string;
   role: string;
@@ -21,7 +17,7 @@ interface Particle {
   opacity: number;
 }
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+
 const MEMBERS: Member[] = [
   {
     name: "Arjun Mehta",
@@ -54,7 +50,6 @@ const ROTATE_MS = 2800;
 const BIG = 160;
 const SMALL = 56;
 
-// ─── Utils ────────────────────────────────────────────────────────────────────
 function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
 }
@@ -72,12 +67,10 @@ function makeParticles(count: number): Particle[] {
   }));
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
 export default function TeamSection() {
   const [active, setActive] = useState(0);
-  const [barWidth, setBarWidth] = useState(0); // progress bar 0–100
+  const [barWidth, setBarWidth] = useState(0); 
 
-  // Refs — mutable state that doesn't trigger re-renders (used in rAF loop)
   const activeRef = useRef(0);
   const landedRef = useRef(false);
   const rotateTimer = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -86,20 +79,18 @@ export default function TeamSection() {
   const particles = useRef<Particle[]>(makeParticles(14));
   const rafRef = useRef<number>(0);
 
-  // DOM refs
-  const heroAnchorRef = useRef<HTMLDivElement>(null);
-  const teamSlotRef = useRef<HTMLDivElement>(null); // circle-0 (invisible anchor)
-  const teamBtnRef = useRef<HTMLButtonElement>(null); // btn-0 (for offsetTop)
-  const teamSectionRef = useRef<HTMLDivElement>(null);
-  const avRef = useRef<HTMLDivElement>(null); // floating avatar DOM node
 
-  // Sync active ref
+  const heroAnchorRef = useRef<HTMLDivElement>(null);
+  const teamSlotRef = useRef<HTMLDivElement>(null); 
+  const teamBtnRef = useRef<HTMLButtonElement>(null); 
+  const teamSectionRef = useRef<HTMLDivElement>(null);
+  const avRef = useRef<HTMLDivElement>(null);
+
   const handleSetActive = useCallback((i: number) => {
     activeRef.current = i;
     setActive(i);
   }, []);
 
-  // ── Auto-rotate ─────────────────────────────────────────────────────────────
   const resetAutoRotate = useCallback(() => {
     if (rotateTimer.current) clearInterval(rotateTimer.current);
     rotateStart.current = Date.now();
@@ -112,7 +103,6 @@ export default function TeamSection() {
     }, ROTATE_MS);
   }, [handleSetActive]);
 
-  // ── rAF tick — pure DOM manipulation, zero React re-renders ─────────────────
   const tick = useCallback(() => {
     const av = avRef.current;
     const heroEl = heroAnchorRef.current;
@@ -130,13 +120,11 @@ export default function TeamSection() {
     const hRect = heroEl.getBoundingClientRect();
     const tRect = teamSlot.getBoundingClientRect();
 
-    // Current viewport centers
     const hx = hRect.left + hRect.width / 2;
     const hy = hRect.top + hRect.height / 2;
     const tx = tRect.left + tRect.width / 2;
     const ty = tRect.top + tRect.height / 2;
 
-    // Stable document-space positions for progress
     const heroDocY = heroEl.offsetTop + heroEl.offsetHeight / 2;
     const teamDocY = teamBtn.offsetTop + tRect.height / 2 + teamSec.offsetTop;
 
@@ -154,7 +142,6 @@ export default function TeamSection() {
 
     const col = MEMBERS[0].color;
 
-    // ── Position + size ────────────────────────────────────────────────────────
     av.style.left = `${x - size / 2}px`;
     av.style.top = `${y - size / 2}px`;
     av.style.width = `${size}px`;
@@ -168,7 +155,6 @@ export default function TeamSection() {
       `inset 0 1px 0 rgba(255,255,255,0.15)`,
     ].join(", ");
 
-    // ── Rings ──────────────────────────────────────────────────────────────────
     const ringSizes = [300, 220, 160];
     const ringOps = [0.06, 0.09, 0.13];
     ringSizes.forEach((rs, i) => {
@@ -183,13 +169,11 @@ export default function TeamSection() {
       el.style.borderColor = col;
     });
 
-    // ── Hero text fade ─────────────────────────────────────────────────────────
     const heroLabel = document.getElementById("ts-hero-label");
     const heroName = document.getElementById("ts-hero-name");
     if (heroLabel) heroLabel.style.opacity = `${glow * 0.6}`;
     if (heroName) heroName.style.opacity = `${Math.max(0, glow * 2 - 1)}`;
 
-    // ── Particles ──────────────────────────────────────────────────────────────
     particles.current.forEach((pt, idx) => {
       pt.angle += pt.speed * 0.018;
       const r = pt.radius * (size / BIG);
@@ -205,7 +189,6 @@ export default function TeamSection() {
       el.style.opacity = `${Math.max(0, op)}`;
     });
 
-    // ── Landing ────────────────────────────────────────────────────────────────
     const wasLanded = landedRef.current;
     landedRef.current = p >= 0.97;
 
@@ -236,7 +219,6 @@ export default function TeamSection() {
       av.style.transition = "opacity 0.4s ease, filter 0.4s ease";
     }
 
-    // ── Progress bar (smooth fill via rAF) ────────────────────────────────────
     if (rotateActive.current && landedRef.current && rotateStart.current) {
       const fraction = Math.min(
         1,
@@ -248,7 +230,6 @@ export default function TeamSection() {
     rafRef.current = requestAnimationFrame(tick);
   }, [resetAutoRotate]);
 
-  // ── Start loop ───────────────────────────────────────────────────────────────
   useEffect(() => {
     rafRef.current = requestAnimationFrame(tick);
     return () => {
@@ -261,7 +242,6 @@ export default function TeamSection() {
 
   return (
     <>
-      {/* ── Google Fonts ── */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Mono:wght@300;400&display=swap');
         .ts-serif  { font-family: 'Cormorant Garamond', serif; }
@@ -281,7 +261,6 @@ export default function TeamSection() {
         }
       `}</style>
 
-      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
       <div
         className="relative h-screen flex flex-col items-center justify-center gap-5 overflow-hidden"
         style={{
@@ -289,10 +268,8 @@ export default function TeamSection() {
             "radial-gradient(ellipse 80% 60% at 50% 40%, #0f1628 0%, #080a0f 100%)",
         }}
       >
-        {/* Grid */}
         <div className="ts-grid absolute inset-0 pointer-events-none" />
 
-        {/* Pulsing rings — updated by rAF via getElementById */}
         {[0, 1, 2].map((i) => (
           <div
             key={i}
@@ -307,7 +284,6 @@ export default function TeamSection() {
           />
         ))}
 
-        {/* Scroll hint */}
         <p
           id="ts-hero-label"
           className="ts-mono relative z-10 text-[11px] tracking-[0.3em] uppercase text-white/25"
@@ -315,7 +291,6 @@ export default function TeamSection() {
           scroll to meet the team ↓
         </p>
 
-        {/* Hero anchor — invisible, gives rAF the "from" position */}
         <div
           ref={heroAnchorRef}
           style={{
@@ -327,7 +302,6 @@ export default function TeamSection() {
           }}
         />
 
-        {/* Name + role */}
         <div
           id="ts-hero-name"
           className="text-center pointer-events-none relative z-10"
@@ -343,7 +317,6 @@ export default function TeamSection() {
           </p>
         </div>
 
-        {/* Bottom fade */}
         <div
           className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
           style={{
@@ -352,17 +325,14 @@ export default function TeamSection() {
         />
       </div>
 
-      {/* ── SPACER ──────────────────────────────────────────────────────────── */}
       <div className="h-screen" style={{ background: "#080a0f" }} />
 
-      {/* ── TEAM SECTION ────────────────────────────────────────────────────── */}
       <div
         ref={teamSectionRef}
         id="ts-team"
         className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20"
         style={{ background: "#080a0f" }}
       >
-        {/* Top divider */}
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 pointer-events-none"
           style={{
@@ -375,7 +345,6 @@ export default function TeamSection() {
           The full team
         </p>
 
-        {/* Avatar row */}
         <div className="flex items-end justify-center gap-5 flex-wrap">
           {MEMBERS.map((m, i) => {
             const isActive = active === i;
@@ -396,7 +365,6 @@ export default function TeamSection() {
                   else resetAutoRotate();
                 }}
               >
-                {/* Star badge */}
                 {m.highlight && (
                   <div
                     className="absolute -top-1.5 -right-1 z-20 w-4 h-4 rounded-full flex items-center justify-center text-[8px] text-black font-medium"
@@ -409,7 +377,6 @@ export default function TeamSection() {
                   </div>
                 )}
 
-                {/* Circle — slot 0 is invisible (floating avatar sits on top) */}
                 <div
                   ref={isFirst ? teamSlotRef : undefined}
                   id={isFirst ? "ts-slot-0" : undefined}
@@ -438,7 +405,7 @@ export default function TeamSection() {
                   {!isFirst && m.name.charAt(0)}
                 </div>
 
-                {/* Name */}
+                
                 <span
                   className="ts-mono tracking-[0.08em] whitespace-nowrap transition-colors duration-300"
                   style={{
@@ -451,7 +418,6 @@ export default function TeamSection() {
                   {isActive ? m.name : m.name.split(" ")[0]}
                 </span>
 
-                {/* Progress bar */}
                 {isActive && (
                   <div
                     className="w-full h-0.5 rounded-full overflow-hidden"
@@ -472,7 +438,6 @@ export default function TeamSection() {
           })}
         </div>
 
-        {/* Active member detail */}
         <div className="mt-14 text-center">
           <h3
             className="ts-serif font-light italic text-[#f0ece6] tracking-[0.03em] transition-all duration-500"
@@ -493,15 +458,13 @@ export default function TeamSection() {
         </div>
       </div>
 
-      {/* ── FLOATING AVATAR ─────────────────────────────────────────────────── */}
-      {/* This is the ONE real avatar — rAF loop moves it via direct DOM */}
+
       <div
         ref={avRef}
         className="fixed rounded-full flex items-center justify-center ts-serif italic font-light text-white select-none"
         style={{
           zIndex: 9999,
           willChange: "left, top, width, height",
-          // Initial position off-screen until rAF takes over
           left: -300,
           top: -300,
           width: BIG,
@@ -515,7 +478,6 @@ export default function TeamSection() {
           }
         }}
       >
-        {/* Orbiting particles */}
         {particles.current.map((pt, idx) => (
           <div
             key={idx}

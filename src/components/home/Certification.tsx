@@ -9,7 +9,6 @@ import { certifications } from "@/constants/siteData";
 export const Certification_Section = () => {
   return (
     <>
-      {/* Certifications */}
       <section className="section-padding bg-background">
         <div className="container-wide">
           <AnimatedSection className="text-center mb-12">

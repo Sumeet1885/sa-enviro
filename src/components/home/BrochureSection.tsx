@@ -10,16 +10,8 @@ import {
 import { Download, ArrowRight, ArrowLeft, Leaf } from "lucide-react";
 import { siteConfig, stats } from "@/constants/siteData";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// BrochureSection
-//
-// Colors/Structure : From doc2 — navy bg #0D1B2A, particles, spines, noise
-// Content          : Minimal — cover headline · big stat · ring + download
-// ─────────────────────────────────────────────────────────────────────────────
-
 const BROCHURE_PDF_URL = "/Broucher.pdf";
 
-// ── Floating particles ────────────────────────────────────────────────────────
 const PARTICLES = [
   { x: "6%", y: "72%", delay: 0, size: 3 },
   { x: "18%", y: "50%", delay: 1.4, size: 2 },
@@ -39,7 +31,6 @@ const Particle = ({ x, y, delay, size }: (typeof PARTICLES)[0]) => (
   />
 );
 
-// ── Spine ─────────────────────────────────────────────────────────────────────
 const Spine = ({ delay }: { delay: number }) => (
   <motion.div
     initial={{ scaleY: 0 }}
@@ -48,7 +39,6 @@ const Spine = ({ delay }: { delay: number }) => (
     style={{ originY: 0 }}
     className="hidden md:flex flex-col items-center relative z-20 w-px bg-popover"
   >
-    {/* glow */}
     <div
       className="absolute inset-y-0 w-6 -translate-x-1/2 bg-popover"
       style={{
@@ -56,14 +46,12 @@ const Spine = ({ delay }: { delay: number }) => (
           "linear-gradient(to right,transparent,rgba(59,158,187,0.09),transparent)",
       }}
     />
-    {/* notch top */}
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: delay + 0.5, duration: 0.4, ease: "backOut" }}
       className="w-1.5 h-1.5 rounded-full dark-section mt-6 shrink-0 bg-popover"
     />
-    {/* notch bottom */}
     <motion.div
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -73,61 +61,6 @@ const Spine = ({ delay }: { delay: number }) => (
   </motion.div>
 );
 
-// ── Progress ring ─────────────────────────────────────────────────────────────
-const Ring = ({ inView }: { inView: boolean }) => {
-  const r = 34;
-  const circ = 2 * Math.PI * r;
-  return (
-    <svg width="84" height="84" className="shrink-0">
-      <circle
-        cx={42}
-        cy={42}
-        r={r}
-        fill="none"
-        stroke="#ffffff"
-        strokeWidth="1.5"
-      />
-      <motion.circle
-        cx={42}
-        cy={42}
-        r={r}
-        fill="none"
-        stroke="hsl(var(--water-ocean))"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeDasharray={circ}
-        initial={{ strokeDashoffset: circ }}
-        animate={inView ? { strokeDashoffset: circ * 0.22 } : {}}
-        transition={{ duration: 1.8, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-        style={{ rotate: -90, transformOrigin: "42px 42px" }}
-      />
-      <text
-        x={42}
-        y={38}
-        textAnchor="middle"
-        fill="#EDF2F7"
-        fontSize="15"
-        fontWeight="700"
-        fontFamily="'Playfair Display',serif"
-      >
-        78%
-      </text>
-      <text
-        x={42}
-        y={51}
-        textAnchor="middle"
-        fill="#8BA8C0"
-        fontSize="6.5"
-        fontFamily="'Archivo',sans-serif"
-        letterSpacing="1.8"
-      >
-        REDUCTION
-      </text>
-    </svg>
-  );
-};
-
-// ── Variants ──────────────────────────────────────────────────────────────────
 const up = {
   hidden: { opacity: 0, y: 22 },
   visible: (i: number) => ({
@@ -137,13 +70,10 @@ const up = {
   }),
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
-
 export const BrochureSection = () => {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.25 });
 
-  // Mouse parallax
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const x1 = useTransform(mouseX, [-1, 1], [-5, 5]);
@@ -162,34 +92,16 @@ export const BrochureSection = () => {
     animate(mouseY, 0, { duration: 0.9 });
   };
 
-  // Mobile
   const [page, setPage] = useState(0);
 
-  // Download
   const [dl, setDl] = useState(false);
 
-  const download = () => {
-    setDl(true);
-
-    setTimeout(() => {
-      const link = document.createElement("a");
-      link.href = BROCHURE_PDF_URL;
-      link.download = `${siteConfig.shortName}.pdf`;
-      link.click();
-      setDl(false);
-    }, 1000);
-  };
-
-  const DataShowing = {};
-
-  // ── PAGE 1 — Cover ───────────────────────────────────────────────────────
   const Page1 = () => (
     <motion.div
       style={{ x: x1, y: y1 }}
       className="flex-1 flex flex-col justify-between
                  px-7 sm:px-10 py-10 md:py-14 min-h-[420px] md:min-h-0"
     >
-      {/* Brand */}
       <motion.div
         custom={0}
         variants={up}
@@ -203,9 +115,7 @@ export const BrochureSection = () => {
         </span>
       </motion.div>
 
-      {/* Headline */}
       <div>
-        {/* Line 1 — plain white */}
         <div className="overflow-hidden">
           <motion.h2
             custom={0}
@@ -219,7 +129,6 @@ export const BrochureSection = () => {
           </motion.h2>
         </div>
 
-        {/* Line 2 — SVG: stroke layer behind + gradient fill on top */}
         <div className="overflow-hidden">
           <motion.div
             custom={1}
@@ -247,7 +156,6 @@ export const BrochureSection = () => {
                 </linearGradient>
               </defs>
 
-              {/* ── Layer 1: stroke only (painted first = behind) ── */}
               <text
                 x="0"
                 y="78"
@@ -263,7 +171,6 @@ export const BrochureSection = () => {
                 World.
               </text>
 
-              {/* ── Layer 2: gradient fill on top ── */}
               <text
                 x="0"
                 y="78"
@@ -288,7 +195,6 @@ export const BrochureSection = () => {
         />
       </div>
 
-      {/* Footer */}
       <motion.p
         custom={3}
         variants={up}
@@ -301,13 +207,11 @@ export const BrochureSection = () => {
     </motion.div>
   );
 
-  // ── PAGE 2 — Big stat ────────────────────────────────────────────────────
   const Page2 = () => (
     <motion.div
       className="flex-1 flex flex-col justify-between
                  px-7 sm:px-10 py-10 md:py-14 min-h-[420px] md:min-h-0"
     >
-      {/* Label */}
       <motion.p
         custom={0}
         variants={up}
@@ -318,7 +222,6 @@ export const BrochureSection = () => {
         Our Impact
       </motion.p>
 
-      {/* Giant number */}
       <div>
         <motion.p
           custom={1}
@@ -349,7 +252,6 @@ export const BrochureSection = () => {
           className="w-8 h-px bg-water-light mt-6 mb-6"
         />
 
-        {/* Two secondary stats */}
         <div className="flex gap-8">
           {stats.map((item, i) => (
             <motion.div
@@ -373,7 +275,6 @@ export const BrochureSection = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <motion.p
         custom={6}
         variants={up}
@@ -386,14 +287,13 @@ export const BrochureSection = () => {
     </motion.div>
   );
 
-  // ── PAGE 3 — Ring + Download ─────────────────────────────────────────────
   const Page3 = () => (
     <motion.div
       style={{ x: x3, y: y3 }}
       className="flex-1 flex flex-col justify-between
                  px-7 sm:px-10 py-10 md:py-14 min-h-[420px] md:min-h-0"
     >
-      {/* Label */}
+
       <motion.p
         custom={0}
         variants={up}
@@ -404,7 +304,6 @@ export const BrochureSection = () => {
         Download
       </motion.p>
 
-      {/* Ring + copy */}
       <div className="flex flex-col gap-8">
         <div>
           <motion.p
@@ -429,7 +328,6 @@ export const BrochureSection = () => {
         </div>
       </div>
 
-      {/* Download CTA */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -438,7 +336,6 @@ export const BrochureSection = () => {
         <motion.a
           href={`${BROCHURE_PDF_URL}`}
           download={`${siteConfig.shortName}.pdf`}
-          // onClick={download}
           type="button"
           whileHover="hover"
           whileTap={{ scale: 0.97 }}
@@ -517,12 +414,10 @@ export const BrochureSection = () => {
         className="brochure-bg relative overflow-hidden dark-section"
         style={{ fontFamily: "'Archivo', sans-serif" }}
       >
-        {/* Particles */}
         {PARTICLES.map((p, i) => (
           <Particle key={i} {...p} />
         ))}
 
-        {/* Top + bottom edge lines */}
         {["top-0", "bottom-0"].map((pos) => (
           <motion.div
             key={pos}
@@ -533,8 +428,6 @@ export const BrochureSection = () => {
             className={`absolute ${pos} left-0 right-0 h-px border-border opacity-20 z-20`}
           />
         ))}
-
-        {/* ── DESKTOP ───────────────────────────────────────────────────── */}
         <div className="hidden md:flex items-stretch min-h-[480px]">
           <Page1 />
           <Spine delay={0.15} />
@@ -543,9 +436,7 @@ export const BrochureSection = () => {
           <Page3 />
         </div>
 
-        {/* ── MOBILE ────────────────────────────────────────────────────── */}
         <div className="flex flex-col md:hidden">
-          {/* Dot nav */}
           <div className="flex items-center justify-between px-7 pt-6 pb-0 z-10 relative">
             <div className="flex gap-1.5">
               {[0, 1, 2].map((i) => (
@@ -579,7 +470,7 @@ export const BrochureSection = () => {
             </motion.div>
           </AnimatePresence>
 
-          {/* Prev / Next */}
+
           <div className="flex justify-between items-center px-7 pb-6 pt-0 z-10 relative">
             <motion.button
               onClick={() => setPage((p) => Math.max(0, p - 1))}

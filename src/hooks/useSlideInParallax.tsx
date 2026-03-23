@@ -9,7 +9,6 @@ export function useSlideInParallax(offset: number = 80) {
     const el = ref.current;
     if (!el) return;
 
-    // Disable animation on mobile
     if (window.innerWidth < 768) {
       setTranslateY(0);
       hasAnimatedIn.current = true;

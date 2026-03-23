@@ -1,7 +1,4 @@
-// HeroSection.tsx
-// When spotlightMember + rightContent are both provided, renders a premium
-// frosted-glass spotlight card on the right with the avatar inside it.
-// rightContent = the heroSpotRef anchor div from TeamSmooth.tsx
+
 
 import { ReactNode } from "react";
 import { AnimatedSection } from "@/components/motion/AnimatedSection";
@@ -17,9 +14,7 @@ interface HeroSectionProps {
   title: string;
   heading: string;
   subtitle: string;
-  rightContent?: ReactNode;
-  spotlightMember?: SpotlightMember; 
-  avatarFlying?: boolean;
+s
 }
 
 export default function HeroSection({
@@ -32,7 +27,6 @@ export default function HeroSection({
 }: HeroSectionProps) {
   const showCard = rightContent && spotlightMember;
 
-  // First sentence of bio
   const bio = spotlightMember
     ? spotlightMember.details.split(".")[0] + "."
     : "";
@@ -114,7 +108,6 @@ export default function HeroSection({
           <div
             className={`flex items-center gap-14 ${showCard ? "justify-between" : "justify-start"}`}
           >
-            {/* ── Left ──────────────────────────────────────────────────────── */}
             <AnimatedSection className="max-w-3xl flex-1 min-w-0">
               <span className="inline-block px-4 py-1.5 rounded-full bg-water-ocean/60 text-water-sky text-sm font-medium mb-4">
                 {title}
@@ -125,7 +118,6 @@ export default function HeroSection({
               <p className="text-water-light/90 text-lg max-w-xl">{subtitle}</p>
             </AnimatedSection>
 
-            {/* ── Right: Spotlight Card ──────────────────────────────────────── */}
             {showCard && (
               <div className="hidden lg:block flex-shrink-0">
                 <div
@@ -144,10 +136,8 @@ export default function HeroSection({
                     ].join(", "),
                   }}
                 >
-                  {/* Shimmer bar */}
                   <div className="hs-shimmer-bar" />
 
-                  {/* Top radial glow */}
                   <div
                     className="absolute inset-x-0 top-0 pointer-events-none h-[110px]"
                     style={{
@@ -156,7 +146,6 @@ export default function HeroSection({
                     }}
                   />
 
-                  {/* ── Label ── */}
                   <div className="relative flex items-center gap-2 mb-5">
                     <div
                       className="flex-1 h-px"
@@ -167,9 +156,7 @@ export default function HeroSection({
                     />
                   </div>
 
-                  {/* ── Avatar ── */}
                   <div className="relative flex justify-center mb-5">
-                    {/* Pulse rings */}
                     <div
                       className="hs-pulse-a absolute rounded-full pointer-events-none top-1/2 left-1/2"
                       style={{
@@ -187,10 +174,8 @@ export default function HeroSection({
                       }}
                     />
 
-                    {/* Avatar container */}
                     <div className="hs-avatar-pop relative w-[140px] h-[140px]">
                       {!avatarFlying ? (
-                        /* Real circle */
                         <div
                           className="absolute inset-0 rounded-full overflow-hidden transition-opacity duration-200"
                           style={{
@@ -222,7 +207,6 @@ export default function HeroSection({
                           )}
                         </div>
                       ) : (
-                        /* Placeholder hole while avatar is flying */
                         <div
                           className="absolute inset-0 rounded-full opacity-0 transition-all duration-200"
                           style={{
@@ -243,12 +227,10 @@ export default function HeroSection({
                         </div>
                       )}
 
-                      {/* Invisible scroll anchor */}
                       {rightContent}
                     </div>
                   </div>
 
-                  {/* ── Name ── */}
                   <div className="hs-name-in text-center mb-1">
                     <p
                       className="italic font-light text-[1.18rem] leading-tight tracking-[0.01em] text-foreground"
@@ -260,7 +242,6 @@ export default function HeroSection({
                     </p>
                   </div>
 
-                  {/* ── Title ── */}
                   <div className="hs-title-in text-center mb-4 text-foreground">
                     <span
                       className="font-mono uppercase text-[0.56rem] tracking-[0.22em]"
@@ -270,7 +251,6 @@ export default function HeroSection({
                     </span>
                   </div>
 
-                  {/* ── Divider ── */}
                   <div className="flex items-center gap-3 mb-4">
                     <div
                       className="flex-1 h-px"
@@ -289,14 +269,12 @@ export default function HeroSection({
                     />
                   </div>
 
-                  {/* ── Bio ── */}
                   <div className="hs-bio-in text-black">
                     <p className="font-sans text-center font-light text-[0.85rem] leading-[1.8]">
                       {bio}
                     </p>
                   </div>
 
-                  {/* ── Bottom gradient bar ── */}
                   <div
                     className="absolute bottom-0 inset-x-10 pointer-events-none h-[2px] rounded-b-[2px]"
                     style={{
@@ -308,7 +286,6 @@ export default function HeroSection({
               </div>
             )}
 
-            {/* Fallback: rightContent without card (no spotlightMember) */}
             {rightContent && !spotlightMember && (
               <div className="hidden lg:block flex-shrink-0">
                 {rightContent}
