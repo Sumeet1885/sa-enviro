@@ -10,6 +10,7 @@ import {
 } from "@/components/motion";
 import { aboutData, seoData } from "@/constants/siteData";
 import aboutImage from "@/assets/about-hero.webp";
+import Profile from "@/assets/About.webp"
 import { VisionSection } from "@/components/Sections/VisionSection";
 
 const About = () => {
@@ -48,9 +49,9 @@ const About = () => {
             <AnimatedSection direction="left">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-water">
                 <img
-                  src={aboutImage}
+                  src={Profile}
                   alt="Our Facility"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   loading="lazy"
                 />
               </div>
