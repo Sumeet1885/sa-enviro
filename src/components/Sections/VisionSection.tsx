@@ -28,7 +28,7 @@ export const VisionSection = () => {
               <br />
               <svg
                 viewBox="0 0 420 90"
-                className="w-full max-w-[420px] overflow-visible"
+                className="w-full max-w-[420px] overflow-visible md:text-xl"
                 style={{ height: "clamp(64px, 10vw, 90px)" }}
                 aria-label="World."
               >
