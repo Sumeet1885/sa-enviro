@@ -30,7 +30,7 @@ export const ServicesSection = () => {
           </AnimatedSection>
         </div>
 
-        <div className="section-padding bg-background line-clamp-3">
+        <div className="section-padding bg-background">
         <div className="container-wide">
           <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {featuredServices.map((service) => (
