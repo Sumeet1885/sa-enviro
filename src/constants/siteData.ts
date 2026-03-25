@@ -179,7 +179,7 @@ export const heroData: HeroData = {
         {
           label: "WSP",
           name: "Water Softeners Plant",
-          key: "water-softeners-plant",
+          key: "water_softeners_plant",
         },
       ],
     },

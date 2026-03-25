@@ -8,18 +8,19 @@ import { useParams } from "react-router-dom";
 function Product() {
   const { slug } = useParams();
 
+  const layout = slug === "water_softeners_plant" ? "2" : "1";
   const product = products.find((product) => product.key === slug);
 
   return (
     <div className="min-h-screen bg-white">
       <SEO
-              title={product.main.seo.title}
-              description={product.main.seo.description}
-              keywords={product.main.seo.keywords}
-              image={product.main.seo.image}
-              url={product.main.seo.url}
-              schema={product.main.seo.schema}
-            />
+        title={product.main.seo.title}
+        description={product.main.seo.description}
+        keywords={product.main.seo.keywords}
+        image={product.main.seo.image}
+        url={product.main.seo.url}
+        schema={product.main.seo.schema}
+      />
       <section className="py-24 lg:py-32 bg-gradient-to-br from-water-deep to-water-ocean text-primary-foreground">
         <div className="container-wide">
           <div className="max-w-3xl">
@@ -36,7 +37,7 @@ function Product() {
           </div>
         </div>
       </section>
-      <Product_Content slug={slug} />
+      <Product_Content slug={slug} layout={layout} />
     </div>
   );
 }

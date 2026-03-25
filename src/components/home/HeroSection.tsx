@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { heroData } from "@/constants/siteData";
 import ButtonGrid from "../ui/ButtonGrid";
 import Product_Content from "../Sections/ProductContent";
@@ -115,7 +115,7 @@ export function HeroSection() {
         </div>
       </div>
       <Drawer open={open} onClose={setOpen} side="bottom" title={label}>
-        <Product_Content slug={slug} layout="1" />
+        <Product_Content slug={slug} layout="2" />
       </Drawer>
     </>
   );
