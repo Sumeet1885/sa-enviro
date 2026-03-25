@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import Logo from "@/assets/logo.webp";
 import { navigation, siteConfig } from "@/constants/siteData";
+import { NavigationItem, DropDown } from "@/constants/type";
 import WhatsAppButton from "../ui/Whatsapp";
 
 let scrollLockCount = 0;
@@ -26,15 +27,7 @@ const updateScrollLock = (lock: boolean) => {
   }
 };
 
-export interface NavigationItem {
-  name: string;
-  href: string;
-  dropdown?: {
-    name: string;
-    key: string;
-    description?: string;
-  }[];
-}
+// Removed local NavigationItem interface, using global one from @/constants/type
 
 interface DropdownProps {
   item: NavigationItem;
@@ -219,14 +212,12 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
                 >
                   <Link
                     to={
-                      dropItem.key
-                        ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
-                        : dropItem.href
+                      dropItem.href || (dropItem.key ? `${item.name.toLocaleLowerCase()}/${dropItem.key}` : "#")
                     }
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className={`flex flex-col px-3 py-4 rounded-xl transition-all duration-300 text-white font-medium  group/item relative overflow-hidden whitespace-nowrap my-1
                       ${
-                        pathname.includes(dropItem.key || dropItem.href)
+                        pathname.includes((dropItem.key || dropItem.href) || "")
                           ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
                           : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
                       }
@@ -372,9 +363,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
                 >
                   <Link
                     to={
-                      dropItem.key
-                        ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
-                        : dropItem.href
+                      dropItem.href || (dropItem.key ? `${item.name.toLocaleLowerCase()}/${dropItem.key}` : "#")
                     }
                     onClick={() => {
                       onClose();
@@ -520,6 +509,8 @@ export function Header() {
             <motion.img
               src={Logo}
               alt="Company Logo"
+              width={40}
+              height={40}
               className="w-7 h-7 sm:w-10 sm:h-10 object-contain relative z-10"
               animate={{
                 filter: isScrolled

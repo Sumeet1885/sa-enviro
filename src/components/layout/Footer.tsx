@@ -54,6 +54,8 @@ export const Footer = () => {
                 <motion.img
                   src={logo}
                   alt="Company Logo"
+                  width={40}
+                  height={40}
                   className="w-7 h-7 sm:w-10 sm:h-10 object-contain relative z-10"
                   animate={{
                     filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.4))",

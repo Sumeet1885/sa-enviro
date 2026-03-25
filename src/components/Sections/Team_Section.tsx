@@ -103,7 +103,14 @@ export default function TeamSlider({
   useEffect(() => {
     const el = bioRef.current;
     if (!el) return;
-    const check = () => setIsTruncated(el.scrollHeight > el.clientHeight + 2);
+    const check = () => {
+      // Defer to next tick to avoid forced reflow during render transition
+      setTimeout(() => {
+        if (bioRef.current) {
+          setIsTruncated(bioRef.current.scrollHeight > bioRef.current.clientHeight + 2);
+        }
+      }, 0);
+    };
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);

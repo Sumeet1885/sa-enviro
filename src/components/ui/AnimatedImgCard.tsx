@@ -35,10 +35,17 @@ export const AnimatedImgCard = ({ aboutImage }) => {
     damping: 15,
   });
 
+  const rectRef = useRef<DOMRect | null>(null);
+
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
 
-    const rect = containerRef.current.getBoundingClientRect();
+    if (!rectRef.current) {
+      rectRef.current = containerRef.current.getBoundingClientRect();
+    }
+    const rect = rectRef.current;
+    if (!rect) return;
+
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
@@ -49,8 +56,16 @@ export const AnimatedImgCard = ({ aboutImage }) => {
     mouseY.set(mouseYPos);
   };
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    if (containerRef.current) {
+      rectRef.current = containerRef.current.getBoundingClientRect();
+    }
+  };
+
   const handleMouseLeave = () => {
     setIsHovered(false);
+    rectRef.current = null;
     mouseX.set(0);
     mouseY.set(0);
   };
@@ -61,7 +76,7 @@ export const AnimatedImgCard = ({ aboutImage }) => {
         ref={containerRef}
         className="relative cursor-pointer"
         onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
+        onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={{
           perspective: 1200,

@@ -61,8 +61,7 @@ export function HeroSection() {
             transition={{ duration: 1.2, ease: "easeOut" }}
           >
             <img
-              rel="preload"
-              loading="lazy"
+              fetchPriority="high"
               src={active.img}
               alt=""
               className="w-full h-full object-cover"

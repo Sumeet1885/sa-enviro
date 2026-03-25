@@ -1,6 +1,6 @@
 import Image1 from "@/assets/about-hero.webp";
 import Image2 from "@/assets/hero-water-treatment.webp";
-import Image3 from "@/assets/hero2.webp";
+const Image3 = "/hero2.webp";
 import Image4 from "@/assets/hero3.webp";
 import {
   Product,

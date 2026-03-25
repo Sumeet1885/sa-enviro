@@ -101,75 +101,98 @@ export function FloatingAvatar({
 }: FloatingAvatarProps) {
   const rafRef    = useRef<number>(0);
   const landedRef = useRef(false);
+  const coordsRef = useRef({ hx: 0, hy: 0, tx: 0, ty: 0, heroDocY: 0, teamDocY: 0 });
 
   useEffect(() => {
-    function tick() {
-      const heroEl  = document.getElementById(HERO_ANCHOR_ID);
-      const slotEl  = document.getElementById(TEAM_SLOT_ID);
-      const av      = document.getElementById(FLOATING_AV_ID);
+    const updateCoords = () => {
+      const heroEl = document.getElementById(HERO_ANCHOR_ID);
+      const slotEl = document.getElementById(TEAM_SLOT_ID);
+      if (!heroEl || !slotEl) return;
 
-      if (!heroEl || !slotEl || !av) {
+      const hRect = heroEl.getBoundingClientRect();
+      const tRect = slotEl.getBoundingClientRect();
+      const scrollY = window.scrollY;
+
+      coordsRef.current = {
+        hx: hRect.left + hRect.width / 2,
+        hy: hRect.top + hRect.height / 2,
+        tx: tRect.left + tRect.width / 2,
+        ty: tRect.top + tRect.height / 2,
+        heroDocY: hRect.top + scrollY + hRect.height / 2,
+        teamDocY: tRect.top + scrollY + tRect.height / 2,
+      };
+    };
+
+    updateCoords();
+    const ro = new ResizeObserver(updateCoords);
+    const heroEl = document.getElementById(HERO_ANCHOR_ID);
+    const slotEl = document.getElementById(TEAM_SLOT_ID);
+    if (heroEl) ro.observe(heroEl);
+    if (slotEl) ro.observe(slotEl);
+    window.addEventListener("resize", updateCoords);
+
+    function tick() {
+      const av = document.getElementById(FLOATING_AV_ID);
+      if (!av) {
         rafRef.current = requestAnimationFrame(tick);
         return;
       }
 
       const scrollY = window.scrollY;
-      const vh      = window.innerHeight;
-
-      const hRect = heroEl.getBoundingClientRect();
-      const tRect = slotEl.getBoundingClientRect();
-
-      const hx = hRect.left + hRect.width  / 2;
-      const hy = hRect.top  + hRect.height / 2;
-      const tx = tRect.left + tRect.width  / 2;
-      const ty = tRect.top  + tRect.height / 2;
-
-      const heroDocY = heroEl.getBoundingClientRect().top  + scrollY + hRect.height / 2;
-      const teamDocY = slotEl.getBoundingClientRect().top  + scrollY + tRect.height / 2;
+      const vh = window.innerHeight;
+      const { hx, hy, tx, ty, heroDocY, teamDocY } = coordsRef.current;
 
       const halfVh = vh / 2;
-      const raw =
-        (scrollY - (heroDocY - halfVh)) /
-        (teamDocY - halfVh - (heroDocY - halfVh));
+      const denom = teamDocY - heroDocY;
+      const raw = denom === 0 ? 0 : (scrollY - (heroDocY - halfVh)) / (teamDocY - heroDocY);
+      
       const p = Math.min(1, Math.max(0, raw));
       const e = easeInOut(p);
 
       const size = lerp(BIG, SMALL, e);
       const glow = 1 - e;
 
-      const x = lerp(hx, tx, e);
-      const y = lerp(hy, ty, e);
+      // Current viewport positions
+      const curHx = hx;
+      const curHy = heroDocY - scrollY;
+      const curTx = tx;
+      const curTy = teamDocY - scrollY;
 
-      av.style.left   = `${x - size / 2}px`;
-      av.style.top    = `${y - size / 2}px`;
-      av.style.width  = `${size}px`;
+      const x = lerp(curHx, curTx, e);
+      const y = lerp(curHy, curTy, e);
+
+      av.style.transform = `translate3d(${x - size / 2}px, ${y - size / 2}px, 0)`;
+      av.style.width = `${size}px`;
       av.style.height = `${size}px`;
 
-      av.style.background  = `radial-gradient(circle at 35% 35%, ${color}dd, ${color}88)`;
-      av.style.boxShadow   = [
+      av.style.background = `radial-gradient(circle at 35% 35%, ${color}dd, ${color}88)`;
+      av.style.boxShadow = [
         `0 0 0 1px ${color}30`,
         `0 0 ${55 * glow}px ${28 * glow}px ${color}28`,
         `0 ${6 + 18 * glow}px ${28 + 44 * glow}px rgba(0,0,0,${0.35 + 0.2 * glow})`,
         `inset 0 1px 0 rgba(255,255,255,0.13)`,
       ].join(", ");
 
-      av.style.fontSize    = `${size * 0.38}px`;
+      av.style.fontSize = `${size * 0.38}px`;
 
       const wasLanded = landedRef.current;
-      landedRef.current   = p >= 0.97;
+      landedRef.current = p >= 0.97;
 
       if (landedRef.current && !wasLanded) onLand?.();
       if (!landedRef.current && wasLanded) onLift?.();
 
       av.style.pointerEvents = landedRef.current ? "auto" : "none";
-      av.style.opacity       = landedRef.current ? "0" : "1"; 
-
+      av.style.opacity = landedRef.current ? "0" : "1";
 
       rafRef.current = requestAnimationFrame(tick);
     }
 
     rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      ro.disconnect();
+      window.removeEventListener("resize", updateCoords);
+    };
   }, [color, onLand, onLift]);
 
   return (
