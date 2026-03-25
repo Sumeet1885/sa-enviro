@@ -576,7 +576,7 @@ export const seoData = {
 
 export const blogs = [
   {
-    id: 1,
+    key: "learn-about-water-softeners-plant",
     title: "Learn about Water Softeners Plant",
     excerpt:
       "The Water Softeners are available in different sizes and materials, manually operated or fully automatic and ready to install.",
@@ -632,7 +632,7 @@ export const blogs = [
     comments: [],
   },
   {
-    id: 2,
+    key: "what-is-sewage-treatment-plants",
     title: "What is Sewage Treatment Plants",
     excerpt:
       "The Water Softeners are available in different sizes and materials, manually operated or fully automatic and ready to install.",
@@ -774,7 +774,7 @@ export const blogs = [
     comments: [],
   },
   {
-    id: 3,
+    key: "about-effluent-treatment-plant",
     title: "About Effluent Treatment Plant",
     excerpt:
       "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent.",
