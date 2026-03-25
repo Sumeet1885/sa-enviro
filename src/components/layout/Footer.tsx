@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { Mail, Phone, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
-import { siteConfig, navigation, services } from "@/constants/siteData";
+import { siteConfig, navigation, services, products } from "@/constants/siteData";
 import logo from "@/assets/logo.webp";
 import {
   Facebook,
@@ -102,20 +102,36 @@ export const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-3">
-              {navigation.map(
-                (item) =>
-                  !item.dropdown && (
-                    <li key={item.name}>
+              {navigation.map((item) => {
+
+                if (item.name === "Product") return null;
+
+
+                if (item.name === "Options" && item.dropdown) {
+                  return item.dropdown.map((subItem) => (
+                    <li key={subItem.name}>
                       <Link
-                        to={item.href}
+                        to={subItem.href}
                         onClick={handleScrollToTop}
                         className="text-water-light/80 hover:text-water-sky transition-colors text-sm"
                       >
-                        {item.name}
+                        {subItem.name}
                       </Link>
                     </li>
-                  ),
-              )}
+                  ));
+                }
+                return (
+                  <li key={item.name}>
+                    <Link
+                      to={item.href}
+                      onClick={handleScrollToTop}
+                      className="text-water-light/80 hover:text-water-sky transition-colors text-sm"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

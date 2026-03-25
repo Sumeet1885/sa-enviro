@@ -90,7 +90,7 @@ export const navigation: NavigationItem[] = [
 
   { name: "Blogs", href: "/blogs" },
 
-  { name: "Option", href: "/option", dropdown: Option_Dropdown },
+  { name: "Options", href: "/option", dropdown: Option_Dropdown },
 
   { name: "Contact", href: "/contact" },
 ];
