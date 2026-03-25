@@ -29,12 +29,16 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const featuredServices = services.slice(0, 6);
 
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="dark-section">
       <div className="container-wide section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" onClick={handleScrollToTop} className="flex items-center gap-3">
               <motion.div
                 whileHover={{
                   scale: 1.25,
@@ -104,6 +108,7 @@ export const Footer = () => {
                     <li key={item.name}>
                       <Link
                         to={item.href}
+                        onClick={handleScrollToTop}
                         className="text-water-light/80 hover:text-water-sky transition-colors text-sm"
                       >
                         {item.name}
@@ -123,6 +128,7 @@ export const Footer = () => {
                 <li key={service.id}>
                   <Link
                     to="/services"
+                    onClick={handleScrollToTop}
                     className="text-water-light/80 hover:text-water-sky transition-colors text-sm"
                   >
                     {service.title}
@@ -179,12 +185,14 @@ export const Footer = () => {
           <div className="flex gap-6 text-sm">
             <Link
               to="/privacy"
+              onClick={handleScrollToTop}
               className="text-water-light/60 hover:text-water-sky transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
               to="/terms"
+              onClick={handleScrollToTop}
               className="text-water-light/60 hover:text-water-sky transition-colors"
             >
               Terms of Service

@@ -79,6 +79,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
     return (
       <motion.a
         href={item.href}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 * index }}
@@ -222,6 +223,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
                         ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
                         : dropItem.href
                     }
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className={`flex flex-col px-3 py-4 rounded-xl transition-all duration-300 text-white font-medium  group/item relative overflow-hidden whitespace-nowrap my-1
                       ${
                         pathname.includes(dropItem.key || dropItem.href)
@@ -314,7 +316,10 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
       ) : (
         <Link
           to={item.href}
-          onClick={onClose}
+          onClick={() => {
+            onClose();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
           className={`
             px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
             flex items-center gap-3 relative overflow-hidden group/link
@@ -371,7 +376,10 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
                         ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
                         : dropItem.href
                     }
-                    onClick={onClose}
+                    onClick={() => {
+                      onClose();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                     className={`block px-4 py-3 text-sm rounded-lg transition-all group/subitem relative overflow-hidden font-medium
                       ${
                         isDropActive
@@ -489,6 +497,7 @@ export function Header() {
 
         <Link
           to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-2 sm:gap-3 group/logo relative transition-all duration-500 flex-shrink-0"
         >
           <motion.div
