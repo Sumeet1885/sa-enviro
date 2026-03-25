@@ -20,7 +20,7 @@ export interface Comment {
 }
 
 export interface Blog {
-  id: number;
+  key: string;
   title: string;
   excerpt: string;
   content: PageDescriptionBlock[];
@@ -51,7 +51,7 @@ const CommentItem: React.FC<{ comment: Comment; index: number }> = ({
       <div className="shrink-0">
         {comment.avatar ? (
           <img
-          loading="lazy"
+            loading="lazy"
             src={comment.avatar}
             alt={comment.author}
             className="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100"
@@ -78,9 +78,8 @@ const CommentItem: React.FC<{ comment: Comment; index: number }> = ({
             setLiked(!liked);
             setLikeCount(liked ? likeCount - 1 : likeCount + 1);
           }}
-          className={`mt-2 flex items-center gap-1.5 text-xs font-medium transition-colors ${
-            liked ? "text-rose-500" : "text-slate-400 hover:text-rose-400"
-          }`}
+          className={`mt-2 flex items-center gap-1.5 text-xs font-medium transition-colors ${liked ? "text-rose-500" : "text-slate-400 hover:text-rose-400"
+            }`}
         >
           <Heart className={`w-3.5 h-3.5 ${liked ? "fill-rose-500" : ""}`} />
           {likeCount}
@@ -116,7 +115,7 @@ const BlogCard: React.FC<{
         ${featured ? "md:col-span-2" : ""}
       `}
     >
-      <Link to={`/blog/${blog.id}`}>
+      <Link to={`/blog/${blog.key}`}>
         <div
           className={`relative overflow-hidden ${featured ? "h-64 sm:h-80" : "h-48 sm:h-52"}`}
         >
@@ -150,7 +149,7 @@ const BlogCard: React.FC<{
             <div className="flex items-center gap-1.5">
               {blog.authorAvatar ? (
                 <img
-                loading="lazy"
+                  loading="lazy"
                   src={blog.authorAvatar}
                   alt={blog.author}
                   className="w-5 h-5 rounded-full object-cover"
@@ -170,9 +169,8 @@ const BlogCard: React.FC<{
           </div>
 
           <h3
-            className={`font-bold text-foreground leading-snug mb-2 group-hover:text-water-deep/90 transition-colors ${
-              featured ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
-            }`}
+            className={`font-bold text-foreground leading-snug mb-2 group-hover:text-water-deep/90 transition-colors ${featured ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
+              }`}
           >
             {blog.title}
           </h3>
@@ -315,7 +313,7 @@ export default function BlogsSection() {
           >
             {filtered.map((blog: Blog, index: number) => (
               <BlogCard
-                key={blog.id}
+                key={blog.key}
                 blog={blog}
                 index={index}
                 onClick={() => setSelectedBlog(blog)}

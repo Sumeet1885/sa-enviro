@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import Logo from "@/assets/logo.webp";
 import { navigation, siteConfig } from "@/constants/siteData";
+import { NavigationItem, DropDown } from "@/constants/type";
 import WhatsAppButton from "../ui/Whatsapp";
 
 let scrollLockCount = 0;
@@ -26,15 +27,7 @@ const updateScrollLock = (lock: boolean) => {
   }
 };
 
-export interface NavigationItem {
-  name: string;
-  href: string;
-  dropdown?: {
-    name: string;
-    key: string;
-    description?: string;
-  }[];
-}
+// Removed local NavigationItem interface, using global one from @/constants/type
 
 interface DropdownProps {
   item: NavigationItem;
@@ -79,6 +72,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
     return (
       <motion.a
         href={item.href}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 * index }}
@@ -218,13 +212,12 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
                 >
                   <Link
                     to={
-                      dropItem.key
-                        ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
-                        : dropItem.href
+                      dropItem.href || (dropItem.key ? `${item.name.toLocaleLowerCase()}/${dropItem.key}` : "#")
                     }
+                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className={`flex flex-col px-3 py-4 rounded-xl transition-all duration-300 text-white font-medium  group/item relative overflow-hidden whitespace-nowrap my-1
                       ${
-                        pathname.includes(dropItem.key || dropItem.href)
+                        pathname.includes((dropItem.key || dropItem.href) || "")
                           ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
                           : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
                       }
@@ -314,7 +307,10 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
       ) : (
         <Link
           to={item.href}
-          onClick={onClose}
+          onClick={() => {
+            onClose();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
           className={`
             px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
             flex items-center gap-3 relative overflow-hidden group/link
@@ -367,11 +363,12 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
                 >
                   <Link
                     to={
-                      dropItem.key
-                        ? `${item.name.toLocaleLowerCase()}/${dropItem.key}`
-                        : dropItem.href
+                      dropItem.href || (dropItem.key ? `${item.name.toLocaleLowerCase()}/${dropItem.key}` : "#")
                     }
-                    onClick={onClose}
+                    onClick={() => {
+                      onClose();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                     className={`block px-4 py-3 text-sm rounded-lg transition-all group/subitem relative overflow-hidden font-medium
                       ${
                         isDropActive
@@ -489,6 +486,7 @@ export function Header() {
 
         <Link
           to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-2 sm:gap-3 group/logo relative transition-all duration-500 flex-shrink-0"
         >
           <motion.div
@@ -511,6 +509,8 @@ export function Header() {
             <motion.img
               src={Logo}
               alt="Company Logo"
+              width={40}
+              height={40}
               className="w-7 h-7 sm:w-10 sm:h-10 object-contain relative z-10"
               animate={{
                 filter: isScrolled

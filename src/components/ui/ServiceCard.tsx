@@ -108,7 +108,7 @@ export const ServiceCard = memo<ServiceCardProps>(({ service }) => {
           }}
         >
           <motion.h2
-            className="text-2xl lg:text-3xl font-bold leading-tight mt-3 text-card-foreground"
+            className="sm:text-xl md:text-2xl lg:text-2xl font-bold leading-tight mt-3 text-card-foreground"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}

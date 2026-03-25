@@ -38,8 +38,8 @@ export default function TeamSlider({
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const freezeRef = useRef(freezeCarousel); 
-  const isMountedRef = useRef(false); 
+  const freezeRef = useRef(freezeCarousel);
+  const isMountedRef = useRef(false);
 
   freezeRef.current = freezeCarousel;
 
@@ -52,7 +52,7 @@ export default function TeamSlider({
 
   const startInterval = useCallback(() => {
     stopInterval();
-    if (freezeRef.current) return; 
+    if (freezeRef.current) return;
     intervalRef.current = setInterval(() => {
       setActive((p) => (p + 1 >= team_member.length ? 0 : p + 1));
     }, AUTOROTATE_MS);
@@ -70,7 +70,7 @@ export default function TeamSlider({
 
 
   useEffect(() => {
-    if (!isMountedRef.current) return; 
+    if (!isMountedRef.current) return;
     if (freezeCarousel) {
 
       stopInterval();
@@ -103,7 +103,14 @@ export default function TeamSlider({
   useEffect(() => {
     const el = bioRef.current;
     if (!el) return;
-    const check = () => setIsTruncated(el.scrollHeight > el.clientHeight + 2);
+    const check = () => {
+      // Defer to next tick to avoid forced reflow during render transition
+      setTimeout(() => {
+        if (bioRef.current) {
+          setIsTruncated(bioRef.current.scrollHeight > bioRef.current.clientHeight + 2);
+        }
+      }, 0);
+    };
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -184,10 +191,10 @@ export default function TeamSlider({
       <div className="w-full bg-background flex items-start justify-center px-4 py-6 sm:px-6 sm:py-12">
         <div className="w-full max-w-[1000px] flex flex-col">
           <div className="flex items-center justify-between pb-3 mb-5 sm:mb-8 border-b border-foreground/10">
-            <span className="font-mono text-[0.55rem] tracking-[0.22em] uppercase text-foreground/50">
+            <span className="font-mono text-3xl sm:text-xl text-[0.55rem] tracking-[0.22em] uppercase text-foreground/50">
               Our Team
             </span>
-            <span className="font-mono text-[0.55rem] tracking-[0.15em] text-foreground/50">
+            <span className="font-mono text-[0.75rem] tracking-[0.15em] text-foreground/50">
               {String(displayed + 1).padStart(2, "0")} /{" "}
               {String(team_member.length).padStart(2, "0")}
             </span>
@@ -223,15 +230,15 @@ export default function TeamSlider({
                       "relative rounded-full overflow-hidden w-full aspect-square transition-all duration-500",
                       isActive
                         ? [
-                            "ts-pop shadow-xl",
-                            isFeatured
-                              ? "ring-2 ring-amber-400/80 ring-offset-2 ring-offset-background"
-                              : "ring-2 ring-primary/40 ring-offset-2 ring-offset-background",
-                          ].join(" ")
+                          "ts-pop shadow-xl",
+                          isFeatured
+                            ? "ring-2 ring-amber-400/80 ring-offset-2 ring-offset-background"
+                            : "ring-2 ring-primary/40 ring-offset-2 ring-offset-background",
+                        ].join(" ")
                         : [
-                            "opacity-45 grayscale group-hover:opacity-70 group-hover:grayscale-0",
-                            isFeatured ? "ts-hl" : "",
-                          ].join(" "),
+                          "opacity-45 grayscale group-hover:opacity-70 group-hover:grayscale-0",
+                          isFeatured ? "ts-hl" : "",
+                        ].join(" "),
                     ].join(" ")}
                   >
                     {u.image ? (
@@ -306,14 +313,14 @@ export default function TeamSlider({
               <h2 className="font-light italic gradient-text leading-tight text-[clamp(1.5rem,4vw,2.2rem)]">
                 {user.name}
               </h2>
-              <span className="font-sans text-xs tracking-[0.18em] uppercase font-light text-primary/70 flex-shrink-0 flex items-center gap-2">
+              <span className="font-sans text-xs tracking-[0.18em] uppercase font-medium text-primary/90 flex-shrink-0 flex items-center gap-2">
                 <span className="block h-px w-4 flex-shrink-0 gradient-text" />
                 {user.title}
               </span>
             </div>
 
             <div
-              className="w-10 h-px mb-4"
+              className="w-10 h-px mb-4 mt-4"
               style={{
                 background:
                   "var(--gradient-water-deep, linear-gradient(90deg,#1d4ed8,#38bdf8))",
@@ -322,7 +329,7 @@ export default function TeamSlider({
 
             <div className="grid grid-cols-1 sm:grid-cols-[1fr_1.6fr] gap-5 sm:gap-12 lg:gap-16 items-start">
               <div className="flex flex-col gap-3">
-                <span className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-foreground/80">
+                <span className="font-mono text-[0.85rem] tracking-[0.2em] uppercase text-foreground/80">
                   Speciality
                 </span>
                 <p className="font-semibold font-display leading-snug text-foreground text-[clamp(1.05rem,2.4vw,1.38rem)]">
@@ -331,7 +338,7 @@ export default function TeamSlider({
               </div>
 
               <div className="flex flex-col">
-                <span className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-foreground/80 mb-3">
+                <span className="font-mono text-[0.75rem] tracking-[0.2em] uppercase text-foreground/80 mb-3">
                   About
                 </span>
                 <div className="relative">
@@ -346,11 +353,11 @@ export default function TeamSlider({
                     style={
                       !expanded
                         ? {
-                            display: "-webkit-box",
-                            WebkitLineClamp: BIO_CLAMP_LINES,
-                            WebkitBoxOrient: "vertical" as const,
-                            overflow: "hidden",
-                          }
+                          display: "-webkit-box",
+                          WebkitLineClamp: BIO_CLAMP_LINES,
+                          WebkitBoxOrient: "vertical" as const,
+                          overflow: "hidden",
+                        }
                         : undefined
                     }
                   >
@@ -373,7 +380,7 @@ export default function TeamSlider({
                           "var(--gradient-water-deep, linear-gradient(90deg,#1d4ed8,#38bdf8))",
                       }}
                     />
-                    <span className="font-mono text-[0.58rem] tracking-[0.15em] uppercase font-light text-primary/70 group-hover:text-primary transition-colors duration-200">
+                    <span className="font-mono text-[0.75rem] tracking-[0.15em] uppercase font-semibold text-primary/70 group-hover:text-primary transition-colors duration-200">
                       {expanded ? "Read less" : "Read more"}
                     </span>
                     <svg

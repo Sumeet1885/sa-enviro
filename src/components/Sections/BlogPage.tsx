@@ -202,7 +202,7 @@ function BlogImageGallery({ image }: { image: string | string[] }) {
           >
             <img
               src={src}
-              
+
               alt={`Gallery image ${i + 2}`}
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
@@ -488,7 +488,7 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
   const [copied, setCopied] = useState(false);
 
   const copyLink = () => {
-    navigator.clipboard.writeText(window.location.href).catch(() => {});
+    navigator.clipboard.writeText(window.location.href).catch(() => { });
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
   };
@@ -573,11 +573,10 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
 
           <button
             onClick={copyLink}
-            className={`flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border w-full transition-all duration-150 ${
-              copied
+            className={`flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border w-full transition-all duration-150 ${copied
                 ? "bg-primary/10 border-primary text-primary"
                 : "bg-card border-border text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/10"
-            }`}
+              }`}
             aria-label="Copy article link"
           >
             {copied ? <Check size={15} /> : <Link2 size={15} />}
@@ -591,7 +590,7 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
 
 function BlogPage() {
   const { slug } = useParams();
-  const blog = blogs.find((blog: any) => blog.id.toString() === slug);
+  const blog = blogs.find((blog: any) => blog.key.toString() === slug);
 
   return (
     <>

@@ -21,9 +21,9 @@ function extractMatches(content, regex) {
   const matches = [];
   let match;
   while ((match = regex.exec(content)) !== null) {
-      if (match[1]) {
-        matches.push(match[1]);
-      }
+    if (match[1]) {
+      matches.push(match[1]);
+    }
   }
   return matches;
 }
@@ -33,7 +33,7 @@ async function generateSitemap() {
   try {
 
     const siteDataPath = path.resolve('src', 'constants', 'siteData.ts');
-    
+
     if (!fs.existsSync(siteDataPath)) {
       console.error('Error: siteData.ts not found at', siteDataPath);
       process.exit(1);
@@ -45,33 +45,37 @@ async function generateSitemap() {
 
     const productKeyRegex = /key:\s*['"]([^'"]+)['"]/g;
     const allKeys = extractMatches(siteDataContent, productKeyRegex);
-    
+
 
     console.log('Got all keys', allKeys.length);
     const productsArrayMatch = siteDataContent.match(/export const products: Product\[\] = \[([\s\S]*?)\];/);
     console.log('Regex match for products done:', !!productsArrayMatch);
     let productRoutes = [];
     if (productsArrayMatch) {
-       const productsContent = productsArrayMatch[1];
-       const productKeys = extractMatches(productsContent, productKeyRegex);
-       productRoutes = productKeys.map(key => `/product/${key}`);
+      const productsContent = productsArrayMatch[1];
+      const productKeys = extractMatches(productsContent, productKeyRegex);
+      productRoutes = productKeys.map(key => `/product/${key}`);
     } else {
-        console.warn('Could not cleanly extract products array. Falling back to all keys (might contain duplicates or incorrect keys).');
+      console.warn('Could not cleanly extract products array. Falling back to all keys (might contain duplicates or incorrect keys).');
 
-        productRoutes = [...new Set(allKeys)].map(key => `/product/${key}`);
+      productRoutes = [...new Set(allKeys)].map(key => `/product/${key}`);
     }
 
-    console.log('Extracting blogs...');
-    const blogIdRegex = /id:\s*(\d+)/g;
-    const blogsArrayMatch = siteDataContent.match(/export const blogs = \[([\s\S]*?)\];/);
-    console.log('Regex match for blogs done:', !!blogsArrayMatch);
+    console.log("Extracting blogs...");
+    const blogKeyRegex = /key:\s*["']([^"']+)["']/g;
+    const blogsArrayMatch = siteDataContent.match(
+      /export const blogs = \[([\s\S]*?)\];/
+    );
+    console.log("Regex match for blogs done:", !!blogsArrayMatch);
     let blogRoutes = [];
     if (blogsArrayMatch) {
       const blogsContent = blogsArrayMatch[1];
-      const blogIds = extractMatches(blogsContent, blogIdRegex);
-      blogRoutes = blogIds.map(id => `/blog/${id}`);
+
+      const blogKeys = extractMatches(blogsContent, blogKeyRegex);
+
+      blogRoutes = blogKeys.map(key => `/blog/${key}`);
     } else {
-       console.warn('Could not cleanly extract blogs array.');
+      console.warn("Could not cleanly extract blogs array.");
     }
 
 
@@ -81,14 +85,14 @@ async function generateSitemap() {
     const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${allRoutes
-  .map(
-    route => `  <url>
+        .map(
+          route => `  <url>
     <loc>${BASE_URL}${route}</loc>
     <changefreq>weekly</changefreq>
     <priority>${route === '/' ? '1.0' : '0.8'}</priority>
   </url>`
-  )
-  .join('\n')}
+        )
+        .join('\n')}
 </urlset>`;
 
 

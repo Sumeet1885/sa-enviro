@@ -86,6 +86,7 @@ export interface DropDown {
   name: string;
   key?: string;
   href?: string;
+  description?: string;
 }
 
 export interface NavigationItem {
@@ -126,6 +127,7 @@ export interface Team_Member {
   details: string;
   functionality: string;
   highlight: boolean;
+  image?: string;
 }
 
 export interface LogoItem {
