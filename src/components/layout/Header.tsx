@@ -80,10 +80,9 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         className={`
           relative flex items-center
           transition-all duration-500 font-semibold whitespace-nowrap
-          ${
-            isScrolled
-              ? "text-white text-base drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]"
-              : "text-white text-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+          ${isScrolled
+            ? "text-white text-base drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]"
+            : "text-white text-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
           }
         `}
       >
@@ -92,10 +91,9 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         <span
           className={`
             absolute -bottom-1 left-0 h-[2px] rounded-full
-            ${
-              pathname.includes(item.href)
-                ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
-                : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
+            ${pathname.includes(item.href)
+              ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
+              : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
             }
           `}
         />
@@ -131,10 +129,9 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         className={`
           relative flex items-center gap-1.5
           transition-all duration-500 font-semibold whitespace-nowrap
-          ${
-            isScrolled
-              ? "text-white text-base drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]"
-              : "text-white text-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+          ${isScrolled
+            ? "text-white text-base drop-shadow-[0_3px_12px_rgba(0,0,0,0.8)]"
+            : "text-white text-sm drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
           }
         `}
       >
@@ -149,10 +146,9 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         <motion.span
           className={`
             absolute -bottom-1 left-0 h-[2px] rounded-full
-            ${
-              pathname.includes(item.href)
-                ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
-                : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
+            ${pathname.includes(item.href)
+              ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
+              : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
             }
           `}
           animate={{ width: isOpen ? "100%" : 0 }}
@@ -189,10 +185,9 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
             className={`
               absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-56 max-w-xs z-50
               rounded-2xl overflow-hidden
-              ${
-                isScrolled
-                  ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
-                  : "bg-gradient-to-br from-slate-800/90 via-slate-900/85 to-slate-800/90 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.5)]"
+              ${isScrolled
+                ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
+                : "bg-gradient-to-br from-slate-800/90 via-slate-900/85 to-slate-800/90 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.5)]"
               }
             `}
           >
@@ -216,10 +211,9 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
                     }
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className={`flex flex-col px-3 py-4 rounded-xl transition-all duration-300 text-white font-medium  group/item relative overflow-hidden whitespace-nowrap my-1
-                      ${
-                        pathname.includes((dropItem.key || dropItem.href) || "")
-                          ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
-                          : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
+                      ${pathname.includes((dropItem.key || dropItem.href) || "")
+                        ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
+                        : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
                       }
                       drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]`}
                   >
@@ -276,10 +270,9 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
           className={`
             w-full px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
             flex items-center justify-between relative overflow-hidden group/link
-            ${
-              isActive
-                ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
-                : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
+            ${isActive
+              ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
+              : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
             }
             drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]
           `}
@@ -314,10 +307,9 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
           className={`
             px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
             flex items-center gap-3 relative overflow-hidden group/link
-            ${
-              isActive
-                ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
-                : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
+            ${isActive
+              ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
+              : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
             }
             drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]
           `}
@@ -370,10 +362,9 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                     className={`block px-4 py-3 text-sm rounded-lg transition-all group/subitem relative overflow-hidden font-medium
-                      ${
-                        isDropActive
-                          ? "bg-gradient-to-r from-violet-600/25 to-purple-600/25 text-white shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-violet-400/40"
-                          : "text-slate-300 hover:text-white hover:bg-violet-600/20 border-2 border-transparent"
+                      ${isDropActive
+                        ? "bg-gradient-to-r from-violet-600/25 to-purple-600/25 text-white shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-violet-400/40"
+                        : "text-slate-300 hover:text-white hover:bg-violet-600/20 border-2 border-transparent"
                       }
                     `}
                   >
@@ -432,9 +423,9 @@ export function Header() {
       setIsScrolled(currentScrollY > 50);
 
       if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-        setIsVisible(false); 
+        setIsVisible(false);
       } else {
-        setIsVisible(true); 
+        setIsVisible(true);
       }
 
       lastScrollY.current = currentScrollY;
@@ -458,10 +449,9 @@ export function Header() {
         className={`
           w-full max-w-4xl
           transition-all duration-700 ease-out
-          ${
-            isScrolled
-              ? "bg-gradient-to-r from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/60"
-              : "bg-gradient-to-r from-slate-800/80 via-slate-900/75 to-slate-800/80 backdrop-blur-2xl border-2 border-slate-600/60"
+          ${isScrolled
+            ? "bg-gradient-to-r from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/60"
+            : "bg-gradient-to-r from-slate-800/80 via-slate-900/75 to-slate-800/80 backdrop-blur-2xl border-2 border-slate-600/60"
           }
           rounded-full flex items-center justify-between px-4 sm:px-6 lg:px-8 text-sm
           shadow-[0_16px_48px_rgba(0,0,0,0.5)]
@@ -490,22 +480,41 @@ export function Header() {
           className="flex items-center gap-2 sm:gap-3 group/logo relative transition-all duration-500 flex-shrink-0"
         >
           <motion.div
-            style={{ scale: logoScale }}
+
             whileHover={{
               scale: 1.25,
               rotate: [0, -10, 10, -10, 0],
               transition: { duration: 0.7, ease: "easeInOut" },
             }}
             className={`
-              w-10 h-10 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center
-              transition-all duration-700 relative flex-shrink-0
-              ${
-                isScrolled
-                  ? "bg-gradient-to-br from-violet-600/40 via-purple-600/35 to-fuchsia-600/40 backdrop-blur-md border-2 border-violet-400/60 shadow-[0_0_40px_rgba(139,92,246,0.6)]"
-                  : "bg-gradient-to-br from-slate-700/50 to-slate-800/50 border-2 border-slate-600/50 shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
+    w-10 h-10 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center
+    transition-all duration-700 relative flex-shrink-0
+    ${isScrolled
+                ? "border-2 border-white/80 shadow-[0_0_40px_rgba(139,92,246,0.6)]"
+                : "border-2 border-white/60 shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
               }
-            `}
+  `}
+            style={{
+              scale: logoScale,
+              boxShadow: isScrolled
+                ? "0 0 40px rgba(139,92,246,0.6), inset 0 1px 0 rgba(255,255,255,1), 0 2px 12px rgba(0,0,0,0.15)"
+                : "0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,1)",
+            }}
           >
+            {/* Top highlight streak */}
+            <span
+              style={{
+                position: "absolute",
+                top: "2px",
+                left: "8px",
+                right: "8px",
+                height: "1px",
+                background: "linear-gradient(90deg, transparent, rgba(255,255,255,1), transparent)",
+                borderRadius: "9999px",
+                zIndex: 10,
+              }}
+            />
+
             <motion.img
               src={Logo}
               alt="Company Logo"
@@ -515,11 +524,11 @@ export function Header() {
               animate={{
                 filter: isScrolled
                   ? [
-                      "drop-shadow(0 4px 16px rgba(139,92,246,0.6))",
-                      "drop-shadow(0 6px 24px rgba(139,92,246,0.9))",
-                      "drop-shadow(0 4px 16px rgba(139,92,246,0.6))",
-                    ]
-                  : "drop-shadow(0 4px 12px rgba(0,0,0,0.4))",
+                    "drop-shadow(0 2px 6px rgba(139,92,246,0.35))",
+                    "drop-shadow(0 4px 14px rgba(139,92,246,0.6))",
+                    "drop-shadow(0 2px 6px rgba(139,92,246,0.35))",
+                  ]
+                  : "drop-shadow(0 2px 4px rgba(0,0,0,0.15))",
               }}
               transition={{
                 duration: 2.5,
@@ -527,49 +536,28 @@ export function Header() {
                 ease: "easeInOut",
               }}
             />
+
             {isScrolled && (
               <>
                 <motion.div
-                  animate={{
-                    opacity: [0.5, 0.9, 0.5],
-                    scale: [0.9, 1.15, 0.9],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-400/60 via-purple-500/50 to-fuchsia-500/60 blur-md -z-10"
+                  animate={{ opacity: [0.5, 0.9, 0.5], scale: [0.9, 1.15, 0.9] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-400/30 via-purple-500/25 to-fuchsia-500/30 blur-md -z-10"
                 />
                 <motion.div
-                  animate={{
-                    opacity: [0.4, 0.7, 0.4],
-                    scale: [1.1, 1.35, 1.1],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/50 to-purple-600/50 blur-lg -z-20"
+                  animate={{ opacity: [0.4, 0.7, 0.4], scale: [1.1, 1.35, 1.1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/25 to-purple-600/25 blur-lg -z-20"
                 />
                 <motion.div
                   animate={{ opacity: [0.3, 0.6, 0.3], scale: [1.3, 1.6, 1.3] }}
-                  transition={{
-                    duration: 3.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-600/40 via-purple-600/40 to-fuchsia-600/40 blur-2xl -z-30"
+                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-600/20 via-purple-600/20 to-fuchsia-600/20 blur-2xl -z-30"
                 />
                 <motion.div
                   animate={{ opacity: [0.2, 0.5, 0.2], scale: [1.5, 2, 1.5] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/30 to-fuchsia-600/30 blur-3xl -z-40"
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/15 to-fuchsia-600/15 blur-3xl -z-40"
                 />
               </>
             )}
@@ -579,10 +567,9 @@ export function Header() {
             <span
               className={`
                 font-display font-bold transition-all duration-500 whitespace-nowrap
-                ${
-                  isScrolled
-                    ? "text-lg sm:text-2xl text-white drop-shadow-[0_3px_16px_rgba(139,92,246,0.8)]"
-                    : "text-base sm:text-xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+                ${isScrolled
+                  ? "text-lg sm:text-2xl text-white drop-shadow-[0_3px_16px_rgba(139,92,246,0.8)]"
+                  : "text-base sm:text-xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
                 }
               `}
             >
@@ -591,10 +578,9 @@ export function Header() {
             <motion.span
               className={`
                 block -mt-1 transition-all duration-500 font-medium whitespace-nowrap
-                ${
-                  isScrolled
-                    ? "text-xs sm:text-sm text-violet-200 drop-shadow-[0_2px_8px_rgba(139,92,246,0.6)]"
-                    : "text-[10px] sm:text-xs text-slate-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
+                ${isScrolled
+                  ? "text-xs sm:text-sm text-violet-200 drop-shadow-[0_2px_8px_rgba(139,92,246,0.6)]"
+                  : "text-[10px] sm:text-xs text-slate-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
                 }
               `}
               animate={{ opacity: isScrolled ? [0.85, 1, 0.85] : 0.9 }}
@@ -622,10 +608,9 @@ export function Header() {
           onClick={() => setIsOpen(!isOpen)}
           className={`
             lg:hidden p-2 sm:p-3 rounded-2xl transition-all duration-500 relative overflow-hidden flex-shrink-0
-            ${
-              isScrolled
-                ? "bg-gradient-to-br from-violet-600/40 to-purple-600/40 backdrop-blur-md text-white border-2 border-violet-400/60 shadow-[0_8px_32px_rgba(139,92,246,0.5)]"
-                : "bg-gradient-to-br from-slate-700/50 to-slate-800/50 border-2 border-slate-600/50 text-white shadow-[0_4px_16px_rgba(0,0,0,0.4)]"
+            ${isScrolled
+              ? "bg-gradient-to-br from-violet-600/40 to-purple-600/40 backdrop-blur-md text-white border-2 border-violet-400/60 shadow-[0_8px_32px_rgba(139,92,246,0.5)]"
+              : "bg-gradient-to-br from-slate-700/50 to-slate-800/50 border-2 border-slate-600/50 text-white shadow-[0_4px_16px_rgba(0,0,0,0.4)]"
             }
           `}
           aria-label="Toggle menu"
@@ -672,10 +657,9 @@ export function Header() {
               className={`
                 absolute top-full left-0 right-0 mt-4
                 lg:hidden rounded-3xl overflow-hidden
-                ${
-                  isScrolled
-                    ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
-                    : "bg-gradient-to-br from-slate-800/85 via-slate-900/80 to-slate-800/85 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.4)]"
+                ${isScrolled
+                  ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
+                  : "bg-gradient-to-br from-slate-800/85 via-slate-900/80 to-slate-800/85 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.4)]"
                 }
               `}
             >
