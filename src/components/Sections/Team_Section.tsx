@@ -1,4 +1,4 @@
-// TeamSlider.tsx — full rewrite of autorotate/waiting logic, zero visual changes
+
 
 import React, {
   useState,
@@ -32,23 +32,17 @@ export default function TeamSlider({
   );
   const [expanded, setExpanded] = useState(false);
   const [isTruncated, setIsTruncated] = useState(false);
-  // barKey forces the progress bar CSS animation to restart even when
-  // active is already 0 (e.g. user scrolls up then back down).
   const [barKey, setBarKey] = useState(0);
 
   const bioRef = useRef<HTMLParagraphElement>(null);
 
-  // ── Single source of truth for the interval ──────────────────────────────
-  // All autorotate logic reads/writes this ref directly — no stale closures.
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const freezeRef = useRef(freezeCarousel); // mirror of prop, always current
-  const isMountedRef = useRef(false); // skip reset on very first render
+  const freezeRef = useRef(freezeCarousel);
+  const isMountedRef = useRef(false);
 
-  // Keep freezeRef in sync with the prop every render (no effect needed)
   freezeRef.current = freezeCarousel;
 
-  // ── Core interval helpers (stable — never recreated) ─────────────────────
   const stopInterval = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -58,13 +52,13 @@ export default function TeamSlider({
 
   const startInterval = useCallback(() => {
     stopInterval();
-    if (freezeRef.current) return; // respect current freeze state via ref
+    if (freezeRef.current) return;
     intervalRef.current = setInterval(() => {
       setActive((p) => (p + 1 >= team_member.length ? 0 : p + 1));
     }, AUTOROTATE_MS);
   }, [stopInterval]);
 
-  // ── Mount: start autorotate once, clean up on unmount ────────────────────
+
   useEffect(() => {
     startInterval();
     isMountedRef.current = true;
@@ -74,21 +68,14 @@ export default function TeamSlider({
     };
   }, [startInterval, stopInterval]);
 
-  // ── React to freezeCarousel prop changes ─────────────────────────────────
-  // This is the only place that controls the pause/resume cycle.
-  // A ref guards against firing on first mount so we don't reset member[0]
-  // before the user has even seen the page.
-  useEffect(() => {
-    if (!isMountedRef.current) return; // skip initial render
 
+  useEffect(() => {
+    if (!isMountedRef.current) return;
     if (freezeCarousel) {
-      // Avatar is flying — pause rotation, keep current member visible
+
       stopInterval();
     } else {
-      // Avatar just landed — reset to member[0] with a clean state, then
-      // start a fresh interval so the progress bar begins from zero.
-      // barKey increments so the bar CSS animation remounts even if
-      // active is already 0 (scroll-up then scroll-down scenario).
+
       setActive(0);
       setDisplayed(0);
       setPhase("idle");
@@ -96,10 +83,9 @@ export default function TeamSlider({
       setBarKey((k) => k + 1);
       startInterval();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [freezeCarousel]); // intentionally omit start/stop — they're stable
 
-  // ── Slide transition (active changes → animate content out then in) ──────
+  }, [freezeCarousel]);
+
   useEffect(() => {
     if (active === displayed) return;
     setPhase("exit");
@@ -114,18 +100,23 @@ export default function TeamSlider({
     return () => clearTimeout(t);
   }, [active, displayed]);
 
-  // ── Bio overflow check ────────────────────────────────────────────────────
   useEffect(() => {
     const el = bioRef.current;
     if (!el) return;
-    const check = () => setIsTruncated(el.scrollHeight > el.clientHeight + 2);
+    const check = () => {
+      // Defer to next tick to avoid forced reflow during render transition
+      setTimeout(() => {
+        if (bioRef.current) {
+          setIsTruncated(bioRef.current.scrollHeight > bioRef.current.clientHeight + 2);
+        }
+      }, 0);
+    };
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, [displayed, expanded, phase]);
 
-  // ── Manual avatar click ───────────────────────────────────────────────────
-  // Stop autorotate, switch member, then resume after one full cycle of inactivity
+
   const handleClick = useCallback(
     (i: number) => {
       if (resumeTimerRef.current) {
@@ -134,7 +125,7 @@ export default function TeamSlider({
       }
       stopInterval();
       setActive(i);
-      setBarKey((k) => k + 1); // restart bar animation for the newly selected member
+      setBarKey((k) => k + 1);
       resumeTimerRef.current = setTimeout(() => {
         startInterval();
         resumeTimerRef.current = null;
@@ -143,7 +134,6 @@ export default function TeamSlider({
     [startInterval, stopInterval],
   );
 
-  // ── Derived ───────────────────────────────────────────────────────────────
   const panelIndex = holdPrimaryDetails ? 0 : displayed;
   const user = team_member[panelIndex];
   const isHighlight = (i: number) => HIGHLIGHT_INDEX.includes(i);
@@ -172,7 +162,6 @@ export default function TeamSlider({
       "width 420ms cubic-bezier(0.4,0,0.2,1), transform 420ms cubic-bezier(0.4,0,0.2,1)",
   };
 
-  // ── Render ────────────────────────────────────────────────────────────────
   return (
     <>
       <style>{`
@@ -201,18 +190,16 @@ export default function TeamSlider({
 
       <div className="w-full bg-background flex items-start justify-center px-4 py-6 sm:px-6 sm:py-12">
         <div className="w-full max-w-[1000px] flex flex-col">
-          {/* ── Top bar ── */}
           <div className="flex items-center justify-between pb-3 mb-5 sm:mb-8 border-b border-foreground/10">
-            <span className="font-mono text-[0.55rem] tracking-[0.22em] uppercase text-foreground/50">
+            <span className="font-mono text-3xl sm:text-xl text-[0.55rem] tracking-[0.22em] uppercase text-foreground/50">
               Our Team
             </span>
-            <span className="font-mono text-[0.55rem] tracking-[0.15em] text-foreground/50">
+            <span className="font-mono text-[0.75rem] tracking-[0.15em] text-foreground/50">
               {String(displayed + 1).padStart(2, "0")} /{" "}
               {String(team_member.length).padStart(2, "0")}
             </span>
           </div>
 
-          {/* ══ AVATAR ROW ══════════════════════════════════════════════════ */}
           <div className="flex items-end justify-center gap-3 sm:gap-5 md:gap-7 mb-6 sm:mb-10 flex-wrap">
             {team_member.map((u, i) => {
               const isActive = active === i;
@@ -243,15 +230,15 @@ export default function TeamSlider({
                       "relative rounded-full overflow-hidden w-full aspect-square transition-all duration-500",
                       isActive
                         ? [
-                            "ts-pop shadow-xl",
-                            isFeatured
-                              ? "ring-2 ring-amber-400/80 ring-offset-2 ring-offset-background"
-                              : "ring-2 ring-primary/40 ring-offset-2 ring-offset-background",
-                          ].join(" ")
+                          "ts-pop shadow-xl",
+                          isFeatured
+                            ? "ring-2 ring-amber-400/80 ring-offset-2 ring-offset-background"
+                            : "ring-2 ring-primary/40 ring-offset-2 ring-offset-background",
+                        ].join(" ")
                         : [
-                            "opacity-45 grayscale group-hover:opacity-70 group-hover:grayscale-0",
-                            isFeatured ? "ts-hl" : "",
-                          ].join(" "),
+                          "opacity-45 grayscale group-hover:opacity-70 group-hover:grayscale-0",
+                          isFeatured ? "ts-hl" : "",
+                        ].join(" "),
                     ].join(" ")}
                   >
                     {u.image ? (
@@ -310,7 +297,6 @@ export default function TeamSlider({
             })}
           </div>
 
-          {/* ══ CONTENT PANEL ════════════════════════════════════════════════ */}
           <div
             className="border-t border-foreground/10 pt-4 sm:pt-5"
             style={contentFade}
@@ -327,14 +313,14 @@ export default function TeamSlider({
               <h2 className="font-light italic gradient-text leading-tight text-[clamp(1.5rem,4vw,2.2rem)]">
                 {user.name}
               </h2>
-              <span className="font-sans text-xs tracking-[0.18em] uppercase font-light text-primary/70 flex-shrink-0 flex items-center gap-2">
+              <span className="font-sans text-xs tracking-[0.18em] uppercase font-medium text-primary/90 flex-shrink-0 flex items-center gap-2">
                 <span className="block h-px w-4 flex-shrink-0 gradient-text" />
                 {user.title}
               </span>
             </div>
 
             <div
-              className="w-10 h-px mb-4"
+              className="w-10 h-px mb-4 mt-4"
               style={{
                 background:
                   "var(--gradient-water-deep, linear-gradient(90deg,#1d4ed8,#38bdf8))",
@@ -343,7 +329,7 @@ export default function TeamSlider({
 
             <div className="grid grid-cols-1 sm:grid-cols-[1fr_1.6fr] gap-5 sm:gap-12 lg:gap-16 items-start">
               <div className="flex flex-col gap-3">
-                <span className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-foreground/80">
+                <span className="font-mono text-[0.85rem] tracking-[0.2em] uppercase text-foreground/80">
                   Speciality
                 </span>
                 <p className="font-semibold font-display leading-snug text-foreground text-[clamp(1.05rem,2.4vw,1.38rem)]">
@@ -352,7 +338,7 @@ export default function TeamSlider({
               </div>
 
               <div className="flex flex-col">
-                <span className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-foreground/80 mb-3">
+                <span className="font-mono text-[0.75rem] tracking-[0.2em] uppercase text-foreground/80 mb-3">
                   About
                 </span>
                 <div className="relative">
@@ -367,11 +353,11 @@ export default function TeamSlider({
                     style={
                       !expanded
                         ? {
-                            display: "-webkit-box",
-                            WebkitLineClamp: BIO_CLAMP_LINES,
-                            WebkitBoxOrient: "vertical" as const,
-                            overflow: "hidden",
-                          }
+                          display: "-webkit-box",
+                          WebkitLineClamp: BIO_CLAMP_LINES,
+                          WebkitBoxOrient: "vertical" as const,
+                          overflow: "hidden",
+                        }
                         : undefined
                     }
                   >
@@ -394,7 +380,7 @@ export default function TeamSlider({
                           "var(--gradient-water-deep, linear-gradient(90deg,#1d4ed8,#38bdf8))",
                       }}
                     />
-                    <span className="font-mono text-[0.58rem] tracking-[0.15em] uppercase font-light text-primary/70 group-hover:text-primary transition-colors duration-200">
+                    <span className="font-mono text-[0.75rem] tracking-[0.15em] uppercase font-semibold text-primary/70 group-hover:text-primary transition-colors duration-200">
                       {expanded ? "Read less" : "Read more"}
                     </span>
                     <svg

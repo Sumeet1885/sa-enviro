@@ -10,6 +10,7 @@ import {
 } from "@/components/motion";
 import { aboutData, seoData } from "@/constants/siteData";
 import aboutImage from "@/assets/about-hero.webp";
+import Profile from "@/assets/About.webp"
 import { VisionSection } from "@/components/Sections/VisionSection";
 
 const About = () => {
@@ -20,7 +21,6 @@ const About = () => {
         description={seoData.about.description}
       />
 
-      {/* Hero */}
       <section className="relative py-24 lg:py-32 bg-gradient-to-br from-water-deep to-water-ocean text-primary-foreground overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img
@@ -43,16 +43,15 @@ const About = () => {
         </div>
       </section>
 
-      {/* Story */}
       <section className="section-padding bg-background">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <AnimatedSection direction="left">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-water">
                 <img
-                  src={aboutImage}
+                  src={Profile}
                   alt="Our Facility"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   loading="lazy"
                 />
               </div>
@@ -85,7 +84,6 @@ const About = () => {
       </section>
       <VisionSection />
 
-      {/* Info Cards */}
       <section className="section-padding bg-muted/30">
         <div className="container-wide">
           <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -127,7 +125,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-16 bg-water-deep text-primary-foreground">
         <div className="container-wide text-center">
           <AnimatedSection>

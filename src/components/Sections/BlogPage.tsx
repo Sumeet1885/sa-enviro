@@ -1,4 +1,4 @@
-import React from "react";
+
 import Text from "@/components/ui/dynamic_Text";
 import { useParams } from "react-router-dom";
 import { blogs } from "@/constants/siteData";
@@ -19,7 +19,6 @@ import {
   ChevronRight as NavRight,
 } from "lucide-react";
 
-// ─── READING PROGRESS ─────────────────────────────────────────────────────────
 function ReadingProgress() {
   const [pct, setPct] = useState(0);
   useEffect(() => {
@@ -46,7 +45,6 @@ function ReadingProgress() {
   );
 }
 
-// ─── BLOG HEADER ──────────────────────────────────────────────────────────────
 function BlogHeader({
   title,
   image,
@@ -69,7 +67,6 @@ function BlogHeader({
   );
 }
 
-// ─── BLOG META ────────────────────────────────────────────────────────────────
 function BlogMeta({
   author,
   authorAvatar,
@@ -95,7 +92,6 @@ function BlogMeta({
 
   return (
     <div className="animate-fade-in-up flex flex-wrap items-center gap-4 pb-6 border-b border-border">
-      {/* Author */}
       <div className="flex items-center gap-3">
         {authorAvatar ? (
           <img
@@ -127,7 +123,6 @@ function BlogMeta({
   );
 }
 
-// ─── BLOG CONTENT ─────────────────────────────────────────────────────────────
 function BlogContent({
   title,
   excerpt,
@@ -165,7 +160,6 @@ function BlogContent({
   );
 }
 
-// ─── BLOG IMAGE GALLERY ───────────────────────────────────────────────────────
 function BlogImageGallery({ image }: { image: string | string[] }) {
   const images = Array.isArray(image) ? image.slice(1) : [];
   const [lightbox, setLightbox] = useState<number | null>(null);
@@ -208,7 +202,7 @@ function BlogImageGallery({ image }: { image: string | string[] }) {
           >
             <img
               src={src}
-              
+
               alt={`Gallery image ${i + 2}`}
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
@@ -222,7 +216,6 @@ function BlogImageGallery({ image }: { image: string | string[] }) {
         ))}
       </div>
 
-      {/* Lightbox */}
       {lightbox !== null && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/90 backdrop-blur-md"
@@ -290,7 +283,6 @@ function BlogImageGallery({ image }: { image: string | string[] }) {
   );
 }
 
-// ─── BLOG TAGS ────────────────────────────────────────────────────────────────
 function BlogTags({ tags }: { tags?: string[] }) {
   if (!tags?.length) return null;
   return (
@@ -313,7 +305,6 @@ function BlogTags({ tags }: { tags?: string[] }) {
   );
 }
 
-// ─── COMMENT CARD ─────────────────────────────────────────────────────────────
 function CommentCard({ comment }: { comment: any }) {
   const initials = comment.name
     .split(" ")
@@ -358,7 +349,6 @@ function CommentCard({ comment }: { comment: any }) {
   );
 }
 
-// ─── COMMENT FORM ─────────────────────────────────────────────────────────────
 function CommentForm() {
   const [name, setName] = useState("");
   const [msg, setMsg] = useState("");
@@ -426,7 +416,6 @@ function CommentForm() {
   );
 }
 
-// ─── BLOG COMMENTS ────────────────────────────────────────────────────────────
 function BlogComments({ comments }: { comments: any[] }) {
   return (
     <section aria-label="Comments section" className="mt-12">
@@ -451,7 +440,6 @@ function BlogComments({ comments }: { comments: any[] }) {
   );
 }
 
-// ─── AUTHOR CARD ──────────────────────────────────────────────────────────────
 function AuthorCard({
   author,
   authorAvatar,
@@ -496,12 +484,11 @@ function AuthorCard({
   );
 }
 
-// ─── SIDEBAR ─────────────────────────────────────────────────────────────────
 function Sidebar({ tags, category }: { tags: string[]; category: string }) {
   const [copied, setCopied] = useState(false);
 
   const copyLink = () => {
-    navigator.clipboard.writeText(window.location.href).catch(() => {});
+    navigator.clipboard.writeText(window.location.href).catch(() => { });
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
   };
@@ -526,7 +513,6 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
         position: "sticky",
       }}
     >
-      {/* Category */}
       {category && (
         <div className={cardClass}>
           <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-muted-foreground">
@@ -538,7 +524,6 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
         </div>
       )}
 
-      {/* Tags */}
       {tags.length > 0 && (
         <div className={cardClass}>
           <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-muted-foreground">
@@ -557,13 +542,11 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
         </div>
       )}
 
-      {/* Share */}
       <div className={cardClass}>
         <p className="text-xs font-semibold uppercase tracking-widest mb-4 text-muted-foreground">
           Share Article
         </p>
         <div className="flex flex-col gap-2.5">
-          {/* Twitter */}
           <a
             href={tweetUrl}
             target="_blank"
@@ -576,7 +559,6 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
             <ChevronRight size={13} className="opacity-40" />
           </a>
 
-          {/* LinkedIn */}
           <a
             href={linkedinUrl}
             target="_blank"
@@ -589,14 +571,12 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
             <ChevronRight size={13} className="opacity-40" />
           </a>
 
-          {/* Copy Link */}
           <button
             onClick={copyLink}
-            className={`flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border w-full transition-all duration-150 ${
-              copied
+            className={`flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border w-full transition-all duration-150 ${copied
                 ? "bg-primary/10 border-primary text-primary"
                 : "bg-card border-border text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/10"
-            }`}
+              }`}
             aria-label="Copy article link"
           >
             {copied ? <Check size={15} /> : <Link2 size={15} />}
@@ -608,10 +588,9 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
   );
 }
 
-// ─── ROOT BLOG PAGE ───────────────────────────────────────────────────────────
 function BlogPage() {
   const { slug } = useParams();
-  const blog = blogs.find((blog: any) => blog.id.toString() === slug);
+  const blog = blogs.find((blog: any) => blog.key.toString() === slug);
 
   return (
     <>
@@ -628,7 +607,6 @@ function BlogPage() {
           <BlogHeader title={blog.title} image={blog.image} />
 
           <div className="flex gap-10 items-start">
-            {/* Article column */}
             <div className="flex-1 min-w-0">
               <BlogMeta
                 author={blog.author}
@@ -645,7 +623,6 @@ function BlogPage() {
               </div>
               {blog.image.length > 1 && <BlogImageGallery image={blog.image} />}
 
-              {/* Divider */}
               <div className="my-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
               <BlogTags tags={blog.tags} />
@@ -655,7 +632,6 @@ function BlogPage() {
               />
             </div>
 
-            {/* Sticky sidebar */}
             <Sidebar tags={blog.tags} category={blog.category} />
           </div>
         </main>

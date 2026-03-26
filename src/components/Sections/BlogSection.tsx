@@ -10,7 +10,6 @@ import {
 import { blogs } from "@/constants/siteData";
 import { PageDescriptionBlock } from "@/constants/type";
 
-// ── Types ─────────────────────────────────────────────────────────────────────
 export interface Comment {
   id: number;
   author: string;
@@ -21,7 +20,7 @@ export interface Comment {
 }
 
 export interface Blog {
-  id: number;
+  key: string;
   title: string;
   excerpt: string;
   content: PageDescriptionBlock[];
@@ -35,7 +34,6 @@ export interface Blog {
   comments: Comment[];
 }
 
-// ── Comment Item ──────────────────────────────────────────────────────────────
 const CommentItem: React.FC<{ comment: Comment; index: number }> = ({
   comment,
   index,
@@ -50,11 +48,10 @@ const CommentItem: React.FC<{ comment: Comment; index: number }> = ({
       transition={{ delay: 0.06 * index, duration: 0.4 }}
       className="flex gap-3 py-4 border-b border-slate-100 last:border-0"
     >
-      {/* Avatar */}
       <div className="shrink-0">
         {comment.avatar ? (
           <img
-          loading="lazy"
+            loading="lazy"
             src={comment.avatar}
             alt={comment.author}
             className="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100"
@@ -66,7 +63,6 @@ const CommentItem: React.FC<{ comment: Comment; index: number }> = ({
         )}
       </div>
 
-      {/* Content */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between gap-2 mb-1">
           <span className="text-sm font-semibold text-slate-800">
@@ -82,9 +78,8 @@ const CommentItem: React.FC<{ comment: Comment; index: number }> = ({
             setLiked(!liked);
             setLikeCount(liked ? likeCount - 1 : likeCount + 1);
           }}
-          className={`mt-2 flex items-center gap-1.5 text-xs font-medium transition-colors ${
-            liked ? "text-rose-500" : "text-slate-400 hover:text-rose-400"
-          }`}
+          className={`mt-2 flex items-center gap-1.5 text-xs font-medium transition-colors ${liked ? "text-rose-500" : "text-slate-400 hover:text-rose-400"
+            }`}
         >
           <Heart className={`w-3.5 h-3.5 ${liked ? "fill-rose-500" : ""}`} />
           {likeCount}
@@ -94,7 +89,6 @@ const CommentItem: React.FC<{ comment: Comment; index: number }> = ({
   );
 };
 
-// ── Blog Card ─────────────────────────────────────────────────────────────────
 const BlogCard: React.FC<{
   blog: Blog;
   index: number;
@@ -121,8 +115,7 @@ const BlogCard: React.FC<{
         ${featured ? "md:col-span-2" : ""}
       `}
     >
-      <Link to={`/blog/${blog.id}`}>
-        {/* Image */}
+      <Link to={`/blog/${blog.key}`}>
         <div
           className={`relative overflow-hidden ${featured ? "h-64 sm:h-80" : "h-48 sm:h-52"}`}
         >
@@ -135,14 +128,12 @@ const BlogCard: React.FC<{
           />
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
 
-          {/* Category badge */}
           <div className="absolute top-3 left-3">
             <span className="px-2.5 py-1 rounded-full bg-popover backdrop-blur-sm text-xs font-bold text-primary shadow-sm">
               {blog.category}
             </span>
           </div>
 
-          {/* Arrow button on hover */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.8 }}
@@ -153,14 +144,12 @@ const BlogCard: React.FC<{
           </motion.div>
         </div>
 
-        {/* Body */}
         <div className="p-5">
-          {/* Meta */}
           <div className="flex items-center gap-3 mb-3">
             <div className="flex items-center gap-1.5">
               {blog.authorAvatar ? (
                 <img
-                loading="lazy"
+                  loading="lazy"
                   src={blog.authorAvatar}
                   alt={blog.author}
                   className="w-5 h-5 rounded-full object-cover"
@@ -179,21 +168,17 @@ const BlogCard: React.FC<{
             <span className="text-card-foreground">·</span>
           </div>
 
-          {/* Title */}
           <h3
-            className={`font-bold text-foreground leading-snug mb-2 group-hover:text-water-deep/90 transition-colors ${
-              featured ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
-            }`}
+            className={`font-bold text-foreground leading-snug mb-2 group-hover:text-water-deep/90 transition-colors ${featured ? "text-xl sm:text-2xl" : "text-base sm:text-lg"
+              }`}
           >
             {blog.title}
           </h3>
 
-          {/* Excerpt */}
           <p className="text-sm text-card-foreground leading-relaxed line-clamp-2 mb-4">
             {blog.excerpt}
           </p>
 
-          {/* Footer */}
           <div className="flex items-center justify-between">
             <span className="text-xs text-card-foreground">{blog.date}</span>
             <span className="inline-flex items-center gap-1 text-xs font-semibold gradient-text group-hover:gap-2 transition-all">
@@ -202,7 +187,6 @@ const BlogCard: React.FC<{
           </div>
         </div>
 
-        {/* Bottom accent line on hover */}
         <motion.div
           className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-r from-blue-500 to-cyan-400"
           initial={{ width: "0%" }}
@@ -214,23 +198,20 @@ const BlogCard: React.FC<{
   );
 };
 
-// ── Main Blog Section ─────────────────────────────────────────────────────────
 export default function BlogsSection() {
   const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
   const [activeCategory, setActiveCategory] = useState("All");
 
-  // ── Lock body scroll when modal is open ──────────────────────────────────
   React.useEffect(() => {
     if (selectedBlog) {
-      // Save current scroll position and lock
       const scrollY = window.scrollY;
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollY}px`;
       document.body.style.left = "0";
       document.body.style.right = "0";
-      document.body.style.overflowY = "scroll"; // keep scrollbar visible to avoid layout shift
+      document.body.style.overflowY = "scroll";
     } else {
-      // Restore scroll position on close
+
       const scrollY = document.body.style.top;
       document.body.style.position = "";
       document.body.style.top = "";
@@ -240,7 +221,6 @@ export default function BlogsSection() {
       window.scrollTo(0, parseInt(scrollY || "0") * -1);
     }
     return () => {
-      // Cleanup on unmount
       document.body.style.position = "";
       document.body.style.top = "";
       document.body.style.left = "";
@@ -248,13 +228,12 @@ export default function BlogsSection() {
       document.body.style.overflowY = "";
     };
   }, [selectedBlog]);
-  // ─────────────────────────────────────────────────────────────────────────
+
 
   const filtered: Blog[] = blogs;
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 py-16 sm:py-24 px-4 sm:px-6">
-      {/* ── Section Header ── */}
       <div className="max-w-6xl mx-auto mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -264,7 +243,6 @@ export default function BlogsSection() {
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-6"
         >
           <div>
-            {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border-border border-2 mb-4 bg-water-deep/15 ">
               <div className="w-1.5 h-1.5 rounded-full bg-water-sea animate-pulse" />
               <span className="text-xs font-semibold text-primary uppercase tracking-widest">
@@ -311,7 +289,6 @@ export default function BlogsSection() {
             </p>
           </div>
 
-          {/* Post count */}
           <div className="shrink-0 text-right hidden sm:block">
             <span className="text-4xl font-extrabold gradient-text">
               {blogs.length}
@@ -324,7 +301,6 @@ export default function BlogsSection() {
 
       </div>
 
-      {/* ── Blog Grid ── */}
       <div className="max-w-6xl mx-auto">
         <AnimatePresence mode="wait">
           <motion.div
@@ -337,7 +313,7 @@ export default function BlogsSection() {
           >
             {filtered.map((blog: Blog, index: number) => (
               <BlogCard
-                key={blog.id}
+                key={blog.key}
                 blog={blog}
                 index={index}
                 onClick={() => setSelectedBlog(blog)}
@@ -361,7 +337,6 @@ export default function BlogsSection() {
         )}
       </div>
 
-      {/* ── Modal ── */}
     </section>
   );
 }

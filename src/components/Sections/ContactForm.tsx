@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { useSlideInParallax } from "@/hooks/useSlideInParallax";
 import emailjs from "@emailjs/browser";
 
-// ─── Hook: fires once when element enters the viewport ───────────────────────
 function useInView(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -30,7 +29,6 @@ function useInView(threshold = 0.12) {
   return { ref, inView };
 }
 
-// ─── Types ───────────────────────────────────────────────────────────────────
 type FormData = {
   name: string;
   email: string;
@@ -42,13 +40,11 @@ type FormData = {
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
-// ─── Validation ──────────────────────────────────────────────────────────────
 export const validateContactForm = (
   formData: FormData,
 ): { errors: FormErrors; isValid: boolean } => {
   const errors: FormErrors = {};
 
-  // ─── NAME ───────────────────────────────────────────
   if (!formData.name?.trim()) {
     errors.name = "Name is required.";
   } else if (formData.name.trim().length < 2) {
@@ -60,7 +56,6 @@ export const validateContactForm = (
       "Name can only contain letters, spaces, hyphens, or apostrophes.";
   }
 
-  // ─── EMAIL ──────────────────────────────────────────
   if (!formData.email?.trim()) {
     errors.email = "Email is required.";
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
@@ -69,14 +64,12 @@ export const validateContactForm = (
     errors.email = "Email must not exceed 100 characters.";
   }
 
-  // ─── PHONE ──────────────────────────────────────────
   if (!formData.phone?.trim()) {
     errors.phone = "Phone number is required.";
   } else if (!/^\+?[\d\s\-()\[\]]{7,15}$/.test(formData.phone.trim())) {
     errors.phone = "Enter a valid phone number. (e.g. +1 234 567 8900)";
   }
 
-  // ─── COMPANY ────────────────────────────────────────
   if (!formData.company?.trim()) {
     errors.company = "Company name is required.";
   } else if (formData.company.trim().length < 2) {
@@ -85,12 +78,10 @@ export const validateContactForm = (
     errors.company = "Company name must not exceed 100 characters.";
   }
 
-  // ─── SERVICE ────────────────────────────────────────
   if (!formData.service?.trim()) {
     errors.service = "Please select a service.";
   }
 
-  // ─── MESSAGE ────────────────────────────────────────
   if (!formData.message?.trim()) {
     errors.message = "Message is required.";
   } else if (formData.message.trim().length < 10) {
@@ -105,7 +96,6 @@ export const validateContactForm = (
   };
 };
 
-// ─── Form Component ───────────────────────────────────────────────────────────
 export const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // 👈 Loading state
@@ -137,7 +127,6 @@ export const ContactForm = () => {
       return;
     }
 
-    // ✅ Clear errors & start loading
     setErrors({});
     setIsLoading(true);
 
@@ -177,7 +166,7 @@ export const ContactForm = () => {
       console.error("EmailJS Error:", error);
       alert("Failed to send message ❌");
     } finally {
-      setIsLoading(false); // 👈 Always stop loading
+      setIsLoading(false); 
     }
   };
 
@@ -207,7 +196,6 @@ export const ContactForm = () => {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* ── Name & Email ── */}
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
@@ -246,7 +234,6 @@ export const ContactForm = () => {
               </div>
             </div>
 
-            {/* ── Phone & Company ── */}
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
@@ -285,7 +272,6 @@ export const ContactForm = () => {
               </div>
             </div>
 
-            {/* ── Service ── */}
             <div>
               <label className="block text-sm font-medium text-foreground mb-2">
                 Service Interested In
@@ -304,7 +290,6 @@ export const ContactForm = () => {
               )}
             </div>
 
-            {/* ── Message ── */}
             <div>
               <label className="block text-sm font-medium text-foreground mb-2">
                 Message *
@@ -324,12 +309,11 @@ export const ContactForm = () => {
               )}
             </div>
 
-            {/* ── Submit Button ── */}
             <Button
               type="submit"
               size="lg"
               className="w-full"
-              disabled={isLoading} // 👈 Disabled while loading
+              disabled={isLoading} 
             >
               {isLoading ? (
                 <>

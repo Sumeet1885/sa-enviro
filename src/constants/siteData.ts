@@ -1,8 +1,6 @@
-// Site data extracted from JSON - all content comes from here
-
 import Image1 from "@/assets/about-hero.webp";
 import Image2 from "@/assets/hero-water-treatment.webp";
-import Image3 from "@/assets/hero2.webp";
+const Image3 = "/hero2.webp";
 import Image4 from "@/assets/hero3.webp";
 import {
   Product,
@@ -20,7 +18,7 @@ export const siteConfig: SiteConfig = {
   description:
     "SA Enviro Solutions (SAES) provides quality and customized services to address Environmental Aspects, specifically in Water and Wastewater Treatment, Zero Liquid Discharge, Air Pollution Control, Energy, Safety & Solid-Waste Management.",
   contact: {
-    phone: "+91 8087748585",
+    phone: "+91 8087748585 / 8087758585",
     email: "sales@saenvirosolutions.com",
     address: "Chinchwad, Pune, Maharashtra, India",
   },
@@ -68,6 +66,10 @@ const Product_DropDown = [
     name: "Water Softeners Plant",
     key: "water_softeners_plant",
   },
+  {
+    name: "AMC Services",
+    key: "amc_services",
+  },
 ];
 
 const Option_Dropdown = [
@@ -88,7 +90,7 @@ export const navigation: NavigationItem[] = [
 
   { name: "Blogs", href: "/blogs" },
 
-  { name: "Option", href: "/option", dropdown: Option_Dropdown },
+  { name: "Options", href: "/option", dropdown: Option_Dropdown },
 
   { name: "Contact", href: "/contact" },
 ];
@@ -154,10 +156,39 @@ export const heroData: HeroData = {
   slides: [
     {
       id: 1,
-      title: "Modern Wastewater Treatment Facility",
-      subtitle: "Engineering clean water for a sustainable future",
-      desc: "An aerial view of an advanced wastewater treatment plant featuring large circular clarifier tanks, interconnected pipelines.",
-      img: Image1,
+      title: "Water Treatment Plant",
+      subtitle: "Reliable Water Purification Solutions",
+      desc: "Our Water Treatment Plant ensures the efficient purification and management of water using advanced technologies, delivering safe, sustainable, and high-quality water for industrial and community needs.",
+      img: Image3,
+      buttons: [
+        {
+          label: "UF",
+          name: "Ultra Filtration",
+          key: "ultra_filtration",
+        },
+        {
+          label: "RO",
+          name: "Reverse Osmosis",
+          key: "reverse_osmosis",
+        },
+        {
+          label: "DP",
+          name: "Demineralisation Plants",
+          key: "demineralisation_plants",
+        },
+        {
+          label: "WSP",
+          name: "Water Softeners Plant",
+          key: "water_softeners_plant",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Waste Water Treatment",
+      subtitle: "Efficient Wastewater Management Solutions",
+      desc: "Our wastewater treatment systems are designed to effectively remove contaminants, ensuring environmentally safe discharge and sustainable water reuse through advanced treatment technologies.",
+      img: Image2,
       buttons: [
         {
           label: "STP",
@@ -177,99 +208,17 @@ export const heroData: HeroData = {
       ],
     },
     {
-      id: 2,
-      title: "Industrial Water Filtration System",
-      subtitle: "Precision-engineered purification infrastructure",
-      desc: "Interior view of a high-grade industrial filtration plant featuring stainless steel pressure vessels, interconnected pipe networks.",
-      img: Image2,
-      buttons: [
-        {
-          label: "WTP",
-          name: "Water Treatment Plants",
-          key: "water_treatment_plants",
-        },
-        {
-          label: "ZLD",
-          name: "Zero Liquid Discharge ",
-          key: "zero_liquid_discharge",
-        },
-        {
-          label: "UF",
-          name: "Ultra Filtration",
-          key: "ultra_filtration",
-        },
-      ],
-    },
-    {
       id: 3,
-      title: "Rural Wastewater Treatment Site",
-      subtitle: "Compact ecological water management",
-      desc: "Top-down aerial view of a community-scale wastewater treatment plant featuring circular settling tanks, sludge basins.",
-      img: Image3,
+      title: "Service",
+      subtitle: "Reliable Annual Maintenance Solutions",
+      desc: "Our AMC services ensure regular inspection, maintenance, and timely support to keep your systems operating efficiently, minimizing downtime and extending equipment lifespan.",
+      img: Image1,
 
       buttons: [
         {
-          label: "RO",
-          name: "Reverse Osmosis",
-          key: "reverse_osmosis",
-        },
-        {
-          label: "DP",
-          name: "Demineralisation Plants",
-          key: "demineralisation_plants",
-        },
-        {
-          label: "WSP",
-          name: "Water Softeners Plant",
-          key: "water_softeners_plant",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Abstract Perspectives",
-      subtitle: "Finding symmetry in chaos",
-      desc: "Modern abstract forms and human emotion.",
-      img: Image4,
-      buttons: [
-        {
-          label: "WTP",
-          name: "Water Treatment Plants",
-          key: "water_treatment_plants",
-        },
-        {
-          label: "ZLD",
-          name: "Zero Liquid Discharge ",
-          key: "zero_liquid_discharge",
-        },
-        {
-          label: "UF",
-          name: "Ultra Filtration",
-          key: "ultra_filtration",
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: "Municipal Clarifier Basin",
-      subtitle: "Final stage sedimentation for clean discharge",
-      desc: "Ground-level view of a circular secondary clarifier where treated water is separated from residual solids using a slow rotating bridge and scraper system.",
-      img: Image4,
-      buttons: [
-        {
-          label: "RO",
-          name: "Reverse Osmosis",
-          key: "reverse_osmosis",
-        },
-        {
-          label: "DP",
-          name: "Demineralisation Plants",
-          key: "demineralisation_plants",
-        },
-        {
-          label: "WSP",
-          name: "Water Softeners Plant",
-          key: "water_softeners_plant",
+          label: "AMC",
+          name: "AMC Services",
+          key: "amc_services",
         },
       ],
     },
@@ -317,7 +266,7 @@ export const services = [
     description:
       "The Chemical dosing system is designed for adding of chemicals into water to separate solids by conditioning.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Chemical-Dosing-System-1.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Chemical-Dosing-System_m9hwjp.webp",
     link: "/services/chemical-dosing",
   },
   {
@@ -326,7 +275,7 @@ export const services = [
     description:
       "The Clarifiers are settling tanks used to separate solid particulates from liquids. SA Enviro Solutions provide variety of Clarifiers to suit various solid separation methods in settling of solids.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/The-Clarifier.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/The-Clarifier_sf5j93.webp",
     link: "/services/clarifier",
   },
   {
@@ -335,7 +284,7 @@ export const services = [
     description:
       "The biologically accomplishment of waste water is done by using a variety of microorganisms.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Biological-MBBR-Treatment.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
     link: "/services/biological-treatment",
   },
   {
@@ -344,7 +293,7 @@ export const services = [
     description:
       "The Tube settlers are designed to enter flocculated water through multiple tube deck from the bottom and flow upward in angle of 60°.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Tube-settlers-2.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
     link: "/services/tube-settlers",
   },
   {
@@ -353,7 +302,7 @@ export const services = [
     description:
       "These Filters are custom designed to suit the process requirement. The backwash is taken after every interval to maintain the efficiency of filter and filtrate water quality.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Pressure-Sand-Filter-activated-carbon-filter1.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Pressure-Sand-Filter-activated-carbon-filter1_yqs77v.webp",
     link: "/services/pressure-sand-filters",
   },
   {
@@ -362,7 +311,7 @@ export const services = [
     description:
       "The Activated Carbon Filters consist of Activated carbon granules supported by very fine quartz filter media. The various grades of carbon are available for specialized treatments.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Activated-Carbon-Filters.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Activated-Carbon-Filters_pyagph.webp",
     link: "/services/activated-carbon-filters",
   },
   {
@@ -371,7 +320,7 @@ export const services = [
     description:
       "The Dual Media Filter are utilized for higher flow rates with a smaller footprint. High filtration velocities are achieved by proper selection of Media, and designing of Distribution.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725955/logosaeenviro_o9itfb.gif",
     link: "/services/dual-media-filters",
   },
   {
@@ -380,7 +329,7 @@ export const services = [
     description:
       "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Reverse-Osmosis-RO-2.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Reverse-Osmosis-RO-2_ttxitp.webp",
     link: "/services/reverse-osmosis",
   },
   {
@@ -389,7 +338,7 @@ export const services = [
     description:
       "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Water-Treatment-Plants-WTP1.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773727163/Water-Treatment-Plants-WTP1_ggis8i.webp",
     link: "/services/water-treatment-plants",
   },
   {
@@ -398,7 +347,7 @@ export const services = [
     description:
       "We offer a huge range of Sewage Treatment Plants, which are used in the national as well as international market.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
     link: "/services/sewage-treatment",
   },
   {
@@ -407,7 +356,7 @@ export const services = [
     description:
       "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/Effluent-Treatment-Plant.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/Effluent-Treatment-Plant_e9js1o.webp",
     link: "/services/effluent-treatment",
   },
   {
@@ -416,7 +365,7 @@ export const services = [
     description:
       "It is the process of removing mineral salts from water by using the ion exchange process. Demineralization produces water of a higher quality than conventional distillation.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/DMplants-585x340_dih1yh.gif",
     link: "/services/dm-plants",
   },
   {
@@ -425,7 +374,7 @@ export const services = [
     description:
       "The Water Softeners are available in different sizes and materials, manually operated or fully Automatic and ready to install.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725955/logosaeenviro_o9itfb.gif",
     link: "/services/water-softeners",
   },
   {
@@ -434,7 +383,7 @@ export const services = [
     description:
       "UV disinfection systems for water treatment, providing chemical-free sterilization.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/ULTRAVIOLET-UNITS.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     link: "/services/ultraviolet-units",
   },
   {
@@ -443,16 +392,8 @@ export const services = [
     description:
       "We offer a large variety of Pool Filtration Systems, Dosing Systems & Accessories. The skimmer and level deck techniques ensure perfect water quality at all times.",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Swimming-Pool-Water-Filtration-Plants.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/Swimming-Pool-Water-Filtration-Plants_vokkvx.webp",
     link: "/services/swimming-pool-filtration",
-  },
-  {
-    id: "ultra-filtration",
-    title: "Ultra Filtration (UF)",
-    description:
-      "Advanced membrane filtration technology for removing suspended solids, bacteria, and other contaminants.",
-    image: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF1.png",
-    link: "/services/ultra-filtration",
   },
 ];
 
@@ -509,73 +450,73 @@ export const certifications = [
   {
     title: "ISO Certification 1",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/ISO-CERTIFICATION-1-449x650.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/ISO-CERTIFICATION-1-449x650_ndrbmd.webp",
   },
   {
     title: "ISO Certification 2",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/ISO-CERTIFICATION-2-449x650.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/ISO-CERTIFICATION-2-449x650_cbdcgb.webp",
   },
   {
     title: "ISO Certification 3",
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/ISO-CERTIFICATION-3-434x650.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/ISO-CERTIFICATION-3-434x650_g7uik2.webp",
   },
 ];
 
 export const galleryImages = [
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Chemical-Dosing-System-1.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Chemical-Dosing-System_m9hwjp.webp",
     alt: "Chemical Dosing System",
     category: "equipment",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/The-Clarifier.png",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/The-Clarifier_sf5j93.webp",
     alt: "The Clarifier",
     category: "equipment",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Biological-MBBR-Treatment.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
     alt: "Biological MBBR Treatment",
     category: "treatment",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Tube-settlers-2.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
     alt: "Tube Settlers",
     category: "equipment",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Pressure-Sand-Filter-activated-carbon-filter1.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Pressure-Sand-Filter-activated-carbon-filter1_yqs77v.webp",
     alt: "Pressure Sand Filter",
     category: "filters",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Activated-Carbon-Filters.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Activated-Carbon-Filters_pyagph.webp",
     alt: "Activated Carbon Filters",
     category: "filters",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Water-Treatment-Plants-WTP1.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773727163/Water-Treatment-Plants-WTP1_ggis8i.webp",
     alt: "Water Treatment Plants",
     category: "plants",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
     alt: "Sewage Treatment Plants",
     category: "plants",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2025/12/Effluent-Treatment-Plant.webp",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/Effluent-Treatment-Plant_e9js1o.webp",
     alt: "Effluent Treatment Plant",
     category: "plants",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2021/10/ULTRAVIOLET-UNITS.png",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     alt: "Ultraviolet Units",
     category: "equipment",
   },
   {
-    src: "https://saenvirosolutions.com/wp-content/uploads/2021/10/Swimming-Pool-Water-Filtration-Plants.png",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/Swimming-Pool-Water-Filtration-Plants_vokkvx.webp",
     alt: "Swimming Pool Filtration",
     category: "plants",
   },
@@ -633,14 +574,10 @@ export const seoData = {
   },
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Add this to your @/constants/siteData file
-// ─────────────────────────────────────────────────────────────────────────────
-
 export const blogs = [
   {
-    id: 1,
-    title: "About Effluent Treatment Plant",
+    key: "learn-about-water-softeners-plant",
+    title: "Learn about Water Softeners Plant",
     excerpt:
       "The Water Softeners are available in different sizes and materials, manually operated or fully automatic and ready to install.",
     content: [
@@ -679,7 +616,7 @@ export const blogs = [
       },
     ],
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
@@ -695,7 +632,7 @@ export const blogs = [
     comments: [],
   },
   {
-    id: 2,
+    key: "what-is-sewage-treatment-plants",
     title: "What is Sewage Treatment Plants",
     excerpt:
       "The Water Softeners are available in different sizes and materials, manually operated or fully automatic and ready to install.",
@@ -821,7 +758,7 @@ export const blogs = [
       },
     ],
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
@@ -837,7 +774,7 @@ export const blogs = [
     comments: [],
   },
   {
-    id: 3,
+    key: "about-effluent-treatment-plant",
     title: "About Effluent Treatment Plant",
     excerpt:
       "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent.",
@@ -873,7 +810,7 @@ export const blogs = [
       },
     ],
     image:
-      "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
@@ -894,153 +831,148 @@ export const blogs = [
 export const LOGOS: LogoItem[] = [
   {
     id: "picture-1",
-    alt: "Industrial water treatment equipment setup view 1",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture1-585x439.jpg",
+    alt: "client-1",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726344/Picture1-585x439_w28rjd.webp",
   },
   {
     id: "picture-2",
-    alt: "Wastewater treatment facility filtration units",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture2-1-585x439.jpg",
+    alt: "client-2",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726345/Picture2-1-585x439_to7rpo.webp",
   },
   {
     id: "picture-3",
-    alt: "Effluent treatment plant piping and tank system",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture3-1-585x439.jpg",
+    alt: "client-3",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726346/Picture3-1-585x439_n8fzlk.webp",
   },
   {
     id: "picture-4",
-    alt: "Water purification system technical diagram or view",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture4.png",
+    alt: "client-4",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726348/Picture4_iwjefs.webp",
   },
   {
     id: "picture-5",
-    alt: "Commercial sewage treatment plant installation",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture5-585x439.jpg",
+    alt: "client-5",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726349/Picture5-585x439_zryxb9.webp",
   },
   {
     id: "picture-6",
-    alt: "Multi-stage water filtration assembly",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture6-585x439.jpg",
+    alt: "client-6",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726350/Picture6-585x439_eyiyb9.webp",
   },
   {
     id: "picture-7",
-    alt: "Industrial RO plant membrane housing",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture7-585x439.jpg",
+    alt: "client-7",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726353/Picture8-585x439_dzubk3.webp",
   },
   {
     id: "picture-8",
-    alt: "Sewage treatment plant aerator and tank system",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture8-585x439.jpg",
+    alt: "client-8",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726352/Picture7-585x439_tjwivx.webp",
+  },
+  {
+    id: "picture-9",
+    alt: "client-9",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726356/Picture13-1-585x439_gh4pb1.webp",
+  },
+  {
+    id: "picture-10",
+    alt: "client-10",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726357/Picture14-1-585x439_jvd1ov.webp",
+  },
+  {
+    id: "picture-11",
+    alt: "client-11",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726359/Picture15-1-585x439_outf58.webp",
+  },
+  {
+    id: "picture-12",
+    alt: "client-12",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726360/Picture16-1-585x439_qnbtal.webp",
   },
   {
     id: "picture-13",
-    alt: "Reverse osmosis water purification system",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture13-1-585x439.jpg",
+    alt: "client-13",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726362/Picture17-585x439_zskpcz.webp",
   },
   {
     id: "picture-14",
-    alt: "Package sewage treatment plant outdoor unit",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture14-1-585x439.jpg",
+    alt: "client-14",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726363/Picture18-585x439_t9uska.webp",
   },
   {
     id: "picture-15",
-    alt: "Demineralization plant ion exchange columns",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture15-1-585x439.jpg",
+    alt: "client-15",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726365/Picture19-1-585x439_qxrveh.webp",
   },
   {
     id: "picture-16",
-    alt: "Effluent treatment system control valves and tanks",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture16-1-585x439.jpg",
+    alt: "client-16",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726366/Picture20-585x439_y1krni.webp",
   },
   {
     id: "picture-17",
-    alt: "Industrial sand and carbon filter units",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture17-585x439.jpg",
+    alt: "client-17",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726340/7-585x439_nt9hkx.webp",
   },
   {
     id: "picture-18",
-    alt: "UF membrane filtration system assembly",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture18-585x439.jpg",
+    alt: "client-18",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726343/9-585x439_y4qrly.webp",
   },
   {
     id: "picture-19",
-    alt: "Water softening plant setup",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture19-1-585x439.jpg",
+    alt: "client-19",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726341/8-585x439_zirh5b.webp",
   },
   {
     id: "picture-20",
-    alt: "Wastewater recycling plant components",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/09/Picture20-585x439.jpg",
+    alt: "client-20",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726337/5-585x439_eptnq7.webp",
   },
   {
-    id: "web-7",
-    alt: "Modular sewage treatment plant view 7",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/7-585x439.webp",
+    id: "picture-21",
+    alt: "client-21",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726335/4-585x439_co3eap.webp",
   },
   {
-    id: "web-8",
-    alt: "Industrial effluent treatment tank view 8",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/8-585x439.webp",
+    id: "picture-22",
+    alt: "client-22",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726338/6-585x439_yqalth.webp",
   },
   {
-    id: "web-9",
-    alt: "Water purification plant instrumentation view 9",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/9-585x439.webp",
+    id: "picture-23",
+    alt: "client-23",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726333/3-585x439_fhul1z.webp",
   },
   {
-    id: "web-5",
-    alt: "Activated sludge process system view 5",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/5-585x439.webp",
+    id: "picture-24",
+    alt: "client-24",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726332/1-585x439_qbewgv.webp",
   },
   {
-    id: "web-4",
-    alt: "Commercial water treatment solution view 4",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/4-585x439.webp",
+    id: "picture-25",
+    alt: "client-25",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726333/2-585x439_ub9vgm.webp",
   },
   {
-    id: "web-6",
-    alt: "Filtration media tank assembly view 6",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/6-585x439.webp",
+    id: "picture-26",
+    alt: "client-26",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1774417431/Picture11-1-585x439_mr4esk.webp",
   },
   {
-    id: "web-3",
-    alt: "Compact sewage treatment plant design view 3",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/3-585x439.webp",
+    id: "picture-27",
+    alt: "client-27",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1774417430/Picture9-1-585x439_yi7wc5.webp",
   },
   {
-    id: "web-1",
-    alt: "Standard water treatment plant setup view 1",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/1-585x439.webp",
+    id: "picture-28",
+    alt: "client-28",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1774417430/Picture12-1-585x439_bqebff.webp",
   },
   {
-    id: "web-2",
-    alt: "Clarifier tank system view 2",
-    imgUrl:
-      "https://saenvirosolutions.com/wp-content/uploads/2025/12/2-585x439.webp",
+    id: "picture-29",
+    alt: "client-29",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1774417430/Picture10-1-585x439_omix0l.webp",
   },
 ];
 
@@ -1051,26 +983,55 @@ export const products: Product[] = [
       title: "Sewage Treatment Plants",
       description:
         "On the Activated Sludge Process basis sewage treatment plants are designed. The advanced technologies involved to treat sewage such as MBBR technology, UASB technology and Sequential Batch Reactor (SBR). These technologies are discussed below:",
+      seo: {
+        title:
+          "Sewage Treatment Plant (STP) Manufacturer in India | SA Enviro Solutions",
+        description:
+          "Advanced Sewage Treatment Plants using SBR, MBBR & UASB technology for residential, industrial and commercial wastewater treatment.",
+        keywords:
+          "sewage treatment plant, STP plant manufacturer, wastewater treatment system, sewage water treatment plant India, SBR STP, MBBR STP, UASB technology",
+        url: "https://yourdomain.com/products/sewage-treatment-plants",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Sewage Treatment Plant",
+          name: "Sewage Treatment Plant (STP)",
+          description:
+            "Design, manufacturing and installation of Sewage Treatment Plants using SBR, MBBR and UASB technologies for residential, industrial and commercial wastewater treatment.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Pune",
+              addressCountry: "India",
+            },
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp1-585x390.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725959/stp1-585x390_qdovao.webp",
         alt: "Sewage Treatment Plant - View 1",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2021/10/Sewage-Treatment-Plants.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
         alt: "Sewage Treatment Plant - Overview",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp3-585x390.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725959/stp3-585x390_xu5ct9.webp",
         alt: "Sewage Treatment Plant - View 2",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp4-585x390.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725960/stp4-585x390_haxc9t.webp",
         alt: "Sewage Treatment Plant - View 3",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/stp6-585x390.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725960/stp6-585x390_gsjiju.webp",
         alt: "Sewage Treatment Plant - View 4",
       },
     ],
@@ -1198,10 +1159,34 @@ export const products: Product[] = [
       title: "Zero Liquid Discharge (ZLD)",
       description:
         "ZLD is a strategic wastewater management system that ensures that there will be no discharge of industrial wastewater into the environment. It is achieved by treating wastewater through recycling and then recovery and reuse for industrial purpose.",
+      seo: {
+        title:
+          "Zero Liquid Discharge (ZLD) System | Industrial Wastewater Recycling",
+        description:
+          "Zero Liquid Discharge (ZLD) systems designed to recycle industrial wastewater and eliminate liquid discharge while maximizing water reuse.",
+        keywords:
+          "zero liquid discharge system, ZLD plant, industrial wastewater recycling, water reuse system, ZLD wastewater treatment",
+        url: "https://yourdomain.com/products/zero-liquid-discharge",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725965/zld-1024x332_b4pteu.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Zero Liquid Discharge System",
+          name: "Zero Liquid Discharge (ZLD) System",
+          description:
+            "Industrial Zero Liquid Discharge systems designed to recycle wastewater and eliminate liquid discharge through advanced water recovery technologies.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/zld-1024x332.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725965/zld-1024x332_b4pteu.webp",
         alt: "Zero Liquid Discharge",
       },
     ],
@@ -1212,26 +1197,50 @@ export const products: Product[] = [
       title: "Effluent Treatment Plant",
       description:
         "We at SA Enviro Solutions manufacture and supply effluent treatment plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent. The industrial effluent treatment plants involve different stages of treatment including physio-chemical treatment and biological treatment followed by tertiary treatment. Integrated functions with simple control make the operation much easier. Our engineers can also custom design the effluent treatment plants based on the specific application requirement of the customers. Our Industrial effluent treatment plants have a compact design and can be easily installed on the site.",
+      seo: {
+        title:
+          "Effluent Treatment Plant (ETP) Manufacturer | Industrial Wastewater Treatment",
+        description:
+          "Effluent Treatment Plants designed for industries like chemical, pharma, textile and food processing to treat industrial wastewater safely.",
+        keywords:
+          "effluent treatment plant, ETP plant manufacturer, industrial wastewater treatment, effluent treatment system, ETP plant India",
+        url: "https://yourdomain.com/products/effluent-treatment-plants",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/etp5-585x390_kxoqs6.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Effluent Treatment Plant",
+          name: "Industrial Effluent Treatment Plant (ETP)",
+          description:
+            "Industrial effluent treatment plants designed to treat wastewater from chemical, pharmaceutical, textile and manufacturing industries.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp4-409x390.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp5-585x390.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/etp5-585x390_kxoqs6.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp3.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp2.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/etp2_sdicc6.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/etp1.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/etp1_jty4yv.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
     ],
@@ -1268,10 +1277,34 @@ export const products: Product[] = [
       title: "Water Treatment Plants",
       description:
         "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants. We also offer effective turnkey solutions for these plants to our clients. Wide range of plants are demanded in API, Chemical, Paint, Food processing and Dye industries.",
+      seo: {
+        title:
+          "Water Treatment Plant Manufacturer | Industrial & Municipal WTP",
+        description:
+          "High quality water treatment plants for industrial, municipal and commercial applications including packaged and turnkey WTP solutions.",
+        keywords:
+          "water treatment plant, WTP plant manufacturer, industrial water treatment system, municipal water treatment plant, packaged WTP",
+        url: "https://yourdomain.com/products/water-treatment-plants",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Water Treatment Plant",
+          name: "Industrial Water Treatment Plants",
+          description:
+            "Design and supply of industrial and municipal water treatment plants including packaged and turnkey water purification systems.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/WTP.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp",
         alt: "Industrial Water Treatment Plant System",
       },
     ],
@@ -1302,14 +1335,38 @@ export const products: Product[] = [
       title: "Ultra Filtration (UF)",
       description:
         "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds colloidal and particulate matters from a feed stream.",
+      seo: {
+        title:
+          "Ultra Filtration (UF) System | Industrial Water Filtration Solutions",
+        description:
+          "Ultrafiltration (UF) membrane systems for removing bacteria, viruses and suspended particles from water for industrial and commercial use.",
+        keywords:
+          "ultra filtration system, UF water treatment plant, UF membrane filtration, ultrafiltration plant India",
+        url: "https://yourdomain.com/products/ultra-filtration",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/UF1_cbo64i.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Ultra Filtration System",
+          name: "Ultra Filtration (UF) Water Treatment System",
+          description:
+            "Ultrafiltration membrane systems for removing bacteria, viruses and suspended particles from water for industrial and commercial use.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF1.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/UF1_cbo64i.webp",
         alt: "Ultra Filtration (UF)",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/UF2.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/UF2_imr2jn.webp",
         alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",
       },
     ],
@@ -1321,14 +1378,38 @@ export const products: Product[] = [
       title: "Reverse osmosis (RO)",
       description:
         "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water. In reverse osmosis, an applied pressure is used to overcome osmotic pressure, a colligative property that is driven by chemical potential differences of the solvent, a thermodynamic parameter.",
+      seo: {
+        title:
+          "Reverse Osmosis (RO) Plant | Industrial RO Water Purification Systems",
+        description:
+          "Reverse Osmosis (RO) plants for industrial, commercial and domestic water purification with advanced membrane filtration technology.",
+        keywords:
+          "reverse osmosis plant, RO water treatment system, industrial RO plant manufacturer, RO water purification system",
+        url: "https://yourdomain.com/products/reverse-osmosis",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725957/RO1-585x390_u0sgvg.webp",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Reverse Osmosis Plant",
+          name: "Industrial Reverse Osmosis (RO) Water Treatment Plant",
+          description:
+            "Industrial reverse osmosis water purification systems designed for commercial, institutional and industrial water treatment.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/RO1-585x390.png",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725957/RO1-585x390_u0sgvg.webp",
         alt: "Reverse Osmosis (RO) ",
       },
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/RO2-538x390.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/RO2-538x390_bjubd5.webp",
         alt: "Reverse Osmosis (RO) system with blue filtration tanks and control panel",
       },
     ],
@@ -1368,10 +1449,34 @@ export const products: Product[] = [
       title: "Demineralisation Plants [DM]",
       description:
         "It is the process of removing mineral salts from water by using the ion exchange process. Demineralisation produces water of a higher quality than conventional distillation.",
+      seo: {
+        title:
+          "Demineralisation Plant (DM Plant) | Industrial Deionized Water Systems",
+        description:
+          "Demineralisation plants designed to remove mineral salts from water using ion exchange technology for industrial applications.",
+        keywords:
+          "demineralisation plant, DM water plant, deionized water system, industrial DM plant manufacturer",
+        url: "https://yourdomain.com/products/demineralisation-plants",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/DMplants-585x340_dih1yh.gif",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Demineralisation Plant",
+          name: "Demineralisation (DM) Water Treatment Plant",
+          description:
+            "Demineralisation plants using ion exchange technology to remove dissolved mineral salts and produce high purity industrial water.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2022/04/DMplants-585x340.gif",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/DMplants-585x340_dih1yh.gif",
         alt: "Demineralisation [DM] Plant process diagram",
       },
     ],
@@ -1404,10 +1509,33 @@ export const products: Product[] = [
       title: "Water Softeners Plant",
       description:
         "The Water Softeners are available in different sizes and materials, manually operated or fully Automatic and ready to install. The Water Softening Plants are available as standard models or custom-built versions for specific needs.",
+      seo: {
+        title: "Industrial Water Softener Plant | Hard Water Treatment Systems",
+        description:
+          "Water softening plants designed to remove hardness from water using ion exchange resin for industrial and commercial use.",
+        keywords:
+          "water softener plant, industrial water softener system, hard water treatment plant, water softening system India",
+        url: "https://yourdomain.com/products/water-softeners-plant",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Water Softening System",
+          name: "Industrial Water Softener Plant",
+          description:
+            "Water softening plants designed to remove hardness from water using ion exchange resin technology for industrial and commercial applications.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+          },
+          areaServed: "India",
+        },
+      },
     },
     images: [
       {
-        url: "https://saenvirosolutions.com/wp-content/uploads/2021/10/logosaeenviro.gif",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
         alt: "SA Enviro Solutions Company Logo",
       },
     ],
@@ -1439,6 +1567,65 @@ export const products: Product[] = [
           "Easy to install and operate",
           "Produces soft, non-scale forming water",
         ],
+      },
+    ],
+  },
+  {
+    key: "amc_services",
+    main: {
+      title: "AMC Services",
+      description:
+        'SA Enviro Solutions provide Annual Maintenance Contract (AMC) Services for ETP (Effluent Treatment Plants), WTP (Water Treatment Plants), WWTP (Wastewater Treatment Plants), STP (Sewage Treatment Plants), DM (Demineralization) Plants, RO (Reverse Osmosis) Plants and our setup is situated in Pune, Maharashtra, India. We are specialized in providing "Operation and Maintenance" (AMC) facility including of Health, Safety & Water and Wastewater Treatment Plants.',
+      seo: {
+        title:
+          "AMC Services for STP, ETP, WTP & RO Plants | SA Enviro Solutions",
+        description:
+          "Professional Annual Maintenance Contract (AMC) services for STP, ETP, WTP, RO and DM plants ensuring smooth and efficient plant operation.",
+        keywords:
+          "AMC services for water treatment plants, STP maintenance service, ETP AMC service, wastewater treatment plant maintenance",
+        url: "https://yourdomain.com/products/amc-services",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Water Treatment Plant Maintenance",
+          name: "AMC Services for Water Treatment Plants",
+          description:
+            "Annual Maintenance Contract (AMC) services for STP, ETP, WTP, RO and DM plants ensuring efficient operation and long-term reliability.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Pune",
+              addressCountry: "India",
+            },
+          },
+          areaServed: "India",
+        },
+      },
+    },
+    images: [
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
+        alt: "SA Enviro Solutions Company Logo",
+      },
+    ],
+    Page_Description: [
+      {
+        type: "subtitle",
+        content: "AMC Service:",
+      },
+      {
+        type: "p",
+        content:
+          "We have a dedicated expert service department as well as highly trained plant operators who have been given extensive responsibilities on the plant sites. This staff ensures that all the plants are operated as per the required standards and to the fullest capacity. The water that is treated in these plants has been analysed in labs approved by the Government. They take care that all the maintenance schedules are adhered to do and all guidelines followed. When we undertake Annual maintenance contracts, the service engineers we have hired make plant visits and see if all the jobs are being completed as per the requirements.",
+      },
+      {
+        type: "p",
+        content:
+          "The arrangement and supply of Spare parts for such plants is also a part of the AMC contracts.",
       },
     ],
   },

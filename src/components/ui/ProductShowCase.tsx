@@ -67,7 +67,6 @@ const Content_Section: React.FC<ContentSectionProps> = ({
 }) => {
   return (
     <motion.div className={className} variants={itemVariants}>
-      {/* Header Section */}
       <motion.div className="mb-6 sm:mb-8" variants={itemVariants}>
         <Text variant="title" weight="bold" className="mb-2" as={"h1"}>
           {product.main.title}{" "}
@@ -83,7 +82,6 @@ const Content_Section: React.FC<ContentSectionProps> = ({
         </Text>
       </motion.div>
 
-      {/* Mission Section */}
       <Extra_Text_Section extraContent={product.Page_Description || []} />
     </motion.div>
   );
@@ -182,7 +180,6 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
 
   return (
     <div className="relative w-full">
-      {/* Carousel wrapper */}
       <div className="relative h-56 md:h-96 overflow-hidden rounded-xl">
         <AnimatePresence mode="wait">
           <motion.div
@@ -203,7 +200,6 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         </AnimatePresence>
       </div>
 
-      {/* Previous button */}
       <button
         type="button"
         className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
@@ -215,7 +211,6 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         </span>
       </button>
 
-      {/* Next button */}
       <button
         type="button"
         className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
@@ -227,7 +222,6 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         </span>
       </button>
 
-      {/* Dots indicator */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {images.map((_, index) => (
           <button

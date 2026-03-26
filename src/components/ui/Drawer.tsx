@@ -3,7 +3,7 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+
 
 type DrawerSide = "bottom";
 
@@ -15,9 +15,7 @@ interface DrawerProps {
   onClose: (open: boolean) => void;
 }
 
-// ─── Motion variants ──────────────────────────────────────────────────────────
-// Key fix: use willChange + no opacity animation on the panel itself
-// (opacity changes force repaints which cause the stutter)
+
 
 const panelVariants: Record<DrawerSide, object> = {
   bottom: {
@@ -26,9 +24,9 @@ const panelVariants: Record<DrawerSide, object> = {
       y: 0,
       transition: {
         type: "spring",
-        stiffness: 250, // lower = slower, more relaxed entry
-        damping: 36, // keeps it from bouncing
-        mass: 1.1, // heavier = more inertia, feels weighty
+        stiffness: 250, 
+        damping: 36, 
+        mass: 1.1,
         restDelta: 0.001,
       },
     },
@@ -48,13 +46,11 @@ const backdropVariants = {
   exit: { opacity: 0, transition: { duration: 0.32, ease: "easeIn" } },
 };
 
-// ─── Panel shape ──────────────────────────────────────────────────────────────
 
 const panelShape: Record<DrawerSide, string> = {
   bottom: "inset-x-0 bottom-0 w-full max-h-[90vh] rounded-t-3xl",
 };
 
-// ─── Drawer ───────────────────────────────────────────────────────────────────
 
 export default function Drawer({
   side = "bottom",
@@ -64,21 +60,13 @@ export default function Drawer({
   onClose,
 }: DrawerProps) {
   return (
-    /*
-     * Always in the DOM — no mounted/unmounted state switching.
-     * That was the stutter source: React had to mount the subtree
-     * synchronously on click before Framer Motion could even start.
-     * AnimatePresence handles show/hide entirely via CSS transforms,
-     * keeping the component tree stable.
-     */
+
     <AnimatePresence>
       {open && (
         <div
           className="fixed inset-0 z-50"
-          // GPU-composite the entire drawer layer
           style={{ willChange: "transform" }}
         >
-          {/* ── Backdrop ──────────────────────────────────────────────────── */}
           <motion.div
             key="backdrop"
             variants={backdropVariants}
@@ -87,11 +75,9 @@ export default function Drawer({
             exit="exit"
             className="absolute inset-0 bg-black/50 backdrop-blur-[4px]"
             onClick={() => onClose(false)}
-            // Separate compositing layer for the blur
             style={{ willChange: "opacity" }}
           />
 
-          {/* ── Panel ─────────────────────────────────────────────────────── */}
           <motion.div
             key="panel"
             variants={panelVariants[side] as any}
@@ -99,13 +85,11 @@ export default function Drawer({
             animate="visible"
             exit="exit"
             className={`absolute ${panelShape[side]} flex flex-col bg-popover overflow-hidden`}
-            // GPU layer — no layout thrashing during animation
             style={{
               willChange: "transform",
               boxShadow: "0 -12px 80px rgba(0,0,0,0.6)",
             }}
           >
-            {/* Top accent line */}
             <div
               aria-hidden
               className="absolute top-0 left-0 right-0 h-px z-10 pointer-events-none"
@@ -115,9 +99,7 @@ export default function Drawer({
               }}
             />
 
-            {/* ── Header ──────────────────────────────────────────────────── */}
             <div className="relative z-10 flex items-center justify-between px-6 pt-3 pb-3 border-b border-border shrink-0">
-              {/* Drag handle — bottom only */}
               {side === "bottom" && (
                 <div className="absolute top-3 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-popover-foreground/20" />
               )}
@@ -136,7 +118,6 @@ export default function Drawer({
               </button>
             </div>
 
-            {/* ── Body ────────────────────────────────────────────────────── */}
             <div className="relative z-10 flex-1 overflow-y-auto px-6 py-2 text-sm leading-relaxed">
               {children ?? (
                 <div className="space-y-3 py-4">

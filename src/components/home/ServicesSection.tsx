@@ -3,8 +3,6 @@ import { ArrowRight} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   AnimatedSection,
-  StaggerContainer,
-  StaggerItem,
 } from "@/components/motion";
 import { services } from "@/constants/siteData";
 import { ServiceCard } from "@/components/ui/ServiceCard";
@@ -15,7 +13,6 @@ export const ServicesSection = () => {
   return (
     <section className="section-padding bg-muted/30 light-section">
       <div className="container-wide">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <AnimatedSection>
             <span className="inline-block px-4 py-1.5 rounded-full gradient-water-deep text-sm font-medium mb-4">
@@ -33,16 +30,18 @@ export const ServicesSection = () => {
           </AnimatedSection>
         </div>
 
-        {/* Services Grid */}
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {featuredServices.map((service) => (
-            <StaggerItem className="h-[80%]" key={service.id}>
-              <ServiceCard service={service} />
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        <div className="section-padding bg-background">
+        <div className="container-wide">
+          <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+            {featuredServices.map((service) => (
+              <div key={service.id}>
+                <ServiceCard service={service} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-        {/* CTA */}
         <AnimatedSection className="text-center">
           <Button asChild size="lg">
             <Link to="/services">

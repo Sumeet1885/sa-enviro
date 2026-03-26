@@ -11,7 +11,6 @@ export const TestimonialsSection = () => {
   return (
     <section className="section-padding light-section">
       <div className="container-wide">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <AnimatedSection>
             <span className="inline-block px-4 py-1.5 rounded-full gradient-water-deep text-sm font-medium mb-4">
@@ -23,7 +22,6 @@ export const TestimonialsSection = () => {
           </AnimatedSection>
         </div>
 
-        {/* Testimonials Grid */}
         <StaggerContainer className="grid md:grid-cols-2 gap-6">
           {testimonials.map((testimonial, i) => (
             <StaggerItem key={i}>

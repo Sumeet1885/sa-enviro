@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send, Clock, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+
 import { SEO } from "@/components/layout/SEO";
 import HeroSection from "@/components/Sections/HeroSection";
 import {
@@ -28,7 +26,6 @@ const Contact = () => {
         description={seoData.contact.description}
       />
 
-      {/* Hero */}
 
       <HeroSection
         title="Contact Us"
@@ -36,11 +33,9 @@ const Contact = () => {
         subtitle="Connect with Our Environmental Experts for Customized Water, Wastewater & Pollution Control Solutions"
       />
 
-      {/* Contact Content */}
       <section className="section-padding bg-background">
         <div className="container-wide">
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Contact Info */}
             <div className="lg:col-span-2">
               <AnimatedSection direction="left">
                 <h2 className="text-2xl font-display font-bold text-foreground mb-6">
@@ -117,7 +112,6 @@ const Contact = () => {
               </StaggerContainer>
             </div>
 
-            {/* Contact Form */}
             <div className="lg:col-span-3">
               <ContactForm />
             </div>
@@ -125,7 +119,6 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section */}
 
       <section className="h-96 bg-muted/50">
         <iframe

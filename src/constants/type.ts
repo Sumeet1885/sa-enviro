@@ -1,21 +1,34 @@
+interface SCHEMA {
+  "@context": string;
+  "@type": string;
+  [key: string]: any;
+}
+
+interface SEO {
+  title: string;
+  description: string;
+  keywords: string;
+  url: string;
+  image: string;
+  schema: SCHEMA;
+}
+
 interface main {
   title: string;
   description: string;
+  seo: SEO;
 }
 
-// Paragraph Block
 interface ParagraphBlock {
   type: "p";
   content: string;
 }
 
-// Subtitle Block
 interface SubtitleBlock {
   type: "subtitle";
   content: string;
 }
 
-// Key-Value Block
 interface KeyValueBlock {
   type: "keyValue";
   items: {
@@ -24,7 +37,6 @@ interface KeyValueBlock {
   }[];
 }
 
-// List Block
 interface ListBlock {
   type: "list";
   style: "bullet" | "number";
@@ -74,6 +86,7 @@ export interface DropDown {
   name: string;
   key?: string;
   href?: string;
+  description?: string;
 }
 
 export interface NavigationItem {
@@ -114,6 +127,7 @@ export interface Team_Member {
   details: string;
   functionality: string;
   highlight: boolean;
+  image?: string;
 }
 
 export interface LogoItem {
