@@ -18,8 +18,6 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Blogs = lazy(() => import("./pages/Blogs"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-import Sample from "@/components/Sections/Sample";
-
 const queryClient = new QueryClient();
 
 const PageLoader = () => (
