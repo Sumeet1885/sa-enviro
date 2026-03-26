@@ -1,11 +1,11 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+import { lazy, Suspense } from "react";
+const Toaster = lazy(() => import("@/components/ui/toaster").then(m => ({ default: m.Toaster })));
+const Sonner = lazy(() => import("@/components/ui/sonner").then(m => ({ default: m.Toaster })));
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Layout, Footer } from "@/components/layout";
-import { Suspense, lazy } from "react";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -17,8 +17,6 @@ const Client = lazy(() => import("./pages/Client"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Blogs = lazy(() => import("./pages/Blogs"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-
-import Sample from "@/components/Sections/Sample";
 
 const queryClient = new QueryClient();
 
@@ -33,8 +31,10 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <HelmetProvider>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
+        <Suspense fallback={null}>
+          <Toaster />
+          <Sonner />
+        </Suspense>
         <BrowserRouter>
           <Layout>
             <Suspense fallback={<PageLoader />}>
