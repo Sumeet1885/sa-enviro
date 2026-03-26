@@ -16,6 +16,7 @@ interface SEO {
 interface main {
   title: string;
   description: string;
+  image:string;
   seo: SEO;
 }
 
