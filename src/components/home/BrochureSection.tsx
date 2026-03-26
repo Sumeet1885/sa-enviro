@@ -344,8 +344,8 @@ export const BrochureSection = () => {
           type="button"
           whileHover="hover"
           whileTap={{ scale: 0.97 }}
-          className="group relative w-full overflow-hidden border border-border
-                     flex items-center justify-between px-5 py-4 cursor-pointer"
+          className="hidden group relative w-full overflow-hidden border border-border
+                      items-center justify-between px-5 py-4 cursor-pointer"
         >
           <motion.span
             className="absolute inset-0 bg-primary-foreground"
