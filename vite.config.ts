@@ -30,7 +30,11 @@ export default defineConfig(({ mode }) => ({
           if (id.includes("node_modules")) {
             if (id.includes("framer-motion")) return "framer-motion";
             if (id.includes("lucide-react")) return "lucide-react";
-            return "vendor";
+            if (id.includes("@radix-ui")) return "radix-ui";
+            if (id.includes("three")) return "three";
+            if (id.includes("recharts")) return "recharts";
+            if (id.includes("react") || id.includes("react-dom") || id.includes("react-router-dom")) return "react-vendor";
+            // Do not use a generic "vendor" return here; let Rollup split the rest automatically based on Route lazy imports.
           }
         },
       },

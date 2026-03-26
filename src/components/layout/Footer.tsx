@@ -98,18 +98,6 @@ export const Footer = () => {
                     width={40}
                     height={40}
                     className="w-7 h-7 sm:w-10 sm:h-10 object-contain relative z-10"
-                    animate={{
-                      filter: [
-                        "drop-shadow(0 2px 4px rgba(0,0,0,0.15))",
-                        "drop-shadow(0 2px 8px rgba(30,100,200,0.3))",
-                        "drop-shadow(0 2px 4px rgba(0,0,0,0.15))",
-                      ],
-                    }}
-                    transition={{
-                      duration: 2.8,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
                   />
                 </motion.div>
 
@@ -125,7 +113,7 @@ export const Footer = () => {
                   >
                     {siteConfig.shortName}
                   </span>
-                  <motion.span
+                  <span
                     className="text-xs font-medium tracking-widest uppercase"
                     style={{
                       marginTop: "2px",
@@ -136,11 +124,9 @@ export const Footer = () => {
                       WebkitTextFillColor: "transparent",
                       backgroundClip: "text",
                     }}
-                    animate={{ backgroundPosition: ["0% center", "200% center"] }}
-                    transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
                   >
                     Enviro Solutions
-                  </motion.span>
+                  </span>
                 </div>
               </div>
             </Link>

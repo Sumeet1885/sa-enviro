@@ -28,7 +28,7 @@ export const VisionSection = () => {
               <br />
               <svg
                 viewBox="0 0 420 90"
-                className="w-full max-w-[420px] overflow-visible md:text-xl"
+                className="w-full max-w-[320px] overflow-visible md:text-xl sm:text-sm"
                 style={{ height: "clamp(64px, 10vw, 90px)" }}
                 aria-label="World."
               >
@@ -52,7 +52,7 @@ export const VisionSection = () => {
                   fontFamily="'Playfair Display', serif"
                   fontStyle="italic"
                   fontWeight="700"
-                  fontSize="88"
+                  fontSize="70"
                   fill="none"
                   stroke="#ffffff"
                   strokeWidth="1.5"
@@ -67,7 +67,7 @@ export const VisionSection = () => {
                   fontFamily="'Playfair Display', serif"
                   fontStyle="italic"
                   fontWeight="700"
-                  fontSize="88"
+                  fontSize="70"
                   fill="url(#textGrad)"
                 >
                   to the future.

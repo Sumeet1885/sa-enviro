@@ -175,7 +175,7 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         )}
       </motion.button>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -193,8 +193,6 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
           >
             <motion.div
               className="absolute inset-0 bg-gradient-to-br from-violet-600/10 via-purple-600/10 to-fuchsia-600/10"
-              animate={{ scale: [1, 1.02, 1], opacity: [0.3, 0.5, 0.3] }}
-              transition={{ duration: 4, repeat: Infinity }}
             />
 
             <ul className="p-2 relative z-10 max-h-[500px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full">
@@ -326,7 +324,6 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
           <span className="relative z-10">{item.name}</span>
           {isActive && (
             <motion.span
-              layoutId="mobile-active-pill"
               className="absolute right-4 w-3 h-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
               animate={{ scale: [1, 1.3, 1], opacity: [1, 0.8, 1] }}
               transition={{ duration: 2.5, repeat: Infinity }}
@@ -335,13 +332,13 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
         </Link>
       )}
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {item.dropdown && isExpanded && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
             className="mt-2 ml-4 pl-4 border-l-2 border-violet-400/30 space-y-1 overflow-y-auto max-h-[500px] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
           >
             {item.dropdown.map((dropItem, idx) => {
@@ -405,9 +402,6 @@ export function Header() {
   const lastScrollY = useRef(0);
 
   const location = useLocation();
-  const { scrollY } = useScroll();
-  const navPadding = useTransform(scrollY, [0, 100], [5, 5]);
-  const logoScale = useTransform(scrollY, [0, 100], [1, 1.0]);
 
   useEffect(() => {
     if (isOpen) {
@@ -458,7 +452,7 @@ export function Header() {
           hover:shadow-[0_20px_64px_rgba(139,92,246,0.45)]
           group
         `}
-        style={{ paddingTop: navPadding, paddingBottom: navPadding }}
+        style={{ paddingTop: 5, paddingBottom: 5 }}
       >
         {isScrolled && (
           <motion.div
@@ -468,8 +462,6 @@ export function Header() {
           >
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-violet-600/15 via-purple-600/15 to-fuchsia-600/15"
-              animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.7, 0.5] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.div>
         )}
@@ -495,7 +487,6 @@ export function Header() {
               }
   `}
             style={{
-              scale: logoScale,
               boxShadow: isScrolled
                 ? "0 0 40px rgba(139,92,246,0.6), inset 0 1px 0 rgba(255,255,255,1), 0 2px 12px rgba(0,0,0,0.15)"
                 : "0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,1)",
@@ -523,16 +514,11 @@ export function Header() {
               className="w-7 h-7 sm:w-10 sm:h-10 object-contain relative z-10"
               animate={{
                 filter: isScrolled
-                  ? [
-                    "drop-shadow(0 2px 6px rgba(139,92,246,0.35))",
-                    "drop-shadow(0 4px 14px rgba(139,92,246,0.6))",
-                    "drop-shadow(0 2px 6px rgba(139,92,246,0.35))",
-                  ]
+                  ? "drop-shadow(0 4px 14px rgba(139,92,246,0.5))"
                   : "drop-shadow(0 2px 4px rgba(0,0,0,0.15))",
               }}
               transition={{
-                duration: 2.5,
-                repeat: Infinity,
+                duration: 0.5,
                 ease: "easeInOut",
               }}
             />
@@ -540,24 +526,7 @@ export function Header() {
             {isScrolled && (
               <>
                 <motion.div
-                  animate={{ opacity: [0.5, 0.9, 0.5], scale: [0.9, 1.15, 0.9] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-400/30 via-purple-500/25 to-fuchsia-500/30 blur-md -z-10"
-                />
-                <motion.div
-                  animate={{ opacity: [0.4, 0.7, 0.4], scale: [1.1, 1.35, 1.1] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/25 to-purple-600/25 blur-lg -z-20"
-                />
-                <motion.div
-                  animate={{ opacity: [0.3, 0.6, 0.3], scale: [1.3, 1.6, 1.3] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-600/20 via-purple-600/20 to-fuchsia-600/20 blur-2xl -z-30"
-                />
-                <motion.div
-                  animate={{ opacity: [0.2, 0.5, 0.2], scale: [1.5, 2, 1.5] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/15 to-fuchsia-600/15 blur-3xl -z-40"
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-400/30 via-purple-500/25 to-fuchsia-500/30 blur-md -z-10 opacity-75"
                 />
               </>
             )}
@@ -575,19 +544,17 @@ export function Header() {
             >
               {siteConfig.shortName}
             </span>
-            <motion.span
+            <span
               className={`
-                block -mt-1 transition-all duration-500 font-medium whitespace-nowrap
+                block -mt-1 transition-all duration-500 font-medium whitespace-nowrap opacity-90
                 ${isScrolled
                   ? "text-xs sm:text-sm text-violet-200 drop-shadow-[0_2px_8px_rgba(139,92,246,0.6)]"
                   : "text-[10px] sm:text-xs text-slate-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
                 }
               `}
-              animate={{ opacity: isScrolled ? [0.85, 1, 0.85] : 0.9 }}
-              transition={{ duration: 3, repeat: Infinity }}
             >
               Enviro Solutions
-            </motion.span>
+            </span>
           </motion.div>
         </Link>
 
@@ -616,11 +583,9 @@ export function Header() {
           aria-label="Toggle menu"
         >
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-            animate={{ x: ["-100%", "100%"] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity"
           />
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             {isOpen ? (
               <motion.div
                 key="close"
@@ -647,7 +612,7 @@ export function Header() {
           </AnimatePresence>
         </motion.button>
 
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
               initial={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -663,10 +628,8 @@ export function Header() {
                 }
               `}
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-violet-600/15 via-purple-600/15 to-fuchsia-600/15"
-                animate={{ scale: [1, 1.02, 1], opacity: [0.4, 0.6, 0.4] }}
-                transition={{ duration: 5, repeat: Infinity }}
+              <div
+                className="absolute inset-0 bg-gradient-to-br from-violet-600/15 via-purple-600/15 to-fuchsia-600/15 opacity-50"
               />
               <nav className="py-6 flex flex-col gap-2 px-6 relative z-10 max-h-[500px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full">
                 {navigation.map((item, index) => (
@@ -683,29 +646,7 @@ export function Header() {
           )}
         </AnimatePresence>
 
-        {isScrolled && (
-          <>
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-1.5 h-1.5 rounded-full bg-violet-400/70 shadow-[0_0_12px_rgba(139,92,246,0.8)]"
-                animate={{
-                  y: [-20, -50, -20],
-                  x: [0, Math.random() * 20 - 10, 0],
-                  opacity: [0, 0.9, 0],
-                  scale: [0.5, 1.2, 0.5],
-                }}
-                transition={{
-                  duration: 3.5 + Math.random() * 1.5,
-                  repeat: Infinity,
-                  delay: i * 0.5,
-                  ease: "easeInOut",
-                }}
-                style={{ left: `${20 + i * 15}%`, top: "100%" }}
-              />
-            ))}
-          </>
-        )}
+        {/* Particles disabled for performance */}
       </motion.nav>
       <WhatsAppButton />
     </div>
