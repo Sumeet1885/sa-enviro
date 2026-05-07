@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { Mail, Phone, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
-import { siteConfig, navigation, services, products } from "@/constants/siteData";
+import { siteConfig, navigation, services } from "@/constants/siteData";
 import logo from "@/assets/logo.webp";
 import {
   Facebook,
@@ -39,7 +39,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="space-y-6">
             <Link to="/" onClick={handleScrollToTop} className="flex items-center group">
-              {/* Outer container pill */}
+
               <div
                 style={{
                   background: "rgba(255, 255, 255, 0.08)",
@@ -57,7 +57,7 @@ export const Footer = () => {
                 }}
                 className="hover:bg-white/[0.13] hover:border-white/30 hover:shadow-[0_4px_24px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.28)]"
               >
-                {/* Logo icon box */}
+
                 <motion.div
                   whileHover={{
                     scale: 1.25,
@@ -78,7 +78,7 @@ export const Footer = () => {
                   }}
                   className="sm:!w-[52px] sm:!h-[52px] sm:!rounded-[16px]"
                 >
-                  {/* Top highlight streak */}
+
                   <span
                     style={{
                       position: "absolute",
@@ -101,7 +101,7 @@ export const Footer = () => {
                   />
                 </motion.div>
 
-                {/* Text */}
+
                 <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
                   <span
                     className="font-display text-xl font-bold"
@@ -210,7 +210,7 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="font-display text-lg font-semibold mb-6">
+            <h3 className="font-display text-lg font-semibold mb-6 ">
               Contact Us
             </h3>
             <ul className="space-y-4">
@@ -222,27 +222,46 @@ export const Footer = () => {
                   {siteConfig.contact.address}
                 </span>
               </li>
-              <li>
-                <a
-                  href={`tel:${siteConfig.contact.phone}`}
-                  className="flex items-center gap-3 text-water-light/80 hover:text-water-sky transition-colors text-sm"
-                >
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 hover:bg-white group">
-                    <Phone className="w-5 h-5 transition-colors duration-200 group-hover:text-black" />
-                  </div>
-                  {siteConfig.contact.phone}
-                </a>
+              
+              <li className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 hover:bg-white group shrink-0">
+                  <Phone className="w-5 h-5 transition-colors duration-200 group-hover:text-black" />
+                </div>
+                <div className="flex flex-col gap-2 pt-2">
+                  {siteConfig.contact.phone.split('/').map((phone, index) => {
+                    const cleanPhone = phone.trim();
+                    const telLink = cleanPhone.replace(/[^0-9+]/g, '');
+                    return (
+                      <a
+                        key={index}
+                        href={`tel:${telLink}`}
+                        className="text-water-light/80 hover:text-water-sky transition-colors text-sm"
+                      >
+                        {cleanPhone}
+                      </a>
+                    );
+                  })}
+                </div>
               </li>
-              <li>
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="flex items-center gap-3  hover:text-water-sky transition-colors text-sm "
-                >
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 hover:bg-white group">
-                    <Mail className="w-5 h-5 transition-colors duration-200 group-hover:text-black" />
-                  </div>
-                  {siteConfig.contact.email}
-                </a>
+
+              <li className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-200 hover:bg-white group shrink-0">
+                  <Mail className="w-5 h-5 transition-colors duration-200 group-hover:text-black" />
+                </div>
+                <div className="flex flex-col gap-2 pt-2">
+                  {siteConfig.contact.email.split(',').map((email, index) => {
+                    const cleanEmail = email.trim();
+                    return (
+                      <a
+                        key={index}
+                        href={`mailto:${cleanEmail}`}
+                        className="text-water-light/80 hover:text-water-sky transition-colors text-sm break-all"
+                      >
+                        {cleanEmail}
+                      </a>
+                    );
+                  })}
+                </div>
               </li>
             </ul>
           </div>
@@ -275,3 +294,4 @@ export const Footer = () => {
     </footer>
   );
 };
+

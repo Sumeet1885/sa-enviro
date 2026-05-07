@@ -40,4 +40,7 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
+  build: {
+    outDir: "dist", // Explicitly define the output directory for Vercel
+  },
 }));

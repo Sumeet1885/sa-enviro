@@ -6,6 +6,7 @@ import {
   Heart,
   ArrowUpRight,
   ChevronRight,
+  Sparkles,
 } from "lucide-react";
 import { blogs } from "@/constants/siteData";
 import { PageDescriptionBlock } from "@/constants/type";
@@ -243,12 +244,15 @@ export default function BlogsSection() {
           className="flex flex-col sm:flex-row sm:items-end justify-between gap-6"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border-border border-2 mb-4 bg-water-deep/15 ">
-              <div className="w-1.5 h-1.5 rounded-full bg-water-sea animate-pulse" />
-              <span className="text-xs font-semibold text-primary uppercase tracking-widest">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6 group cursor-default"
+            >
+              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
                 Latest Articles
               </span>
-            </div>
+            </motion.div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground leading-tight tracking-tight">
               Stories &amp;{" "}

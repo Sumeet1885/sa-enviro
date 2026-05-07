@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowRight} from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import {
   AnimatedSection,
 } from "@/components/motion";
@@ -15,9 +16,15 @@ export const ServicesSection = () => {
       <div className="container-wide">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <AnimatedSection>
-            <span className="inline-block px-4 py-1.5 rounded-full gradient-water-deep text-sm font-medium mb-4">
-              What We Do
-            </span>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6 group cursor-default"
+            >
+              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                What We Do
+              </span>
+            </motion.div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold  mb-6">
               Comprehensive{" "}
               <span className="gradient-text">Water Solutions</span>
