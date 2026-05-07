@@ -1,20 +1,20 @@
-
-
-import { ReactNode } from "react";
 import { AnimatedSection } from "@/components/motion/AnimatedSection";
+import { getInitials } from "@/lib/utils";
+import { ReactNode } from "react";
 
-interface SpotlightMember {
-  name: string;
-  title: string;
-  details: string;
-  image?: string;
-}
 
 interface HeroSectionProps {
   title: string;
   heading: string;
   subtitle: string;
-s
+  rightContent?: ReactNode;
+  spotlightMember?: {
+    name: string;
+    title: string;
+    details: string;
+    image?: string;
+  };
+  avatarFlying?: boolean;
 }
 
 export default function HeroSection({
@@ -68,7 +68,6 @@ export default function HeroSection({
         .hs-pulse-a      { animation: hs-pulse      2.8s ease-in-out 0s    infinite; }
         .hs-pulse-b      { animation: hs-pulse      2.8s ease-in-out 1.0s  infinite; }
 
-        /* Animated conic border */
         .hs-border::before {
           content: '';
           position: absolute;
@@ -91,7 +90,6 @@ export default function HeroSection({
           animation: hs-spin 5s linear infinite;
         }
 
-        /* Shimmer sweep */
         .hs-shimmer-bar {
           position  : absolute;
           top: 0; bottom: 0;
@@ -202,7 +200,7 @@ export default function HeroSection({
                                 fontFamily: "Georgia, serif",
                               }}
                             >
-                              {spotlightMember.name.charAt(0).toUpperCase()}
+                              {getInitials(spotlightMember.name)}
                             </div>
                           )}
                         </div>
@@ -222,7 +220,7 @@ export default function HeroSection({
                               color: "rgba(120,90,220,0.15)",
                             }}
                           >
-                            {spotlightMember.name.charAt(0).toUpperCase()}
+                            {getInitials(spotlightMember.name)}
                           </div>
                         </div>
                       )}
