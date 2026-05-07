@@ -81,13 +81,18 @@ export const BrochureSection = () => {
   const x3 = useTransform(mouseX, [-1, 1], [5, -5]);
   const y3 = useTransform(mouseY, [-1, 1], [3, -3]);
 
+  const rectRef = useRef<DOMRect | null>(null);
+
   const onMove = (e: React.MouseEvent<HTMLElement>) => {
-    const { left, top, width, height } =
-      e.currentTarget.getBoundingClientRect();
+    if (!rectRef.current) {
+      rectRef.current = e.currentTarget.getBoundingClientRect();
+    }
+    const { left, top, width, height } = rectRef.current;
     mouseX.set(((e.clientX - left) / width) * 2 - 1);
     mouseY.set(((e.clientY - top) / height) * 2 - 1);
   };
   const onLeave = () => {
+    rectRef.current = null;
     animate(mouseX, 0, { duration: 0.9 });
     animate(mouseY, 0, { duration: 0.9 });
   };
@@ -379,8 +384,6 @@ export const BrochureSection = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Archivo:wght@300;400;500&display=swap');
-
         .brochure-bg::before {
           content: '';
           position: absolute;
@@ -441,13 +444,13 @@ export const BrochureSection = () => {
             <div className="flex gap-1.5">
               {[0, 1, 2].map((i) => (
                 <motion.button
+                  aria-label="Switch Button"
                   key={i}
                   onClick={() => setPage(i)}
                   animate={{ width: page === i ? 20 : 6 }}
                   transition={{ duration: 0.3 }}
-                  className={`h-1 rounded-full transition-colors duration-300 ${
-                    page === i ? "bg-[#3B9EBB]" : "bg-[#1B3A5C]"
-                  }`}
+                  className={`h-1 rounded-full transition-colors duration-300 ${page === i ? "bg-[#3B9EBB]" : "bg-[#1B3A5C]"
+                    }`}
                 />
               ))}
             </div>

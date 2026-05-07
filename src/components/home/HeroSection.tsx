@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { heroData } from "@/constants/siteData";
 import ButtonGrid from "../ui/ButtonGrid";
 import Product_Content from "../Sections/ProductContent";
@@ -51,7 +51,7 @@ export function HeroSection() {
   return (
     <>
       <div className="relative  py-24 lg:py-32 h-screen overflow-hidden bg-black text-white">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={index}
             className="absolute inset-0"
@@ -61,8 +61,7 @@ export function HeroSection() {
             transition={{ duration: 1.2, ease: "easeOut" }}
           >
             <img
-              rel="preload"
-              loading="lazy"
+              fetchPriority="high"
               src={active.img}
               alt=""
               className="w-full h-full object-cover"
@@ -73,7 +72,7 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20 z-10" />
 
         <div className="relative z-20 h-full flex items-center justify-center text-center px-6">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -115,7 +114,7 @@ export function HeroSection() {
         </div>
       </div>
       <Drawer open={open} onClose={setOpen} side="bottom" title={label}>
-        <Product_Content slug={slug} layout="1" />
+        <Product_Content slug={slug} layout="2" />
       </Drawer>
     </>
   );

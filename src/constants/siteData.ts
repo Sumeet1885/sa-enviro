@@ -1,6 +1,6 @@
 import Image1 from "@/assets/about-hero.webp";
 import Image2 from "@/assets/hero-water-treatment.webp";
-import Image3 from "@/assets/hero2.webp";
+const Image3 = "/hero2.webp";
 import Image4 from "@/assets/hero3.webp";
 import {
   Product,
@@ -90,7 +90,7 @@ export const navigation: NavigationItem[] = [
 
   { name: "Blogs", href: "/blogs" },
 
-  { name: "Option", href: "/option", dropdown: Option_Dropdown },
+  { name: "Options", href: "/option", dropdown: Option_Dropdown },
 
   { name: "Contact", href: "/contact" },
 ];
@@ -179,7 +179,7 @@ export const heroData: HeroData = {
         {
           label: "WSP",
           name: "Water Softeners Plant",
-          key: "water-softeners-plant",
+          key: "water_softeners_plant",
         },
       ],
     },
@@ -395,15 +395,6 @@ export const services = [
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/Swimming-Pool-Water-Filtration-Plants_vokkvx.webp",
     link: "/services/swimming-pool-filtration",
   },
-  {
-    id: "ultra-filtration",
-    title: "Ultra Filtration (UF)",
-    description:
-      "Advanced membrane filtration technology for removing suspended solids, bacteria, and other contaminants.",
-    image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/UF1_cbo64i.webp",
-    link: "/services/ultra-filtration",
-  },
 ];
 
 export const whyChooseUs = {
@@ -585,7 +576,7 @@ export const seoData = {
 
 export const blogs = [
   {
-    id: 1,
+    key: "learn-about-water-softeners-plant",
     title: "Learn about Water Softeners Plant",
     excerpt:
       "The Water Softeners are available in different sizes and materials, manually operated or fully automatic and ready to install.",
@@ -641,7 +632,7 @@ export const blogs = [
     comments: [],
   },
   {
-    id: 2,
+    key: "what-is-sewage-treatment-plants",
     title: "What is Sewage Treatment Plants",
     excerpt:
       "The Water Softeners are available in different sizes and materials, manually operated or fully automatic and ready to install.",
@@ -783,7 +774,7 @@ export const blogs = [
     comments: [],
   },
   {
-    id: 3,
+    key: "about-effluent-treatment-plant",
     title: "About Effluent Treatment Plant",
     excerpt:
       "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant. The treatment of different effluents varies with the type of effluent.",
@@ -840,153 +831,148 @@ export const blogs = [
 export const LOGOS: LogoItem[] = [
   {
     id: "picture-1",
-    alt: "Industrial water treatment equipment setup view 1",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726344/Picture1-585x439_w28rjd.webp",
+    alt: "client-1",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726344/Picture1-585x439_w28rjd.webp",
   },
   {
     id: "picture-2",
-    alt: "Wastewater treatment facility filtration units",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726345/Picture2-1-585x439_to7rpo.webp",
+    alt: "client-2",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726345/Picture2-1-585x439_to7rpo.webp",
   },
   {
     id: "picture-3",
-    alt: "Effluent treatment plant piping and tank system",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726346/Picture3-1-585x439_n8fzlk.webp",
+    alt: "client-3",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726346/Picture3-1-585x439_n8fzlk.webp",
   },
   {
     id: "picture-4",
-    alt: "Water purification system technical diagram or view",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726348/Picture4_iwjefs.webp",
+    alt: "client-4",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726348/Picture4_iwjefs.webp",
   },
   {
     id: "picture-5",
-    alt: "Commercial sewage treatment plant installation",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726349/Picture5-585x439_zryxb9.webp",
+    alt: "client-5",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726349/Picture5-585x439_zryxb9.webp",
   },
   {
     id: "picture-6",
-    alt: "Multi-stage water filtration assembly",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726350/Picture6-585x439_eyiyb9.webp",
+    alt: "client-6",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726350/Picture6-585x439_eyiyb9.webp",
   },
   {
     id: "picture-7",
-    alt: "Industrial RO plant membrane housing",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726353/Picture8-585x439_dzubk3.webp",
+    alt: "client-7",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726353/Picture8-585x439_dzubk3.webp",
   },
   {
     id: "picture-8",
-    alt: "Sewage treatment plant aerator and tank system",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726353/Picture8-585x439_dzubk3.webp",
+    alt: "client-8",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726352/Picture7-585x439_tjwivx.webp",
+  },
+  {
+    id: "picture-9",
+    alt: "client-9",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726356/Picture13-1-585x439_gh4pb1.webp",
+  },
+  {
+    id: "picture-10",
+    alt: "client-10",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726357/Picture14-1-585x439_jvd1ov.webp",
+  },
+  {
+    id: "picture-11",
+    alt: "client-11",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726359/Picture15-1-585x439_outf58.webp",
+  },
+  {
+    id: "picture-12",
+    alt: "client-12",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726360/Picture16-1-585x439_qnbtal.webp",
   },
   {
     id: "picture-13",
-    alt: "Reverse osmosis water purification system",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726356/Picture13-1-585x439_gh4pb1.webp",
+    alt: "client-13",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726362/Picture17-585x439_zskpcz.webp",
   },
   {
     id: "picture-14",
-    alt: "Package sewage treatment plant outdoor unit",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726357/Picture14-1-585x439_jvd1ov.webp",
+    alt: "client-14",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726363/Picture18-585x439_t9uska.webp",
   },
   {
     id: "picture-15",
-    alt: "Demineralization plant ion exchange columns",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726359/Picture15-1-585x439_outf58.webp",
+    alt: "client-15",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726365/Picture19-1-585x439_qxrveh.webp",
   },
   {
     id: "picture-16",
-    alt: "Effluent treatment system control valves and tanks",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726360/Picture16-1-585x439_qnbtal.webp",
+    alt: "client-16",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726366/Picture20-585x439_y1krni.webp",
   },
   {
     id: "picture-17",
-    alt: "Industrial sand and carbon filter units",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726362/Picture17-585x439_zskpcz.webp",
+    alt: "client-17",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726340/7-585x439_nt9hkx.webp",
   },
   {
     id: "picture-18",
-    alt: "UF membrane filtration system assembly",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726363/Picture18-585x439_t9uska.webp",
+    alt: "client-18",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726343/9-585x439_y4qrly.webp",
   },
   {
     id: "picture-19",
-    alt: "Water softening plant setup",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726365/Picture19-1-585x439_qxrveh.webp",
+    alt: "client-19",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726341/8-585x439_zirh5b.webp",
   },
   {
     id: "picture-20",
-    alt: "Wastewater recycling plant components",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726366/Picture20-585x439_y1krni.webp",
+    alt: "client-20",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726337/5-585x439_eptnq7.webp",
   },
   {
-    id: "web-7",
-    alt: "Modular sewage treatment plant view 7",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726340/7-585x439_nt9hkx.webp",
+    id: "picture-21",
+    alt: "client-21",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726335/4-585x439_co3eap.webp",
   },
   {
-    id: "web-8",
-    alt: "Industrial effluent treatment tank view 8",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726343/9-585x439_y4qrly.webp",
+    id: "picture-22",
+    alt: "client-22",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726338/6-585x439_yqalth.webp",
   },
   {
-    id: "web-9",
-    alt: "Water purification plant instrumentation view 9",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726343/9-585x439_y4qrly.webp",
+    id: "picture-23",
+    alt: "client-23",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726333/3-585x439_fhul1z.webp",
   },
   {
-    id: "web-5",
-    alt: "Activated sludge process system view 5",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726337/5-585x439_eptnq7.webp",
+    id: "picture-24",
+    alt: "client-24",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726332/1-585x439_qbewgv.webp",
   },
   {
-    id: "web-4",
-    alt: "Commercial water treatment solution view 4",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726335/4-585x439_co3eap.webp",
+    id: "picture-25",
+    alt: "client-25",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726333/2-585x439_ub9vgm.webp",
   },
   {
-    id: "web-6",
-    alt: "Filtration media tank assembly view 6",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726338/6-585x439_yqalth.webp",
+    id: "picture-26",
+    alt: "client-26",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1774417431/Picture11-1-585x439_mr4esk.webp",
   },
   {
-    id: "web-3",
-    alt: "Compact sewage treatment plant design view 3",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726333/3-585x439_fhul1z.webp",
+    id: "picture-27",
+    alt: "client-27",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1774417430/Picture9-1-585x439_yi7wc5.webp",
   },
   {
-    id: "web-1",
-    alt: "Standard water treatment plant setup view 1",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726332/1-585x439_qbewgv.webp",
+    id: "picture-28",
+    alt: "client-28",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1774417430/Picture12-1-585x439_bqebff.webp",
   },
   {
-    id: "web-2",
-    alt: "Clarifier tank system view 2",
-    imgUrl:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773726333/2-585x439_ub9vgm.webp",
+    id: "picture-29",
+    alt: "client-29",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1774417430/Picture10-1-585x439_omix0l.webp",
   },
 ];
 

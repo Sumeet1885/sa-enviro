@@ -3,8 +3,6 @@ import { ArrowRight} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   AnimatedSection,
-  StaggerContainer,
-  StaggerItem,
 } from "@/components/motion";
 import { services } from "@/constants/siteData";
 import { ServiceCard } from "@/components/ui/ServiceCard";
@@ -32,13 +30,17 @@ export const ServicesSection = () => {
           </AnimatedSection>
         </div>
 
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {featuredServices.map((service) => (
-            <StaggerItem className="h-[80%]" key={service.id}>
-              <ServiceCard service={service} />
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        <div className="section-padding bg-background">
+        <div className="container-wide">
+          <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+            {featuredServices.map((service) => (
+              <div key={service.id}>
+                <ServiceCard service={service} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
         <AnimatedSection className="text-center">
           <Button asChild size="lg">

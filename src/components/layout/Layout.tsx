@@ -13,7 +13,6 @@ export const Layout = ({ children }: LayoutProps) => {
       <ScrollToTop />
       <Header />
       <main className="flex-1 relative">{children}</main>
-      <Footer />
     </div>
   );
 };
