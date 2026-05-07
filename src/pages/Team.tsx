@@ -1,11 +1,10 @@
-
-
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { SEO } from "@/components/layout/SEO";
 import { seoData, team_member } from "@/constants/siteData";
 import TeamSlider from "@/components/Sections/Team_Section";
 import HeroSection from "@/components/Sections/HeroSection";
+import { getInitials } from "@/lib/utils";
 
 const ATTACH_THRESHOLD = 0.97;
 const AVATAR_SIZE = 150; 
@@ -164,7 +163,7 @@ export default function Team() {
                   background: "linear-gradient(135deg,#1d4ed8,#0ea5e9)",
                 }}
               >
-                {firstMember.name.charAt(0).toUpperCase()}
+                {getInitials(firstMember.name)}
               </div>
             )}
           </div>

@@ -1,3 +1,4 @@
+
 import { useRef, useState } from "react";
 import {
   motion,
@@ -73,7 +74,7 @@ const up = {
 export const BrochureSection = () => {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.25 });
-  const brochureAvailable = false;
+  const brochureAvailable = true;
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -101,6 +102,11 @@ export const BrochureSection = () => {
   const [page, setPage] = useState(0);
 
   const [dl, setDl] = useState(false);
+
+  const handleDownload = () => {
+    setDl(true);
+    setTimeout(() => setDl(false), 2000);
+  };
 
   const Page1 = () => (
     <motion.div
@@ -342,10 +348,11 @@ export const BrochureSection = () => {
         {brochureAvailable && <motion.a
           href={`${BROCHURE_PDF_URL}`}
           download={`${siteConfig.shortName}.pdf`}
+          onClick={handleDownload}
           type="button"
           whileHover="hover"
           whileTap={{ scale: 0.97 }}
-          className="hidden group relative w-full overflow-hidden border border-border
+          className="flex group relative w-full overflow-hidden border border-border
                       items-center justify-between px-5 py-4 cursor-pointer"
         >
           <motion.span
@@ -366,15 +373,15 @@ export const BrochureSection = () => {
             variants={{ hover: { x: 4 } }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <Download className="w-3.5 h-3.5 s group-hover:text-foreground transition-colors duration-300" />
+            <Download className="w-3.5 h-3.5 group-hover:text-foreground transition-colors duration-300" />
           </motion.span>
 
           {dl && (
             <motion.span
-              className="absolute bottom-0 left-0 h-0.5 bg-[#ffsfsgss]"
+              className="absolute bottom-0 left-0 h-0.5 bg-water-sky"
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
-              transition={{ duration: 1, ease: "linear" }}
+              transition={{ duration: 2, ease: "linear" }}
             />
           )}
         </motion.a>}

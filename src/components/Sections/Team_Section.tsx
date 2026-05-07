@@ -1,5 +1,3 @@
-
-
 import React, {
   useState,
   useEffect,
@@ -8,6 +6,7 @@ import React, {
   RefObject,
 } from "react";
 import { team_member } from "@/constants/siteData";
+import { getInitials } from "@/lib/utils";
 
 const AUTOROTATE_MS = 7000;
 const BIO_CLAMP_LINES = 3;
@@ -104,7 +103,6 @@ export default function TeamSlider({
     const el = bioRef.current;
     if (!el) return;
     const check = () => {
-      // Defer to next tick to avoid forced reflow during render transition
       setTimeout(() => {
         if (bioRef.current) {
           setIsTruncated(bioRef.current.scrollHeight > bioRef.current.clientHeight + 2);
@@ -258,7 +256,7 @@ export default function TeamSlider({
                             : "clamp(0.9rem,2vw,1.4rem)",
                         }}
                       >
-                        {u.name.charAt(0).toUpperCase()}
+                        {getInitials(u.name)}
                       </div>
                     )}
                   </div>

@@ -202,7 +202,6 @@ function BlogImageGallery({ image }: { image: string | string[] }) {
           >
             <img
               src={src}
-
               alt={`Gallery image ${i + 2}`}
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"

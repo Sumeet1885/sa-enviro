@@ -33,7 +33,6 @@ async function generateSitemap() {
   try {
 
     const siteDataPath = path.resolve('src', 'constants', 'siteData.ts');
-
     if (!fs.existsSync(siteDataPath)) {
       console.error('Error: siteData.ts not found at', siteDataPath);
       process.exit(1);
@@ -45,7 +44,6 @@ async function generateSitemap() {
 
     const productKeyRegex = /key:\s*['"]([^'"]+)['"]/g;
     const allKeys = extractMatches(siteDataContent, productKeyRegex);
-
 
     console.log('Got all keys', allKeys.length);
     const productsArrayMatch = siteDataContent.match(/export const products: Product\[\] = \[([\s\S]*?)\];/);

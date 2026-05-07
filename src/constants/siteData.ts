@@ -1,8 +1,9 @@
 import Image1 from "@/assets/about-hero.webp";
 import Image2 from "@/assets/hero-water-treatment.webp";
 const Image3 = "/hero2.webp";
-import Image4 from "@/assets/hero3.webp";
+
 import {Image }from "../assets/image"
+import Profile1 from "@/assets/Profile1.webp";
 import {
   Product,
   SiteConfig,
@@ -20,7 +21,7 @@ export const siteConfig: SiteConfig = {
     "SA Enviro Solutions (SAES) provides quality and customized services to address Environmental Aspects, specifically in Water and Wastewater Treatment, Zero Liquid Discharge, Air Pollution Control, Energy, Safety & Solid-Waste Management.",
   contact: {
     phone: "+91 8087748585 / 8087758585",
-    email: "sales@saenvirosolutions.com",
+    email: "sales@saenvirosolutions.com, amruta@saenvirosolutions.com",
     address: "Chinchwad, Pune, Maharashtra, India",
   },
   social: {
@@ -71,6 +72,10 @@ const Product_DropDown = [
     name: "AMC Services",
     key: "amc_services",
   },
+  {
+    name: "Online Monitoring System",
+    key: "online_monitoring_system",
+  }
 ];
 
 const Option_Dropdown = [
@@ -105,6 +110,7 @@ export const team_member: Team_Member[] = [
     functionality:
       "Functionally he looks after Project Management, Procurement & Quality.",
     highlight: false,
+    image: Profile1,
   },
   {
     name: "Amruta S. Urdukhe",
@@ -330,7 +336,7 @@ export const services = [
     description:
       "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water.",
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Reverse-Osmosis-RO-2_ttxitp.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
     link: "/services/reverse-osmosis",
   },
   {
@@ -348,7 +354,7 @@ export const services = [
     description:
       "We offer a huge range of Sewage Treatment Plants, which are used in the national as well as international market.",
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg",
     link: "/services/sewage-treatment",
   },
   {
@@ -357,7 +363,7 @@ export const services = [
     description:
       "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant.",
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/Effluent-Treatment-Plant_e9js1o.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
     link: "/services/effluent-treatment",
   },
   {
@@ -375,7 +381,7 @@ export const services = [
     description:
       "The Water Softeners are available in different sizes and materials, manually operated or fully Automatic and ready to install.",
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725955/logosaeenviro_o9itfb.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778061765/Softener2_wnzwl8.jpg",
     link: "/services/water-softeners",
   },
   {
@@ -520,6 +526,86 @@ export const galleryImages = [
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/Swimming-Pool-Water-Filtration-Plants_vokkvx.webp",
     alt: "Swimming Pool Filtration",
     category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
+    alt: "Reverse Osmosis (RO) Plant",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/RO2_jjdtan.jpg",
+    alt: "RO System Installation",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg",
+    alt: "Sewage Treatment Plant View",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg",
+    alt: "STP System Overview",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
+    alt: "STP Component View",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/STP4_adarrl.jpg",
+    alt: "Industrial STP Setup",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
+    alt: "Modern STP Installation",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg",
+    alt: "Zero Liquid Discharge System",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg",
+    alt: "ZLD Plant Overview",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
+    alt: "Effluent Treatment Plant Setup",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg",
+    alt: "Industrial ETP Unit",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/UF1_wx6qux.jpg",
+    alt: "Ultra Filtration System",
+    category: "equipment",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",
+    alt: "UF Membrane Unit",
+    category: "equipment",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778061765/Softener2_wnzwl8.jpg",
+    alt: "Water Softener Plant",
+    category: "equipment",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/OMS1_bsvsqe.jpg",
+    alt: "Online Monitoring System Dashboard",
+    category: "equipment",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/OMS2_fbcrdl.jpg",
+    alt: "OMS Sensor Setup",
+    category: "equipment",
   },
 ];
 
@@ -1017,23 +1103,23 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725959/stp1-585x390_qdovao.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg",
         alt: "Sewage Treatment Plant - View 1",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg",
         alt: "Sewage Treatment Plant - Overview",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725959/stp3-585x390_xu5ct9.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
         alt: "Sewage Treatment Plant - View 2",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725960/stp4-585x390_haxc9t.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/STP4_adarrl.jpg",
         alt: "Sewage Treatment Plant - View 3",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725960/stp6-585x390_gsjiju.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
         alt: "Sewage Treatment Plant - View 4",
       },
     ],
@@ -1189,8 +1275,12 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725965/zld-1024x332_b4pteu.webp",
-        alt: "Zero Liquid Discharge",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg",
+        alt: "Zero Liquid Discharge 1",
+      },
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg",
+        alt: "Zero Liquid Discharge 2",
       },
     ],
   },
@@ -1228,7 +1318,7 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
@@ -1236,7 +1326,7 @@ export const products: Product[] = [
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
@@ -1368,11 +1458,11 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/UF1_cbo64i.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/UF1_wx6qux.jpg",
         alt: "Ultra Filtration (UF)",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/UF2_imr2jn.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",
         alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",
       },
     ],
@@ -1412,11 +1502,11 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725957/RO1-585x390_u0sgvg.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
         alt: "Reverse Osmosis (RO) ",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/RO2-538x390_bjubd5.webp",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/RO2_jjdtan.jpg",
         alt: "Reverse Osmosis (RO) system with blue filtration tanks and control panel",
       },
     ],
@@ -1544,7 +1634,7 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778061765/Softener2_wnzwl8.jpg",
         alt: "SA Enviro Solutions Company Logo",
       },
     ],
@@ -1636,6 +1726,80 @@ export const products: Product[] = [
         type: "p",
         content:
           "The arrangement and supply of Spare parts for such plants is also a part of the AMC contracts.",
+      },
+    ],
+  },
+  {
+    key: "online_monitoring_system",
+    main: {
+      title: "Online Monitoring System",
+      description:
+        "An Online Monitoring System (OMS) in water and environmental solutions is a real-time system that continuously measures, records, and reports water quality and environmental parameters using sensors, communication networks, and software dashboards.",
+      image: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/OMS1_bsvsqe.jpg",
+      seo: {
+        title:
+          "Online Monitoring System | SA Enviro Solutions",
+        description:
+          "Real-time water quality monitoring and environmental data management using advanced IoT sensors and cloud-based analytics.",
+        keywords:
+          "online monitoring system, water quality monitoring, environmental data management, IoT water monitoring, real-time water quality",
+        url: "https://saenviro.com/products/online-monitoring-system",
+        image:
+          "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/OMS1_bsvsqe.jpg",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Online Monitoring System",
+          name: "Online Monitoring System",
+          description:
+            "Real-time water quality monitoring and environmental data management using advanced IoT sensors and cloud-based analytics.",
+          provider: {
+            "@type": "Organization",
+            name: "SA Enviro Solutions",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Pune",
+              addressCountry: "India",
+            },
+          },
+          areaServed: "India",
+        },
+      },
+    },
+    images: [
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/OMS1_bsvsqe.jpg",
+        alt: "Online Monitoring System - Real-time Dashboard",
+      },
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/OMS2_fbcrdl.jpg",
+        alt: "Online Monitoring System - Sensor Setup",
+      },
+    ],
+
+    Page_Description: [
+      {
+        type: "p",
+        content: "An Online Monitoring System (OMS) is essential for modern water management, providing real-time insights into various environmental parameters to ensure compliance and operational efficiency.",
+      },
+      {
+        type: "subtitle",
+        content: "Key Parameters Monitored:",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "pH level (acidity/alkalinity)",
+          "Dissolved Oxygen (DO)",
+          "Biochemical Oxygen Demand (BOD)",
+          "Chemical Oxygen Demand (COD)",
+          "Total Suspended Solids (TSS)",
+          "Turbidity",
+          "Flow rate",
+          "Temperature",
+          "Ammonia, Nitrates, Heavy metals (depending on setup)",
+        ],
       },
     ],
   },

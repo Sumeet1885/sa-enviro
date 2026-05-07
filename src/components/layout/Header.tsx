@@ -7,7 +7,7 @@ import {
 } from "framer-motion";
 import Logo from "@/assets/logo.webp";
 import { navigation, siteConfig } from "@/constants/siteData";
-import { NavigationItem, DropDown } from "@/constants/type";
+import { NavigationItem} from "@/constants/type";
 import WhatsAppButton from "../ui/Whatsapp";
 
 let scrollLockCount = 0;
@@ -643,7 +643,7 @@ export function Header() {
           )}
         </AnimatePresence>
 
-        {/* Particles disabled for performance */}
+        
       </motion.nav>
       <WhatsAppButton />
     </div>

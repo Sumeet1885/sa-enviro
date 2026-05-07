@@ -1,89 +1,93 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, Award, Users, Wrench } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { AnimatedSection } from "@/components/motion";
+import { Award, Users, Wrench, Sparkles  } from "lucide-react";
+import { motion } from "framer-motion";
+import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/motion";
 import { aboutData, siteConfig } from "@/constants/siteData";
-import aboutImage from "@/assets/about-hero.webp";
-import { AnimatedImgCard } from "@/components/ui/AnimatedImgCard";
-
-
 
 export const AboutSection = () => {
-
-
   return (
-    <section className=" section-padding light-section relative overflow-hidden border-border border-2">
-      <div className="container-wide">
+    <section className="section-padding light-section relative overflow-hidden bg-background">
+
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -z-10" />
+      
+      <div className="container-wide relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <AnimatedSection direction="left" className="lg:hidden">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-water">
-              <img
-                src={aboutImage}
-                loading="lazy"
-                alt="Our Facility"
-                className="w-full h-full object-cover"
-              />
+          
+
+          <AnimatedSection direction="left" className="w-full">
+            <div className="relative group">
+
+              <div className="absolute -inset-1.5 bg-gradient-to-r from-primary via-blue-500 to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200 animate-gradient-x" />
+              
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black border-[6px] border-card">
+                <video
+                  src="https://res.cloudinary.com/dwttz8kvz/video/upload/v1778074474/SAEnviro_1_t0abij"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              </div>
+
+
+              <div className="absolute top-6 left-6 flex items-center gap-2 px-3 py-1 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-[10px] font-bold text-white uppercase tracking-widest">Facility Live</span>
+              </div>
             </div>
           </AnimatedSection>
-          <AnimatedSection direction="left" className="hidden lg:block">
-            <AnimatedImgCard aboutImage={aboutImage} />
-          </AnimatedSection>
 
-          <div>
+
+          <div className="flex flex-col space-y-6 lg:space-y-8">
             <AnimatedSection direction="right">
-              <span className="inline-block px-4 py-1.5 rounded-full gradient-water-deep  text-sm font-medium mb-4">
-                {aboutData.title}
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-6">
-                Leading the Way in{" "}
-                <span className="gradient-text">Water Treatment</span>
+
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6 group cursor-default"
+              >
+                <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                  {aboutData.title}
+                </span>
+              </motion.div>
+
+              <h2 className="text-3xl md:text-5xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 leading-[1.1]">
+                Leading the Way in <br />
+                <span className="gradient-text italic font-serif">Water Treatment</span>
               </h2>
-            </AnimatedSection>
-            <AnimatedSection direction="right" delay={0.1}>
-              <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+              
+              <p className="text-muted-foreground text-base md:text-lg leading-relaxed border-l-4 border-primary/30 pl-6 mb-4">
                 {aboutData.intro}
               </p>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed hidden sm:block">
                 {aboutData.description}
               </p>
             </AnimatedSection>
-            <AnimatedSection direction="right" delay={0.2}>
-              <div className="grid sm:grid-cols-3 gap-4 mb-8">
-                {[
-                  { icon: Award, label: "ISO Certified", value: "Quality" },
-                  { icon: Users, label: "Expert Team", value: `${siteConfig.stats.Members}+ Members` },
-                  {
-                    icon: Wrench,
-                    label: "Custom Solutions",
-                    value: "Tailored",
-                  },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 p-4 card">
-                    <div className="w-10 h-10  flex items-center justify-center">
-                      <item.icon className="w-5 h-5 " />
+
+
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { icon: Award, label: "Quality", value: "ISO Certified" },
+                { icon: Users, label: "Expertise", value: `${siteConfig.stats.Members}+ Members` },
+                { icon: Wrench, label: "Solutions", value: "Custom" },
+              ].map((item, i) => (
+                <StaggerItem key={i}>
+                  <div className="group flex flex-col items-center text-center p-4 rounded-2xl bg-card border border-border/40 hover:border-primary/30 transition-all duration-300 hover:shadow-lg">
+                    <div className="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center group-hover:bg-primary transition-all duration-500 mb-3">
+                      <item.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors duration-300" />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold ">{item.value}</div>
-                      <div className="text-xs ">{item.label}</div>
+                      <h4 className="text-[13px] font-bold text-foreground tracking-tight leading-tight mb-1">{item.value}</h4>
+                      <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-medium">{item.label}</p>
                     </div>
                   </div>
-                ))}
-              </div>
-            </AnimatedSection>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
 
-            <AnimatedSection
-              direction="up"
-              className="flex items-center justify-between"
-              delay={0.3}
-            >
-              <Button className="button-primary" asChild size="lg">
-                <Link to="/about">
-                  Learn More About Us
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
 
-            </AnimatedSection>
           </div>
         </div>
       </div>
