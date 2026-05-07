@@ -1,9 +1,25 @@
 import { SEO } from "@/components/layout/SEO";
 import { seoData, products } from "@/constants/siteData";
-import ProductContentSection from "@/components/ui/ProductContentSection";
-import ProductShowCase from "@/components/ui/ProductShowCase";
 import Product_Content from "@/components/Sections/ProductContent";
 import { useParams } from "react-router-dom";
+
+
+
+function ProductHeroImage({ src, alt }: { src: string; alt?: string }) {
+  return (
+    <div className="hidden lg:block w-full">
+      <div className="w-full aspect-[3/2]  rounded-2xl overflow-hidden ring-1 ring-white/10">
+        <img
+          src={src}
+          alt={alt ?? "Product image"}
+          width={1200}
+          height={800}
+          className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-[1.03]"
+        />
+      </div>
+    </div>
+  );
+}
 
 function Product() {
   const { slug } = useParams();
@@ -21,22 +37,36 @@ function Product() {
         url={product.main.seo.url}
         schema={product.main.seo.schema}
       />
+
+      {/* ── Hero Section ──────────────────────────────────────── */}
       <section className="py-24 lg:py-32 bg-gradient-to-br from-water-deep to-water-ocean text-primary-foreground">
         <div className="container-wide">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-water-sky/20 text-water-sky text-sm font-medium mb-4">
-              Product
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6">
-              Our Product & Equipment
-            </h1>
-            <p className="text-water-light/90 text-lg">
-              Explore our Product of water treatment solutions and
-              installations.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+            {/* Left — text */}
+            <div className="max-w-xl">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-water-sky/20 text-water-sky text-sm font-medium mb-4">
+                Product
+              </span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold mb-6">
+                {"Our Product & Equipment"}
+              </h1>
+              <p className="text-water-light/90 text-lg leading-relaxed">
+                {"Explore our range of water treatment solutions and installations."}
+              </p>
+            </div>
+
+            {/* Right — image (hidden on mobile) */}
+            <ProductHeroImage
+              src={product.main.image}
+              alt={product.main.title}
+            />
+
           </div>
         </div>
       </section>
+
+      {/* ── Page Content ──────────────────────────────────────── */}
       <Product_Content slug={slug} layout={layout} />
     </div>
   );

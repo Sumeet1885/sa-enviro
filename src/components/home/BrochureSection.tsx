@@ -73,6 +73,7 @@ const up = {
 export const BrochureSection = () => {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.25 });
+  const brochureAvailable = false;
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -338,14 +339,14 @@ export const BrochureSection = () => {
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 1 }}
       >
-        <motion.a
+        {brochureAvailable && <motion.a
           href={`${BROCHURE_PDF_URL}`}
           download={`${siteConfig.shortName}.pdf`}
           type="button"
           whileHover="hover"
           whileTap={{ scale: 0.97 }}
-          className="group relative w-full overflow-hidden border border-border
-                     flex items-center justify-between px-5 py-4 cursor-pointer"
+          className="hidden group relative w-full overflow-hidden border border-border
+                      items-center justify-between px-5 py-4 cursor-pointer"
         >
           <motion.span
             className="absolute inset-0 bg-primary-foreground"
@@ -376,7 +377,8 @@ export const BrochureSection = () => {
               transition={{ duration: 1, ease: "linear" }}
             />
           )}
-        </motion.a>
+        </motion.a>}
+        
       </motion.div>
     </motion.div>
   );

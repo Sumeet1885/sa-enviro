@@ -4,8 +4,6 @@ import { Menu, X, Droplets, ChevronDown } from "lucide-react";
 import {
   motion,
   AnimatePresence,
-  useScroll,
-  useTransform,
 } from "framer-motion";
 import Logo from "@/assets/logo.webp";
 import { navigation, siteConfig } from "@/constants/siteData";
@@ -27,7 +25,6 @@ const updateScrollLock = (lock: boolean) => {
   }
 };
 
-// Removed local NavigationItem interface, using global one from @/constants/type
 
 interface DropdownProps {
   item: NavigationItem;
@@ -475,7 +472,6 @@ export function Header() {
 
             whileHover={{
               scale: 1.25,
-              rotate: [0, -10, 10, -10, 0],
               transition: { duration: 0.7, ease: "easeInOut" },
             }}
             className={`
@@ -492,7 +488,7 @@ export function Header() {
                 : "0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,1)",
             }}
           >
-            {/* Top highlight streak */}
+
             <span
               style={{
                 position: "absolute",
@@ -506,12 +502,13 @@ export function Header() {
               }}
             />
 
+
             <motion.img
               src={Logo}
               alt="Company Logo"
-              width={40}
-              height={40}
-              className="w-7 h-7 sm:w-10 sm:h-10 object-contain relative z-10"
+              width={50}
+              height={50}
+              className="w-full h-full sm:w-10 sm:h-10 object-contain relative z-10"
               animate={{
                 filter: isScrolled
                   ? "drop-shadow(0 4px 14px rgba(139,92,246,0.5))"

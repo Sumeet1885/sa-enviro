@@ -27,10 +27,11 @@ export const VisionSection = () => {
               Our commitment
               <br />
               <svg
-                viewBox="0 0 420 90"
-                className="w-full max-w-[320px] overflow-visible md:text-xl sm:text-sm"
-                style={{ height: "clamp(64px, 10vw, 90px)" }}
-                aria-label="World."
+                viewBox="0 0 920 100"
+                preserveAspectRatio="xMinYMid meet"
+                className="w-full overflow-visible"
+                style={{ height: "clamp(40px, 8vw, 100px)" }}
+                aria-label="to the future."
               >
                 <defs>
                   <linearGradient
@@ -46,13 +47,14 @@ export const VisionSection = () => {
                   </linearGradient>
                 </defs>
 
+                {/* Stroke layer */}
                 <text
                   x="0"
-                  y="78"
+                  y="82"
                   fontFamily="'Playfair Display', serif"
                   fontStyle="italic"
                   fontWeight="700"
-                  fontSize="70"
+                  fontSize="90"
                   fill="none"
                   stroke="#ffffff"
                   strokeWidth="1.5"
@@ -61,13 +63,14 @@ export const VisionSection = () => {
                   to the future.
                 </text>
 
+                {/* Fill layer */}
                 <text
                   x="0"
-                  y="78"
+                  y="82"
                   fontFamily="'Playfair Display', serif"
                   fontStyle="italic"
                   fontWeight="700"
-                  fontSize="70"
+                  fontSize="90"
                   fill="url(#textGrad)"
                 >
                   to the future.
