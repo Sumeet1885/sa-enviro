@@ -15,7 +15,7 @@ import {
 
 export const siteConfig: SiteConfig = {
   name: "SA Enviro Solutions",
-  shortName: "SAES",
+  shortName: "SA",
   tagline: "Leading Water Treatment Industry Into New Age",
   description:
     "SA Enviro Solutions (SAES) provides quality and customized services to address Environmental Aspects, specifically in Water and Wastewater Treatment, Zero Liquid Discharge, Air Pollution Control, Energy, Safety & Solid-Waste Management.",
