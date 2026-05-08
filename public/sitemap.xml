@@ -46,21 +46,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://saenvirosolutions.com/product/Fill</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://saenvirosolutions.com/product/React</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://saenvirosolutions.com/product/Settle</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://saenvirosolutions.com/product/zero_liquid_discharge</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -97,6 +82,11 @@
   </url>
   <url>
     <loc>https://saenvirosolutions.com/product/amc_services</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://saenvirosolutions.com/product/online_monitoring_system</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

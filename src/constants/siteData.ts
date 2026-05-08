@@ -75,7 +75,7 @@ const Product_DropDown = [
   {
     name: "Online Monitoring System",
     key: "online_monitoring_system",
-  }
+  },
 ];
 
 const Option_Dropdown = [
@@ -1066,10 +1066,19 @@ export const LOGOS: LogoItem[] = [
 export const products: Product[] = [
   {
     key: "sewage_treatment_plants",
+    
+    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
+    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
+    metrics: [
+      { label: "BOD Removal", value: "> 90%" },
+      { label: "Capacity", value: "10 - 1000 KLD" },
+      { label: "Technology", value: "MBBR / SBR" },
+      { label: "Compliance", value: "CPCB Norms" }
+    ],
     main: {
       title: "Sewage Treatment Plants",
       description:
-        "On the Activated Sludge Process basis sewage treatment plants are designed. The advanced technologies involved to treat sewage such as MBBR technology, UASB technology and Sequential Batch Reactor (SBR). These technologies are discussed below:",
+        "Advanced Sewage Treatment Plants using SBR, MBBR & UASB technology for highly efficient wastewater treatment.",
       image: Image.stp,
       seo: {
         title:
@@ -1103,24 +1112,16 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
         alt: "Sewage Treatment Plant - View 1",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg",
-        alt: "Sewage Treatment Plant - Overview",
-      },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/STP4_adarrl.jpg",
         alt: "Sewage Treatment Plant - View 2",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/STP4_adarrl.jpg",
-        alt: "Sewage Treatment Plant - View 3",
-      },
-      {
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
-        alt: "Sewage Treatment Plant - View 4",
+        alt: "Sewage Treatment Plant - View 3",
       },
     ],
 
@@ -1243,6 +1244,15 @@ export const products: Product[] = [
   },
   {
     key: "zero_liquid_discharge",
+    
+    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg", alt: "Architecture View" },
+    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg", alt: "Full View" },
+    metrics: [
+      { label: "Water Recovery", value: "Up to 98%" },
+      { label: "Discharge", value: "0 Liquid" },
+      { label: "Evaporation", value: "High Efficiency" },
+      { label: "ROI", value: "Maximized" }
+    ],
     main: {
       title: "Zero Liquid Discharge (ZLD)",
       description:
@@ -1273,19 +1283,19 @@ export const products: Product[] = [
         },
       },
     },
-    images: [
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg",
-        alt: "Zero Liquid Discharge 1",
-      },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg",
-        alt: "Zero Liquid Discharge 2",
-      },
-    ],
+    images: [],
   },
   {
     key: "effluent_treatment_plants",
+    
+    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg", alt: "Architecture View" },
+    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg", alt: "Full View" },
+    metrics: [
+      { label: "TSS Removal", value: "High" },
+      { label: "COD Reduction", value: "Optimal" },
+      { label: "Automation", value: "SCADA Ready" },
+      { label: "Footprint", value: "Compact" }
+    ],
     main: {
       title: "Effluent Treatment Plant",
       description:
@@ -1318,15 +1328,7 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
-        alt: "Industrial Effluent Treatment Plant Setup",
-      },
-      {
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/etp5-585x390_kxoqs6.webp",
-        alt: "Industrial Effluent Treatment Plant Setup",
-      },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
@@ -1367,6 +1369,15 @@ export const products: Product[] = [
   },
   {
     key: "water_treatment_plants",
+    
+    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp", alt: "Architecture View" },
+    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
+    metrics: [
+      { label: "Purity", value: "Potable Grade" },
+      { label: "Filtration", value: "Multi-Grade" },
+      { label: "Capacity", value: "Customizable" },
+      { label: "Maintenance", value: "Low Cost" }
+    ],
     main: {
       title: "Water Treatment Plants",
       description:
@@ -1398,10 +1409,6 @@ export const products: Product[] = [
       },
     },
     images: [
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp",
-        alt: "Industrial Water Treatment Plant System",
-      },
     ],
     Page_Description: [
       {
@@ -1426,6 +1433,15 @@ export const products: Product[] = [
   },
   {
     key: "ultra_filtration",
+    
+    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
+    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
+    metrics: [
+      { label: "Pore Size", value: "0.01 Micron" },
+      { label: "Pathogen Rejection", value: "99.99%" },
+      { label: "Operating Pressure", value: "Low" },
+      { label: "Membrane Life", value: "Extended" }
+    ],
     main: {
       title: "Ultra Filtration (UF)",
       description:
@@ -1470,6 +1486,15 @@ export const products: Product[] = [
   },
   {
     key: "reverse_osmosis",
+    
+    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
+    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
+    metrics: [
+      { label: "Salt Rejection", value: "> 99%" },
+      { label: "Recovery Rate", value: "70-85%" },
+      { label: "Energy Usage", value: "Optimized" },
+      { label: "Water Quality", value: "High Purity" }
+    ],
     main: {
       title: "Reverse osmosis (RO)",
       description:
@@ -1542,6 +1567,15 @@ export const products: Product[] = [
   },
   {
     key: "demineralisation_plants",
+    
+    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
+    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
+    metrics: [
+      { label: "Conductivity", value: "< 1 µS/cm" },
+      { label: "Process", value: "Ion Exchange" },
+      { label: "Resin Life", value: "High Durability" },
+      { label: "Automation", value: "Fully Auto" }
+    ],
     main: {
       title: "Demineralisation Plants [DM]",
       description:
@@ -1603,6 +1637,15 @@ export const products: Product[] = [
   },
   {
     key: "water_softeners_plant",
+    
+    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
+    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
+    metrics: [
+      { label: "Hardness Removal", value: "100%" },
+      { label: "Resin Type", value: "High Capacity Cation" },
+      { label: "Operation", value: "Auto / Manual" },
+      { label: "Scaling", value: "Eliminated" }
+    ],
     main: {
       title: "Water Softeners Plant",
       description:
@@ -1671,6 +1714,15 @@ export const products: Product[] = [
   },
   {
     key: "amc_services",
+    
+    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
+    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
+    metrics: [
+      { label: "Uptime", value: "Guaranteed" },
+      { label: "Support", value: "24/7 Availability" },
+      { label: "Checkups", value: "Scheduled" },
+      { label: "Compliance", value: "Monitored" }
+    ],
     main: {
       title: "AMC Services",
       description:
@@ -1731,6 +1783,15 @@ export const products: Product[] = [
   },
   {
     key: "online_monitoring_system",
+    
+    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
+    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
+    metrics: [
+      { label: "Data Logging", value: "Continuous" },
+      { label: "Sensors", value: "High Precision" },
+      { label: "Alerts", value: "Real-Time" },
+      { label: "Integration", value: "Cloud Ready" }
+    ],
     main: {
       title: "Online Monitoring System",
       description:
@@ -1804,3 +1865,4 @@ export const products: Product[] = [
     ],
   },
 ];
+
