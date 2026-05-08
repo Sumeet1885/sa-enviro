@@ -75,7 +75,7 @@ const Product_DropDown = [
   {
     name: "Online Monitoring System",
     key: "online_monitoring_system",
-  },
+  }
 ];
 
 const Option_Dropdown = [

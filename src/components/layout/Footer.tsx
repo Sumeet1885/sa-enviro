@@ -47,87 +47,21 @@ export const Footer = () => {
                   backdropFilter: "blur(16px)",
                   WebkitBackdropFilter: "blur(16px)",
                   borderRadius: "20px",
-                  padding: "6px 14px 6px 6px",
+                  padding: "12px",
                   display: "flex",
                   alignItems: "center",
-                  gap: "10px",
+                  justifyContent: "center",
                   boxShadow:
                     "0 2px 16px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.22), 0 0 0 1px rgba(255,255,255,0.06)",
                   transition: "all 0.35s ease",
                 }}
                 className="hover:bg-white/[0.13] hover:border-white/30 hover:shadow-[0_4px_24px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.28)]"
               >
-
-                <motion.div
-                  whileHover={{
-                    scale: 1.25,
-                    transition: { duration: 0.7, ease: "easeInOut" },
-                  }}
-                  style={{
-
-                    borderRadius: "14px",
-                    width: "40px",
-                    height: "40px",
-                    flexShrink: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    position: "relative",
-                    boxShadow:
-                      "0 2px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,1), 0 0 0 1px rgba(255,255,255,0.6)",
-                  }}
-                  className="sm:!w-[52px] sm:!h-[52px] sm:!rounded-[16px]"
-                >
-
-                  <span
-                    style={{
-                      position: "absolute",
-                      top: "1px",
-                      left: "8px",
-                      right: "8px",
-                      height: "1px",
-                      background:
-                        "linear-gradient(90deg, transparent, rgba(255,255,255,1), transparent)",
-                      borderRadius: "9999px",
-                    }}
-                  />
-
                   <motion.img
                     src={logo}
                     alt="Company Logo"
-                    width={40}
-                    height={40}
-                    className="w-7 h-7 sm:w-10 sm:h-10 object-contain relative z-10"
+                    className="w-full h-auto max-h-24 object-contain relative z-10"
                   />
-                </motion.div>
-
-
-                <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
-                  <span
-                    className="font-display text-xl font-bold"
-                    style={{
-                      color: "#ffffff",
-                      letterSpacing: "-0.01em",
-                      textShadow: "0 1px 6px rgba(0,0,0,0.35)",
-                    }}
-                  >
-                    {siteConfig.shortName}
-                  </span>
-                  <span
-                    className="text-xs font-medium tracking-widest uppercase"
-                    style={{
-                      marginTop: "2px",
-                      background:
-                        "linear-gradient(90deg, #93d0ff, #c8e8ff, #7ec8f8, #93d0ff)",
-                      backgroundSize: "200% auto",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
-                  >
-                    Enviro Solutions
-                  </span>
-                </div>
               </div>
             </Link>
             <p className=" text-sm leading-relaxed">
