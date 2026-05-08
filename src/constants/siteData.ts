@@ -78,12 +78,6 @@ const Product_DropDown = [
   }
 ];
 
-const Option_Dropdown = [
-  { name: "Gallery", href: "/gallery" },
-  { name: "Client", href: "/client" },
-  { name: "Team", href: "/team" },
-];
-
 export const navigation: NavigationItem[] = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
@@ -93,11 +87,9 @@ export const navigation: NavigationItem[] = [
     dropdown: Product_DropDown,
   },
   { name: "Services", href: "/services" },
-
+  { name: "Gallery", href: "/gallery" },
+  { name: "Client", href: "/client" },
   { name: "Blogs", href: "/blogs" },
-
-  { name: "Options", href: "/option", dropdown: Option_Dropdown },
-
   { name: "Contact", href: "/contact" },
 ];
 

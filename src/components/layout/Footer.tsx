@@ -97,19 +97,6 @@ export const Footer = () => {
                 if (item.name === "Product") return null;
 
 
-                if (item.name === "Options" && item.dropdown) {
-                  return item.dropdown.map((subItem) => (
-                    <li key={subItem.name}>
-                      <Link
-                        to={subItem.href}
-                        onClick={handleScrollToTop}
-                        className="text-water-light/80 hover:text-water-sky transition-colors text-sm"
-                      >
-                        {subItem.name}
-                      </Link>
-                    </li>
-                  ));
-                }
                 return (
                   <li key={item.name}>
                     <Link
