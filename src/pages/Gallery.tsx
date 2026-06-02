@@ -5,6 +5,7 @@ import { SEO } from "@/components/layout/SEO";
 import { galleryImages, seoData } from "@/constants/siteData";
 import HeroSection from "@/components/Sections/HeroSection";
 import ImageGallery from "@/components/Sections/GallerySection";
+import WaveGallery from "@/components/ui/Wavegallery";
 
 const Gallery = () => {
 
@@ -27,6 +28,7 @@ const Gallery = () => {
         title="Gallery"
         heading="📸 Project Gallery"
         subtitle="A Visual Showcase of Our Water, Wastewater & Environmental Engineering Projects"
+        rightContent={<WaveGallery />}
       />
 
       <ImageGallery />
