@@ -7,6 +7,8 @@ import React, {
 } from "react";
 import { team_member } from "@/constants/siteData";
 import { getInitials } from "@/lib/utils";
+import { motion, useInView } from "framer-motion";
+import { Users, Sparkles } from "lucide-react";
 
 const AUTOROTATE_MS = 7000;
 const BIO_CLAMP_LINES = 3;
@@ -34,6 +36,8 @@ export default function TeamSlider({
   const [barKey, setBarKey] = useState(0);
 
   const bioRef = useRef<HTMLParagraphElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { amount: 0.3 });
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -51,21 +55,25 @@ export default function TeamSlider({
 
   const startInterval = useCallback(() => {
     stopInterval();
-    if (freezeRef.current) return;
+    if (freezeRef.current || !isInView) return;
     intervalRef.current = setInterval(() => {
       setActive((p) => (p + 1 >= team_member.length ? 0 : p + 1));
     }, AUTOROTATE_MS);
-  }, [stopInterval]);
+  }, [stopInterval, isInView]);
 
 
   useEffect(() => {
-    startInterval();
+    if (isInView) {
+      startInterval();
+    } else {
+      stopInterval();
+    }
     isMountedRef.current = true;
     return () => {
       stopInterval();
       if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     };
-  }, [startInterval, stopInterval]);
+  }, [startInterval, stopInterval, isInView]);
 
 
   useEffect(() => {
@@ -80,10 +88,10 @@ export default function TeamSlider({
       setPhase("idle");
       setExpanded(false);
       setBarKey((k) => k + 1);
-      startInterval();
+      if (isInView) startInterval();
     }
 
-  }, [freezeCarousel]);
+  }, [freezeCarousel, isInView]);
 
   useEffect(() => {
     if (active === displayed) return;
@@ -125,11 +133,11 @@ export default function TeamSlider({
       setActive(i);
       setBarKey((k) => k + 1);
       resumeTimerRef.current = setTimeout(() => {
-        startInterval();
+        if (isInView) startInterval();
         resumeTimerRef.current = null;
       }, AUTOROTATE_MS);
     },
-    [startInterval, stopInterval],
+    [startInterval, stopInterval, isInView],
   );
 
   const panelIndex = holdPrimaryDetails ? 0 : displayed;
@@ -186,11 +194,54 @@ export default function TeamSlider({
         .ts-bio::-webkit-scrollbar-thumb  { background: var(--primary,#1d4ed8); border-radius: 999px; }
       `}</style>
 
-      <div className="w-full bg-background flex items-start justify-center px-4 py-6 sm:px-6 sm:py-12">
+      <div 
+        ref={containerRef}
+        className="w-full bg-background flex flex-col items-center justify-center px-4 py-12 sm:px-6 sm:py-20"
+      >
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6"
+          >
+            <motion.div
+              animate={{ rotate: [0, 15, -15, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            >
+              <Users className="w-4 h-4 text-primary" />
+            </motion.div>
+            <span className="text-xs font-bold uppercase tracking-wider text-primary">
+              Our Team
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6"
+          >
+            Meet the <span className="text-primary">Experts</span> Behind SAES
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto"
+          >
+            A dedicated group of qualified professionals committed to excellence in 
+            water treatment and environmental sustainability.
+          </motion.p>
+        </div>
+
         <div className="w-full max-w-[1000px] flex flex-col">
           <div className="flex items-center justify-between pb-3 mb-5 sm:mb-8 border-b border-foreground/10">
-            <span className="font-mono text-3xl sm:text-xl text-[0.55rem] tracking-[0.22em] uppercase text-foreground/50">
-              Our Team
+            <span className="font-mono text-[0.75rem] tracking-[0.15em] text-foreground/50">
+              LEADERSHIP & STAFF
             </span>
             <span className="font-mono text-[0.75rem] tracking-[0.15em] text-foreground/50">
               {String(displayed + 1).padStart(2, "0")} /{" "}

@@ -466,93 +466,28 @@ export function Header() {
         <Link
           to="/"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-2 sm:gap-3 group/logo relative transition-all duration-500 flex-shrink-0"
+          className="flex items-center group/logo relative transition-all duration-500 flex-shrink-0"
         >
-          <motion.div
-
+          <motion.img
+            src={Logo}
+            alt="Company Logo"
             whileHover={{
-              scale: 1.25,
-              transition: { duration: 0.7, ease: "easeInOut" },
+              scale: 1.15,
+              transition: { duration: 0.5, ease: "easeInOut" },
             }}
-            className={`
-    w-10 h-10 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center
-    transition-all duration-700 relative flex-shrink-0
-    ${isScrolled
-                ? "border-2 border-white/80 shadow-[0_0_40px_rgba(139,92,246,0.6)]"
-                : "border-2 border-white/60 shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
-              }
-  `}
-            style={{
-              boxShadow: isScrolled
-                ? "0 0 40px rgba(139,92,246,0.6), inset 0 1px 0 rgba(255,255,255,1), 0 2px 12px rgba(0,0,0,0.15)"
-                : "0 8px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,1)",
+            className="w-24 sm:w-40 h-auto max-h-12 sm:max-h-16 object-contain relative z-10 drop-shadow-2xl"
+            animate={{
+              filter: isScrolled
+                ? "drop-shadow(0 4px 20px rgba(139,92,246,0.6)) brightness(1.1)"
+                : "drop-shadow(0 2px 8px rgba(0,0,0,0.3))",
             }}
-          >
-
-            <span
-              style={{
-                position: "absolute",
-                top: "2px",
-                left: "8px",
-                right: "8px",
-                height: "1px",
-                background: "linear-gradient(90deg, transparent, rgba(255,255,255,1), transparent)",
-                borderRadius: "9999px",
-                zIndex: 10,
-              }}
-            />
+            transition={{
+              duration: 0.5,
+              ease: "easeInOut",
+            }}
+          />
 
 
-            <motion.img
-              src={Logo}
-              alt="Company Logo"
-              width={50}
-              height={50}
-              className="w-full h-full sm:w-10 sm:h-10 object-contain relative z-10"
-              animate={{
-                filter: isScrolled
-                  ? "drop-shadow(0 4px 14px rgba(139,92,246,0.5))"
-                  : "drop-shadow(0 2px 4px rgba(0,0,0,0.15))",
-              }}
-              transition={{
-                duration: 0.5,
-                ease: "easeInOut",
-              }}
-            />
-
-            {isScrolled && (
-              <>
-                <motion.div
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-400/30 via-purple-500/25 to-fuchsia-500/30 blur-md -z-10 opacity-75"
-                />
-              </>
-            )}
-          </motion.div>
-
-          <motion.div className="hidden sm:block">
-            <span
-              className={`
-                font-display font-bold transition-all duration-500 whitespace-nowrap
-                ${isScrolled
-                  ? "text-lg sm:text-2xl text-white drop-shadow-[0_3px_16px_rgba(139,92,246,0.8)]"
-                  : "text-base sm:text-xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
-                }
-              `}
-            >
-              {siteConfig.shortName}
-            </span>
-            <span
-              className={`
-                block -mt-1 transition-all duration-500 font-medium whitespace-nowrap opacity-90
-                ${isScrolled
-                  ? "text-xs sm:text-sm text-violet-200 drop-shadow-[0_2px_8px_rgba(139,92,246,0.6)]"
-                  : "text-[10px] sm:text-xs text-slate-200 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
-                }
-              `}
-            >
-              Enviro Solutions
-            </span>
-          </motion.div>
         </Link>
 
         <div className="hidden lg:flex items-center gap-6 flex-1 justify-center">

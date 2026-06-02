@@ -15,7 +15,7 @@ import {
 
 export const siteConfig: SiteConfig = {
   name: "SA Enviro Solutions",
-  shortName: "SAES",
+  shortName: "SA",
   tagline: "Leading Water Treatment Industry Into New Age",
   description:
     "SA Enviro Solutions (SAES) provides quality and customized services to address Environmental Aspects, specifically in Water and Wastewater Treatment, Zero Liquid Discharge, Air Pollution Control, Energy, Safety & Solid-Waste Management.",
@@ -78,12 +78,6 @@ const Product_DropDown = [
   }
 ];
 
-const Option_Dropdown = [
-  { name: "Gallery", href: "/gallery" },
-  { name: "Client", href: "/client" },
-  { name: "Team", href: "/team" },
-];
-
 export const navigation: NavigationItem[] = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
@@ -93,11 +87,9 @@ export const navigation: NavigationItem[] = [
     dropdown: Product_DropDown,
   },
   { name: "Services", href: "/services" },
-
+  { name: "Gallery", href: "/gallery" },
+  { name: "Client", href: "/client" },
   { name: "Blogs", href: "/blogs" },
-
-  { name: "Options", href: "/option", dropdown: Option_Dropdown },
-
   { name: "Contact", href: "/contact" },
 ];
 
@@ -195,7 +187,7 @@ export const heroData: HeroData = {
       title: "Waste Water Treatment",
       subtitle: "Efficient Wastewater Management Solutions",
       desc: "Our wastewater treatment systems are designed to effectively remove contaminants, ensuring environmentally safe discharge and sustainable water reuse through advanced treatment technologies.",
-      img: Image2,
+      img: Image1,
       buttons: [
         {
           label: "STP",
@@ -219,7 +211,7 @@ export const heroData: HeroData = {
       title: "Service",
       subtitle: "Reliable Annual Maintenance Solutions",
       desc: "Our AMC services ensure regular inspection, maintenance, and timely support to keep your systems operating efficiently, minimizing downtime and extending equipment lifespan.",
-      img: Image1,
+      img: Image2,
 
       buttons: [
         {
@@ -1066,10 +1058,16 @@ export const LOGOS: LogoItem[] = [
 export const products: Product[] = [
   {
     key: "sewage_treatment_plants",
+    metrics: [
+      { label: "BOD Removal", value: "> 90%" },
+      { label: "Capacity", value: "10 - 1000 KLD" },
+      { label: "Technology", value: "MBBR / SBR" },
+      { label: "Compliance", value: "CPCB Norms" }
+    ],
     main: {
       title: "Sewage Treatment Plants",
       description:
-        "On the Activated Sludge Process basis sewage treatment plants are designed. The advanced technologies involved to treat sewage such as MBBR technology, UASB technology and Sequential Batch Reactor (SBR). These technologies are discussed below:",
+        "Advanced Sewage Treatment Plants using SBR, MBBR & UASB technology for highly efficient wastewater treatment.",
       image: Image.stp,
       seo: {
         title:
@@ -1103,25 +1101,20 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg",
-        alt: "Sewage Treatment Plant - View 1",
-      },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg",
-        alt: "Sewage Treatment Plant - Overview",
-      },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
-        alt: "Sewage Treatment Plant - View 2",
-      },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/STP4_adarrl.jpg",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
         alt: "Sewage Treatment Plant - View 3",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
-        alt: "Sewage Treatment Plant - View 4",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
+        alt: "Sewage Treatment Plant - View 1",
       },
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/STP4_adarrl.jpg",
+        alt: "Sewage Treatment Plant - View 2",
+      },
+      
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
     ],
 
     Page_Description: [
@@ -1243,10 +1236,16 @@ export const products: Product[] = [
   },
   {
     key: "zero_liquid_discharge",
+    metrics: [
+      { label: "Water Recovery", value: "Up to 98%" },
+      { label: "Discharge", value: "0 Liquid" },
+      { label: "Evaporation", value: "High Efficiency" },
+      { label: "ROI", value: "Maximized" }
+    ],
     main: {
       title: "Zero Liquid Discharge (ZLD)",
       description:
-        "ZLD is a strategic wastewater management system that ensures that there will be no discharge of industrial wastewater into the environment. It is achieved by treating wastewater through recycling and then recovery and reuse for industrial purpose.",
+        "ZLD is a strategic wastewater management system that ensures that there will be no discharge of industrial wastewater into the environment. It is achieved by treating wastewater through recycling and then recovery and reuse for industrial purpose. Zero Liquid Discharge (ZLD) is an advanced wastewater treatment process designed to eliminate any liquid waste discharge from an industrial facility. The objective is to recover, recycle, and reuse nearly all wastewater, leaving behind only solid waste that can be safely disposed of or further processed.",
       image: Image.zld,
         seo: {
         title:
@@ -1274,18 +1273,57 @@ export const products: Product[] = [
       },
     },
     images: [
+      
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg", alt: "ZLD Plant Overview" },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg",
-        alt: "Zero Liquid Discharge 1",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",
+        alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",
+      },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg", alt: "Zero Liquid Discharge System" },
+    ],
+    Page_Description: [
+      {
+        type: "subtitle",
+        content: "In a ZLD system:",
       },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg",
-        alt: "Zero Liquid Discharge 2",
+        type: "list",
+        style: "bullet",
+        items: [
+          "95–99% of wastewater is recovered and reused",
+          "No untreated or treated effluent is discharged outside the plant",
+          "Solid wastes generated are easily disposable",
+          "Compliance with strict environmental regulations",
+          "Reduced environmental impact",
+          "Only solid salts, sludge, or crystals remain as waste",
+        ],
+      },
+      {
+        type: "subtitle",
+        content: "Environmental Benefits",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Prevents contamination of rivers, lakes, and groundwater",
+          "Zero discharge ensures environmental compliance",
+          "Reduces freshwater consumption",
+          "Saves transportation costs for treated water",
+          "Eliminates sludge disposal costs",
+          "Recovery of valuable salts and chemicals",
+        ],
       },
     ],
   },
   {
     key: "effluent_treatment_plants",
+    metrics: [
+      { label: "TSS Removal", value: "High" },
+      { label: "COD Reduction", value: "Optimal" },
+      { label: "Automation", value: "SCADA Ready" },
+      { label: "Footprint", value: "Compact" }
+    ],
     main: {
       title: "Effluent Treatment Plant",
       description:
@@ -1321,22 +1359,14 @@ export const products: Product[] = [
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/etp5-585x390_kxoqs6.webp",
-        alt: "Industrial Effluent Treatment Plant Setup",
-      },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg",
-        alt: "Industrial Effluent Treatment Plant Setup",
-      },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg", alt: "Architecture View" },
+      
       {
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/etp2_sdicc6.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/etp1_jty4yv.webp",
-        alt: "Industrial Effluent Treatment Plant Setup",
-      },
+      
+
     ],
     Page_Description: [
       {
@@ -1367,6 +1397,12 @@ export const products: Product[] = [
   },
   {
     key: "water_treatment_plants",
+    metrics: [
+      { label: "Purity", value: "Potable Grade" },
+      { label: "Filtration", value: "Multi-Grade" },
+      { label: "Capacity", value: "Customizable" },
+      { label: "Maintenance", value: "Low Cost" }
+    ],
     main: {
       title: "Water Treatment Plants",
       description:
@@ -1398,10 +1434,7 @@ export const products: Product[] = [
       },
     },
     images: [
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp",
-        alt: "Industrial Water Treatment Plant System",
-      },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp", alt: "Water Treatment Plant" },
     ],
     Page_Description: [
       {
@@ -1426,10 +1459,16 @@ export const products: Product[] = [
   },
   {
     key: "ultra_filtration",
+    metrics: [
+      { label: "Pore Size", value: "0.01 Micron" },
+      { label: "Pathogen Rejection", value: "99.99%" },
+      { label: "Operating Pressure", value: "Low" },
+      { label: "Membrane Life", value: "Extended" }
+    ],
     main: {
       title: "Ultra Filtration (UF)",
       description:
-        "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds colloidal and particulate matters from a feed stream.",
+        "Ultrafiltration is a low-pressure membrane process used to separate bacteria, viruses, and high molecular weight compounds colloidal and particulate matters from a feed stream. Ultrafiltration (UF) is a membrane-based water treatment technology that uses a semi-permeable membrane to remove suspended solids, colloids, bacteria, viruses, algae, and other high-molecular-weight contaminants from water.",
       image: Image.uf,
         seo: {
         title:
@@ -1459,17 +1498,40 @@ export const products: Product[] = [
     images: [
       {
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/UF1_wx6qux.jpg",
-        alt: "Ultra Filtration (UF)",
-      },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",
-        alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",
+        alt: "Ultra Filtration (UF) ",
       },
     ],
-    Page_Description: [],
+    Page_Description: [
+      {
+        type:"p",
+        content:"It operates at relatively low pressure and serves as an excellent pretreatment step before Reverse Osmosis (RO) systems, helping to improve water quality and protect downstream equipment."
+      },
+      {
+        type: "subtitle",
+        content: "Main Components of a UF System",
+      },
+      {
+        type: "list",
+        style: "bullet",
+        items: [
+          "Feed Water Tank",
+          "Feed Pump",
+          "UF Membrane Modules",
+          "Air Scouring System",
+          "CIP System",
+        ],
+      },
+      
+    ],
   },
   {
     key: "reverse_osmosis",
+    metrics: [
+      { label: "Salt Rejection", value: "> 99%" },
+      { label: "Recovery Rate", value: "70-85%" },
+      { label: "Energy Usage", value: "Optimized" },
+      { label: "Water Quality", value: "High Purity" }
+    ],
     main: {
       title: "Reverse osmosis (RO)",
       description:
@@ -1502,13 +1564,14 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
-        alt: "Reverse Osmosis (RO) ",
-      },
-      {
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/RO2_jjdtan.jpg",
         alt: "Reverse Osmosis (RO) system with blue filtration tanks and control panel",
       },
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
+        alt: "Reverse Osmosis (RO) ",
+      },
+      
     ],
     Page_Description: [
       {
@@ -1542,6 +1605,12 @@ export const products: Product[] = [
   },
   {
     key: "demineralisation_plants",
+    metrics: [
+      { label: "Conductivity", value: "< 1 µS/cm" },
+      { label: "Process", value: "Ion Exchange" },
+      { label: "Resin Life", value: "High Durability" },
+      { label: "Automation", value: "Fully Auto" }
+    ],
     main: {
       title: "Demineralisation Plants [DM]",
       description:
@@ -1603,6 +1672,12 @@ export const products: Product[] = [
   },
   {
     key: "water_softeners_plant",
+    metrics: [
+      { label: "Hardness Removal", value: "100%" },
+      { label: "Resin Type", value: "High Capacity Cation" },
+      { label: "Operation", value: "Auto / Manual" },
+      { label: "Scaling", value: "Eliminated" }
+    ],
     main: {
       title: "Water Softeners Plant",
       description:
@@ -1640,6 +1715,16 @@ export const products: Product[] = [
     ],
     Page_Description: [
       {
+        type: "p",
+        content:
+          "A Water Softener Plant (WSP) is a water treatment system designed to remove hardness-causing minerals, mainly Calcium (Ca²⁺) and Magnesium (Mg²⁺), from water. Hard water causes scaling in pipelines, boilers, cooling towers, geysers, and RO membranes.",
+      },
+      {
+        type: "p",
+        content:
+          "The most common method used in these plants is **Ion Exchange**, where hard water passes through a bed of cation exchange resin. The resin exchanges hardness ions (Ca²⁺ and Mg²⁺) with sodium ions (Na⁺), resulting in soft water.",
+      },
+      {
         type: "subtitle",
         content: "The Range of Water Softening Plants:",
       },
@@ -1667,10 +1752,32 @@ export const products: Product[] = [
           "Produces soft, non-scale forming water",
         ],
       },
+      {
+        type: "subtitle",
+        content: "Typical Water Softener Plant Layout",
+      },
+      {
+        type: "list",
+        style: "number",
+        items: [
+          "Raw Water Tank",
+          "Multi Grade Filter (Optional)",
+          "Activated Carbon Filter",
+          "Water Softener Vessel",
+          "Soft Water Tank",
+          "Distribution / RO Feed / Boiler Feed",
+        ],
+      },
     ],
   },
   {
     key: "amc_services",
+    metrics: [
+      { label: "Uptime", value: "Guaranteed" },
+      { label: "Support", value: "24/7 Availability" },
+      { label: "Checkups", value: "Scheduled" },
+      { label: "Compliance", value: "Monitored" }
+    ],
     main: {
       title: "AMC Services",
       description:
@@ -1707,9 +1814,18 @@ export const products: Product[] = [
       },
     },
     images: [
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp", alt: "Water Treatment Plant" },
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
-        alt: "SA Enviro Solutions Company Logo",
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
+        alt: "Sewage Treatment Plant - View 3",
+      },
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
+        alt: "Sewage Treatment Plant - View 1",
       },
     ],
     Page_Description: [
@@ -1731,6 +1847,12 @@ export const products: Product[] = [
   },
   {
     key: "online_monitoring_system",
+    metrics: [
+      { label: "Data Logging", value: "Continuous" },
+      { label: "Sensors", value: "High Precision" },
+      { label: "Alerts", value: "Real-Time" },
+      { label: "Integration", value: "Cloud Ready" }
+    ],
     main: {
       title: "Online Monitoring System",
       description:
@@ -1804,3 +1926,4 @@ export const products: Product[] = [
     ],
   },
 ];
+

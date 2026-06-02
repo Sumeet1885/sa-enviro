@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -59,6 +60,17 @@ export default function Drawer({
   open,
   onClose,
 }: DrawerProps) {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
 
     <AnimatePresence>

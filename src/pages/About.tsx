@@ -16,6 +16,7 @@ import { aboutData, seoData } from "@/constants/siteData";
 import aboutImage from "@/assets/about-hero.webp";
 import Profile from "@/assets/About.webp"
 import { VisionSection } from "@/components/Sections/VisionSection";
+import TeamSlider from "@/components/Sections/Team_Section";
 
 const About = () => {
 
@@ -306,6 +307,8 @@ const About = () => {
           </StaggerContainer>
         </div>
       </section>
+
+      <TeamSlider />
 
       <section className="py-16 bg-water-deep text-primary-foreground">
         <div className="container-wide text-center">
