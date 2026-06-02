@@ -1058,9 +1058,6 @@ export const LOGOS: LogoItem[] = [
 export const products: Product[] = [
   {
     key: "sewage_treatment_plants",
-    
-    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
-    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
     metrics: [
       { label: "BOD Removal", value: "> 90%" },
       { label: "Capacity", value: "10 - 1000 KLD" },
@@ -1115,6 +1112,8 @@ export const products: Product[] = [
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
         alt: "Sewage Treatment Plant - View 3",
       },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
     ],
 
     Page_Description: [
@@ -1236,9 +1235,6 @@ export const products: Product[] = [
   },
   {
     key: "zero_liquid_discharge",
-    
-    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg", alt: "Architecture View" },
-    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg", alt: "Full View" },
     metrics: [
       { label: "Water Recovery", value: "Up to 98%" },
       { label: "Discharge", value: "0 Liquid" },
@@ -1275,13 +1271,13 @@ export const products: Product[] = [
         },
       },
     },
-    images: [],
+    images: [
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg", alt: "Zero Liquid Discharge System" },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg", alt: "ZLD Plant Overview" }
+    ],
   },
   {
     key: "effluent_treatment_plants",
-    
-    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg", alt: "Architecture View" },
-    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg", alt: "Full View" },
     metrics: [
       { label: "TSS Removal", value: "High" },
       { label: "COD Reduction", value: "Optimal" },
@@ -1324,6 +1320,10 @@ export const products: Product[] = [
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
+        alt: "Industrial Effluent Treatment Plant Setup",
+      },
+      {
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/etp2_sdicc6.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
@@ -1331,6 +1331,7 @@ export const products: Product[] = [
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/etp1_jty4yv.webp",
         alt: "Industrial Effluent Treatment Plant Setup",
       },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg", alt: "Architecture View" },
     ],
     Page_Description: [
       {
@@ -1361,9 +1362,6 @@ export const products: Product[] = [
   },
   {
     key: "water_treatment_plants",
-    
-    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp", alt: "Architecture View" },
-    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
     metrics: [
       { label: "Purity", value: "Potable Grade" },
       { label: "Filtration", value: "Multi-Grade" },
@@ -1401,6 +1399,7 @@ export const products: Product[] = [
       },
     },
     images: [
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp", alt: "Water Treatment Plant" },
     ],
     Page_Description: [
       {
@@ -1425,9 +1424,6 @@ export const products: Product[] = [
   },
   {
     key: "ultra_filtration",
-    
-    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
-    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
     metrics: [
       { label: "Pore Size", value: "0.01 Micron" },
       { label: "Pathogen Rejection", value: "99.99%" },
@@ -1466,21 +1462,18 @@ export const products: Product[] = [
     },
     images: [
       {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/UF1_wx6qux.jpg",
-        alt: "Ultra Filtration (UF)",
-      },
-      {
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",
         alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",
+      },
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/UF1_wx6qux.jpg",
+        alt: "Ultra Filtration (UF) ",
       },
     ],
     Page_Description: [],
   },
   {
     key: "reverse_osmosis",
-    
-    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
-    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
     metrics: [
       { label: "Salt Rejection", value: "> 99%" },
       { label: "Recovery Rate", value: "70-85%" },
@@ -1559,9 +1552,6 @@ export const products: Product[] = [
   },
   {
     key: "demineralisation_plants",
-    
-    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
-    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
     metrics: [
       { label: "Conductivity", value: "< 1 µS/cm" },
       { label: "Process", value: "Ion Exchange" },
@@ -1629,9 +1619,6 @@ export const products: Product[] = [
   },
   {
     key: "water_softeners_plant",
-    
-    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
-    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
     metrics: [
       { label: "Hardness Removal", value: "100%" },
       { label: "Resin Type", value: "High Capacity Cation" },
@@ -1706,9 +1693,6 @@ export const products: Product[] = [
   },
   {
     key: "amc_services",
-    
-    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
-    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
     metrics: [
       { label: "Uptime", value: "Guaranteed" },
       { label: "Support", value: "24/7 Availability" },
@@ -1775,9 +1759,6 @@ export const products: Product[] = [
   },
   {
     key: "online_monitoring_system",
-    
-    architectureImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg", alt: "Architecture View" },
-    fullImage: { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg", alt: "Full View" },
     metrics: [
       { label: "Data Logging", value: "Continuous" },
       { label: "Sensors", value: "High Precision" },

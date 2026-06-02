@@ -107,10 +107,6 @@ export interface PageDescriptionType {
 export interface Product {
   key: string;
 
-  architectureImage: ImageType;
-
-  fullImage: ImageType;
-
   metrics: MetricType[];
 
   main: {

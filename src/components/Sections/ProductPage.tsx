@@ -18,7 +18,7 @@ const SectionTitle = ({ title, subtitle }: { title: string, subtitle: string }) 
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className="text-1xl md:text-2xl font-display font-bold text-slate-900 leading-tight"
+      className="text-xl md:text-xl font-normal font-sans text-slate-900 leading-tight"
     >
       {title}
     </motion.h2>
@@ -91,9 +91,9 @@ export default function ProductPage({ product }: { product: Product }) {
   });
 
   const heroImageSrc = product.main.image;
-  const archImageSrc = product.architectureImage?.url || product.images?.[0]?.url || product.main.image;
-  const fullImageSrc = product.fullImage?.url || product.images?.[1]?.url || product.images?.[0]?.url || product.main.image;
-  const gridImages = product.images?.slice(0, 4) || []; // We'll just show up to 4 images in the grid
+  const archImageSrc = product.images?.[0]?.url;
+  const fullImageSrc = product.images?.[1]?.url;
+  const gridImages = product.images?.slice(2) || [];
 
   return (
     <div ref={containerRef} className="bg-white text-slate-900 font-sans selection:bg-violet-500/30 selection:text-violet-900">
@@ -127,9 +127,9 @@ export default function ProductPage({ product }: { product: Product }) {
 
       </section>
 
-      {/* Description */}
+      {/* Description & Ticker Image (Images[0]) */}
       <section className="relative py-20 px-6 md:px-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <div className="flex flex-col justify-center">
             <SectionTitle title={product.main.description} subtitle="The Architecture" />
             <div className="mb-12">
@@ -140,72 +140,77 @@ export default function ProductPage({ product }: { product: Product }) {
               "We provide cost-effective and reliable solutions for wastewater management."
             </p>
           </div>
-          <div className="relative w-full aspect-square lg:aspect-[4/3] lg:sticky top-32 overflow-hidden rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] bg-slate-50 border-[8px] md:border-[12px] border-white flex items-center justify-center">
-            <motion.img 
-              initial={{ scale: 1.1, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1.5 }}
-              src={archImageSrc} 
-              className="w-full h-full object-cover md:object-contain p-0 md:p-6"
-              alt="Architecture Visualization"
-            />
-          </div>
+          {archImageSrc && (
+            <div className="relative w-full lg:sticky top-32 overflow-hidden rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+              <motion.img 
+                initial={{ scale: 1.1, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                src={archImageSrc} 
+                className="w-full h-auto object-contain"
+                alt="Architecture Visualization"
+              />
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Large Image Section */}
-      <section className="relative h-[80vh] overflow-hidden">
-        <motion.div 
-          initial={{ clipPath: 'inset(10% 10% 10% 10%)' }}
-          whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
-          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full h-full"
-        >
-          <img 
-            src={fullImageSrc} 
-            className="w-full h-full object-cover brightness-90"
-            alt="Fullscreen Immersive"
-          />
-        </motion.div>
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none bg-gradient-to-t from-slate-900/60 to-transparent">
-          <motion.h3 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="text-4xl md:text-7xl font-display font-bold text-white tracking-tight px-12 text-center max-w-4xl drop-shadow-xl"
+      {/* Full Image Section (Images[1]) */}
+      {fullImageSrc && (
+        <section className="relative h-[80vh] overflow-hidden">
+          <motion.div 
+            initial={{ clipPath: 'inset(10% 10% 10% 10%)' }}
+            whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full h-full"
           >
-            Efficiency through <span className="italic text-water-sky font-serif">precision</span>.
-          </motion.h3>
-        </div>
-      </section>
+            <img 
+              src={fullImageSrc} 
+              className="w-full h-full object-cover brightness-90"
+              alt="Fullscreen Immersive"
+            />
+          </motion.div>
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none bg-gradient-to-t from-slate-900/60 to-transparent">
+            <motion.h3 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className="text-4xl md:text-7xl font-display font-bold text-white tracking-tight px-12 text-center max-w-4xl drop-shadow-xl"
+            >
+              Efficiency through <span className="italic text-water-sky font-serif">precision</span>.
+            </motion.h3>
+          </div>
+        </section>
+      )}
 
-      {/* Grid Images */}
+      {/* Grid Images (Images[2...]) - Masonry Layout */}
       {gridImages.length > 0 && (
-        <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto bg-white">
+        <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto bg-white">
           <SectionTitle title="Technical Installations" subtitle="Visual Components" />
-          <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-6 h-auto ${gridImages.length === 1 ? 'md:h-[500px]' : gridImages.length === 2 ? 'md:h-[400px]' : 'md:h-[800px]'}`}>
-            {gridImages.map((img, i) => {
-              let colSpan = 'md:col-span-4';
-              if (gridImages.length === 1) {
-                colSpan = 'md:col-span-12';
-              } else if (gridImages.length === 2) {
-                colSpan = 'md:col-span-6';
-              } else {
-                colSpan = i % 3 === 0 ? 'md:col-span-8' : 'md:col-span-4';
-              }
-              
-              return (
-                <div 
-                  key={i} 
-                  className={`overflow-hidden rounded-3xl bg-slate-100 group relative shadow-md ${colSpan}`}
-                >
-                  <img src={img.url} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt={img.alt} />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/80 to-transparent p-8">
-                    <div className="text-xs uppercase tracking-widest font-bold text-white">{img.alt}</div>
+          
+          <div className="columns-1 md:columns-2 gap-6 space-y-6">
+            {gridImages.map((img, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                className="break-inside-avoid relative group rounded-2xl overflow-hidden bg-slate-50 shadow-sm hover:shadow-xl transition-all duration-500"
+              >
+                <img 
+                  src={img.url} 
+                  className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105" 
+                  alt={img.alt} 
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <div className="text-white">
+                    <div className="text-xs uppercase tracking-widest font-bold mb-1 opacity-80">{product.main.title}</div>
+                    <div className="text-sm font-semibold">{img.alt}</div>
                   </div>
                 </div>
-              );
-            })}
+              </motion.div>
+            ))}
           </div>
         </section>
       )}
