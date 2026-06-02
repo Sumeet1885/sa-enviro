@@ -322,7 +322,7 @@ const ProductShowCase: React.FC<RemoteTeamSectionProps> = ({
     ) : null;
 
   return (
-    <div className="min-h-screen">
+    <div >
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-16 md:py-8"
         initial="hidden"

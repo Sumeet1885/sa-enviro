@@ -1,10 +1,8 @@
-
-
 import { SEO } from "@/components/layout/SEO";
-
-import {seoData } from "@/constants/siteData";
+import { seoData } from "@/constants/siteData";
 import LogoShowcase from "@/components/Sections/Client_Show";
 import HeroSection from "@/components/Sections/HeroSection";
+import ClientLogoCard from "@/components/ui/ClientLogoCard";
 
 const Client = () => {
   return (
@@ -18,6 +16,7 @@ const Client = () => {
         title="Our Clients"
         heading="Our Esteemed Clients"
         subtitle="Trusted by Leading Industries for Water, Wastewater & Environmental Engineering Solutions"
+        rightContent={<ClientLogoCard />}
       />
       <LogoShowcase />
     </>

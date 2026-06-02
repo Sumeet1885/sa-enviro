@@ -50,16 +50,78 @@ export type PageDescriptionBlock =
   | KeyValueBlock
   | ListBlock;
 
-export interface ProductImage {
+export interface ImageType {
   url: string;
   alt: string;
 }
 
+export interface MetricType {
+  label: string;
+  value: string;
+}
+
+export interface SEOType {
+  title: string;
+  description: string;
+  keywords: string;
+  url: string;
+  image: string;
+
+  schema?: {
+    "@context": string;
+    "@type": string;
+
+    serviceType?: string;
+    name?: string;
+    description?: string;
+    areaServed?: string;
+
+    provider?: {
+      "@type": string;
+      name: string;
+
+      address?: {
+        "@type": string;
+        addressLocality?: string;
+        addressCountry?: string;
+      };
+    };
+  };
+}
+
+export interface PageDescriptionType {
+  type: "p" | "subtitle" | "list" | "keyValue";
+
+  content?: string;
+
+  style?: "bullet" | "number";
+
+  items?:
+    | string[]
+    | {
+        key: string;
+        value: string;
+      }[];
+}
+
 export interface Product {
   key: string;
-  main: main;
-  images: ProductImage[];
-  Page_Description?: PageDescriptionBlock[];
+
+  metrics: MetricType[];
+
+  main: {
+    title: string;
+
+    description: string;
+
+    image: string;
+
+    seo: SEOType;
+  };
+
+  images: ImageType[];
+
+  Page_Description?: PageDescriptionType[];
 }
 
 export interface SiteConfig {

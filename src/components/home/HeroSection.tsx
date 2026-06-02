@@ -44,7 +44,7 @@ export function HeroSection() {
 
   const ButtonClick = (values: { label: string; key: string }) => {
     setSlug(values.key);
-    setLabel(values.label);
+    setLabel(active.title);
     setOpen(true);
   };
 
