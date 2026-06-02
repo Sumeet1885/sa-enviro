@@ -187,7 +187,7 @@ export const heroData: HeroData = {
       title: "Waste Water Treatment",
       subtitle: "Efficient Wastewater Management Solutions",
       desc: "Our wastewater treatment systems are designed to effectively remove contaminants, ensuring environmentally safe discharge and sustainable water reuse through advanced treatment technologies.",
-      img: Image2,
+      img: Image1,
       buttons: [
         {
           label: "STP",
@@ -211,7 +211,7 @@ export const heroData: HeroData = {
       title: "Service",
       subtitle: "Reliable Annual Maintenance Solutions",
       desc: "Our AMC services ensure regular inspection, maintenance, and timely support to keep your systems operating efficiently, minimizing downtime and extending equipment lifespan.",
-      img: Image1,
+      img: Image2,
 
       buttons: [
         {
