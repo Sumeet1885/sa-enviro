@@ -128,9 +128,9 @@ export default function ProductPage({ product }: { product: Product }) {
       </section>
 
       {/* Description & Ticker Image (Images[0]) */}
-      <section className="relative py-20 px-6 md:px-12 bg-slate-50">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-          <div className="flex flex-col justify-center">
+      <section className="relative pt-8 pb-20 md:py-20 px-6 md:px-12 bg-slate-50">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
+          <div className="flex flex-col justify-center order-2 lg:order-none">
             <SectionTitle title={product.main.description} subtitle="The Architecture" />
             <div className="mb-12">
               <RenderPageDescription content={product.Page_Description} />
@@ -141,7 +141,7 @@ export default function ProductPage({ product }: { product: Product }) {
             </p>
           </div>
           {archImageSrc && (
-            <div className="relative w-full lg:sticky top-32 overflow-hidden rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+            <div className="relative w-full lg:sticky top-2 overflow-hidden rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] order-1 lg:order-none">
               <motion.img 
                 initial={{ scale: 1.1, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
