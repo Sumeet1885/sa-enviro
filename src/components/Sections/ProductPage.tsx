@@ -131,7 +131,7 @@ export default function ProductPage({ product }: { product: Product }) {
       <section className="relative pt-8 pb-20 md:py-20 px-6 md:px-12 bg-slate-50">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           <div className="flex flex-col justify-center order-2 lg:order-none">
-            <SectionTitle title={product.main.description} subtitle="The Architecture" />
+            <SectionTitle title={product.main.description} subtitle="Details & Specifications" />
             <div className="mb-12">
               <RenderPageDescription content={product.Page_Description} />
             </div>

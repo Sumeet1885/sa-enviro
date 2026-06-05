@@ -1067,7 +1067,7 @@ export const products: Product[] = [
     main: {
       title: "Sewage Treatment Plants",
       description:
-        "Advanced Sewage Treatment Plants using SBR, MBBR & UASB technology for highly efficient wastewater treatment.",
+        "Advanced Sewage Treatment Plants using SBR, MBBR, MBR & UASB technology for highly efficient wastewater treatment.",
       image: Image.stp,
       seo: {
         title:
@@ -1273,12 +1273,8 @@ export const products: Product[] = [
       },
     },
     images: [
-      
+      {url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",},
       { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg", alt: "ZLD Plant Overview" },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",
-        alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",
-      },
       { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg", alt: "Zero Liquid Discharge System" },
     ],
     Page_Description: [
