@@ -267,6 +267,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Chemical-Dosing-System_m9hwjp.webp",
     link: "/services/chemical-dosing",
+    category: "general",
   },
   {
     id: "clarifier",
@@ -276,6 +277,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/The-Clarifier_sf5j93.webp",
     link: "/services/clarifier",
+    category: "general",
   },
   {
     id: "biological-treatment",
@@ -285,6 +287,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
     link: "/services/biological-treatment",
+    category: "general",
   },
   {
     id: "tube-settlers",
@@ -294,6 +297,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
     link: "/services/tube-settlers",
+    category: "general",
   },
   {
     id: "pressure-sand-filters",
@@ -303,6 +307,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Pressure-Sand-Filter-activated-carbon-filter1_yqs77v.webp",
     link: "/services/pressure-sand-filters",
+    category: "general",
   },
   {
     id: "activated-carbon-filters",
@@ -312,6 +317,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Activated-Carbon-Filters_pyagph.webp",
     link: "/services/activated-carbon-filters",
+    category: "general",
   },
   {
     id: "dual-media-filters",
@@ -321,6 +327,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725955/logosaeenviro_o9itfb.gif",
     link: "/services/dual-media-filters",
+    category: "general",
   },
   {
     id: "reverse-osmosis",
@@ -330,33 +337,37 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
     link: "/services/reverse-osmosis",
+    category: "amc",
   },
   {
     id: "water-treatment-plants",
-    title: "Water Treatment Plants",
+    title: "Water Treatment Plants (WTP)",
     description:
       "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants.",
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773727163/Water-Treatment-Plants-WTP1_ggis8i.webp",
     link: "/services/water-treatment-plants",
+    category: "amc",
   },
   {
     id: "sewage-treatment",
-    title: "Sewage Treatment Plants",
+    title: "Sewage Treatment Plants (STP)",
     description:
       "We offer a huge range of Sewage Treatment Plants, which are used in the national as well as international market.",
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg",
     link: "/services/sewage-treatment",
+    category: "amc",
   },
   {
     id: "effluent-treatment",
-    title: "Effluent Treatment Plant",
+    title: "Effluent Treatment Plant (ETP)",
     description:
       "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant.",
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
     link: "/services/effluent-treatment",
+    category: "amc",
   },
   {
     id: "dm-plants",
@@ -366,6 +377,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/DMplants-585x340_dih1yh.gif",
     link: "/services/dm-plants",
+    category: "amc",
   },
   {
     id: "water-softeners",
@@ -375,6 +387,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778061765/Softener2_wnzwl8.jpg",
     link: "/services/water-softeners",
+    category: "general",
   },
   {
     id: "ultraviolet-units",
@@ -384,15 +397,17 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     link: "/services/ultraviolet-units",
+    category: "general",
   },
   {
-    id: "swimming-pool-filtration",
-    title: "Swimming Pool Water Filtration Plants",
+    id: "wastewater-treatment",
+    title: "Wastewater Treatment Plants (WWTP)",
     description:
-      "We offer a large variety of Pool Filtration Systems, Dosing Systems & Accessories. The skimmer and level deck techniques ensure perfect water quality at all times.",
+      "Comprehensive wastewater treatment solutions designed to remove contaminants and ensure environmentally safe discharge, enabling sustainable water reuse across industries.",
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/Swimming-Pool-Water-Filtration-Plants_vokkvx.webp",
-    link: "/services/swimming-pool-filtration",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg",
+    link: "/services/wastewater-treatment",
+    category: "amc",
   },
 ];
 
@@ -513,11 +528,6 @@ export const galleryImages = [
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     alt: "Ultraviolet Units",
     category: "equipment",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/Swimming-Pool-Water-Filtration-Plants_vokkvx.webp",
-    alt: "Swimming Pool Filtration",
-    category: "plants",
   },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
@@ -1273,9 +1283,9 @@ export const products: Product[] = [
       },
     },
     images: [
-      {url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",},
       { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg", alt: "ZLD Plant Overview" },
       { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg", alt: "Zero Liquid Discharge System" },
+      {url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",},
     ],
     Page_Description: [
       {

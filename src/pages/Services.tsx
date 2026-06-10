@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import { SEO } from "@/components/layout/SEO";
-
-import { services, seoData } from "@/constants/siteData";
-import { ServiceCard } from "@/components/ui/ServiceCard";
-import HeroSection from "@/components/Sections/HeroSection";
+import { seoData } from "@/constants/siteData";
+import ServicesHero from "@/components/Sections/services/ServicesHero";
+import ServicesGrid from "@/components/Sections/services/ServicesGrid";
+import ServicesProcess from "@/components/Sections/services/ServicesProcess";
 
 const Services = () => {
   return (
@@ -14,44 +12,14 @@ const Services = () => {
         description={seoData.services.description}
       />
 
-      <HeroSection
-        title="Our Service"
-        heading="💧 Integrated Environmental Solutions"
-        subtitle="Comprehensive Environmental Engineering Solutions for Water, Wastewater, ZLD & Pollution Control"
-      />
+      {/* ── HERO ── */}
+      <ServicesHero />
 
-      <section className="section-padding bg-background">
-        <div className="container-wide">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div key={service.id}>
-                <ServiceCard service={service} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── SERVICE CARDS (tabbed grid + modal) ── */}
+      <ServicesGrid />
 
-      <section className="py-16 bg-muted/30 bg-water-deep">
-        <div className="container-wide text-center">
-          <div>
-            <h2 className="text-2xl font-display font-bold text-primary-foreground mb-4">
-              Need a Custom Solution?
-            </h2>
-            <p className="text-primary-foreground mb-6 max-w-xl mx-auto">
-              Contact us to discuss your specific requirements and get a
-              tailored solution.
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-            >
-              Contact Our Experts
-              <ArrowUpRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* ── HOW WE WORK (process stepper) ── */}
+      <ServicesProcess />
     </>
   );
 };
