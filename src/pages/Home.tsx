@@ -24,7 +24,6 @@ const Home = () => {
         <WhyChooseUsSection />
         <Certification_Section />
         <TestimonialsSection />
-        <CTASection />
       </Suspense>
     </>
   );
