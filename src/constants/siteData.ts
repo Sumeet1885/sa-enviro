@@ -1063,6 +1063,11 @@ export const LOGOS: LogoItem[] = [
     alt: "client-29",
     imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1774417430/Picture10-1-585x439_omix0l.webp",
   },
+  {
+    id: "picture-30",
+    alt: "client-30",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782062880/3-L_T_Defence_witdxs.jpg",
+  },
 ];
 
 export const products: Product[] = [
