@@ -20,7 +20,7 @@ const useWindowSize = () => {
 // --- Design Tokens ---
 const theme = {
   colors: {
-    background: 'rgb(0, 93, 232)',
+    background: '#0D3B66',
     surface: '#FFFFFF',
     textMain: '#FFFFFF',
     border: 'rgba(255, 255, 255, 0.3)',
@@ -228,7 +228,7 @@ export const StatsSection = () => {
       transition: 'all 0.3s ease',
     },
     featureTitle: {
-      fontSize: '16px',
+      fontSize: '20px',
       fontWeight: 600,
       color: theme.colors.textMain,
       marginBottom: '16px',

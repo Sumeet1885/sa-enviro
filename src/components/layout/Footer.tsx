@@ -20,13 +20,13 @@ import logo from "@/assets/logo.webp";
 
 // ─── Theme ───────────────────────────────────────────────────────────────────
 const t = {
-  bg: "#050914",
+  bg: "#0D3B66",
   surface: "#0A1121",
   textPrimary: "#FFFFFF",
-  textSecondary: "#8E9AB3",
+  textSecondary: "#FFFFFF",
   accent: "#00A3FF",
   accentLight: "#4DD0E1",
-  border: "#1A2438",
+  border: "rgba(255, 255, 255, 0.2)",
 };
 
 // ─── Social icon map ─────────────────────────────────────────────────────────
@@ -110,8 +110,8 @@ const FooterColumn = ({
     <div>
       <h4
         style={{
-          fontSize: "13px",
-          fontWeight: 600,
+          fontSize: "16px",
+          fontWeight: 800,
           margin: "0 0 14px 0",
           letterSpacing: "0.1em",
           color: t.textPrimary,
@@ -149,7 +149,7 @@ const FooterColumn = ({
                 rest: { color: t.textSecondary },
                 hover: { color: t.textPrimary },
               }}
-              style={{ fontSize: "14px", display: "block" }}
+              style={{ fontSize: "15px", display: "block" }}
             >
               {link.name}
             </motion.span>
@@ -399,8 +399,8 @@ export const Footer = () => {
             <div>
               <h4
                 style={{
-                  fontSize: "13px",
-                  fontWeight: 600,
+                  fontSize: "16px",
+                  fontWeight: 800,
                   margin: "0 0 14px 0",
                   letterSpacing: "0.1em",
                   color: t.textPrimary,

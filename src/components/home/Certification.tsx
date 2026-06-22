@@ -10,7 +10,7 @@ const theme = {
   primary: '#1662E4',
   secondary: '#0B1B3D',
   accentGreen: '#5CB85C',
-  accentDark: '#183B7E',
+  accentDark: '#0D3B66',
   textDark: '#1E293B',
   textLight: '#475569',
   textMuted: '#64748B',
@@ -278,7 +278,7 @@ export const Certification_Section = () => {
           viewport={{ once: true }}
           style={{ textAlign: 'center', maxWidth: '800px', marginBottom: '60px' }}
         >
-          <SectionSubtitle>WHY CHOOSE US</SectionSubtitle>
+          <SectionSubtitle>CERTIFICATIONS</SectionSubtitle>
 
           <h2 style={{
             fontSize: isMobile ? '2.5rem' : '3.5rem',

@@ -31,18 +31,18 @@ const useFonts = () => {
 
 // ─── Theme ───────────────────────────────────────────────────────────────────
 const theme = {
-  bg: '#fcfdfe',
+  bg: '#F8FAFC',
   textDark: '#111827',
   textMuted: '#4b5563',
-  primary: '#2563eb',
-  primaryHover: '#1d4ed8',
-  primaryLight: '#eff6ff',
-  border: 'rgba(37, 99, 235, 0.08)',
+  primary: '#005DE8',
+  primaryHover: '#004fc5',
+  primaryLight: 'rgba(0, 93, 232, 0.05)',
+  border: 'rgba(0, 93, 232, 0.08)',
   cardBg: 'rgba(255, 255, 255, 0.75)',
   cardShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.03)',
-  glow: 'rgba(37, 99, 235, 0.05)',
+  glow: 'rgba(0, 93, 232, 0.05)',
   divider: 'rgba(0, 0, 0, 0.06)',
-  bannerBg: 'rgba(244, 248, 255, 0.7)',
+  bannerBg: 'rgba(0, 93, 232, 0.03)',
 };
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -240,27 +240,7 @@ export const WhyChooseUsSection: React.FC = () => {
         }}
       />
 
-      {/* ── Sparkle particles (desktop only) ── */}
-      {!isMobile &&
-        sparklesList.map((s) => (
-          <motion.div
-            key={s.id}
-            animate={{ y: [0, -30, 0], opacity: [0.1, 0.6, 0.1], scale: [1, 1.2, 1] }}
-            transition={{ duration: s.duration, repeat: Infinity, ease: 'easeInOut' }}
-            style={{
-              position: 'absolute',
-              left: `${s.x}%`,
-              top: `${s.y}%`,
-              width: `${s.size}px`,
-              height: `${s.size}px`,
-              borderRadius: '50%',
-              backgroundColor: t.primary,
-              opacity: 0.3,
-              pointerEvents: 'none',
-              zIndex: 1,
-            }}
-          />
-        ))}
+
 
       {/* ── Main content wrapper ── */}
       <div
@@ -289,13 +269,13 @@ export const WhyChooseUsSection: React.FC = () => {
                   fontSize: '12px',
                   fontWeight: 700,
                   letterSpacing: '0.2em',
-                  color: '#2563eb',
+                  color: '#005DE8',
                   textTransform: 'uppercase',
                 }}
               >
                 Why Choose Us
               </span>
-              <div style={{ width: '40px', height: '1.5px', backgroundColor: '#2563eb' }} />
+              <div style={{ width: '40px', height: '1.5px', backgroundColor: '#005DE8' }} />
             </div>
 
             <h2
@@ -314,7 +294,7 @@ export const WhyChooseUsSection: React.FC = () => {
               <span
                 style={{
                   fontStyle: 'italic',
-                  color: '#2563eb',
+                  color: '#005DE8',
                   fontWeight: 600,
                   position: 'relative',
                   display: 'inline-block',
@@ -330,7 +310,7 @@ export const WhyChooseUsSection: React.FC = () => {
                     position: 'absolute',
                     right: isMobile ? '-24px' : '-32px',
                     bottom: '12px',
-                    color: '#2563eb',
+                    color: '#005DE8',
                   }}
                 >
                   <path
@@ -376,14 +356,14 @@ export const WhyChooseUsSection: React.FC = () => {
           >
             <div
               style={{
-                backgroundColor: 'rgba(37,99,235,0.05)',
+                backgroundColor: 'rgba(0, 93, 232, 0.05)',
                 borderRadius: '50%',
                 padding: '16px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#2563eb',
-                boxShadow: '0 8px 24px -6px rgba(37, 99, 235, 0.15)',
+                color: '#005DE8',
+                boxShadow: '0 8px 24px -6px rgba(0, 93, 232, 0.15)',
                 flexShrink: 0,
               }}
             >
@@ -406,7 +386,7 @@ export const WhyChooseUsSection: React.FC = () => {
                   fontFamily: '"Cormorant Garamond", serif',
                   fontSize: '24px',
                   fontWeight: 600,
-                  color: t.textDark,
+                  color: '#005DE8',
                   margin: '0 0 10px 0',
                   letterSpacing: '-0.01em',
                 }}
@@ -440,25 +420,25 @@ export const WhyChooseUsSection: React.FC = () => {
             }}
           >
             <motion.div
-              animate={{
-                left: hoveredPillar
-                  ? `${(pillars.findIndex((p) => p.id === hoveredPillar) * 16.66) + 8.33}%`
-                  : '50%',
-                backgroundColor: hoveredPillar
-                  ? pillars.find((p) => p.id === hoveredPillar)?.color
-                  : '#2563eb',
-              }}
-              transition={{ type: 'spring', stiffness: 80, damping: 15 }}
-              style={{
-                position: 'absolute',
-                top: '-5px',
-                width: '11px',
-                height: '11px',
-                borderRadius: '50%',
-                boxShadow: '0 0 14px 4px rgba(37, 99, 235, 0.4)',
-                transform: 'translateX(-50%)',
-                zIndex: 4,
-              }}
+               animate={{
+                 left: hoveredPillar
+                   ? `${(pillars.findIndex((p) => p.id === hoveredPillar) * 16.66) + 8.33}%`
+                   : '50%',
+                 backgroundColor: hoveredPillar
+                   ? pillars.find((p) => p.id === hoveredPillar)?.color
+                   : '#005DE8',
+               }}
+               transition={{ type: 'spring', stiffness: 80, damping: 15 }}
+               style={{
+                 position: 'absolute',
+                 top: '-5px',
+                 width: '11px',
+                 height: '11px',
+                 borderRadius: '50%',
+                 boxShadow: '0 0 14px 4px rgba(0, 93, 232, 0.4)',
+                 transform: 'translateX(-50%)',
+                 zIndex: 4,
+               }}
             />
           </div>
         )}
@@ -486,7 +466,7 @@ export const WhyChooseUsSection: React.FC = () => {
                   padding: '24px 20px',
                   border: `1px solid ${isHovered ? pillar.color : t.border}`,
                   boxShadow: isHovered
-                    ? `0 24px 48px -15px rgba(37, 99, 235, 0.08)`
+                    ? `0 24px 48px -15px rgba(0, 93, 232, 0.08)`
                     : t.cardShadow,
                   position: 'relative',
                   display: 'flex',

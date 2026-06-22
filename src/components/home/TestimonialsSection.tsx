@@ -197,6 +197,7 @@ export const TestimonialsSection: React.FC = () => {
 
   const colors = {
     primary: '#005DE8',
+    primaryDark: '#0D3B66',
     primaryLight: '#E8F2FF',
     primaryBorder: '#B3D4FF',
     textMain: '#0B1120',
@@ -333,11 +334,11 @@ export const TestimonialsSection: React.FC = () => {
   };
 
   const cardStyle = (isBlue: boolean): React.CSSProperties => ({
-    backgroundColor: isBlue ? colors.primary : colors.white,
+    backgroundColor: isBlue ? colors.primaryDark : colors.white,
     borderRadius: '40px 0 40px 0',
     padding: isMobile ? '30px' : '40px 24px',
     flexGrow: 1,
-    flexShrink: 1,
+    flexShrink: isMobile ? 0 : 1,
     // Mobile: full-width sliding cards. Non-mobile: min 220px, grows to fill row of 4
     flexBasis: isMobile ? 'calc(100% - 40px)' : '220px',
     width: isMobile ? '100%' : 'auto',
@@ -370,7 +371,7 @@ export const TestimonialsSection: React.FC = () => {
     <div style={styles.section}>
 
       {/* Rotating circular badge */}
-      <div style={styles.topRightBadge}>
+      <div className="hidden sm:block" style={styles.topRightBadge}>
         <motion.svg
           viewBox="0 0 150 150"
           animate={{ rotate: 360 }}
@@ -438,9 +439,31 @@ export const TestimonialsSection: React.FC = () => {
           variants={staggerContainer}
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
         >
-          <motion.div variants={fadeUp} style={styles.badge}>
-            <Droplet size={14} color={colors.primary} fill={colors.primary} />
-            <span style={styles.badgeText}>TESTIMONIALS</span>
+          <motion.div
+            variants={fadeUp}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '16px',
+              marginBottom: '24px',
+            }}
+          >
+            <div style={{ height: '1px', width: '40px', backgroundColor: colors.primary, opacity: 0.5 }} />
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: colors.primary,
+              fontWeight: 600,
+              letterSpacing: '1px',
+              fontSize: '0.875rem',
+              textTransform: 'uppercase',
+            }}>
+              <Droplet size={16} color={colors.primary} fill={colors.primary} />
+              TESTIMONIALS
+            </div>
+            <div style={{ height: '1px', width: '40px', backgroundColor: colors.primary, opacity: 0.5 }} />
           </motion.div>
 
           <motion.h2 variants={fadeUp} style={styles.heading}>

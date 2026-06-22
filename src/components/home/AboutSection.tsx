@@ -97,6 +97,33 @@ const Icons = {
 const BROCHURE_PDF_URL = '/Broucher.pdf';
 const BROCHURE_FILENAME = 'SA.pdf';
 
+// ─── Background Component (same style as Certification) ──────────────────────
+const BackgroundPattern = () => (
+  <div style={{
+    position: 'absolute',
+    top: 0, left: 0, right: 0, bottom: 0,
+    overflow: 'hidden',
+    zIndex: 0,
+    pointerEvents: 'none',
+    opacity: 0.6
+  }}>
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', top: 0, left: 0 }}>
+      <defs>
+        <linearGradient id="about-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: '#e0f2fe', stopOpacity: 0.8 }} />
+          <stop offset="100%" style={{ stopColor: '#ffffff', stopOpacity: 0 }} />
+        </linearGradient>
+      </defs>
+      <path d="M-100 200 C 200 100, 400 400, 800 200 S 1200 400, 1600 100" fill="none" stroke="#e0f2fe" strokeWidth="1" opacity="0.5" />
+      <path d="M-100 220 C 250 120, 350 420, 850 220 S 1150 420, 1600 120" fill="none" stroke="#bae6fd" strokeWidth="0.5" opacity="0.4" />
+      <path d="M-100 240 C 300 140, 300 440, 900 240 S 1100 440, 1600 140" fill="none" stroke="#e0f2fe" strokeWidth="1.5" opacity="0.3" />
+      <path d="M-100 800 C 300 900, 500 600, 1000 800 S 1400 600, 1800 900" fill="none" stroke="#e0f2fe" strokeWidth="1" opacity="0.5" />
+      <circle cx="10%" cy="20%" r="300" fill="url(#about-grad1)" opacity="0.4" />
+      <circle cx="90%" cy="80%" r="400" fill="url(#about-grad1)" opacity="0.3" />
+    </svg>
+  </div>
+);
+
 // ─── About Section ────────────────────────────────────────────────────────────
 export const AboutSection: React.FC = () => {
   const { width } = useWindowSize();
@@ -121,47 +148,72 @@ export const AboutSection: React.FC = () => {
         minHeight: isMobile ? 'auto' : '100vh',
         width: '100%',
         display: 'flex',
-        flexDirection: isMobile ? 'column' : 'row',
+        flexDirection: 'column',
         position: 'relative',
-        backgroundColor: theme.colors.bgLight,
+        backgroundColor: '#ffffff',
+        padding: isMobile ? '60px 24px' : isTablet ? '60px 48px' : '80px 6%',
       }}>
+        <BackgroundPattern />
 
-        {/* ── LEFT COLUMN (CONTENT) ─────────────────────────────────── */}
+        {/* ── Center-aligned Badge (similar to Certification badge) ── */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           style={{
-            width: isMobile ? '100%' : '55%',
-            padding: isMobile ? '60px 24px' : isTablet ? '60px 48px' : '80px 5% 80px 6%',
             display: 'flex',
-            flexDirection: 'column',
+            alignItems: 'center',
             justifyContent: 'center',
+            gap: '16px',
+            width: '100%',
             zIndex: 10,
-            position: 'relative',
           }}
         >
-          {/* Label */}
+          <div style={{ height: '1px', width: '40px', backgroundColor: theme.colors.bluePrimary, opacity: 0.5 }} />
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: theme.colors.bluePrimary,
+            fontWeight: 600,
+            letterSpacing: '1px',
+            fontSize: '0.875rem',
+            textTransform: 'uppercase',
+            fontFamily: theme.fonts.sans,
+          }}>
+            <svg viewBox="0 0 24 24" fill={theme.colors.bluePrimary} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '16px', height: '16px' }}>
+              <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z" />
+            </svg>
+            About Us
+          </div>
+          <div style={{ height: '1px', width: '40px', backgroundColor: theme.colors.bluePrimary, opacity: 0.5 }} />
+        </motion.div>
+
+        {/* ── Columns Container ── */}
+        <div style={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          width: '100%',
+          flex: 1,
+          alignItems: 'center',
+        }}>
+
+          {/* ── LEFT COLUMN (CONTENT) ─────────────────────────────────── */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            style={{
+              width: isMobile ? '100%' : '55%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              zIndex: 10,
+              position: 'relative',
+              paddingRight: isMobile ? '0' : '4%',
+            }}
           >
-            <div style={{ color: theme.colors.bluePrimary }}>
-              <Icons.WaterDrop />
-            </div>
-            <span style={{
-              fontFamily: theme.fonts.sans,
-              fontWeight: 600,
-              fontSize: '11px',
-              letterSpacing: '2px',
-              color: theme.colors.bluePrimary,
-              textTransform: 'uppercase',
-            }}>
-              About Us
-            </span>
-          </motion.div>
+
 
           {/* Heading */}
           <motion.h1
@@ -343,14 +395,15 @@ export const AboutSection: React.FC = () => {
           gap: '24px',
           padding: isMobile ? '20px 24px 60px' : '80px 48px 80px 0',
           zIndex: 5,
+          position: 'relative',
         }}>
 
           {/* Video Container */}
           <div style={{
             width: '100%',
-            aspectRatio: isMobile ? '16 / 9' : undefined,
-            height: isMobile ? undefined : '60vh',
-            maxHeight: isMobile ? undefined : '550px',
+            aspectRatio: '16 / 9',
+            // height: isMobile ? undefined : '60vh',
+            // maxHeight: isMobile ? undefined : '550px',
             position: 'relative',
             overflow: 'hidden',
             display: 'flex',
@@ -390,10 +443,10 @@ export const AboutSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.6 }}
-            whileHover={{ y: -4, boxShadow: '0 20px 40px -10px rgba(0, 93, 232, 0.4)' }}
+            whileHover={{ y: -4, boxShadow: '0 20px 40px -10px rgba(10, 22, 40, 0.4)' }}
             style={{
               textDecoration: 'none',
-              backgroundColor: theme.colors.bluePrimary,
+              backgroundColor: '#0D3B66',
               borderRadius: '16px',
               padding: isMobile ? '20px' : '16px 24px',
               display: 'flex',
@@ -401,7 +454,7 @@ export const AboutSection: React.FC = () => {
               alignItems: 'center',
               justifyContent: 'space-between',
               gap: isMobile ? '20px' : '0',
-              boxShadow: '0 10px 30px -5px rgba(0, 93, 232, 0.3)',
+              boxShadow: '0 10px 30px -5px rgba(10, 22, 40, 0.3)',
               width: '100%',
               cursor: 'pointer',
               border: '1px solid rgba(255,255,255,0.1)',
@@ -463,6 +516,7 @@ export const AboutSection: React.FC = () => {
 
         </div>
       </div>
-    </>
+    </div>
+  </>
   );
 };
