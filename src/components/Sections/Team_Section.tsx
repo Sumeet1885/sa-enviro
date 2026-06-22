@@ -196,24 +196,37 @@ export default function TeamSlider({
 
       <div 
         ref={containerRef}
-        className="w-full bg-background flex flex-col items-center justify-center px-4 py-12 sm:px-6 sm:py-20"
+        className="w-full flex flex-col items-center justify-center px-4 py-12 sm:px-6 sm:py-20"
+        style={{ backgroundColor: "#F8FAFC" }}
       >
         <div className="max-w-3xl mx-auto text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '16px',
+              marginBottom: '24px',
+            }}
           >
-            <motion.div
-              animate={{ rotate: [0, 15, -15, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            >
-              <Users className="w-4 h-4 text-primary" />
-            </motion.div>
-            <span className="text-xs font-bold uppercase tracking-wider text-primary">
-              Our Team
-            </span>
+            <div style={{ height: '1px', width: '40px', backgroundColor: '#0056B3', opacity: 0.5 }} />
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: '#005DE8',
+              fontWeight: 600,
+              letterSpacing: '1px',
+              fontSize: '0.875rem',
+              textTransform: 'uppercase',
+            }}>
+              <Users size={16} color="#0056B3" />
+              OUR TEAM
+            </div>
+            <div style={{ height: '1px', width: '40px', backgroundColor: '#0056B3', opacity: 0.5 }} />
           </motion.div>
 
           <motion.h2
@@ -223,7 +236,7 @@ export default function TeamSlider({
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6"
           >
-            Meet the <span className="text-primary">Experts</span> Behind SAES
+            Meet the <span style={{ color: "#005DE8" }}>Experts</span> Behind SAES
           </motion.h2>
 
           <motion.p
@@ -359,11 +372,14 @@ export default function TeamSlider({
             )}
 
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4 mb-2s sm:mb-6">
-              <h2 className="font-light italic gradient-text leading-tight text-[clamp(1.5rem,4vw,2.2rem)]">
+              <h2 
+                className="font-light italic leading-tight text-[clamp(1.5rem,4vw,2.2rem)]"
+                style={{ color: "#005DE8" }}
+              >
                 {user.name}
               </h2>
               <span className="font-sans text-xs tracking-[0.18em] uppercase font-medium text-primary/90 flex-shrink-0 flex items-center gap-2">
-                <span className="block h-px w-4 flex-shrink-0 gradient-text" />
+                <span className="block h-px w-4 flex-shrink-0 gradient-text" style={{ color: "#005DE8" }} />
                 {user.title}
               </span>
             </div>

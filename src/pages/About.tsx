@@ -21,11 +21,13 @@ const colors = {
   bgLight: '#F8FAFC',
   white: '#FFFFFF',
   border: '#E2E8F0',
+  navyDark: '#0A1526',
+  blueAccent: '#005DE8',
 };
 
 const typography = {
-  fontSans: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-  fontSerif: '"Playfair Display", "Georgia", serif',
+  fontSans: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+  fontSerif: '"Playfair Display", "Georgia", "Times New Roman", serif',
 };
 
 // --- Hooks ---
@@ -123,26 +125,32 @@ const staggerContainer = {
   }
 };
 
-// --- Decorative Background Elements ---
-const WavyLinesBackground = () => {
-  const lines = Array.from({ length: 8 });
-  return (
-    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', overflow: 'hidden', pointerEvents: 'none', zIndex: 0 }}>
-      {/* Wavy Contour Lines */}
-      <svg width="100%" height="100%" style={{ position: 'absolute', bottom: '-20%', right: '-10%', opacity: 0.08 }}>
-        {lines.map((_, i) => (
-          <path 
-            key={i}
-            d={`M-200,${600 + i * 15} C300,${400 + i * 10} 600,${800 + i * 20} 1000,${500 + i * 15} C1400,${200 + i * 10} 1800,${600 + i * 20} 2400,${400 + i * 15}`} 
-            fill="none" 
-            stroke={colors.primary} 
-            strokeWidth="1.5" 
-          />
-        ))}
-      </svg>
-    </div>
-  );
-};
+// --- Background Pattern Component (matching homepage About section) ---
+const BackgroundPattern = () => (
+  <div style={{
+    position: 'absolute',
+    top: 0, left: 0, right: 0, bottom: 0,
+    overflow: 'hidden',
+    zIndex: 0,
+    pointerEvents: 'none',
+    opacity: 0.6
+  }}>
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', top: 0, left: 0 }}>
+      <defs>
+        <linearGradient id="about-hero-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: '#e0f2fe', stopOpacity: 0.8 }} />
+          <stop offset="100%" style={{ stopColor: '#ffffff', stopOpacity: 0 }} />
+        </linearGradient>
+      </defs>
+      <path d="M-100 200 C 200 100, 400 400, 800 200 S 1200 400, 1600 100" fill="none" stroke="#e0f2fe" strokeWidth="1" opacity="0.5" />
+      <path d="M-100 220 C 250 120, 350 420, 850 220 S 1150 420, 1600 120" fill="none" stroke="#bae6fd" strokeWidth="0.5" opacity="0.4" />
+      <path d="M-100 240 C 300 140, 300 440, 900 240 S 1100 440, 1600 140" fill="none" stroke="#e0f2fe" strokeWidth="1.5" opacity="0.3" />
+      <path d="M-100 800 C 300 900, 500 600, 1000 800 S 1400 600, 1800 900" fill="none" stroke="#e0f2fe" strokeWidth="1" opacity="0.5" />
+      <circle cx="10%" cy="20%" r="300" fill="url(#about-hero-grad)" opacity="0.4" />
+      <circle cx="90%" cy="80%" r="400" fill="url(#about-hero-grad)" opacity="0.3" />
+    </svg>
+  </div>
+);
 
 
 // --- Components ---
@@ -152,11 +160,13 @@ const HeroSection = () => {
 
   const heroStyles: React.CSSProperties = {
     position: 'relative',
-    minHeight: '100vh',
+    minHeight: isMobile || isTablet ? 'auto' : '100vh',
+    height: 'auto',
+    overflow: 'visible',
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: colors.white,
-    paddingTop: '120px', // Space for header
+    paddingTop: isMobile || isTablet ? '120px' : '130px', // Space for header
   };
 
   const topContentWrapper: React.CSSProperties = {
@@ -164,9 +174,10 @@ const HeroSection = () => {
     display: 'flex',
     flexDirection: isMobile || isTablet ? 'column' : 'row',
     alignItems: 'center',
-    padding: isMobile ? '0 5% 40px' : '0 5% 40px 10%',
+    padding: isMobile ? '0 5% 40px' : isTablet ? '0 5% 40px' : '0 5% 15px 10%',
     position: 'relative',
     zIndex: 2,
+    minHeight: 0,
   };
 
   const textContentStyles: React.CSSProperties = {
@@ -174,6 +185,7 @@ const HeroSection = () => {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    minHeight: 0,
   };
 
   const imageWrapperStyles: React.CSSProperties = {
@@ -182,6 +194,7 @@ const HeroSection = () => {
     justifyContent: 'center',
     alignItems: 'center',
     padding: isMobile || isTablet ? '40px 0' : '0 0 0 5%',
+    minHeight: 0,
   };
 
   const featuresBarStyles: React.CSSProperties = {
@@ -189,7 +202,7 @@ const HeroSection = () => {
     backgroundColor: colors.white,
     position: 'relative',
     zIndex: 2,
-    padding: '20px 0',
+    padding: isMobile || isTablet ? '20px 0 40px' : '10px 0 32px',
   };
 
   const featuresGridStyles: React.CSSProperties = {
@@ -211,7 +224,7 @@ const HeroSection = () => {
 
   return (
     <section style={heroStyles}>
-      <WavyLinesBackground />
+      <BackgroundPattern />
 
       {/* Main Hero Split */}
       <div style={topContentWrapper}>
@@ -222,25 +235,25 @@ const HeroSection = () => {
 
             <motion.h1 variants={fadeInUp} style={{
               fontFamily: typography.fontSerif,
-              color: colors.primary,
-              fontSize: isMobile ? '3rem' : '3.2rem',
+              color: colors.navyDark,
+              fontSize: isMobile ? '3rem' : isTablet ? '3.2rem' : '3.8rem',
               lineHeight: 1.15,
               fontWeight: 600,
-              marginBottom: '32px',
+              marginBottom: isMobile || isTablet ? '32px' : '16px',
             }}>
               Pure Solutions.<br/>
-              <span style={{ color: colors.accent }}>Stronger Tomorrow.</span>
+              <span style={{ color: colors.blueAccent }}>Stronger Tomorrow.</span>
             </motion.h1>
 
-            <motion.div variants={fadeInUp} style={{ width: '30px', height: '2px', backgroundColor: colors.accent, marginBottom: '32px' }} />
+            <motion.div variants={fadeInUp} style={{ width: '30px', height: '2px', backgroundColor: colors.accent, marginBottom: isMobile || isTablet ? '32px' : '16px' }} />
 
             <motion.p variants={fadeInUp} style={{
               fontFamily: typography.fontSans,
               color: colors.textLight,
-              fontSize: '1.1rem',
-              lineHeight: 1.8,
+              fontSize: isMobile || isTablet ? '1.1rem' : '1.05rem',
+              lineHeight: isMobile || isTablet ? 1.8 : 1.6,
               maxWidth: '550px',
-              marginBottom: '48px',
+              marginBottom: isMobile || isTablet ? '48px' : '20px',
             }}>
               At SA Enviro Solutions, we believe clean water is the foundation 
               of healthy communities and a sustainable future. With innovation, 
@@ -255,14 +268,14 @@ const HeroSection = () => {
                paddingLeft: '24px',
             }}>
               <div style={{
-                width: '56px',
-                height: '56px',
+                width: isMobile || isTablet ? '56px' : '44px',
+                height: isMobile || isTablet ? '56px' : '44px',
                 borderRadius: '50%',
                 backgroundColor: '#F0F6FC',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginRight: '20px',
+                marginRight: isMobile || isTablet ? '20px' : '14px',
                 flexShrink: 0,
               }}>
                 <DropOutlineIcon />
@@ -271,11 +284,11 @@ const HeroSection = () => {
                 fontFamily: typography.fontSans,
                 color: colors.primary,
                 fontWeight: 600,
-                fontSize: '1.1rem',
+                fontSize: isMobile || isTablet ? '1.1rem' : '0.95rem',
                 lineHeight: 1.4,
               }}>
-                Clean Water. Better Life.<br/>
-                <span style={{ color: colors.accent }}>Sustainable Future.</span>
+                Clean Water. Better Life. 
+                <span style={{ color: colors.blueAccent }}> Sustainable Future.</span>
               </span>
             </motion.div>
 
@@ -295,7 +308,7 @@ const HeroSection = () => {
             style={{
               width: '100%',
               height: 'auto',
-              maxHeight: isMobile ? '350px' : '650px',
+              maxHeight: isMobile ? '350px' : isTablet ? '500px' : '55vh',
               objectFit: 'contain', 
               pointerEvents: 'none', 
               filter: 'drop-shadow(0 20px 40px rgba(13, 59, 102, 0.1))',
@@ -321,8 +334,8 @@ const HeroSection = () => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  padding: '24px',
-                  backgroundColor: isDark ? colors.primary : colors.white,
+                  padding: isMobile || isTablet ? '24px' : '16px 20px',
+                  backgroundColor: isDark ? '#0D3B66' : colors.white,
                   borderRadius: '16px',
                   boxShadow: isDark ? '0 10px 30px rgba(13,59,102,0.15)' : 'none',
                   border: isDark ? 'none' : `1px solid ${colors.border}`,
@@ -370,8 +383,8 @@ const VisionMissionValues = () => {
   const { isMobile } = useResponsive();
 
   const sectionStyle: React.CSSProperties = {
-    padding: isMobile ? '80px 5%' : '120px 10%',
-    backgroundColor: colors.bgLight, 
+    padding: isMobile ? '4rem 1.5rem' : '4rem 2rem',
+    backgroundColor: '#ffffff', 
     position: 'relative',
     zIndex: 5,
   };
@@ -407,29 +420,28 @@ const VisionMissionValues = () => {
         <motion.div variants={fadeInUp} style={headerStyle}>
           <span style={{
             fontFamily: typography.fontSans,
-            color: colors.accent,
+            color: colors.blueAccent,
             fontWeight: 700,
             fontSize: '12px',
-            letterSpacing: '2px',
+            letterSpacing: '0.2em',
             textTransform: 'uppercase',
             display: 'flex',
             alignItems: 'center',
-            gap: '12px',
+            gap: '8px',
             marginBottom: '20px'
           }}>
-            <div style={{ width: '40px', height: '1px', backgroundColor: colors.accent }} />
             Our Philosophy
+            <div style={{ width: '40px', height: '1.5px', backgroundColor: colors.accent }} />
           </span>
           <h2 style={{
             fontFamily: typography.fontSerif,
-            color: colors.primary,
             fontSize: isMobile ? '2.5rem' : '3.5rem', // Reduced font size here
             lineHeight: 1.1,
             fontWeight: 600,
             marginBottom: '0',
             letterSpacing: '-0.02em',
           }}>
-            Purpose & <span style={{ fontStyle: 'italic', color: colors.accent }}>Principles.</span>
+            Purpose & <span style={{  color: colors.blueAccent }}>Principles.</span>
           </h2>
         </motion.div>
 
@@ -445,29 +457,30 @@ const VisionMissionValues = () => {
               gridRow: isMobile ? 'auto' : '1 / 3',
               backgroundColor: colors.white,
               borderRadius: '40px 4px 40px 4px', 
-              padding: isMobile ? '40px 30px' : '50px',
+              padding: isMobile ? '30px 20px' : '36px 40px',
+              border: `1px solid ${colors.border}`,
               display: 'flex',
               flexDirection: 'column',
               boxShadow: '0 20px 50px rgba(13, 59, 102, 0.05)',
               position: 'relative',
               overflow: 'hidden',
-              minHeight: isMobile ? 'auto' : '500px',
+              minHeight: isMobile ? 'auto' : '400px',
             }}
           >
-            <div style={{ position: 'relative', zIndex: 1, marginBottom: '40px' }}>
+            <div style={{ position: 'relative', zIndex: 1, marginBottom: '24px' }}>
               <div style={{ 
-                width: '60px', height: '60px', borderRadius: '50%', 
+                width: '50px', height: '50px', borderRadius: '50%', 
                 backgroundColor: '#F0F6FC', display: 'flex', 
-                justifyContent: 'center', alignItems: 'center', marginBottom: '24px' 
+                justifyContent: 'center', alignItems: 'center', marginBottom: '16px' 
               }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M2 9L12 22L22 9L17 2H7L2 9Z" stroke={colors.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
               <h3 style={{
                 fontFamily: typography.fontSerif,
                 color: colors.primary,
-                fontSize: '2.5rem',
+                fontSize: '2rem',
                 fontWeight: 600,
                 marginBottom: '0',
               }}>Our Values</h3>
@@ -476,7 +489,7 @@ const VisionMissionValues = () => {
             <div style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '20px',
+              gap: '12px',
               position: 'relative',
               zIndex: 1,
             }}>
@@ -491,7 +504,7 @@ const VisionMissionValues = () => {
                   alignItems: 'baseline', 
                   gap: '16px',
                   borderBottom: `1px solid ${colors.border}`,
-                  paddingBottom: '16px'
+                  paddingBottom: '12px'
                 }}>
                   <span style={{ 
                     fontFamily: typography.fontSans, 
@@ -502,7 +515,7 @@ const VisionMissionValues = () => {
                   <span style={{ 
                     fontFamily: typography.fontSans, 
                     color: colors.textMain, 
-                    fontSize: '1.2rem',
+                    fontSize: '1.1rem',
                     fontWeight: 500,
                   }}>{val.name}</span>
                 </div>
@@ -517,13 +530,14 @@ const VisionMissionValues = () => {
             style={{
               gridColumn: isMobile ? '1 / -1' : '6 / 13',
               gridRow: isMobile ? 'auto' : '1 / 2',
-              backgroundColor: colors.primary,
+              backgroundColor: '#0D3B66',
               borderRadius: '4px 40px 4px 4px',
-              padding: isMobile ? '40px 30px' : '50px',
+              padding: isMobile ? '30px 20px' : '36px 40px',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
               display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
               alignItems: isMobile ? 'flex-start' : 'center',
-              gap: '30px',
+              gap: '24px',
               position: 'relative',
               overflow: 'hidden',
             }}
@@ -537,7 +551,7 @@ const VisionMissionValues = () => {
             
             <div style={{ flexShrink: 0, zIndex: 1 }}>
               <div style={{ 
-                width: '60px', height: '60px', borderRadius: '50%', 
+                width: '50px', height: '50px', borderRadius: '50%', 
                 backgroundColor: 'rgba(255,255,255,0.1)', display: 'flex', 
                 justifyContent: 'center', alignItems: 'center' 
               }}>
@@ -549,16 +563,17 @@ const VisionMissionValues = () => {
               <h3 style={{
                 fontFamily: typography.fontSerif,
                 color: colors.white,
-                fontSize: '2rem',
+                fontSize: '1.75rem',
                 fontWeight: 600,
-                marginBottom: '16px',
+                marginBottom: '8px',
               }}>Mission</h3>
               <p style={{
                 fontFamily: typography.fontSans,
                 color: 'rgba(255,255,255,0.85)',
-                fontSize: '1.15rem',
-                lineHeight: 1.6,
+                fontSize: '1.05rem',
+                lineHeight: 1.5,
                 maxWidth: '400px',
+                margin: 0,
               }}>
                 To meet Industries requirement in regards with best clamed services.
               </p>
@@ -574,13 +589,14 @@ const VisionMissionValues = () => {
               gridRow: isMobile ? 'auto' : '2 / 3',
               backgroundColor: colors.accent,
               borderRadius: '4px 4px 40px 4px',
-              padding: isMobile ? '40px 30px' : '40px 50px',
+              padding: isMobile ? '30px 20px' : '36px 40px',
+              border: '1px solid rgba(255, 255, 255, 0.15)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
                <EyeIcon color={colors.white} /> 
                <h3 style={{
                   fontFamily: typography.fontSerif,
@@ -594,10 +610,11 @@ const VisionMissionValues = () => {
              <p style={{
               fontFamily: typography.fontSans,
               color: colors.white,
-              fontSize: '1.5rem',
+              fontSize: '1.35rem',
               lineHeight: 1.4,
               fontWeight: 400,
-              maxWidth: '500px'
+              maxWidth: '500px',
+              margin: 0,
             }}>
               Assisting to secure our planet’s most <span style={{ fontWeight: 600, borderBottom: '2px solid white' }}>valuable resources.</span>
             </p>
@@ -615,8 +632,8 @@ const VisionMissionValues = () => {
 
 const storyTheme = {
   colors: {
-    background: '#FAFAFC', // Extremely subtle cool off-white
-    primaryBlue: '#154AC9', // Vibrant, trustworthy enterprise blue
+    background: '#F8FAFC', // Matches Testimonials section background
+    primaryBlue: '#005DE8', // Vibrant, trustworthy enterprise blue
     primaryBlueLight: '#E8EFFC',
     textMain: '#0F172A', // Slate 900
     textMuted: '#475569', // Slate 600
@@ -691,7 +708,7 @@ const OurStory = () => {
       fontFamily: storyTheme.fonts.sans,
       color: storyTheme.colors.textMain,
       overflow: 'hidden',
-      padding: isMobile ? '4rem 1.5rem' : '8rem 2rem',
+      padding: isMobile ? '4rem 1.5rem' : '0rem 1.5rem',
       display: 'flex',
       justifyContent: 'center',
     },
@@ -702,7 +719,7 @@ const OurStory = () => {
       transform: 'translateX(-50%)',
       width: isMobile ? '300px' : '600px',
       height: isMobile ? '300px' : '600px',
-      background: `radial-gradient(circle, rgba(21, 74, 201, 0.03) 0%, rgba(250, 250, 252, 0) 70%)`,
+      background: `radial-gradient(circle, rgba(21, 74, 201, 0.03) 0%, rgba(248, 250, 252, 0) 70%)`,
       filter: 'blur(40px)',
       zIndex: 0,
       pointerEvents: 'none',
@@ -715,9 +732,8 @@ const OurStory = () => {
     },
     headerWrapper: {
       textAlign: 'center',
-      marginBottom: isMobile ? '4rem' : '6rem',
       maxWidth: '800px',
-      margin: '0 auto',
+      margin: '3rem auto 0',
     },
     kicker: {
       display: 'flex',
@@ -762,7 +778,7 @@ const OurStory = () => {
       color: storyTheme.colors.textMuted,
       lineHeight: 1.7,
       maxWidth: '700px',
-      margin: '0 auto',
+      margin: isMobile ? '0 auto 2rem' : '0 auto 3.5rem',
     },
     timelineGrid: {
       display: 'flex',
@@ -830,14 +846,31 @@ const OurStory = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={staggerOurStory}
         >
-          <motion.div variants={fadeUpOurStory} style={styles.kicker}>
-            <div style={styles.kickerLine} />
-            <span style={styles.kickerText}>Our Story</span>
-            <div style={styles.kickerLine} />
-          </motion.div>
-
-          <motion.div variants={fadeUpOurStory} style={styles.iconWrapper}>
-            <Droplet size={24} fill={storyTheme.colors.primaryBlue} strokeWidth={1} />
+          <motion.div
+            variants={fadeUpOurStory}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '16px',
+              marginBottom: '24px',
+            }}
+          >
+            <div style={{ height: '1px', width: '40px', backgroundColor: storyTheme.colors.primaryBlue, opacity: 0.5 }} />
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              color: storyTheme.colors.primaryBlue,
+              fontWeight: 600,
+              letterSpacing: '1px',
+              fontSize: '0.875rem',
+              textTransform: 'uppercase',
+            }}>
+              <Droplet size={16} color={storyTheme.colors.primaryBlue} fill={storyTheme.colors.primaryBlue} />
+              OUR STORY
+            </div>
+            <div style={{ height: '1px', width: '40px', backgroundColor: storyTheme.colors.primaryBlue, opacity: 0.5 }} />
           </motion.div>
 
           <motion.h1 variants={fadeUpOurStory} style={styles.title}>
