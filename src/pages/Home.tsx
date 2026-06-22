@@ -19,8 +19,6 @@ const Home = () => {
       <StatsSection />
       <Suspense fallback={<div className="min-h-[100px]" />}>
         <AboutSection />
-        <BrochureSection />
-        <ServicesSection />
         <WhyChooseUsSection />
         <Certification_Section />
         <TestimonialsSection />
