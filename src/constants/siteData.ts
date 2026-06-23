@@ -1,6 +1,7 @@
 import Image1 from "@/assets/about-hero.webp";
 import Image2 from "@/assets/hero-water-treatment.webp";
-const Image3 = "/hero2.webp";
+import Image3 from "@/assets/hero2.webp";
+
 
 import {Image }from "../assets/image"
 import Profile1 from "@/assets/Profile1.webp";
@@ -22,7 +23,8 @@ export const siteConfig: SiteConfig = {
   contact: {
     phone: "+91 8087748585 / 8087758585",
     email: "sales@saenvirosolutions.com, amruta@saenvirosolutions.com",
-    address: "Chinchwad, Pune, Maharashtra, India",
+    address:
+      "FLAT NO 302, 3RD Floor, KRISHNA RESIDENCY, CTS NO 571, OPP. BHAJI MANDAI, Chinchwad Gaon, Pimpri Chinchwad, Pune, Maharashtra - 411033",
   },
   social: {
     instagram: "https://instagram.com/saenvirosolutions",
@@ -606,6 +608,16 @@ export const galleryImages = [
   },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/OMS2_fbcrdl.jpg",
+    alt: "OMS Sensor Setup",
+    category: "equipment",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220703/Effluent-Treatment-Plant_e9js1o_azdb8p.png",
+    alt: "Effluent-Treatment-Plant",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220702/Effluent-Treatment-Plant_e9js2o_qhr3az.png",
     alt: "OMS Sensor Setup",
     category: "equipment",
   },
@@ -1371,13 +1383,6 @@ export const products: Product[] = [
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg", alt: "Architecture View" },
-      
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/etp2_sdicc6.webp",
-        alt: "Industrial Effluent Treatment Plant Setup",
-      },
-      
-
     ],
     Page_Description: [
       {

@@ -161,7 +161,7 @@ export default function ProductPage({ product }: { product: Product }) {
       </section>
 
       {/* Description & Ticker Image (Images[0]) */}
-      <section className="relative pt-8 pb-20 md:py-20 px-6 md:px-12 bg-white">
+      <section className="relative pb-20 md:py-20  md:px-12 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           <div className="flex flex-col justify-center order-2 lg:order-none">
             <SectionTitle title={product.main.description} subtitle="Details & Specifications" />

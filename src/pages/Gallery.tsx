@@ -437,9 +437,6 @@ export default function Gallery() {
               }}
             >
               {galleryImages.map((item, index) => {
-                const heights = [320, 460, 360, 400, 340, 480, 300, 420, 360, 440];
-                const dynamicHeight = heights[index % heights.length];
-
                 return (
                   <motion.div
                     key={item.src}
@@ -451,9 +448,7 @@ export default function Gallery() {
                     onMouseLeave={() => setHoveredIndex(null)}
                     style={{
                       position: 'relative',
-                      // Mobile: aspect-ratio so full image is visible; desktop: fixed masonry heights
-                      height: isMobile ? 'auto' : `${dynamicHeight}px`,
-                      aspectRatio: isMobile ? '4 / 3' : undefined,
+                      height: 'auto',
                       borderRadius: '16px',
                       overflow: 'hidden',
                       cursor: 'pointer',
@@ -461,7 +456,7 @@ export default function Gallery() {
                         ? '0 20px 40px rgba(0,0,0,0.16)'
                         : '0 8px 24px rgba(0,0,0,0.08)',
                       breakInside: 'avoid',
-                      marginBottom: '20px',
+                      marginBottom: '24px',
                       display: 'inline-block',
                       width: '100%',
                       transition: 'box-shadow 0.3s ease, transform 0.3s ease',
@@ -476,9 +471,7 @@ export default function Gallery() {
                       transition={{ duration: 0.45, ease: 'easeOut' }}
                       style={{
                         width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        objectPosition: 'center',
+                        height: 'auto',
                         display: 'block',
                       }}
                     />
