@@ -25,9 +25,9 @@ export const siteConfig: SiteConfig = {
     address: "Chinchwad, Pune, Maharashtra, India",
   },
   social: {
-    facebook: "https://facebook.com/saenvirosolutions",
+    instagram: "https://instagram.com/saenvirosolutions",
     linkedin: "https://linkedin.com/company/saenvirosolutions",
-    twitter: "https://twitter.com/saenvirosolutions",
+    whatsapp: "https://wa.me/918087748585",
   },
   stats: {
     Experience: "16",
@@ -479,49 +479,16 @@ export const certifications = [
 ];
 
 export const galleryImages = [
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Chemical-Dosing-System_m9hwjp.webp",
-    alt: "Chemical Dosing System",
-    category: "equipment",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/The-Clarifier_sf5j93.webp",
-    alt: "The Clarifier",
-    category: "equipment",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
-    alt: "Biological MBBR Treatment",
-    category: "treatment",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
-    alt: "Tube Settlers",
-    category: "equipment",
-  },
+  
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Pressure-Sand-Filter-activated-carbon-filter1_yqs77v.webp",
     alt: "Pressure Sand Filter",
     category: "filters",
   },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Activated-Carbon-Filters_pyagph.webp",
-    alt: "Activated Carbon Filters",
-    category: "filters",
-  },
+
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773727163/Water-Treatment-Plants-WTP1_ggis8i.webp",
     alt: "Water Treatment Plants",
-    category: "plants",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
-    alt: "Sewage Treatment Plants",
-    category: "plants",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/Effluent-Treatment-Plant_e9js1o.webp",
-    alt: "Effluent Treatment Plant",
     category: "plants",
   },
   {

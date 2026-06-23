@@ -15,6 +15,10 @@ function preloadCssPlugin(): Plugin {
 }
 
 export default defineConfig(({ mode }) => ({
+  server: {
+    // Add allowed hostnames here (e.g., ['example.com']) or set to true to allow all
+    allowedHosts: true,
+  },
   base: "/",
   plugins: [react(), preloadCssPlugin()],
   resolve: {

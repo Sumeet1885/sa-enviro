@@ -39,7 +39,7 @@ function ReadingProgress() {
       aria-valuemin={0}
       aria-valuemax={100}
       aria-label="Reading progress"
-      className="fixed top-0 left-0 h-[3px] z-[9999] rounded-r-sm bg-gradient-to-r from-primary to-accent transition-[width] duration-100"
+      className="fixed top-0 left-0 h-[3px] z-[9999] rounded-r-sm bg-gradient-to-r from-[#005DE8] to-[#00A3FF] transition-[width] duration-100"
       style={{ width: `${pct}%` }}
     />
   );
@@ -101,7 +101,7 @@ function BlogMeta({
             className="w-11 h-11 rounded-full object-cover ring-2 ring-primary/30"
           />
         ) : (
-          <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 bg-gradient-to-br from-primary to-accent shadow-soft">
+          <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 bg-gradient-to-br from-[#005DE8] to-[#00A3FF] shadow-soft">
             {initials}
           </div>
         )}
@@ -135,12 +135,12 @@ function BlogContent({
   return (
     <article aria-label="Blog post content">
       {title && (
-        <h1 className="animate-fade-in-up font-display text-xl my-7 pl-5 font-bold leading-[1.75] text-muted-foreground border-l-4 border-primary">
+        <h1 className="animate-fade-in-up font-display text-xl my-7 pl-5 font-bold leading-[1.75] text-muted-foreground border-l-4 border-[#005DE8]">
           {title}
         </h1>
       )}
 
-      <h2 className="font-display font-bold mt-10 mb-4 pb-3 text-[1.45rem] text-foreground border-b-2 border-primary/20">
+      <h2 className="font-display font-bold mt-10 mb-4 pb-3 text-[1.45rem] text-foreground border-b-2 border-[#005DE8]/20">
         Purpose
       </h2>
 
@@ -151,7 +151,7 @@ function BlogContent({
         {excerpt}
       </p>
 
-      <h2 className="font-display font-bold mt-10 mb-4 pb-3 text-[1.45rem] text-foreground border-b-2 border-primary/20">
+      <h2 className="font-display font-bold mt-10 mb-4 pb-3 text-[1.45rem] text-foreground border-b-2 border-[#005DE8]/20">
         Content
       </h2>
 
@@ -182,7 +182,7 @@ function BlogImageGallery({ image }: { image: string | string[] }) {
   return (
     <section aria-label="Image gallery" className="my-10">
       <h2 className="font-display font-semibold mb-5 flex items-center gap-2 text-[1.15rem] text-foreground">
-        <Bookmark size={18} className="text-primary" />
+        <Bookmark size={18} className="text-[#005DE8]" />
         Photo Gallery
         <span className="text-sm font-normal ml-1 text-muted-foreground">
           ({images.length} image{images.length !== 1 ? "s" : ""})
@@ -294,7 +294,7 @@ function BlogTags({ tags }: { tags?: string[] }) {
           <span
             key={tag}
             role="listitem"
-            className="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary cursor-default transition-all duration-150 hover:-translate-y-0.5"
+            className="inline-flex items-center text-xs font-medium px-3 py-1.5 rounded-full border border-[#005DE8]/20 bg-[#005DE8]/5 text-[#005DE8] cursor-default transition-all duration-150 hover:-translate-y-0.5"
           >
             #{tag}
           </span>
@@ -323,7 +323,7 @@ function CommentCard({ comment }: { comment: any }) {
       aria-label={`Comment by ${comment.name}`}
     >
       <div
-        className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 bg-gradient-to-br from-primary to-accent"
+        className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 bg-gradient-to-br from-[#005DE8] to-[#00A3FF]"
         aria-hidden="true"
       >
         {initials}
@@ -365,7 +365,7 @@ function CommentForm() {
   }
 
   const fieldClass =
-    "w-full px-4 py-2.5 text-sm rounded-lg border border-border bg-card text-foreground font-sans transition-all duration-150 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20";
+    "w-full px-4 py-2.5 text-sm rounded-lg border border-border bg-card text-foreground font-sans transition-all duration-150 focus:outline-none focus:border-[#005DE8] focus:ring-2 focus:ring-[#005DE8]/20";
 
   return (
     <div className="flex flex-col gap-4">
@@ -407,7 +407,7 @@ function CommentForm() {
         onClick={() => {
           if (name.trim() && msg.trim()) setDone(true);
         }}
-        className="self-start text-sm font-medium px-5 py-2.5 rounded-lg text-white bg-primary shadow-water hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150"
+        className="self-start text-sm font-medium px-5 py-2.5 rounded-lg text-white bg-[#005DE8] shadow-water hover:-translate-y-0.5 active:translate-y-0 transition-all duration-150"
       >
         Post Comment
       </button>
@@ -454,7 +454,7 @@ function AuthorCard({
     .toUpperCase();
 
   return (
-    <div className="mt-10 rounded-2xl p-6 flex gap-5 items-center flex-wrap bg-primary/10 border border-primary/20 animate-fade-in-up">
+    <div className="mt-10 rounded-2xl p-6 flex gap-5 items-center flex-wrap bg-[#005DE8]/5 border border-[#005DE8]/20 animate-fade-in-up">
       {authorAvatar ? (
         <img
           src={authorAvatar}
@@ -463,12 +463,12 @@ function AuthorCard({
           className="w-16 h-16 rounded-full object-cover flex-shrink-0 ring-[3px] ring-white shadow-water"
         />
       ) : (
-        <div className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0 bg-gradient-to-br from-primary to-accent shadow-water">
+        <div className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0 bg-gradient-to-br from-[#005DE8] to-[#00A3FF] shadow-water">
           {initials}
         </div>
       )}
       <div>
-        <p className="text-xs font-semibold uppercase tracking-widest mb-0.5 text-primary">
+        <p className="text-xs font-semibold uppercase tracking-widest mb-0.5 text-[#005DE8]">
           Written by
         </p>
         <p className="font-display font-bold text-xl text-foreground">
@@ -517,7 +517,7 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
           <p className="text-xs font-semibold uppercase tracking-widest mb-3 text-muted-foreground">
             Category
           </p>
-          <span className="inline-flex items-center text-xs font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full text-white bg-primary">
+          <span className="inline-flex items-center text-xs font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full text-white bg-[#005DE8]">
             {category}
           </span>
         </div>
@@ -532,7 +532,7 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary cursor-default transition-all duration-150 hover:-translate-y-0.5"
+                className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full border border-[#005DE8]/20 bg-[#005DE8]/5 text-[#005DE8] cursor-default transition-all duration-150 hover:-translate-y-0.5"
               >
                 #{tag}
               </span>
@@ -573,8 +573,8 @@ function Sidebar({ tags, category }: { tags: string[]; category: string }) {
           <button
             onClick={copyLink}
             className={`flex items-center gap-2.5 text-sm font-medium px-4 py-2.5 rounded-lg border w-full transition-all duration-150 ${copied
-                ? "bg-primary/10 border-primary text-primary"
-                : "bg-card border-border text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/10"
+                ? "bg-[#005DE8]/10 border-[#005DE8] text-[#005DE8]"
+                : "bg-card border-border text-muted-foreground hover:border-[#005DE8] hover:text-[#005DE8] hover:bg-[#005DE8]/10"
               }`}
             aria-label="Copy article link"
           >

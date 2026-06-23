@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ChevronDown, ArrowRight, Activity, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ChevronDown, ArrowRight, Activity, ArrowUpRight, Sparkles, Droplet } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Product, PageDescriptionBlock } from '../../constants/type';
 
@@ -25,28 +25,38 @@ const SectionTitle = ({ title, subtitle }: { title: string, subtitle: string }) 
   </div>
 );
 
-const MetricCard = ({ label, value, index }: { label: string, value: string, index: number }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ delay: index * 0.1, duration: 0.6 }}
-    className="group relative flex flex-col items-center justify-center p-5 md:p-6 bg-water-ocean/80 backdrop-blur-md border border-water-sky/20 rounded-tr-[30px] rounded-bl-[30px] rounded-tl-xl rounded-br-xl overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 min-h-[160px] text-center"
-  >
-    {/* Hover Expanding Background */}
-    <div className="absolute w-24 h-24 bg-primary rounded-full -z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ease-out scale-0 group-hover:scale-[10] origin-center" />
-
-    {/* Metric Content */}
-    <div className="relative z-10 flex flex-col items-center justify-center transition-all duration-300">
-      <div className="font-display font-bold text-2xl md:text-3xl text-primary-foreground drop-shadow-md px-2 text-center break-words max-w-full">
-        {value}
+const MetricCard = ({ label, value, index }: { label: string, value: string, index: number }) => {
+  const isAlt = index % 2 === 1;
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.6 }}
+      className={`relative flex flex-col items-center justify-center p-5 md:p-6 rounded-tr-[30px] rounded-bl-[30px] rounded-tl-xl rounded-br-xl overflow-hidden min-h-[160px] text-center shadow-sm ${
+        isAlt 
+          ? 'bg-[#0D3B66] border border-[#0D3B66]/10 text-white' 
+          : 'bg-white border border-slate-100 text-black'
+      }`}
+    >
+      {/* Metric Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center">
+        <div className={`font-display font-bold text-2xl md:text-3xl drop-shadow-sm px-2 text-center break-words max-w-full ${
+          isAlt ? 'text-white' : 'text-black'
+        }`}>
+          {value}
+        </div>
+        <div className={`w-12 h-1 mt-4 mb-3 rounded-full ${
+          isAlt ? 'bg-white/40' : 'bg-black'
+        }`} />
+        <p className={`font-semibold uppercase tracking-widest text-xs ${
+          isAlt ? 'text-slate-200' : 'text-slate-600'
+        }`}>
+          {label}
+        </p>
       </div>
-      <div className="w-12 h-1 bg-primary mt-4 mb-3 group-hover:bg-white transition-colors duration-300 rounded-full" />
-      <p className="text-water-light/90 font-semibold group-hover:text-primary-foreground uppercase tracking-widest text-xs transition-colors drop-shadow-md">
-        {label}
-      </p>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 const RenderPageDescription = ({ content }: { content?: PageDescriptionBlock[] }) => {
   if (!content) return null;
@@ -83,6 +93,25 @@ const RenderPageDescription = ({ content }: { content?: PageDescriptionBlock[] }
   );
 };
 
+const BackgroundPattern = () => (
+  <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none opacity-60">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 left-0">
+      <defs>
+        <linearGradient id="about-hero-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: '#e0f2fe', stopOpacity: 0.8 }} />
+          <stop offset="100%" style={{ stopColor: '#ffffff', stopOpacity: 0 }} />
+        </linearGradient>
+      </defs>
+      <path d="M-100 200 C 200 100, 400 400, 800 200 S 1200 400, 1600 100" fill="none" stroke="#e0f2fe" strokeWidth="1" opacity="0.5" />
+      <path d="M-100 220 C 250 120, 350 420, 850 220 S 1150 420, 1600 120" fill="none" stroke="#bae6fd" strokeWidth="0.5" opacity="0.4" />
+      <path d="M-100 240 C 300 140, 300 440, 900 240 S 1100 440, 1600 140" fill="none" stroke="#e0f2fe" strokeWidth="1.5" opacity="0.3" />
+      <path d="M-100 800 C 300 900, 500 600, 1000 800 S 1400 600, 1800 900" fill="none" stroke="#e0f2fe" strokeWidth="1" opacity="0.5" />
+      <circle cx="10%" cy="20%" r="300" fill="url(#about-hero-grad)" opacity="0.4" />
+      <circle cx="90%" cy="80%" r="400" fill="url(#about-hero-grad)" opacity="0.3" />
+    </svg>
+  </div>
+);
+
 export default function ProductPage({ product }: { product: Product }) {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -99,7 +128,8 @@ export default function ProductPage({ product }: { product: Product }) {
     <div ref={containerRef} className="bg-white text-slate-900 font-sans selection:bg-violet-500/30 selection:text-violet-900">
       
       {/* Hero */}
-      <section className="relative h-[25vh] min-h-[280px] flex flex-col justify-center px-6 md:px-12 overflow-hidden bg-gradient-to-br from-water-deep to-water-ocean">
+      <section className="relative h-[25vh] min-h-[280px] flex flex-col justify-center px-6 md:px-12 overflow-hidden bg-white">
+        <BackgroundPattern />
         <div className="absolute inset-0 z-0 bg-[url('/noise.png')] opacity-5 mix-blend-overlay pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto w-full mt-16">
@@ -110,10 +140,13 @@ export default function ProductPage({ product }: { product: Product }) {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="md:col-span-12"
             >
-              <span className="inline-block px-3 py-1 rounded-full bg-water-sky/20 text-water-sky text-xs font-medium mb-4 backdrop-blur-sm border border-water-sky/30">
-                Wastewater Solutions
-              </span>
-              <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight tracking-tight text-white mb-4 max-w-5xl drop-shadow-sm">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-badge-text font-bold tracking-[0.2em] text-[#005DE8] uppercase">
+                  Wastewater Solutions
+                </span>
+                <div className="w-10 h-[1.5px] bg-[#005DE8]" />
+              </div>
+              <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight tracking-tight text-[#0A1526] mb-4 max-w-5xl">
                 {product.main.title.split(' ').map((word, i) => (
                   <span key={i} className="inline-block mr-3">
                     {word}
@@ -128,7 +161,7 @@ export default function ProductPage({ product }: { product: Product }) {
       </section>
 
       {/* Description & Ticker Image (Images[0]) */}
-      <section className="relative pt-8 pb-20 md:py-20 px-6 md:px-12 bg-slate-50">
+      <section className="relative pt-8 pb-20 md:py-20 px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           <div className="flex flex-col justify-center order-2 lg:order-none">
             <SectionTitle title={product.main.description} subtitle="Details & Specifications" />
@@ -217,9 +250,9 @@ export default function ProductPage({ product }: { product: Product }) {
 
       {/* Metrics */}
       {product.metrics && product.metrics.length > 0 && (
-        <section className="bg-water-deep py-32 px-6 md:px-12 relative overflow-hidden">
-          {/* Background glow for dark section */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
+        <section className="bg-[#F8FAFC] py-32 px-6 md:px-12 relative overflow-hidden">
+          {/* Background glow for section */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
           
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-16">
@@ -227,23 +260,35 @@ export default function ProductPage({ product }: { product: Product }) {
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-sm shadow-lg"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '16px',
+                  marginBottom: '24px',
+                }}
               >
-                <motion.div
-                  animate={{ rotate: [0, 15, -15, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                >
-                  <Sparkles className="w-4 h-4 text-white" />
-                </motion.div>
-                <span className="text-xs font-bold uppercase tracking-wider text-white">
-                  System Specifications
-                </span>
+                <div style={{ height: '1px', width: '40px', backgroundColor: '#005DE8', opacity: 0.5 }} />
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  color: '#005DE8',
+                  fontWeight: 600,
+                  letterSpacing: '1px',
+                  fontSize: '0.875rem',
+                  textTransform: 'uppercase',
+                }}>
+                  <Droplet size={16} color="#005DE8" fill="#005DE8" />
+                  SYSTEM SPECIFICATIONS
+                </div>
+                <div style={{ height: '1px', width: '40px', backgroundColor: '#005DE8', opacity: 0.5 }} />
               </motion.div>
               <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="text-4xl md:text-5xl font-display font-bold text-white mb-6"
+                className="text-4xl md:text-5xl font-display font-bold text-[#0A1526] mb-6"
               >
                 Technical Highlights
               </motion.h2>
@@ -269,30 +314,21 @@ export default function ProductPage({ product }: { product: Product }) {
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto text-center w-full">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="w-20 h-20 bg-white shadow-xl rounded-2xl flex items-center justify-center mx-auto mb-10 border border-slate-100 relative group"
-          >
-            <div className="absolute inset-0 bg-primary/5 rounded-2xl blur-xl group-hover:bg-primary/10 transition-colors duration-500" />
-            <Activity className="w-10 h-10 text-primary drop-shadow-sm relative z-10" />
-          </motion.div>
           
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-slate-900 mb-8 tracking-tight drop-shadow-sm"
+            className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-slate-900 mb-8 tracking-tight drop-shadow-sm"
           >
-            Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-water-deep pr-2">transform</span> your facility?
+            Ready to <span className="text-transparent bg-clip-text bg-[#005DE8] pr-2">transform</span> your facility?
           </motion.h2>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-2xl text-slate-600 mb-14 max-w-3xl mx-auto font-light leading-relaxed"
+            className="text-lg md:text-xl text-slate-600 mb-14 max-w-3xl mx-auto font-light leading-relaxed"
           >
             Partner with SA Enviro Solutions for cutting-edge environmental infrastructure. Let's design a customized, high-efficiency system tailored to your exact operational requirements.
           </motion.p>
@@ -301,18 +337,62 @@ export default function ProductPage({ product }: { product: Product }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Link to="/contact" className="relative flex items-center justify-center px-10 py-5 overflow-hidden font-bold text-white bg-primary rounded-2xl group hover:shadow-[0_15px_40px_rgba(var(--primary),0.3)] transition-all duration-300 hover:-translate-y-1 w-full sm:w-auto">
-              <span className="absolute inset-0 w-full h-full bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
-              <span className="relative flex items-center gap-3 text-lg tracking-wide uppercase">
-                Schedule Consultation <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
-              </span>
+            <Link to="/contact" style={{ textDecoration: 'none' }} className="w-full sm:w-auto flex justify-center">
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: '0 14px 28px rgba(13, 114, 233, 0.5)' }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  background: '#0D72E9',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '100px',
+                  padding: '14px 32px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '10px',
+                  cursor: 'pointer',
+                  boxShadow: '0 8px 20px rgba(13, 114, 233, 0.35)',
+                  letterSpacing: '0.5px',
+                  width: '100%',
+                }}
+              >
+                SCHEDULE CONSULTATION
+                <ArrowRight size={16} />
+              </motion.button>
             </Link>
-            <Link to="/products" className="relative flex items-center justify-center px-10 py-5 overflow-hidden font-bold text-slate-700 bg-white border border-slate-200 shadow-sm rounded-2xl group hover:bg-slate-50 transition-all duration-300 hover:-translate-y-1 hover:shadow-md w-full sm:w-auto">
-              <span className="relative flex items-center gap-3 text-lg tracking-wide">
-                Explore More Solutions
-              </span>
+            
+            <Link to="/about" style={{ textDecoration: 'none' }} className="w-full sm:w-auto flex justify-center">
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: 'rgba(11,27,61,0.04)',
+                }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  background: 'white',
+                  color: '#0B1B3D',
+                  border: '1px solid #E2E8F0',
+                  borderRadius: '100px',
+                  padding: '14px 32px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '10px',
+                  cursor: 'pointer',
+                  letterSpacing: '0.5px',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                  width: '100%',
+                }}
+              >
+                KNOW MORE ABOUT US
+              </motion.button>
             </Link>
           </motion.div>
         </div>

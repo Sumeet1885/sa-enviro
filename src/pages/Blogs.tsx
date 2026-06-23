@@ -21,9 +21,9 @@ const theme = {
   colors: {
     heroBgLeft: '#ffffff',
     heroBgRightGradient: 'linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%)',
-    accentCyan: '#4dc2f8',
-    accentBlue: '#1e66f5',
-    badgeBg: '#1e66f5',
+    accentCyan: '#0D72E9',
+    accentBlue: '#005DE8',
+    badgeBg: '#005DE8',
     textWhite: '#ffffff',
     textMutedWhite: 'rgba(255, 255, 255, 0.7)',
     textDark: '#1a202c',
