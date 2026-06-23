@@ -859,7 +859,7 @@ export const blogs = [
       },
     ],
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
@@ -911,7 +911,7 @@ export const blogs = [
       },
     ],
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",

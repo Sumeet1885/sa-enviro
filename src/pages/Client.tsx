@@ -133,8 +133,6 @@ const Icons = {
 
 // --- Stats Data ---
 const statsData = [
-  { icon: "handshake" as const, value: "100+", label: "Happy Clients" },
-  { icon: "globe" as const, value: "15+", label: "Countries Served" },
   { icon: "building" as const, value: "20+", label: "Industries Covered" },
   { icon: "people" as const, value: "Long-term", label: "Partnerships" },
 ];
@@ -235,28 +233,25 @@ const Client = () => {
                   color: theme.colors.textDark,
                 }}
               >
-                Trusted Partnerships.
+                Trusted by
                 <br />
                 <span style={{ color: theme.colors.bluePrimary }}>
-                  Transforming Water.
+                  Industry Leaders.
                 </span>
               </motion.h1>
 
-              {/* Description */}
               <motion.p
                 variants={itemVariants}
                 style={{
                   fontFamily: "var(--font-family-sans)",
-                  fontSize: "var(--text-hero-text-size)",
-                  lineHeight: 1.7,
+                  fontSize: "var(--text-section-subheading-size)",
                   color: theme.colors.textMuted,
                   margin: 0,
-                  maxWidth: "480px",
+                  lineHeight: 1.6,
+                  whiteSpace: "nowrap",
                 }}
               >
-                We collaborate with leading organizations across industries to
-                deliver sustainable water treatment solutions that create lasting
-                impact.
+                Insights That Create Impact.
               </motion.p>
             </div>
 

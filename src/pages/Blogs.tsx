@@ -218,19 +218,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
             marginBottom: '0.5rem',
             color: '#0A1526'
           }}>
-            Our Blog
-          </motion.h1>
-          
-          <motion.h2 variants={fadeUp} style={{ 
+            Our Blog <span style={{ 
             fontFamily: theme.fonts.serif, 
             fontSize: isMobile ? '2rem' : '2.8rem', 
             fontWeight: 600,
             color: '#005DE8',
-            marginBottom: '1.5rem',
-            letterSpacing: '-0.02em'
-          }}>
-            Insights That Create Impact.
-          </motion.h2>
+            display: 'block',
+            marginTop: '0.5rem',
+            letterSpacing: '-0.02em',
+            whiteSpace: 'nowrap'
+          }}>Insights That Create Impact.</span>
+          </motion.h1>
+          
+          
 
           {/* Decorative Divider */}
           <motion.div variants={fadeUp} style={{
@@ -247,17 +247,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
             <div style={{ height: '1px', width: '200px', background: 'linear-gradient(90deg, rgba(13, 59, 102, 0.2) 0%, transparent 100%)' }} />
           </motion.div>
 
-          {/* Description */}
-          <motion.p variants={fadeUp} style={{
-            fontFamily: theme.fonts.sans,
-            fontSize: '1.05rem',
-            lineHeight: 1.6,
-            color: '#475569',
-            maxWidth: '420px',
-            fontWeight: 400
-          }}>
-            Thoughts, innovations, and expert perspectives on water treatment, sustainability, and building a cleaner tomorrow.
-          </motion.p>
         </motion.div>
 
         {/* Right Container for Search & Count */}
@@ -288,54 +277,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
             {totalResults} {totalResults === 1 ? 'Article' : 'Articles'} Found
           </motion.div>
 
-          {/* Right Glass Search Bar */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 1, delay: 0.8, ease: theme.easing }}
-            style={{
-              width: isMobile ? '100%' : 'auto',
-              minWidth: isMobile ? '100%' : '480px',
-              display: 'flex',
-              alignItems: 'center',
-              backgroundColor: 'rgba(255, 255, 255, 0.85)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-              border: '1.5px solid rgba(13, 59, 102, 0.35)',
-              borderRadius: '999px',
-              padding: '0.5rem 0.5rem 0.5rem 1.5rem',
-              boxShadow: '0 8px 32px rgba(13, 59, 102, 0.08)',
-            }}
-          >
-            <input 
-              type="text" 
-              placeholder="Search articles..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{
-                flex: 1,
-                background: 'transparent',
-                border: 'none',
-                outline: 'none',
-                color: '#0d3b66',
-                fontFamily: theme.fonts.sans,
-                fontSize: '1rem',
-                minWidth: 0,
-              }}
-            />
-            <button style={{
-              background: 'transparent',
-              border: 'none',
-              color: '#0d3b66',
-              cursor: 'pointer',
-              padding: '0.5rem 1rem',
-              display: 'flex',
-              alignItems: 'center',
-              opacity: 0.8
-            }}>
-              <Icons.Search />
-            </button>
-          </motion.div>
+          
         </div>
       </div>
     </div>

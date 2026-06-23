@@ -9,7 +9,7 @@ import { Droplets } from "lucide-react";
 
 const TABS = [
   { key: "amc", label: "AMC Services" },
-  { key: "general", label: "Other Services" },
+
 ] as const;
 
 type TabKey = (typeof TABS)[number]["key"];

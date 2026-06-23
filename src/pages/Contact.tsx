@@ -383,14 +383,15 @@ const InfoCard = ({ icon: Icon, title, subtitle, delay }: any) => {
       style={{
         padding: "24px",
         borderRadius: "16px",
-        backgroundColor: isHovered ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)",
-        border: `1px solid ${isHovered ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.08)"}`,
-        boxShadow: isHovered ? theme.shadows.card : "none",
+        backgroundColor: isHovered ? "#134e7a" : "#0D3B66",
+        border: `1px solid ${isHovered ? "rgba(255, 255, 255, 0.25)" : "rgba(255, 255, 255, 0.15)"}`,
+        boxShadow: isHovered ? "0 20px 40px -10px rgba(13, 59, 102, 0.3)" : "0 10px 30px -10px rgba(13, 59, 102, 0.15)",
         display: "flex",
         alignItems: "flex-start",
         gap: "16px",
         transition: "all 0.3s ease",
         cursor: "pointer",
+        width: "100%",
       }}
     >
       <div
@@ -644,7 +645,7 @@ export default function Contact() {
   };
 
   const leftPanelStyle: React.CSSProperties = {
-    flex: isMobile ? "none" : "1.1",
+    flex: isMobile ? "none" : "0.8",
     position: "relative",
     display: "flex",
     flexDirection: "column",
@@ -670,7 +671,7 @@ export default function Contact() {
   };
 
   const rightPanelStyle: React.CSSProperties = {
-    flex: isMobile ? "none" : "0.9",
+    flex: isMobile ? "none" : "1.2",
     backgroundColor: theme.colors.darkBg,
     borderRadius: isMobile ? "40px 40px 0 0" : "40px 0 0 0",
     marginTop: isMobile ? "-40px" : "0",
@@ -680,16 +681,6 @@ export default function Contact() {
     display: "flex",
     flexDirection: "column",
     padding: isMobile ? "40px 24px 20px 24px" : "40px 5% 40px 5%",
-  };
-
-  const bottomSectionStyle: React.CSSProperties = {
-    width: "100%",
-    backgroundColor: theme.colors.darkBg,
-    padding: isMobile ? "20px 24px 60px 24px" : "40px 5% 80px 5%",
-    position: "relative",
-    zIndex: 2,
-    display: "flex",
-    justifyContent: "center",
   };
 
   return (
@@ -727,136 +718,34 @@ export default function Contact() {
               <h1
                 style={{
                   fontFamily: theme.fonts.serif,
-                  fontSize: isMobile ? "2.5rem" : "clamp(2.5rem, 4.5vw, 4.5rem)",
+                  fontSize: isMobile ? "2.5rem" : "clamp(2.5rem, 3.5vw, 4.5rem)",
                   lineHeight: 1.1,
                   margin: "0 0 24px 0",
                   fontWeight: 700,
                   color: "#0A1526"
                 }}
               >
-                Let’s Build <br />
-                A Cleaner, <br />
+                Have a project in mind or need  <br />
                 <span
                   style={{
                     color: theme.colors.accent,
                     fontWeight: 600,
                   }}
                 >
-                  Sustainable
+                  expert guidance?
                 </span>{" "}
-                <br />
-                Future Together.
+                
               </h1>
 
-              {/* Subtitle */}
-              <p
-                style={{
-                  fontSize: "1.1rem",
-                  lineHeight: 1.6,
-                  color: "#475569",
-                  maxWidth: "400px",
-                  margin: "0 0 40px 0",
-                  fontWeight: 400,
-                }}
-              >
-                Have a project in mind or need expert guidance?
-                <br />
-                We're here to help you find the right water treatment solution.
-              </p>
-
-              {/* Location Info Element */}
-              <motion.div
-                variants={fadeUpVariant}
+              {/* Cards Container */}
+              <div
                 style={{
                   display: "flex",
-                  alignItems: "flex-start",
+                  flexDirection: "column",
                   gap: "16px",
-                  padding: "24px",
-                  background: "#0D3B66",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
-                  borderRadius: "16px",
-                  maxWidth: "400px",
-                  boxShadow: "0 20px 40px -10px rgba(0,0,0,0.15)",
-                }}
-              >
-                <div
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "10px",
-                    backgroundColor: "rgba(255, 255, 255, 0.12)",
-                    color: "#ffffff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  <Icons.Pin
-                    style={{
-                      width: "20px",
-                      height: "20px",
-                      color: "#ffffff",
-                    }}
-                  />
-                </div>
-                <div>
-                  <h4 style={{ margin: "0 0 8px 0", fontSize: "15px", fontWeight: 700, color: "#ffffff", fontFamily: theme.fonts.serif }}>
-                    Global Solutions. Local Commitment.
-                  </h4>
-                  <p style={{ margin: 0, fontSize: "13px", color: "rgba(255, 255, 255, 0.8)", lineHeight: 1.5 }}>
-                    {siteConfig.contact.address}
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* --- RIGHT PANEL (Reach Us Directly) --- */}
-          <div style={rightPanelStyle}>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              style={{
-                backgroundColor: "#0D3B66",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                borderRadius: "24px",
-                padding: isMobile ? "32px 20px" : "48px 40px",
-                boxShadow: "0 20px 40px -10px rgba(0,0,0,0.15)",
-                width: "100%",
-                maxWidth: isMobile ? "100%" : "420px",
-                alignSelf: isMobile ? "stretch" : "flex-start",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  marginBottom: "32px",
-                }}
-              >
-                <h3
-                  style={{
-                    margin: 0,
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: "1px",
-                    textTransform: "uppercase",
-                    color: "#ffffff",
-                  }}
-                >
-                  Reach Us Directly
-                </h3>
-                <div style={{ width: "40px", height: "2px", backgroundColor: "rgba(255, 255, 255, 0.2)" }} />
-              </div>
-
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr",
-                  gap: "20px",
+                  marginTop: "32px",
+                  width: "100%",
+                  maxWidth: isMobile ? "100%" : "420px",
                 }}
               >
                 <InfoCard
@@ -872,260 +761,254 @@ export default function Contact() {
                   delay={0.2}
                 />
                 <InfoCard
-                  icon={Icons.Chat}
-                  title="Live Chat"
-                  subtitle={"Available Mon-Sat\n9:00 AM - 6:00 PM"}
+                  icon={Icons.Pin}
+                  title="Global Solutions. Local Commitment."
+                  subtitle={siteConfig.contact.address}
                   delay={0.3}
-                />
-                <InfoCard
-                  icon={Icons.Clock}
-                  title="Business Hours"
-                  subtitle={"Mon - Sat\n9:00 AM - 6:00 PM"}
-                  delay={0.4}
                 />
               </div>
             </motion.div>
           </div>
-        </div>
 
-        {/* --- BOTTOM FULL-WIDTH SECTION (Form) --- */}
-        <div style={bottomSectionStyle}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{
-              backgroundColor: "#0D3B66",
-              borderRadius: "32px",
-              padding: isMobile ? "32px 20px" : "48px 40px",
-              border: "1px solid rgba(255, 255, 255, 0.15)",
-              boxShadow: "0 20px 40px -10px rgba(0,0,0,0.15)",
-              width: "100%",
-              maxWidth: "1000px", // Keeps the wide form nicely constrained and premium
-            }}
-          >
-            {isSubmitted ? (
-              <div style={{ textAlign: "center", padding: "48px 20px" }}>
-                <div
-                  style={{
-                    width: "64px",
-                    height: "64px",
-                    borderRadius: "50%",
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                    color: "#ffffff",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: "24px",
-                  }}
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    style={{ width: "32px", height: "32px" }}
+          {/* --- RIGHT PANEL (Form in place of Reach Us Directly) --- */}
+          <div style={rightPanelStyle}>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              style={{
+                backgroundColor: "#0D3B66",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
+                borderRadius: "24px",
+                padding: isMobile ? "32px 20px" : "48px 40px",
+                boxShadow: "0 20px 40px -10px rgba(0,0,0,0.15)",
+                width: "100%",
+                maxWidth: isMobile ? "100%" : "800px",
+                alignSelf: isMobile ? "stretch" : "flex-start",
+              }}
+            >
+              {isSubmitted ? (
+                <div style={{ textAlign: "center", padding: "48px 20px" }}>
+                  <div
+                    style={{
+                      width: "64px",
+                      height: "64px",
+                      borderRadius: "50%",
+                      backgroundColor: "rgba(255, 255, 255, 0.1)",
+                      color: "#ffffff",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "24px",
+                    }}
                   >
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                  </svg>
-                </div>
-                <h3
-                  style={{
-                    margin: "0 0 8px 0",
-                    fontSize: "24px",
-                    fontWeight: 700,
-                    color: "#ffffff",
-                    fontFamily: theme.fonts.serif,
-                  }}
-                >
-                  Thank You!
-                </h3>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "15px",
-                    color: "rgba(255, 255, 255, 0.8)",
-                    fontFamily: theme.fonts.sans,
-                    lineHeight: 1.5,
-                  }}
-                >
-                  We'll get back to you as soon as possible.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                {/* Form Header */}
-                <div style={{ marginBottom: "32px" }}>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ width: "32px", height: "32px" }}
+                    >
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </div>
                   <h3
                     style={{
-                      margin: 0,
-                      fontSize: "28px",
+                      margin: "0 0 8px 0",
+                      fontSize: "24px",
                       fontWeight: 700,
                       color: "#ffffff",
                       fontFamily: theme.fonts.serif,
                     }}
                   >
-                    Send Us a Message
+                    Thank You!
                   </h3>
+                  <p
+                    style={{
+                      margin: 0,
+                      fontSize: "15px",
+                      color: "rgba(255, 255, 255, 0.8)",
+                      fontFamily: theme.fonts.sans,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    We'll get back to you as soon as possible.
+                  </p>
                 </div>
-
-                {/* Form Grid (Optimized for wide layout) */}
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-                    gap: "24px",
-                    marginBottom: "32px",
-                  }}
-                >
-                  <InputField
-                    label="Name"
-                    required
-                    placeholder="Your name"
-                    value={name}
-                    onChange={(e: any) => {
-                      setName(e.target.value);
-                      setErrors((p) => ({ ...p, name: "" }));
-                    }}
-                    disabled={isLoading}
-                    error={errors.name}
-                  />
-                  <InputField
-                    label="Email"
-                    required
-                    placeholder="your@email.com"
-                    type="email"
-                    value={email}
-                    onChange={(e: any) => {
-                      setEmail(e.target.value);
-                      setErrors((p) => ({ ...p, email: "" }));
-                    }}
-                    disabled={isLoading}
-                    error={errors.email}
-                  />
-                  <InputField
-                    label="Phone"
-                    placeholder="+91 00000 00000"
-                    type="tel"
-                    value={phone}
-                    onChange={(e: any) => {
-                      setPhone(e.target.value);
-                      setErrors((p) => ({ ...p, phone: "" }));
-                    }}
-                    disabled={isLoading}
-                    error={errors.phone}
-                  />
-                  <InputField
-                    label="Company"
-                    placeholder="Company name"
-                    value={company}
-                    onChange={(e: any) => {
-                      setCompany(e.target.value);
-                      setErrors((p) => ({ ...p, company: "" }));
-                    }}
-                    disabled={isLoading}
-                    error={errors.company}
-                  />
-                  <div style={{ gridColumn: "1 / -1" }}>
-                    <InputField
-                      label="Service Interested In"
-                      placeholder="e.g., Water Treatment Plant, RO System"
-                      value={service}
-                      onChange={(e: any) => {
-                        setService(e.target.value);
-                        setErrors((p) => ({ ...p, service: "" }));
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  {/* Form Header */}
+                  <div style={{ marginBottom: "32px" }}>
+                    <h3
+                      style={{
+                        margin: 0,
+                        fontSize: "28px",
+                        fontWeight: 700,
+                        color: "#ffffff",
+                        fontFamily: theme.fonts.serif,
                       }}
-                      disabled={isLoading}
-                      error={errors.service}
-                    />
+                    >
+                      Send Us a Message
+                    </h3>
                   </div>
-                  <div style={{ gridColumn: "1 / -1" }}>
+
+                  {/* Form Grid */}
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                      gap: "24px",
+                      marginBottom: "32px",
+                    }}
+                  >
                     <InputField
-                      label="Message"
+                      label="Name"
                       required
-                      placeholder="Tell us about your requirements..."
-                      isTextArea={true}
-                      value={message}
+                      placeholder="Your name"
+                      value={name}
                       onChange={(e: any) => {
-                        setMessage(e.target.value);
-                        setErrors((p) => ({ ...p, message: "" }));
+                        setName(e.target.value);
+                        setErrors((p) => ({ ...p, name: "" }));
                       }}
                       disabled={isLoading}
-                      error={errors.message}
+                      error={errors.name}
                     />
-                  </div>
-                </div>
-
-                {/* Form Actions */}
-                <motion.button
-                  type="submit"
-                  whileHover={{
-                    scale: isLoading ? 1 : 1.01,
-                    backgroundColor: isLoading ? "#005DE8" : "#0047b3",
-                  }}
-                  whileTap={{ scale: isLoading ? 1 : 0.99 }}
-                  disabled={isLoading}
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "12px",
-                    padding: "16px 32px",
-                    backgroundColor: "#005DE8",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "8px",
-                    fontSize: "16px",
-                    fontWeight: 600,
-                    cursor: isLoading ? "not-allowed" : "pointer",
-                    opacity: isLoading ? 0.8 : 1,
-                    fontFamily: theme.fonts.sans,
-                    transition: "all 0.3s ease",
-                  }}
-                >
-                  {isLoading ? (
-                    <>
-                      <svg
-                        className="animate-spin"
-                        style={{
-                          width: "20px",
-                          height: "20px",
-                          fill: "none",
-                          animation: "spin 1s linear infinite",
+                    <InputField
+                      label="Email"
+                      required
+                      placeholder="your@email.com"
+                      type="email"
+                      value={email}
+                      onChange={(e: any) => {
+                        setEmail(e.target.value);
+                        setErrors((p) => ({ ...p, email: "" }));
+                      }}
+                      disabled={isLoading}
+                      error={errors.email}
+                    />
+                    <InputField
+                      label="Phone"
+                      placeholder="+91 00000 00000"
+                      type="tel"
+                      value={phone}
+                      onChange={(e: any) => {
+                        setPhone(e.target.value);
+                        setErrors((p) => ({ ...p, phone: "" }));
+                      }}
+                      disabled={isLoading}
+                      error={errors.phone}
+                    />
+                    <InputField
+                      label="Company"
+                      placeholder="Company name"
+                      value={company}
+                      onChange={(e: any) => {
+                        setCompany(e.target.value);
+                        setErrors((p) => ({ ...p, company: "" }));
+                      }}
+                      disabled={isLoading}
+                      error={errors.company}
+                    />
+                    <div style={{ gridColumn: "1 / -1" }}>
+                      <InputField
+                        label="Service Interested In"
+                        placeholder="e.g., Water Treatment Plant, RO System"
+                        value={service}
+                        onChange={(e: any) => {
+                          setService(e.target.value);
+                          setErrors((p) => ({ ...p, service: "" }));
                         }}
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                          style={{ opacity: 0.25 }}
-                        />
-                        <path
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          style={{ opacity: 0.75 }}
-                        />
-                      </svg>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      Send Message
-                      <Icons.PaperPlane style={{ width: "20px" }} />
-                    </>
-                  )}
-                </motion.button>
-              </form>
-            )}
-          </motion.div>
+                        disabled={isLoading}
+                        error={errors.service}
+                      />
+                    </div>
+                    <div style={{ gridColumn: "1 / -1" }}>
+                      <InputField
+                        label="Message"
+                        required
+                        placeholder="Tell us about your requirements..."
+                        isTextArea={true}
+                        value={message}
+                        onChange={(e: any) => {
+                          setMessage(e.target.value);
+                          setErrors((p) => ({ ...p, message: "" }));
+                        }}
+                        disabled={isLoading}
+                        error={errors.message}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Form Actions */}
+                  <motion.button
+                    type="submit"
+                    whileHover={{
+                      scale: isLoading ? 1 : 1.01,
+                      backgroundColor: isLoading ? "#005DE8" : "#0047b3",
+                    }}
+                    whileTap={{ scale: isLoading ? 1 : 0.99 }}
+                    disabled={isLoading}
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "12px",
+                      padding: "16px 32px",
+                      backgroundColor: "#005DE8",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "8px",
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      cursor: isLoading ? "not-allowed" : "pointer",
+                      opacity: isLoading ? 0.8 : 1,
+                      fontFamily: theme.fonts.sans,
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    {isLoading ? (
+                      <>
+                        <svg
+                          className="animate-spin"
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            fill: "none",
+                            animation: "spin 1s linear infinite",
+                          }}
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                            style={{ opacity: 0.25 }}
+                          />
+                          <path
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            style={{ opacity: 0.75 }}
+                          />
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Icons.PaperPlane style={{ width: "20px" }} />
+                      </>
+                    )}
+                  </motion.button>
+                </form>
+              )}
+            </motion.div>
+          </div>
         </div>
 
         {/* --- MAP SECTION --- */}
