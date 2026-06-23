@@ -285,18 +285,14 @@ const Client = () => {
                 return (
                   <motion.div
                     key={index}
-                    whileHover={{
-                      backgroundColor: isDark
-                        ? theme.colors.bluePrimary
-                        : "rgba(224, 239, 255, 0.5)",
-                    }}
+                    
                     style={{
                       display: "flex",
                       alignItems: "center",
                       gap: "1rem",
                       padding: "1.5rem",
                       backgroundColor: isDark
-                        ? theme.colors.bluePrimary
+                        ? "#0D3B66"
                         : "transparent",
                       borderRight:
                         !isMobile && !isRightCol

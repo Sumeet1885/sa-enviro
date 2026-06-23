@@ -19,8 +19,8 @@ interface BlogPost {
 // --- Theme Constants (Inline Styles System) ---
 const theme = {
   colors: {
-    heroBgLeft: '#0a192f',
-    heroBgRightGradient: 'linear-gradient(90deg, rgba(10,25,47,1) 0%, rgba(10,25,47,0.4) 50%, rgba(10,25,47,0) 100%)',
+    heroBgLeft: '#ffffff',
+    heroBgRightGradient: 'linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%)',
     accentCyan: '#4dc2f8',
     accentBlue: '#1e66f5',
     badgeBg: '#1e66f5',
@@ -91,6 +91,33 @@ const Icons = {
 
 // --- Components ---
 
+// --- Background Pattern Component (matching About page hero section) ---
+const BackgroundPattern = () => (
+  <div style={{
+    position: 'absolute',
+    top: 0, left: 0, right: 0, bottom: 0,
+    overflow: 'hidden',
+    zIndex: 0,
+    pointerEvents: 'none',
+    opacity: 0.6
+  }}>
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', top: 0, left: 0 }}>
+      <defs>
+        <linearGradient id="about-hero-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: '#e0f2fe', stopOpacity: 0.8 }} />
+          <stop offset="100%" style={{ stopColor: '#ffffff', stopOpacity: 0 }} />
+        </linearGradient>
+      </defs>
+      <path d="M-100 200 C 200 100, 400 400, 800 200 S 1200 400, 1600 100" fill="none" stroke="#e0f2fe" strokeWidth="1" opacity="0.5" />
+      <path d="M-100 220 C 250 120, 350 420, 850 220 S 1150 420, 1600 120" fill="none" stroke="#bae6fd" strokeWidth="0.5" opacity="0.4" />
+      <path d="M-100 240 C 300 140, 300 440, 900 240 S 1100 440, 1600 140" fill="none" stroke="#e0f2fe" strokeWidth="1.5" opacity="0.3" />
+      <path d="M-100 800 C 300 900, 500 600, 1000 800 S 1400 600, 1800 900" fill="none" stroke="#e0f2fe" strokeWidth="1" opacity="0.5" />
+      <circle cx="10%" cy="20%" r="300" fill="url(#about-hero-grad)" opacity="0.4" />
+      <circle cx="90%" cy="80%" r="400" fill="url(#about-hero-grad)" opacity="0.3" />
+    </svg>
+  </div>
+);
+
 interface HeroSectionProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
@@ -124,6 +151,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
       display: 'flex',
       alignItems: 'center',
     }}>
+      <BackgroundPattern />
+
       {/* Right Background Image with Diagonal Cut */}
       <motion.div 
         initial={{ opacity: 0, scale: 1.05 }}
@@ -147,13 +176,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
           position: 'absolute',
           top: 0, left: 0, right: 0, bottom: 0,
           background: isMobile 
-            ? 'linear-gradient(to top, #0a192f 0%, rgba(10,25,47,0.5) 100%)' 
+            ? 'linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0.5) 100%)' 
             : theme.colors.heroBgRightGradient,
         }} />
         <div style={{
           position: 'absolute',
           top: 0, left: 0, right: 0, bottom: 0,
-          background: 'linear-gradient(to bottom, rgba(10,25,47,0.4) 0%, transparent 40%, rgba(10,25,47,0.2) 100%)',
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, transparent 40%, rgba(255,255,255,0.1) 100%)',
         }} />
       </motion.div>
 
@@ -176,7 +205,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
           variants={staggerContainer}
           initial="hidden"
           animate="show"
-          style={{ width: isMobile ? '100%' : '50%', color: theme.colors.textWhite }}
+          style={{ width: isMobile ? '100%' : '50%', color: '#0D3B66' }}
         >
           
 
@@ -184,9 +213,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
           <motion.h1 variants={fadeUp} style={{ 
             fontFamily: theme.fonts.serif, 
             fontSize: isMobile ? '3.5rem' : '4.5rem', 
-            fontWeight: 400,
+            fontWeight: 700,
             lineHeight: 1.1,
-            marginBottom: '0.5rem'
+            marginBottom: '0.5rem',
+            color: '#0A1526'
           }}>
             Our Blog
           </motion.h1>
@@ -194,9 +224,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
           <motion.h2 variants={fadeUp} style={{ 
             fontFamily: theme.fonts.serif, 
             fontSize: isMobile ? '2rem' : '2.8rem', 
-            fontWeight: 400,
-            fontStyle: 'italic',
-            color: theme.colors.accentCyan,
+            fontWeight: 600,
+            color: '#005DE8',
             marginBottom: '1.5rem',
             letterSpacing: '-0.02em'
           }}>
@@ -211,9 +240,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
             gap: '1rem',
             opacity: 0.6
           }}>
-            <div style={{ height: '1px', width: '40px', backgroundColor: theme.colors.textMutedWhite }} />
-            <Icons.Drop />
-            <div style={{ height: '1px', width: '200px', background: `linear-gradient(90deg, ${theme.colors.textMutedWhite} 0%, transparent 100%)` }} />
+            <div style={{ height: '1px', width: '40px', backgroundColor: 'rgba(13, 59, 102, 0.2)' }} />
+            <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 16C9.31371 16 12 13.3137 12 10C12 6.68629 6 0 6 0C6 0 0 6.68629 0 10C0 13.3137 2.68629 16 6 16Z" fill="#005DE8" />
+            </svg>
+            <div style={{ height: '1px', width: '200px', background: 'linear-gradient(90deg, rgba(13, 59, 102, 0.2) 0%, transparent 100%)' }} />
           </motion.div>
 
           {/* Description */}
@@ -221,9 +252,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
             fontFamily: theme.fonts.sans,
             fontSize: '1.05rem',
             lineHeight: 1.6,
-            color: theme.colors.textMutedWhite,
+            color: '#475569',
             maxWidth: '420px',
-            fontWeight: 300
+            fontWeight: 400
           }}>
             Thoughts, innovations, and expert perspectives on water treatment, sustainability, and building a cleaner tomorrow.
           </motion.p>
@@ -231,7 +262,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
 
         {/* Right Container for Search & Count */}
         <div style={{
-          marginTop: isMobile ? '3rem' : '16rem',
+          marginTop: isMobile ? '3rem' : '10rem',
           width: isMobile ? '100%' : 'auto',
           display: 'flex',
           flexDirection: 'column',
@@ -246,8 +277,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
             style={{
               fontFamily: theme.fonts.sans,
               fontSize: '0.85rem',
-              color: theme.colors.textMutedWhite,
-              fontWeight: 500,
+              color: '#64748b',
+              fontWeight: 600,
               letterSpacing: '0.05em',
               textTransform: 'uppercase',
               paddingRight: isMobile ? '0' : '1.5rem',
@@ -267,13 +298,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
               minWidth: isMobile ? '100%' : '480px',
               display: 'flex',
               alignItems: 'center',
-              backgroundColor: theme.colors.glassBg,
+              backgroundColor: 'rgba(255, 255, 255, 0.85)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
-              border: `1px solid ${theme.colors.glassBorder}`,
+              border: '1.5px solid rgba(13, 59, 102, 0.35)',
               borderRadius: '999px',
               padding: '0.5rem 0.5rem 0.5rem 1.5rem',
-              boxShadow: theme.shadows.glass,
+              boxShadow: '0 8px 32px rgba(13, 59, 102, 0.08)',
             }}
           >
             <input 
@@ -286,7 +317,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
                 background: 'transparent',
                 border: 'none',
                 outline: 'none',
-                color: theme.colors.textWhite,
+                color: '#0d3b66',
                 fontFamily: theme.fonts.sans,
                 fontSize: '1rem',
                 minWidth: 0,
@@ -295,7 +326,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
             <button style={{
               background: 'transparent',
               border: 'none',
-              color: theme.colors.textWhite,
+              color: '#0d3b66',
               cursor: 'pointer',
               padding: '0.5rem 1rem',
               display: 'flex',
@@ -503,7 +534,7 @@ export default function Blogs() {
           maxWidth: '1440px',
           margin: '0 auto',
           padding: isMobile ? '0 1.5rem 3rem 1.5rem' : '0 4rem 5rem 4rem',
-          marginTop: isMobile ? '-4rem' : '-8rem',
+          marginTop: isMobile ? '-7rem' : '-10.5rem',
           position: 'relative',
           zIndex: 10,
         }}>
