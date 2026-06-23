@@ -1,408 +1,377 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { AnimatedSection } from "@/components/motion/AnimatedSection";
+import React, { useState, useEffect } from 'react';
+import { motion, Variants } from 'framer-motion';
+import { Droplets } from "lucide-react";
 
-const STEPS = [
-  {
-    n: "01",
-    icon: "🔍",
-    title: "Assess",
-    desc: "Site survey, requirement analysis and environmental impact evaluation to understand your exact needs.",
-  },
-  {
-    n: "02",
-    icon: "📐",
-    title: "Design",
-    desc: "Engineering design, process selection and detailed technical drawings tailored to your application.",
-  },
-  {
-    n: "03",
-    icon: "⚙️",
-    title: "Fabricate",
-    desc: "Manufacturing with quality-checked materials, precision fabrication and ISO-compliant processes.",
-  },
-  {
-    n: "04",
-    icon: "🏗️",
-    title: "Install",
-    desc: "Erection, commissioning and on-site testing to ensure the system performs to specification.",
-  },
-  {
-    n: "05",
-    icon: "🛡️",
-    title: "Support",
-    desc: "AMC, online monitoring, calibration and ongoing technical support to keep your plant running.",
-  },
-] as const;
+// --- Types ---
+type StepData = {
+  num: string;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+};
 
-const STEP_DURATION_MS = 2400;
-
-const PROCESS_STYLES = `
-  @keyframes saesPulseRing {
-    0%   { opacity: 0.7; transform: scale(1); }
-    100% { opacity: 0;   transform: scale(1.65); }
-  }
-  @keyframes saesProgress {
-    from { width: 0%; }
-    to   { width: 100%; }
-  }
-  @keyframes saesProgressV {
-    from { height: 0%; }
-    to   { height: 100%; }
-  }
-  @keyframes saesGlow {
-    0%, 100% { text-shadow: 0 0 8px hsl(var(--primary) / 0.4), 0 0 20px hsl(var(--primary) / 0.2); }
-    50%       { text-shadow: 0 0 16px hsl(var(--primary) / 0.7), 0 0 40px hsl(var(--primary) / 0.4); }
-  }
-
-  /* Mobile vertical layout */
-  .process-steps-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 0;
-    position: relative;
-  }
-
-  /* Horizontal connector (desktop) */
-  .process-connector-h {
-    display: block;
-  }
-  /* Vertical connector (mobile) */
-  .process-connector-v {
-    display: none;
-  }
-
-  .process-step {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0 10px;
-    cursor: pointer;
-    z-index: 1;
-    transition: all 0.3s ease;
-  }
-
-  /* Mobile-specific progress bar */
-  .step-progress-bar {
-    margin-top: 14px;
-    height: 2px;
-    width: 100%;
-  }
-
-  @media (max-width: 640px) {
-    .process-steps-container {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 8px;
-    }
-
-    /* Show vertical connector, hide horizontal */
-    .process-connector-h {
-      display: none;
-    }
-    .process-connector-v {
-      display: block;
-    }
-
-    .process-step {
-      flex-direction: row;
-      align-items: flex-start;
-      text-align: left;
-      padding: 16px 0;
-      gap: 16px;
-      min-height: 80px;
-    }
-
-    .step-dot-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-shrink: 0;
-      width: 54px;
-      margin-right: 0;
-    }
-
-    .step-content-col {
-      flex: 1;
-      padding-bottom: 8px;
-      min-width: 0;
-    }
-
-    /* On mobile, progress bar becomes horizontal under text */
-    .step-progress-bar {
-      margin-top: 10px;
-      height: 2px;
-      width: 100%;
-    }
-  }
-`;
-
-export default function ServicesProcess() {
-  const [activeStep, setActiveStep] = useState(0);
+// --- Hooks for Responsiveness (Since external CSS is forbidden) ---
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 1200,
+  });
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % STEPS.length);
-    }, STEP_DURATION_MS);
-    return () => clearInterval(timer);
+    function handleResize() {
+      setWindowSize({ width: window.innerWidth });
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return (
-    <section className="py-16 sm:py-24 relative overflow-hidden bg-background">
-      <style>{PROCESS_STYLES}</style>
+  return windowSize;
+}
 
-      {/* Subtle bg tint */}
+// --- Icons (Custom SVGs for zero dependencies) ---
+const SearchIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+);
+
+const ClipboardIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+    <line x1="8" y1="10" x2="16" y2="10"></line>
+    <line x1="8" y1="14" x2="16" y2="14"></line>
+    <line x1="8" y1="14" x2="16" y2="14"></line>
+    <line x1="8" y1="18" x2="12" y2="18"></line>
+  </svg>
+);
+
+const BulbIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 18h6"></path>
+    <path d="M10 22h4"></path>
+    <path d="M12 2v1"></path>
+    <path d="M12 7v1"></path>
+    <path d="M22 12h-1"></path>
+    <path d="M5 12H4"></path>
+    <path d="M19.07 4.93l-.71.71"></path>
+    <path d="M5.64 19.07l-.71.71"></path>
+    <path d="M19.07 19.07l-.71-.71"></path>
+    <path d="M5.64 4.93l-.71-.71"></path>
+    <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
+  </svg>
+);
+
+const CogIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+  </svg>
+);
+
+const ChartIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="20" x2="18" y2="10"></line>
+    <line x1="12" y1="20" x2="12" y2="4"></line>
+    <line x1="6" y1="20" x2="6" y2="14"></line>
+    <path d="M3 14l5-5 4 4 9-9"></path>
+    <path d="M15 4h6v6"></path>
+  </svg>
+);
+
+// --- Data ---
+const processData: StepData[] = [
+  { num: '01', title: 'Assess', desc: 'Site survey, requirement analysis and environmental impact evaluation to understand your exact needs.', icon: <SearchIcon /> },
+  { num: '02', title: 'Design', desc: 'Engineering design, process selection and detailed technical drawings tailored to your application.', icon: <BulbIcon /> },
+  { num: '03', title: 'Fabricate', desc: 'Manufacturing with quality-checked materials, precision fabrication and ISO-compliant processes.', icon: <CogIcon /> },
+  { num: '04', title: 'Install', desc: 'Erection, commissioning and on-site testing to ensure the system performs to specification.', icon: <ClipboardIcon /> },
+  { num: '05', title: 'Support', desc: 'AMC, online monitoring, calibration and ongoing technical support to keep your plant running.', icon: <ChartIcon /> },
+];
+
+// --- Theme Constants ---
+const theme = {
+  colors: {
+    primary: '#005DE8', // Rich Blue matching the page theme
+    primaryLight: '#dbeafe',
+    textDark: '#0f172a',
+    textMedium: '#334155',
+    textMuted: '#64748b',
+    background: '#ffffff',
+    white: '#ffffff',
+    line: '#cbd5e1',
+  },
+  fonts: {
+    serif: '"Playfair Display", "Merriweather", "Georgia", serif',
+    sans: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+  }
+};
+
+// --- Animation Variants ---
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+  }
+};
+
+const timelineContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 1, delayChildren: 0.5 }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 100, damping: 15 }
+  }
+};
+
+const lineVariants: Variants = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: { 
+    pathLength: 1, 
+    opacity: 1,
+    transition: { duration: 4, ease: "linear", delay: 0.5 }
+  }
+};
+
+export default function ServicesProcess() {
+  const { width } = useWindowSize();
+  const isMobile = width < 900;
+
+  return (
+    <section style={{
+      fontFamily: theme.fonts.sans,
+      backgroundColor: '#ffffff',
+      position: 'relative',
+      overflow: 'hidden',
+      padding: isMobile ? '60px 20px' : '100px 40px',
+      color: theme.colors.textDark
+    }}>
+      {/* Background Ambient Glows (radial tint matching ServicesHero) */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, hsl(var(--primary) / 0.04) 0%, transparent 60%)",
+            "radial-gradient(ellipse at 20% 60%, hsl(var(--primary) / 0.05) 0%, transparent 60%), " +
+            "radial-gradient(ellipse at 80% 10%, hsl(var(--water-sky) / 0.06) 0%, transparent 50%)",
         }}
       />
 
-      <div className="container-wide relative z-10 px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <AnimatedSection className="text-center mb-12 sm:mb-20">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4"
+      <div style={{ maxWidth: '1200px', width: '100%', zIndex: 1, position: 'relative', margin: '0 auto' }}>
+        
+        {/* Header Section */}
+        <motion.div 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          style={{ textAlign: 'center', marginBottom: isMobile ? '60px' : '80px' }}
+        >
+          {/* Badge styled like the "What We Do" badge */}
+          <motion.div
+            variants={itemVariants}
             style={{
-              background: "hsl(var(--primary) / 0.08)",
-              border: "1px solid hsl(var(--primary) / 0.2)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "16px",
+              marginBottom: "24px",
             }}
           >
-            <span
-              className="w-1.5 h-1.5 rounded-full"
-              style={{
-                background: "hsl(var(--primary))",
-                boxShadow: "0 0 8px hsl(var(--primary))",
-              }}
-            />
-            <p
-              className="text-xs font-bold tracking-widest uppercase"
-              style={{ color: "hsl(var(--primary))" }}
-            >
+            <div style={{ height: "1px", width: "40px", backgroundColor: "#005DE8", opacity: 0.5 }} />
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#005DE8",
+              fontWeight: 600,
+              letterSpacing: "1px",
+              fontSize: "0.875rem",
+              textTransform: "uppercase",
+            }}>
+              <Droplets size={16} color="#005DE8" fill="#005DE8" />
               Our Process
-            </p>
-          </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-3 text-foreground">
-            How We Work
-          </h2>
-          <p className="text-muted-foreground" style={{ fontSize: "1rem" }}>
-            A proven methodology that delivers results every time.
-          </p>
-        </AnimatedSection>
+            </div>
+            <div style={{ height: "1px", width: "40px", backgroundColor: "#005DE8", opacity: 0.5 }} />
+          </motion.div>
 
-        {/* Steps */}
-        <div className="process-steps-container">
+          <motion.h2 variants={itemVariants} style={{ 
+            fontFamily: theme.fonts.serif,
+            fontSize: isMobile ? '2.5rem' : '4.5rem',
+            fontWeight: 700,
+            lineHeight: 1.2,
+            margin: '0 0 24px 0',
+            color: theme.colors.textDark
+          }}>
+            Simple Steps. <span style={{ color: theme.colors.primary }}>Powerful Results.</span>
+          </motion.h2>
 
-          {/* ── HORIZONTAL connector line (desktop only) ── */}
-          <div
-            className="process-connector-h absolute"
-            style={{
-              top: 27,
-              left: "10%",
-              right: "10%",
-              height: 2,
-              background: "hsl(var(--border))",
-              borderRadius: 2,
+          <motion.p variants={itemVariants} style={{
+            color: theme.colors.textMuted,
+            fontSize: isMobile ? '1rem' : '1.125rem',
+            maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: 1.6
+          }}>
+            A clear, collaborative process that turns challenges into sustainable water solutions.
+          </motion.p>
+        </motion.div>
+
+        {/* Timeline Section */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={timelineContainerVariants}
+          style={{ 
+            position: 'relative',
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            justifyContent: 'space-between',
+            alignItems: isMobile ? 'center' : 'flex-start',
+            gap: isMobile ? '60px' : '0'
+          }}
+        >
+          {/* Responsive Connecting Line */}
+          {!isMobile && (
+            <div style={{
+              position: 'absolute',
+              top: '81px', // Align exactly with center of the 90px circles
+              left: '10%',
+              right: '10%',
+              height: '100px',
               zIndex: 0,
-            }}
-          >
-            <motion.div
+              pointerEvents: 'none'
+            }}>
+              <svg width="100%" height="100%" viewBox="0 0 1000 100" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
+                <motion.path 
+                  variants={lineVariants}
+                  d="M 0,50 C 150,50 200,20 250,50 S 400,80 500,50 S 700,20 750,50 S 900,80 1000,50" 
+                  fill="none" 
+                  stroke="#005DE8" 
+                  strokeWidth="2" 
+                  vectorEffect="non-scaling-stroke"
+                />
+                {/* Small start/end dots on the line */}
+                <circle cx="0" cy="50" r="4" fill="#005DE8" />
+                <circle cx="1000" cy="50" r="4" fill="#005DE8" />
+              </svg>
+            </div>
+          )}
+
+          {/* Steps */}
+          {processData.map((step, index) => (
+            <motion.div 
+              key={index} 
+              variants={itemVariants}
               style={{
-                height: "100%",
-                borderRadius: 2,
-                background:
-                  "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--water-sea)))",
-                boxShadow: "0 0 10px hsl(var(--primary) / 0.3)",
-                width: `${(activeStep / (STEPS.length - 1)) * 100}%`,
-                transition: "width 0.5s ease",
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                width: isMobile ? '100%' : '20%',
+                maxWidth: isMobile ? '300px' : 'none',
+                position: 'relative',
+                zIndex: 1
               }}
-            />
-          </div>
-
-          {/* ── VERTICAL connector line (mobile only) ── */}
-          <div
-            className="process-connector-v"
-            style={{
-              position: "absolute",
-              top: 27,
-              bottom: 27,
-              left: 27, // center of the 54px dot
-              width: 2,
-              background: "hsl(var(--border))",
-              borderRadius: 2,
-              zIndex: 0,
-            }}
-          >
-            <motion.div
-              style={{
-                width: "100%",
-                borderRadius: 2,
-                background:
-                  "linear-gradient(180deg, hsl(var(--primary)), hsl(var(--water-sea)))",
-                boxShadow: "0 0 10px hsl(var(--primary) / 0.3)",
-                height: `${(activeStep / (STEPS.length - 1)) * 100}%`,
-                transition: "height 0.5s ease",
-              }}
-            />
-          </div>
-
-          {/* ── STEPS ── */}
-          {STEPS.map((step, i) => {
-            const isActive = activeStep === i;
-            const isPast = i < activeStep;
-
-            return (
-              <div
-                key={step.n}
-                className="process-step"
-                onClick={() => setActiveStep(i)}
-              >
-                {/* Dot column (always rendered; on desktop is block, on mobile is flex-col) */}
-                <div className="step-dot-col" style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0, width: 54 }}>
-                  {/* Dot */}
-                  <div style={{ position: "relative", display: "inline-block", marginBottom: 4 }}>
-                    {isActive && (
-                      <div
-                        style={{
-                          position: "absolute",
-                          inset: -10,
-                          borderRadius: "50%",
-                          border: "1.5px solid hsl(var(--primary) / 0.4)",
-                          animation: `saesPulseRing ${STEP_DURATION_MS}ms ease-out infinite`,
-                        }}
-                      />
-                    )}
-                    <div
-                      style={{
-                        width: 54,
-                        height: 54,
-                        borderRadius: "50%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: 20,
-                        transition: "all 0.4s ease",
-                        background: isActive
-                          ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--water-sea)))"
-                          : isPast
-                          ? "hsl(var(--primary) / 0.12)"
-                          : "hsl(var(--muted))",
-                        border: isActive
-                          ? "none"
-                          : isPast
-                          ? "1px solid hsl(var(--primary) / 0.3)"
-                          : "1px solid hsl(var(--border))",
-                        boxShadow: isActive
-                          ? "0 0 20px hsl(var(--primary) / 0.35), 0 0 40px hsl(var(--primary) / 0.15)"
-                          : "none",
-                      }}
-                    >
-                      {step.icon}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content — sits next to dot on mobile, below dot on desktop */}
-                <div
-                  className="step-content-col"
-                  style={{
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "inherit", // overridden per breakpoint via CSS class
-                  }}
-                >
-                  {/* Dot + label are stacked on desktop; on mobile they're side-by-side already */}
-                  {/* Step number */}
-                  <p
-                    style={{
-                      fontSize: 10,
-                      fontWeight: 700,
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      marginBottom: 4,
-                      color: isActive
-                        ? "hsl(var(--primary))"
-                        : isPast
-                        ? "hsl(var(--primary) / 0.5)"
-                        : "hsl(var(--muted-foreground) / 0.4)",
-                      textShadow: isActive
-                        ? "0 0 10px hsl(var(--primary) / 0.5)"
-                        : "none",
-                      transition: "all 0.4s",
-                    }}
-                  >
-                    {step.n}
-                  </p>
-
-                  {/* Title */}
-                  <p
-                    style={{
-                      fontSize: 15,
-                      fontWeight: 700,
-                      marginBottom: 6,
-                      color: isActive
-                        ? "hsl(var(--foreground))"
-                        : isPast
-                        ? "hsl(var(--foreground) / 0.45)"
-                        : "hsl(var(--muted-foreground) / 0.5)",
-                      transition: "all 0.4s",
-                      animation: isActive
-                        ? `saesGlow ${STEP_DURATION_MS}ms ease-in-out infinite`
-                        : "none",
-                    }}
-                  >
-                    {step.title}
-                  </p>
-
-                  {/* Description */}
-                  <p
-                    style={{
-                      fontSize: 12.5,
-                      lineHeight: 1.6,
-                      color: isActive
-                        ? "hsl(var(--foreground) / 0.7)"
-                        : "hsl(var(--muted-foreground) / 0.5)",
-                      transition: "color 0.4s",
-                    }}
-                  >
-                    {step.desc}
-                  </p>
-
-                  {/* Progress bar */}
-                  {/* {isActive && (
-                    <div
-                      className="step-progress-bar"
-                      style={{
-                        height: 2,
-                        borderRadius: 2,
-                        background: "hsl(var(--border))",
-                        overflow: "hidden",
-                      }}
-                    >
-                      <div
-                        key={`progress-${activeStep}`}
-                        style={{
-                          height: "100%",
-                          background:
-                            "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--water-sea)))",
-                          borderRadius: 2,
-                          animation: `saesProgress ${STEP_DURATION_MS}ms linear forwards`,
-                        }}
-                      />
-                    </div>
-                  )} */}
-                </div>
+            >
+              {/* Number */}
+              <div style={{
+                color: theme.colors.primary,
+                fontSize: '1.25rem',
+                fontWeight: 600,
+                marginBottom: '16px',
+                fontFamily: theme.fonts.sans
+              }}>
+                {step.num}
               </div>
-            );
-          })}
-        </div>
+
+              {/* Icon Container with Hover Effects */}
+              <motion.div 
+                whileHover={{ y: -5, scale: 1.05 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                style={{
+                  width: '90px',
+                  height: '90px',
+                  backgroundColor: theme.colors.white,
+                  borderRadius: '50%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginBottom: '32px',
+                  position: 'relative',
+                  boxShadow: '0 10px 40px -10px rgba(0, 93, 232, 0.15)',
+                  color: theme.colors.primary,
+                  cursor: 'pointer',
+                  border: '1px solid rgba(0, 93, 232, 0.08)'
+                }}
+              >
+                {/* Decorative Arc (The blue semi-circle in the design) */}
+                <div style={{
+                  position: 'absolute',
+                  top: '-4px',
+                  left: '-4px',
+                  right: '-4px',
+                  bottom: '-4px',
+                  borderRadius: '50%',
+                  border: `2px solid transparent`,
+                  borderTopColor: theme.colors.primaryLight,
+                  borderLeftColor: theme.colors.primaryLight,
+                  transform: 'rotate(-45deg)',
+                  transition: 'all 0.3s ease',
+                }} />
+                
+                {/* Icon Wrapper for internal scaling on hover */}
+                <motion.div 
+                   whileHover={{ scale: 1.1, color: '#1e3a8a' }}
+                   style={{ display: 'flex', transition: 'color 0.3s ease' }}
+                >
+                  {step.icon}
+                </motion.div>
+              </motion.div>
+
+              {/* Text Content */}
+              <div style={{ textAlign: 'center', padding: '0 10px' }}>
+                <h3 style={{
+                  fontFamily: theme.fonts.serif,
+                  fontSize: '1.25rem',
+                  fontWeight: 600,
+                  color: theme.colors.textDark,
+                  margin: '0 0 16px 0'
+                }}>
+                  {step.title}
+                </h3>
+                <p style={{
+                  fontSize: '0.875rem',
+                  color: theme.colors.textMuted,
+                  lineHeight: 1.6,
+                  margin: 0
+                }}>
+                  {step.desc}
+                </p>
+              </div>
+
+              {/* Mobile connecting line (vertical) */}
+              {isMobile && index < processData.length - 1 && (
+                <div style={{
+                  height: '40px',
+                  width: '2px',
+                  backgroundColor: '#005DE8',
+                  marginTop: '30px'
+                }} />
+              )}
+            </motion.div>
+          ))}
+        </motion.div>
+
       </div>
     </section>
   );

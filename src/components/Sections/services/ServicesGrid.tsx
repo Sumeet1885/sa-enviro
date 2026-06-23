@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/motion/AnimatedSection";
 import ServiceModal, { ServiceModalData } from "./ServiceModal";
 import { services } from "@/constants/siteData";
+import { Droplets } from "lucide-react";
 
 // ── TABS ──────────────────────────────────────────────────────────────────────
 
@@ -91,7 +92,7 @@ const ServiceGridCard = memo(({ service, onOpen, delay = 0 }: CardProps) => {
 
           {/* Read More Button */}
           <button
-            className="rounded-md w-full mt-auto bg-primary py-2 px-4 border border-transparent text-center text-sm font-medium text-white transition-all shadow-md hover:shadow-lg focus:bg-primary/90 focus:shadow-none active:bg-primary/90 hover:bg-primary/90 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            className="rounded-md w-full mt-auto bg-[#005DE8] py-2 px-4 border border-transparent text-center text-sm font-medium text-white transition-all shadow-md hover:shadow-lg focus:bg-[#005DE8]/90 focus:shadow-none active:bg-[#005DE8]/90 hover:bg-[#005DE8]/90 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
             type="button"
             onClick={(e) => {
               e.stopPropagation();
@@ -125,36 +126,40 @@ export default function ServicesGrid() {
     <section
       id="core-services"
       className="py-20 relative overflow-hidden"
-      style={{ background: "hsl(var(--water-deep))" }}
+      style={{ background: "#F8FAFC" }}
     >
       <div className="container-wide">
         {/* Section Header */}
         <AnimatedSection className="text-center mb-10">
           <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4"
             style={{
-              background: "hsl(var(--water-sky) / 0.12)",
-              border: "1px solid hsl(var(--water-sky) / 0.3)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "16px",
+              marginBottom: "24px",
             }}
           >
-            <span
-              className="w-1.5 h-1.5 rounded-full"
-              style={{
-                background: "hsl(var(--water-sky))",
-                boxShadow: "0 0 8px hsl(var(--water-sky))",
-              }}
-            />
-            <p
-              className="text-xs font-bold tracking-widest uppercase"
-              style={{ color: "hsl(var(--water-sky))" }}
-            >
+            <div style={{ height: "1px", width: "40px", backgroundColor: "#005DE8", opacity: 0.5 }} />
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#005DE8",
+              fontWeight: 600,
+              letterSpacing: "1px",
+              fontSize: "0.875rem",
+              textTransform: "uppercase",
+            }}>
+              <Droplets size={16} color="#005DE8" fill="#005DE8" />
               What We Do
-            </p>
+            </div>
+            <div style={{ height: "1px", width: "40px", backgroundColor: "#005DE8", opacity: 0.5 }} />
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-3" style={{ color: "#ffffff" }}>
-            Our Core Services
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl mb-3" style={{ color: "#0B1120" }}>
+            Our Core <span style={{ color: "#005DE8" }}>Services</span>
           </h2>
-          <p className="text-base max-w-lg mx-auto" style={{ color: "hsl(var(--water-light) / 0.6)" }}>
+          <p className="text-lg sm:text-xl max-w-xl mx-auto" style={{ color: "#64748B" }}>
             End-to-end environmental engineering solutions tailored to your
             unique requirements.
           </p>
@@ -165,8 +170,8 @@ export default function ServicesGrid() {
           <div
             className="inline-flex p-1.5 rounded-full gap-1"
             style={{
-              background: "hsl(var(--water-sea) / 0.15)",
-              border: "1px solid hsl(var(--water-sea) / 0.3)",
+              background: "rgba(0, 93, 232, 0.05)",
+              border: "1px solid rgba(0, 93, 232, 0.1)",
             }}
           >
             {TABS.map((tab) => {
@@ -178,13 +183,13 @@ export default function ServicesGrid() {
                   className="relative px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer border-none font-sans"
                   style={{
                     background: isActive
-                      ? "hsl(var(--water-sky))"
+                      ? "#005DE8"
                       : "transparent",
                     color: isActive
-                      ? "hsl(var(--water-deep))"
-                      : "hsl(var(--water-light) / 0.7)",
+                      ? "#ffffff"
+                      : "#64748B",
                     boxShadow: isActive
-                      ? "0 4px 14px hsl(var(--water-sky) / 0.35)"
+                      ? "0 4px 14px rgba(0, 93, 232, 0.25)"
                       : "none",
                   }}
                   id={`tab-${tab.key}`}
@@ -199,16 +204,36 @@ export default function ServicesGrid() {
         </AnimatedSection>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-          {visibleServices.map((s, i) => (
-            <ServiceGridCard
-              key={s.id}
-              service={s}
-              onOpen={handleOpen}
-              delay={i * 0.05}
-            />
-          ))}
-        </div>
+        {activeTab === "general" ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center justify-center text-center p-8 sm:p-12 rounded-3xl bg-white border border-slate-200/80 shadow-md max-w-xl mx-auto min-h-[300px]"
+            style={{ boxShadow: "0 10px 30px rgba(0, 0, 0, 0.02)" }}
+          >
+            <div className="w-16 h-16 rounded-full bg-blue-50/80 flex items-center justify-center mb-6 text-primary">
+              <Droplets className="w-8 h-8 text-[#005DE8] animate-bounce" />
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-3 font-display">
+              More Services Coming Soon
+            </h3>
+            <p className="text-slate-500 leading-relaxed text-sm sm:text-base max-w-md">
+              We are constantly expanding our offerings to bring you more comprehensive environmental engineering solutions. Stay tuned for exciting additions to our services portfolio!
+            </p>
+          </motion.div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+            {visibleServices.map((s, i) => (
+              <ServiceGridCard
+                key={s.id}
+                service={s}
+                onOpen={handleOpen}
+                delay={i * 0.05}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Modal (singleton) */}

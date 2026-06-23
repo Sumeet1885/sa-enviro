@@ -2,29 +2,38 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/motion/AnimatedSection";
 import { siteConfig } from "@/constants/siteData";
+import ServicesPhoto from "@/assets/Services.jpg"
+
+import { Droplets, Recycle, ShieldCheck, Settings } from "lucide-react";
 
 // Three hero feature pills
 const FEATURES = [
   {
-    icon: "💧",
+    icon: Droplets,
     label: "Water Treatment",
     sub: "Advanced WTP, RO, Softeners & DM Plants.",
+    color: "text-blue-500",
+    bgColor: "bg-blue-50/80",
   },
   {
-    icon: "♻️",
+    icon: Recycle,
     label: "Wastewater Management",
     sub: "Efficient STP, ETP, and ZLD solutions.",
+    color: "text-green-600",
+    bgColor: "bg-green-50/80",
   },
   {
-    icon: "⚙️",
+    icon: ShieldCheck,
     label: "AMC Services",
     sub: "Reliable maintenance & operational support.",
+    color: "text-amber-600",
+    bgColor: "bg-amber-50/80",
   },
 ];
 
 export default function ServicesHero() {
   return (
-    <section className="py-24 lg:py-12 relative overflow-hidden bg-background">
+    <section className="py-24 lg:py-20 relative overflow-hidden bg-white">
       {/* Subtle radial tint */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -39,24 +48,14 @@ export default function ServicesHero() {
       <div className="container-wide relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <AnimatedSection className="max-w-3xl order-2 lg:order-1">
-          {/* Badge */}
-          <span
-            className="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-5"
-            style={{
-              background: "hsl(var(--primary) / 0.08)",
-              color: "hsl(var(--primary))",
-              border: "1px solid hsl(var(--primary) / 0.2)",
-            }}
-          >
-            Our Services
-          </span>
+          
 
           {/* Heading */}
-          <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-5 text-foreground">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight mb-5 text-foreground">
             Comprehensive Environmental{" "}
             <span
               className="relative inline-block"
-              style={{ color: "hsl(var(--primary))" }}
+              style={{ color: "#005DE8" }}
             >
               Services
               <svg
@@ -66,7 +65,7 @@ export default function ServicesHero() {
               >
                 <path
                   d="M4 8 Q60 2 120 6 Q180 10 236 4"
-                  stroke="hsl(var(--primary))"
+                  stroke="#005DE8"
                   strokeWidth="2.5"
                   fill="none"
                   strokeLinecap="round"
@@ -81,46 +80,56 @@ export default function ServicesHero() {
             We provide end-to-end solutions for Water and Wastewater Treatment, Zero Liquid Discharge, and comprehensive Annual Maintenance Contracts (AMC) tailored to your industry needs.
           </p>
 
+
+          
           {/* Feature cards */}
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-10">
-            {FEATURES.map((f) => (
-              <div 
-                key={f.label} 
-                className="flex items-start gap-3 p-4 rounded-2xl border border-border bg-white shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 flex-1 min-w-[200px]"
-              >
-                <span className="text-2xl mt-0.5 shrink-0">{f.icon}</span>
-                <div>
-                  <p className="font-semibold text-sm text-foreground mb-1">
-                    {f.label}
-                  </p>
-                  <p className="text-xs leading-relaxed text-muted-foreground">
-                    {f.sub}
-                  </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+            {FEATURES.map((f) => {
+              const Icon = f.icon;
+              return (
+                <div 
+                  key={f.label} 
+                  className="flex items-start gap-2.5 p-3 rounded-2xl border border-border bg-white shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 w-full"
+                >
+                  <div className={`p-2 rounded-xl ${f.bgColor} shrink-0 mt-0.5`}>
+                    <Icon className={`w-5 h-5 ${f.color}`} />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm text-foreground mb-1">
+                      {f.label}
+                    </p>
+                    <p className="text-xs leading-relaxed text-muted-foreground">
+                      {f.sub}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <button
+          <div className="flex flex-wrap gap-4 items-center">
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: '0 14px 28px rgba(13, 114, 233, 0.5)' }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => {
                 document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" });
               }}
               id="hero-explore-services-btn"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
               style={{
-                background:
-                  "linear-gradient(135deg, hsl(var(--water-deep)), hsl(var(--primary)))",
-                boxShadow: "0 6px 24px hsl(var(--primary) / 0.3)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 12px 36px hsl(var(--primary) / 0.45)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 6px 24px hsl(var(--primary) / 0.3)";
+                background: '#0D72E9',
+                color: 'white',
+                border: 'none',
+                borderRadius: '100px',
+                padding: '14px 32px',
+                fontSize: '13px',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                cursor: 'pointer',
+                boxShadow: '0 8px 20px rgba(13, 114, 233, 0.35)',
+                letterSpacing: '0.5px',
               }}
             >
               Explore Our Services
@@ -136,31 +145,34 @@ export default function ServicesHero() {
               >
                 <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </button>
+            </motion.button>
 
-            <Link
-              to="/contact"
-              id="hero-contact-us-btn"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5"
-              style={{
-                background: "transparent",
-                color: "hsl(var(--primary))",
-                border: "1.5px solid hsl(var(--primary) / 0.4)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor =
-                  "hsl(var(--primary))";
-                (e.currentTarget as HTMLElement).style.background =
-                  "hsl(var(--primary) / 0.05)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor =
-                  "hsl(var(--primary) / 0.4)";
-                (e.currentTarget as HTMLElement).style.background =
-                  "transparent";
-              }}
-            >
-              Contact Us
+            <Link to="/contact" style={{ textDecoration: 'none' }}>
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: 'rgba(11,27,61,0.04)',
+                }}
+                whileTap={{ scale: 0.95 }}
+                id="hero-contact-us-btn"
+                style={{
+                  background: 'white',
+                  color: '#0B1B3D',
+                  border: '1px solid #E2E8F0',
+                  borderRadius: '100px',
+                  padding: '14px 32px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  cursor: 'pointer',
+                  letterSpacing: '0.5px',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                }}
+              >
+                Contact Us
+              </motion.button>
             </Link>
           </div>
         </AnimatedSection>
@@ -169,19 +181,19 @@ export default function ServicesHero() {
         <AnimatedSection delay={0.2} className="relative w-full order-1 lg:order-2 hidden md:block">
           <style>{`
             @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+            @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
           `}</style>
           <div style={{ position: "relative", height: 600, width: "100%", maxWidth: 550, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <div style={{ position: "absolute", bottom: 20, right: -10, width: 260, height: 260, background: "hsl(var(--muted))", borderRadius: 4, zIndex: 0 }} />
             <div style={{ position: "absolute", top: 20, right: 0, zIndex: 1, display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 9, opacity: 0.3 }}>
               {Array.from({ length: 20 }).map((_, i) => <div key={i} style={{ width: 4, height: 4, borderRadius: "50%", background: "hsl(var(--primary))" }} />)}
             </div>
             
             {/* The Main "Busy" Card */}
-            <div style={{ position: "absolute", left: 0, top: 40, width: 380, height: 520, borderRadius: 16, overflow: "hidden", zIndex: 10, boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team collaborating on services" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", top: 0, left: 0 }} />
+            <div style={{ position: "absolute", left: 0, top: 40, width: 380, height: 480, borderRadius: 16, overflow: "hidden", zIndex: 10, boxShadow: "0 24px 60px rgba(0,0,0,0.15)" }}>
+              <img src={ServicesPhoto} alt="Team collaborating on services" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", top: 0, left: 0 }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 100%)", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 20 }}>
                 <div style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", borderRadius: 12, padding: "20px 32px", textAlign: "center", border: "1px solid rgba(255,255,255,0.2)" }}>
-                  <p className="font-display" style={{ fontSize: 28, fontWeight: 800, color: "#FFF", lineHeight: 1.2, letterSpacing: "0.04em" }}>SAES<br />ENVIRO<br />SOLUTIONS</p>
+                  <p className="font-display" style={{ fontSize: 28, fontWeight: 800, color: "#FFF", lineHeight: 1.2, letterSpacing: "0.04em" }}>SA ENVIRO<br />SOLUTIONS</p>
                 </div>
               </div>
             </div>
@@ -189,7 +201,7 @@ export default function ServicesHero() {
             {/* Services Floating Card */}
             <div style={{ position: "absolute", top: 0, right: 10, width: 180, height: 180, borderRadius: 12, overflow: "hidden", zIndex: 3, boxShadow: "0 12px 40px rgba(0,0,0,0.12)", animation: "float 7s ease-in-out infinite" }}>
               <div style={{ width: "100%", height: "100%", background: "linear-gradient(145deg, hsl(var(--background)), hsl(var(--muted)))", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10 }}>
-                <span style={{ fontSize: 44 }}>⚙️</span>
+                <Settings className="w-12 h-12 text-primary" style={{ animation: "spin-slow 20s linear infinite" }} />
                 <p style={{ fontSize: 12, color: "hsl(var(--foreground))", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Services</p>
               </div>
             </div>
