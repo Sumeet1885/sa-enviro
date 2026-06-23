@@ -89,8 +89,8 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
           className={`
             absolute -bottom-1 left-0 h-[2px] rounded-full
             ${pathname.includes(item.href)
-              ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
-              : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
+              ? "bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-400 shadow-[0_0_16px_rgba(14,165,233,0.9)]"
+              : "bg-gradient-to-r from-sky-500 to-blue-500 shadow-[0_0_12px_rgba(14,165,233,0.7)]"
             }
           `}
         />
@@ -98,11 +98,11 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         {pathname === item.href && (
           <>
             <motion.span
-              className="absolute inset-0 -inset-x-4 -inset-y-2 rounded-2xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 backdrop-blur-sm border border-violet-400/30 -z-10"
+              className="absolute inset-0 -inset-x-4 -inset-y-2 rounded-2xl bg-gradient-to-r from-sky-600/20 to-blue-600/20 backdrop-blur-sm border border-sky-400/30 -z-10"
               transition={{ duration: 0.3 }}
             />
             <motion.span
-              className="absolute inset-0 rounded-2xl bg-violet-500/20 blur-xl -z-20"
+              className="absolute inset-0 rounded-2xl bg-sky-500/20 blur-xl -z-20"
               transition={{ duration: 0.3 }}
             />
           </>
@@ -144,8 +144,8 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
           className={`
             absolute -bottom-1 left-0 h-[2px] rounded-full
             ${pathname.includes(item.href)
-              ? "bg-gradient-to-r from-violet-400 via-purple-400 to-fuchsia-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
-              : "bg-gradient-to-r from-violet-500 to-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.7)]"
+              ? "bg-gradient-to-r from-sky-400 via-blue-400 to-cyan-400 shadow-[0_0_16px_rgba(14,165,233,0.9)]"
+              : "bg-gradient-to-r from-sky-500 to-blue-500 shadow-[0_0_12px_rgba(14,165,233,0.7)]"
             }
           `}
           animate={{ width: isOpen ? "100%" : 0 }}
@@ -155,14 +155,14 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
         {isScrolled && (
           <>
             <motion.span
-              className="absolute inset-0 -inset-x-4 -inset-y-2 rounded-2xl bg-gradient-to-r from-violet-600/20 to-purple-600/20 backdrop-blur-sm border border-violet-400/30 -z-10"
+              className="absolute inset-0 -inset-x-4 -inset-y-2 rounded-2xl bg-gradient-to-r from-sky-600/20 to-blue-600/20 backdrop-blur-sm border border-sky-400/30 -z-10"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: isOpen ? 1 : 0, scale: isOpen ? 1 : 0.9 }}
               whileHover={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
             />
             <motion.span
-              className="absolute inset-0 rounded-2xl bg-violet-500/20 blur-xl -z-20"
+              className="absolute inset-0 rounded-2xl bg-sky-500/20 blur-xl -z-20"
               initial={{ opacity: 0 }}
               animate={{ opacity: isOpen ? 1 : 0 }}
               whileHover={{ opacity: 1 }}
@@ -183,16 +183,16 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
               absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-56 max-w-xs z-50
               rounded-2xl overflow-hidden
               ${isScrolled
-                ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
+                ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-sky-400/50 shadow-[0_16px_64px_rgba(14,165,233,0.4)]"
                 : "bg-gradient-to-br from-slate-800/90 via-slate-900/85 to-slate-800/90 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.5)]"
               }
             `}
           >
             <motion.div
-              className="absolute inset-0 bg-gradient-to-br from-violet-600/10 via-purple-600/10 to-fuchsia-600/10"
+              className="absolute inset-0 bg-gradient-to-br from-sky-600/10 via-blue-600/10 to-cyan-600/10"
             />
 
-            <ul className="p-2 relative z-10 max-h-[500px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full">
+            <ul className="p-2 relative z-10 max-h-[500px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-sky-500/50 [&::-webkit-scrollbar-thumb]:rounded-full">
               {item.dropdown.map((dropItem, idx) => (
                 <motion.li
                   key={dropItem.key}
@@ -207,8 +207,8 @@ const Dropdown: React.FC<DropdownProps> = ({ item, isScrolled, index }) => {
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                     className={`flex flex-col px-3 py-4 rounded-xl transition-all duration-300 text-white font-medium  group/item relative overflow-hidden whitespace-nowrap my-1
                       ${pathname.includes((dropItem.key || dropItem.href) || "")
-                        ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
-                        : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
+                        ? "bg-gradient-to-r from-sky-600/40 to-blue-600/40 shadow-[0_8px_32px_rgba(14,165,233,0.5)] border-2 border-sky-400/60 backdrop-blur-sm"
+                        : "hover:bg-gradient-to-r hover:from-sky-600/25 hover:to-blue-600/25 hover:shadow-[0_4px_24px_rgba(14,165,233,0.3)] border-2 border-transparent hover:border-sky-400/40"
                       }
                       drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]`}
                   >
@@ -266,8 +266,8 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             w-full px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
             flex items-center justify-between relative overflow-hidden group/link
             ${isActive
-              ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
-              : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
+              ? "bg-gradient-to-r from-sky-600/40 to-blue-600/40 text-white shadow-[0_8px_32px_rgba(14,165,233,0.5)] border-2 border-sky-400/60 backdrop-blur-sm"
+              : "hover:bg-gradient-to-r hover:from-sky-600/25 hover:to-blue-600/25 text-white hover:shadow-[0_4px_24px_rgba(14,165,233,0.3)] border-2 border-transparent hover:border-sky-400/40"
             }
             drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]
           `}
@@ -280,7 +280,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
           />
           <div className="flex items-center gap-3 relative z-10">
             {isActive && (
-              <Droplets className="w-5 h-5 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
+              <Droplets className="w-5 h-5 text-sky-300 drop-shadow-[0_2px_8px_rgba(14,165,233,0.8)]" />
             )}
             <span>{item.name}</span>
           </div>
@@ -303,8 +303,8 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300
             flex items-center gap-3 relative overflow-hidden group/link
             ${isActive
-              ? "bg-gradient-to-r from-violet-600/40 to-purple-600/40 text-white shadow-[0_8px_32px_rgba(139,92,246,0.5)] border-2 border-violet-400/60 backdrop-blur-sm"
-              : "hover:bg-gradient-to-r hover:from-violet-600/25 hover:to-purple-600/25 text-white hover:shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-transparent hover:border-violet-400/40"
+              ? "bg-gradient-to-r from-sky-600/40 to-blue-600/40 text-white shadow-[0_8px_32px_rgba(14,165,233,0.5)] border-2 border-sky-400/60 backdrop-blur-sm"
+              : "hover:bg-gradient-to-r hover:from-sky-600/25 hover:to-blue-600/25 text-white hover:shadow-[0_4px_24px_rgba(14,165,233,0.3)] border-2 border-transparent hover:border-sky-400/40"
             }
             drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]
           `}
@@ -316,12 +316,12 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             transition={{ duration: 0.6 }}
           />
           {isActive && (
-            <Droplets className="w-5 h-5 relative z-10 text-violet-300 drop-shadow-[0_2px_8px_rgba(139,92,246,0.8)]" />
+            <Droplets className="w-5 h-5 relative z-10 text-sky-300 drop-shadow-[0_2px_8px_rgba(14,165,233,0.8)]" />
           )}
           <span className="relative z-10">{item.name}</span>
           {isActive && (
             <motion.span
-              className="absolute right-4 w-3 h-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-400 shadow-[0_0_16px_rgba(139,92,246,0.9)]"
+              className="absolute right-4 w-3 h-3 rounded-full bg-gradient-to-br from-sky-400 to-blue-400 shadow-[0_0_16px_rgba(14,165,233,0.9)]"
               animate={{ scale: [1, 1.3, 1], opacity: [1, 0.8, 1] }}
               transition={{ duration: 2.5, repeat: Infinity }}
             />
@@ -336,7 +336,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="mt-2 ml-4 pl-4 border-l-2 border-violet-400/30 space-y-1 overflow-y-auto max-h-[500px] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
+            className="mt-2 ml-4 pl-4 border-l-2 border-sky-400/30 space-y-1 overflow-y-auto max-h-[500px] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-sky-500/50 [&::-webkit-scrollbar-thumb]:rounded-full"
           >
             {item.dropdown.map((dropItem, idx) => {
               const isDropActive = pathname.includes(dropItem.key);
@@ -357,8 +357,8 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
                     }}
                     className={`block px-4 py-3 text-sm rounded-lg transition-all group/subitem relative overflow-hidden font-medium
                       ${isDropActive
-                        ? "bg-gradient-to-r from-violet-600/25 to-purple-600/25 text-white shadow-[0_4px_24px_rgba(139,92,246,0.3)] border-2 border-violet-400/40"
-                        : "text-slate-300 hover:text-white hover:bg-violet-600/20 border-2 border-transparent"
+                        ? "bg-gradient-to-r from-sky-600/25 to-blue-600/25 text-white shadow-[0_4px_24px_rgba(14,165,233,0.3)] border-2 border-sky-400/40"
+                        : "text-slate-300 hover:text-white hover:bg-sky-600/20 border-2 border-transparent"
                       }
                     `}
                   >
@@ -374,7 +374,7 @@ const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
                     {dropItem.description && (
                       <span
                         className={`relative z-10 block text-xs mt-0.5 transition-colors
-                          ${isDropActive ? "text-violet-300" : "text-slate-400 group-hover/subitem:text-violet-300"}
+                          ${isDropActive ? "text-sky-300" : "text-slate-400 group-hover/subitem:text-sky-300"}
                         `}
                       >
                         {dropItem.description}
@@ -441,12 +441,12 @@ export function Header() {
           w-full max-w-4xl
           transition-all duration-700 ease-out
           ${isScrolled
-            ? "bg-gradient-to-r from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/60"
+            ? "bg-gradient-to-r from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-sky-400/60"
             : "bg-gradient-to-r from-slate-800/80 via-slate-900/75 to-slate-800/80 backdrop-blur-2xl border-2 border-slate-600/60"
           }
           rounded-full flex items-center justify-between px-4 sm:px-6 lg:px-8 text-sm
           shadow-[0_16px_48px_rgba(0,0,0,0.5)]
-          hover:shadow-[0_20px_64px_rgba(139,92,246,0.45)]
+          hover:shadow-[0_20px_64px_rgba(14,165,233,0.45)]
           group
         `}
         style={{ paddingTop: 5, paddingBottom: 5 }}
@@ -458,7 +458,7 @@ export function Header() {
             className="absolute inset-0 rounded-full overflow-hidden"
           >
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-violet-600/15 via-purple-600/15 to-fuchsia-600/15"
+              className="absolute inset-0 bg-gradient-to-r from-sky-600/15 via-blue-600/15 to-cyan-600/15"
             />
           </motion.div>
         )}
@@ -478,7 +478,7 @@ export function Header() {
             className="w-24 sm:w-40 h-auto max-h-12 sm:max-h-16 object-contain relative z-10 drop-shadow-2xl"
             animate={{
               filter: isScrolled
-                ? "drop-shadow(0 4px 20px rgba(139,92,246,0.6)) brightness(1.1)"
+                ? "drop-shadow(0 4px 20px rgba(14,165,233,0.6)) brightness(1.1)"
                 : "drop-shadow(0 2px 8px rgba(0,0,0,0.3))",
             }}
             transition={{
@@ -508,7 +508,7 @@ export function Header() {
           className={`
             lg:hidden p-2 sm:p-3 rounded-2xl transition-all duration-500 relative overflow-hidden flex-shrink-0
             ${isScrolled
-              ? "bg-gradient-to-br from-violet-600/40 to-purple-600/40 backdrop-blur-md text-white border-2 border-violet-400/60 shadow-[0_8px_32px_rgba(139,92,246,0.5)]"
+              ? "bg-gradient-to-br from-sky-600/40 to-blue-600/40 backdrop-blur-md text-white border-2 border-sky-400/60 shadow-[0_8px_32px_rgba(14,165,233,0.5)]"
               : "bg-gradient-to-br from-slate-700/50 to-slate-800/50 border-2 border-slate-600/50 text-white shadow-[0_4px_16px_rgba(0,0,0,0.4)]"
             }
           `}
@@ -555,13 +555,13 @@ export function Header() {
                 absolute top-full left-0 right-0 mt-4
                 lg:hidden rounded-3xl overflow-hidden
                 ${isScrolled
-                  ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-violet-400/50 shadow-[0_16px_64px_rgba(139,92,246,0.4)]"
+                  ? "bg-gradient-to-br from-slate-900/95 via-indigo-950/90 to-slate-900/95 backdrop-blur-3xl border-2 border-sky-400/50 shadow-[0_16px_64px_rgba(14,165,233,0.4)]"
                   : "bg-gradient-to-br from-slate-800/85 via-slate-900/80 to-slate-800/85 backdrop-blur-2xl border-2 border-slate-600/50 shadow-[0_12px_48px_rgba(0,0,0,0.4)]"
                 }
               `}
             >
               <div
-                className="absolute inset-0 bg-gradient-to-br from-violet-600/15 via-purple-600/15 to-fuchsia-600/15 opacity-50"
+                className="absolute inset-0 bg-gradient-to-br from-sky-600/15 via-blue-600/15 to-cyan-600/15 opacity-50"
               />
               <nav className="py-6 flex flex-col gap-2 px-6 relative z-10 max-h-[500px] overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-violet-500/50 [&::-webkit-scrollbar-thumb]:rounded-full">
                 {navigation.map((item, index) => (
