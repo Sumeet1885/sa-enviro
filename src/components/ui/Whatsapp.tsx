@@ -1,7 +1,7 @@
 import { siteConfig } from "@/constants/siteData";
 
 const WhatsAppButton = () => {
-  const PhoneNumber = siteConfig.contact.phone.slice(4);
+  const PhoneNumber = "8087748585";
   return (
     <a
       href={`https://wa.me/91${PhoneNumber}?text=Hello%20I%20am%20interested`}

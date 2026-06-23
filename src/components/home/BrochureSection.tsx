@@ -134,7 +134,7 @@ export const BrochureSection = () => {
             variants={up}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-family-serif)" }}
             className="text-5xl sm:text-6xl md:text-7xl font-bold  leading-[1.0] tracking-tight"
           >
             A Cleaner
@@ -171,8 +171,7 @@ export const BrochureSection = () => {
               <text
                 x="0"
                 y="78"
-                fontFamily="'Playfair Display', serif"
-                fontStyle="italic"
+                fontFamily="var(--font-family-serif)"
                 fontWeight="700"
                 fontSize="88"
                 fill="none"
@@ -186,8 +185,7 @@ export const BrochureSection = () => {
               <text
                 x="0"
                 y="78"
-                fontFamily="'Playfair Display', serif"
-                fontStyle="italic"
+                fontFamily="var(--font-family-serif)"
                 fontWeight="700"
                 fontSize="88"
                 fill="url(#textGrad)"
@@ -240,7 +238,7 @@ export const BrochureSection = () => {
           variants={up}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          style={{ fontFamily: "var(--font-family-serif)" }}
           className="text-8xl sm:text-9xl font-bold  leading-none mb-2"
         >
           {siteConfig.stats.Experience}
@@ -274,7 +272,7 @@ export const BrochureSection = () => {
               animate={inView ? "visible" : "hidden"}
             >
               <p
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                style={{ fontFamily: "var(--font-family-serif)" }}
                 className="text-2xl font-bold  leading-none mb-1"
               >
                 {item.value}
@@ -323,7 +321,7 @@ export const BrochureSection = () => {
             variants={up}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-family-serif)" }}
             className="text-2xl font-light  leading-snug mb-2 max-w-[180px]"
           >
             See the full picture.
@@ -424,7 +422,7 @@ export const BrochureSection = () => {
         onMouseMove={onMove}
         onMouseLeave={onLeave}
         className="brochure-bg relative overflow-hidden dark-section"
-        style={{ fontFamily: "'Archivo', sans-serif" }}
+        style={{ fontFamily: "var(--font-family-sans)" }}
       >
         {PARTICLES.map((p, i) => (
           <Particle key={i} {...p} />

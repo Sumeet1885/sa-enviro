@@ -1,6 +1,7 @@
 import Image1 from "@/assets/about-hero.webp";
 import Image2 from "@/assets/hero-water-treatment.webp";
-const Image3 = "/hero2.webp";
+import Image3 from "@/assets/hero2.webp";
+
 
 import {Image }from "../assets/image"
 import Profile1 from "@/assets/Profile1.webp";
@@ -22,12 +23,13 @@ export const siteConfig: SiteConfig = {
   contact: {
     phone: "+91 8087748585 / 8087758585",
     email: "sales@saenvirosolutions.com, amruta@saenvirosolutions.com",
-    address: "Chinchwad, Pune, Maharashtra, India",
+    address:
+      "FLAT NO 302, 3RD Floor, KRISHNA RESIDENCY, CTS NO 571, OPP. BHAJI MANDAI, Chinchwad Gaon, Pimpri Chinchwad, Pune, Maharashtra - 411033",
   },
   social: {
-    facebook: "https://facebook.com/saenvirosolutions",
+    instagram: "https://instagram.com/saenvirosolutions",
     linkedin: "https://linkedin.com/company/saenvirosolutions",
-    twitter: "https://twitter.com/saenvirosolutions",
+    whatsapp: "https://wa.me/918087748585",
   },
   stats: {
     Experience: "16",
@@ -96,9 +98,9 @@ export const navigation: NavigationItem[] = [
 export const team_member: Team_Member[] = [
   {
     name: "Santosh D. Urdukhe",
-    title: "Director & CEO",
+    title: "CEO",
     details:
-      "Santosh Urdukhe, an expert in environmental aspects, has a Master’s degree in Environment Science. He has industrial experience in pollution control and allied services and products, specifically in designing, fabricating, setting up and maintaining water treatment plants. \n*Erection and commissioning of CETP 27.5MLD at Taloja MIDC, Mumbai. \n*Operation and Maintenance of CETP 27.5MLD at Taloja MIDC, Mumbai, Pune. \n*Erection and commissioning of ETP (HTDS) 120m3/day, ETP (LTDS) 360m3/day, UF and RO 360m3/day at Clariant India Ltd, Bonthapally, Telangana. \n*Erection and commissioning of STP 350m3/day at Chambal fertilisers and chemicals ltd, Kota Rajasthan. \n*In Mahindra Vehicle Manufacturing Ltd, Chakan, Pune Operation and Maintenance of ETP (1560m3/day), STP (480m3/day) & (168m3/day). \n*In Radico NV Distilleries Maharashtra Ltd, Shendra, Aurangabad Operation and Maintenance of ETP (1020m3/day). \n*In Mayuge Sugars & Distilleries Ltd, Uganda, Africa Operation and Maintenance of Biogas Plant (400m3/day), CPU (400m3/day) and Bio-Composting.",
+      "Santosh Urdukhe, an expert in environmental aspects, has a Master's degree in Environment Science. He has industrial experience in pollution control and allied services and products, specifically in designing, fabricating, setting up, commissioning and maintaining water treatment plants.\n\n• Erection and commissioning of CETP 27.5MLD at Taloja MIDC, Mumbai.\n• Operation and Maintenance of CETP 27.5MLD at Taloja MIDC, Mumbai.\n• Erection and commissioning of STP 1500m3/day at City Corporation LTD, AMANORA, Hadapsar, Pune.\n• Erection and commissioning of ETP (HTDS) 120m3/day, ETP (LTDS) 360m3/day, UF and RO 360m3/day at Clariant India ltd, Bonthapally, Telangana.\n• Erection and commissioning of STP 350m3/day at Chambal fertilisers and chemicals ltd, Kota Rajasthan.",
     functionality:
       "Functionally he looks after Project Management, Procurement & Quality.",
     highlight: false,
@@ -113,6 +115,22 @@ export const team_member: Team_Member[] = [
     highlight: false,
   },
   {
+    name: "Dr. Vikrant Aher",
+    title: "Process Head",
+    details:
+      "He is a Process Co-ordinator and expert in the field of Remote Sensing, GIS and Environmental Engineering. He did his masters in Environmental Science and Geoinformatics from Pune University and doing his doctorate from University of Pune, Pune. He also done post graduate diploma in Water & Wastewater. He has taught Geoinformatics, Land Use-Planning and Environmental Engineering courses at Dept. of Environmental Science, University of Pune for nearly 8 years. Since joining Rincon Environmental Consultancy in 2013, he has worked extensively in GIS based study for EIA project, Command area development study, Water Audit, Pollution studies and Environmental Management Studies, Environmental Audit, Design and Turnkey Installation of Air Pollution Control Systems and Effluent Treatment Plants.",
+    functionality: "Functionally he looks after Process and Technical support",
+    highlight: false,
+  },
+  {
+    name: "Rakesh Ramesh Dhotre",
+    title: "Technical & Licensing Officer",
+    details:
+      "All types of Monitoring Services related to Environmental Laboratory & Compliances for Environmental Clearance & Consent from State Pollution Control Board. Liaison with Government Authorities e.g. Ministry of Environment & Forests (MoEF), SEAC/SEIAA Environment Department, Govt. of Maharashtra, Maharashtra Pollution Control Board, Survey of India, Town Planning Department etc. Primary, Secondary data collection & preparation of DPR (Detailed Project Report) for different projects, including CETP (Common Effluent Treatment Plant) of PCMC (Pimpri Chinchwad Municipal Corporation). Techno legal Services for all the matters in NGT (National Green Tribunal).",
+    functionality: "Functionally he looks after MPCB, CPCB related legal compliance.",
+    highlight: false,
+  },
+  {
     name: "Ganesh Gaikwad",
     title: "HR & Admin Head",
     details:
@@ -122,15 +140,7 @@ export const team_member: Team_Member[] = [
     highlight: false,
   },
   {
-    name: "Dr. Vikrant Aher",
-    title: "Process Head",
-    details:
-      "He is a Process Co-ordinator and expert in the field of Remote Sensing, GIS and Environmental Engineering. He did his masters in Environmental Science and Geoinformatics from Pune University and doing his doctorate from University of Pune, Pune. He also done post graduate diploma in Water & Wastewater. He has taught Geoinformatics, Land Use-Planning and Environmental Engineering courses at Dept. of Environmental Science, University of Pune for nearly 8 years. Since joining Rincon Environmental Consultancy in 2013, he has worked extensively in GIS based study for EIA project, Command area development study, Water Audit, Pollution studies and Environmental Management Studies, Environmental Audit, Design and Turnkey Installation of Air Pollution Control Systems and Effluent Treatment Plants.",
-    functionality: "Functionally he looks after Process and Technical support.",
-    highlight: false,
-  },
-  {
-    name: "Raju B Wagaskar",
+    name: "Raju B. Wagaskar",
     title: "EHS Manager",
     details:
       "Dynamic professional with nearly 24 years of experience in Safety, Utility Projects. Expert in Safety, Legal compliance in various Industries. He has done his Mechanical Engineering from Pune University and Advance Diploma in Industrial Safety from Mumbai Board. Expert in operation and maintenance of equipment in Facility management. Worked with Mahindra and Mahindra for 14 years as Project and Operational Manager. Prior to joining SA Enviro solutions also worked as Operations Manager in M/s Vibra Industries which is in wiring harness manufacturing.",
@@ -139,7 +149,32 @@ export const team_member: Team_Member[] = [
     highlight: false,
   },
   {
-    name: "Umakant Maharana",
+    name: "Pradeep Ubhe",
+    title: "Environment Engineer",
+    details:
+      "He has a Diploma in Civil Engineering. In all total 29 years of experience in designing, engineering & erection of trunky STP projects (civil) in domestic & industrial.",
+    functionality: "Functionally he looks after project design & erection.",
+    highlight: false,
+  },
+  {
+    name: "Yogesh Supare",
+    title: "Business Development Executive",
+    details:
+      "His qualification is MBA in marketing, MSc Environmental Sciences. He has worked with Ministry of housing and urban in Swachh Bharat Mission. Collaborated with business development, marketing and product department on creation of competitive concept proposals.",
+    functionality: "Functionally he is a Business Development Executive.",
+    highlight: false,
+  },
+  {
+    name: "Ashitosh Shinde",
+    title: "Environment Engineer",
+    details:
+      "He has a Master's degree in Environment Science. He has industrial experience in pollution control and allied services and products, specifically in designing, fabricating, setting up, commissioning and maintaining water treatment plants.",
+    functionality:
+      "Functionally he looks after project erection, commissioning and operation with maintenance of ETP, STP, WTP & ZLD.",
+    highlight: false,
+  },
+  {
+    name: "Umarakant Marne",
     title: "Technical Consultant",
     details:
       "He is a certified energy auditor. His qualification is in Mechanical Engineering. He has total 32 years of experience in the field of waste water treatment, research and development. Handling Trunkey projects. He is a Proprietor of EEcon Consulting Engineers.",
@@ -267,6 +302,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Chemical-Dosing-System_m9hwjp.webp",
     link: "/services/chemical-dosing",
+    category: "general",
   },
   {
     id: "clarifier",
@@ -276,6 +312,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/The-Clarifier_sf5j93.webp",
     link: "/services/clarifier",
+    category: "general",
   },
   {
     id: "biological-treatment",
@@ -285,6 +322,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
     link: "/services/biological-treatment",
+    category: "general",
   },
   {
     id: "tube-settlers",
@@ -294,6 +332,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
     link: "/services/tube-settlers",
+    category: "general",
   },
   {
     id: "pressure-sand-filters",
@@ -303,6 +342,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Pressure-Sand-Filter-activated-carbon-filter1_yqs77v.webp",
     link: "/services/pressure-sand-filters",
+    category: "general",
   },
   {
     id: "activated-carbon-filters",
@@ -312,6 +352,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Activated-Carbon-Filters_pyagph.webp",
     link: "/services/activated-carbon-filters",
+    category: "general",
   },
   {
     id: "dual-media-filters",
@@ -321,6 +362,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725955/logosaeenviro_o9itfb.gif",
     link: "/services/dual-media-filters",
+    category: "general",
   },
   {
     id: "reverse-osmosis",
@@ -330,33 +372,37 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
     link: "/services/reverse-osmosis",
+    category: "amc",
   },
   {
     id: "water-treatment-plants",
-    title: "Water Treatment Plants",
+    title: "Water Treatment Plants (WTP)",
     description:
       "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants.",
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773727163/Water-Treatment-Plants-WTP1_ggis8i.webp",
     link: "/services/water-treatment-plants",
+    category: "amc",
   },
   {
     id: "sewage-treatment",
-    title: "Sewage Treatment Plants",
+    title: "Sewage Treatment Plants (STP)",
     description:
       "We offer a huge range of Sewage Treatment Plants, which are used in the national as well as international market.",
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/STP1_tcprpw.jpg",
     link: "/services/sewage-treatment",
+    category: "amc",
   },
   {
     id: "effluent-treatment",
-    title: "Effluent Treatment Plant",
+    title: "Effluent Treatment Plant (ETP)",
     description:
       "We at SA Enviro Solutions manufacture and supply effluent treatment Plants. The effluent treatment plants are designed to treat the effluent coming from different process of the plant.",
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
     link: "/services/effluent-treatment",
+    category: "amc",
   },
   {
     id: "dm-plants",
@@ -366,6 +412,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/DMplants-585x340_dih1yh.gif",
     link: "/services/dm-plants",
+    category: "amc",
   },
   {
     id: "water-softeners",
@@ -375,6 +422,7 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778061765/Softener2_wnzwl8.jpg",
     link: "/services/water-softeners",
+    category: "general",
   },
   {
     id: "ultraviolet-units",
@@ -384,15 +432,17 @@ export const services = [
     image:
       "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     link: "/services/ultraviolet-units",
+    category: "general",
   },
   {
-    id: "swimming-pool-filtration",
-    title: "Swimming Pool Water Filtration Plants",
+    id: "wastewater-treatment",
+    title: "Wastewater Treatment Plants (WWTP)",
     description:
-      "We offer a large variety of Pool Filtration Systems, Dosing Systems & Accessories. The skimmer and level deck techniques ensure perfect water quality at all times.",
+      "Comprehensive wastewater treatment solutions designed to remove contaminants and ensure environmentally safe discharge, enabling sustainable water reuse across industries.",
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/Swimming-Pool-Water-Filtration-Plants_vokkvx.webp",
-    link: "/services/swimming-pool-filtration",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg",
+    link: "/services/wastewater-treatment",
+    category: "amc",
   },
 ];
 
@@ -464,60 +514,22 @@ export const certifications = [
 ];
 
 export const galleryImages = [
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Chemical-Dosing-System_m9hwjp.webp",
-    alt: "Chemical Dosing System",
-    category: "equipment",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/The-Clarifier_sf5j93.webp",
-    alt: "The Clarifier",
-    category: "equipment",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Biological-MBBR-Treatment_1_lzlwpo.webp",
-    alt: "Biological MBBR Treatment",
-    category: "treatment",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725962/Tube-settlers-2_hqcfdl.webp",
-    alt: "Tube Settlers",
-    category: "equipment",
-  },
+  
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Pressure-Sand-Filter-activated-carbon-filter1_yqs77v.webp",
     alt: "Pressure Sand Filter",
     category: "filters",
   },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/Activated-Carbon-Filters_pyagph.webp",
-    alt: "Activated Carbon Filters",
-    category: "filters",
-  },
+
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773727163/Water-Treatment-Plants-WTP1_ggis8i.webp",
     alt: "Water Treatment Plants",
     category: "plants",
   },
   {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
-    alt: "Sewage Treatment Plants",
-    category: "plants",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725953/Effluent-Treatment-Plant_e9js1o.webp",
-    alt: "Effluent Treatment Plant",
-    category: "plants",
-  },
-  {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     alt: "Ultraviolet Units",
     category: "equipment",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/Swimming-Pool-Water-Filtration-Plants_vokkvx.webp",
-    alt: "Swimming Pool Filtration",
-    category: "plants",
   },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
@@ -596,6 +608,16 @@ export const galleryImages = [
   },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/OMS2_fbcrdl.jpg",
+    alt: "OMS Sensor Setup",
+    category: "equipment",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220703/Effluent-Treatment-Plant_e9js1o_azdb8p.png",
+    alt: "Effluent-Treatment-Plant",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220702/Effluent-Treatment-Plant_e9js2o_qhr3az.png",
     alt: "OMS Sensor Setup",
     category: "equipment",
   },
@@ -837,7 +859,7 @@ export const blogs = [
       },
     ],
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/v1773725958/Sewage-Treatment-Plants_ms44gc.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
@@ -889,7 +911,7 @@ export const blogs = [
       },
     ],
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725961/logosaeenviro_o9itfb.gif",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/ETP1_ugtou4.jpg",
     author: "SA Enviro Solutions",
     authorAvatar: "",
     date: "Oct 22, 2021",
@@ -1053,6 +1075,11 @@ export const LOGOS: LogoItem[] = [
     alt: "client-29",
     imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1774417430/Picture10-1-585x439_omix0l.webp",
   },
+  {
+    id: "picture-30",
+    alt: "client-30",
+    imgUrl: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782062880/3-L_T_Defence_witdxs.jpg",
+  },
 ];
 
 export const products: Product[] = [
@@ -1067,7 +1094,7 @@ export const products: Product[] = [
     main: {
       title: "Sewage Treatment Plants",
       description:
-        "Advanced Sewage Treatment Plants using SBR, MBBR & UASB technology for highly efficient wastewater treatment.",
+        "Advanced Sewage Treatment Plants using SBR, MBBR, MBR & UASB technology for highly efficient wastewater treatment.",
       image: Image.stp,
       seo: {
         title:
@@ -1273,13 +1300,9 @@ export const products: Product[] = [
       },
     },
     images: [
-      
       { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg", alt: "ZLD Plant Overview" },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",
-        alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",
-      },
       { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD_xq06yw.jpg", alt: "Zero Liquid Discharge System" },
+      {url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/WhatsApp_Image_2026-05-06_at_10.55.12_AM_jqorj1.jpg",alt: "Ultra Filtration (UF) membrane unit with vertical pressure vessels",},
     ],
     Page_Description: [
       {
@@ -1360,13 +1383,6 @@ export const products: Product[] = [
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg", alt: "Architecture View" },
-      
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725952/etp2_sdicc6.webp",
-        alt: "Industrial Effluent Treatment Plant Setup",
-      },
-      
-
     ],
     Page_Description: [
       {

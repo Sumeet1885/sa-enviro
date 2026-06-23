@@ -243,8 +243,7 @@ export default function TeamSection() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Mono:wght@300;400&display=swap');
-        .ts-serif  { font-family: 'Cormorant Garamond', serif; }
+        .ts-serif  { font-family: var(--font-family-serif); }
         .ts-mono   { font-family: 'DM Mono', monospace; }
         .ts-grid {
           background-image:
@@ -380,7 +379,7 @@ export default function TeamSection() {
                 <div
                   ref={isFirst ? teamSlotRef : undefined}
                   id={isFirst ? "ts-slot-0" : undefined}
-                  className="ts-circle w-full rounded-full flex items-center justify-center ts-serif italic font-light text-white"
+                  className="ts-circle w-full rounded-full flex items-center justify-center ts-serif font-light text-white"
                   style={{
                     aspectRatio: "1",
                     background: isFirst
@@ -440,7 +439,7 @@ export default function TeamSection() {
 
         <div className="mt-14 text-center">
           <h3
-            className="ts-serif font-light italic text-[#f0ece6] tracking-[0.03em] transition-all duration-500"
+            className="ts-serif font-light text-[#f0ece6] tracking-[0.03em] transition-all duration-500"
             style={{ fontSize: 34 }}
           >
             {MEMBERS[active].name}
@@ -461,7 +460,7 @@ export default function TeamSection() {
 
       <div
         ref={avRef}
-        className="fixed rounded-full flex items-center justify-center ts-serif italic font-light text-white select-none"
+        className="fixed rounded-full flex items-center justify-center ts-serif font-light text-white select-none"
         style={{
           zIndex: 9999,
           willChange: "left, top, width, height",

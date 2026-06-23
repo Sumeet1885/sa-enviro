@@ -51,8 +51,7 @@ export const VisionSection = () => {
                 <text
                   x="0"
                   y="82"
-                  fontFamily="'Playfair Display', serif"
-                  fontStyle="italic"
+                  fontFamily="var(--font-family-serif)"
                   fontWeight="700"
                   fontSize="90"
                   fill="none"
@@ -67,8 +66,7 @@ export const VisionSection = () => {
                 <text
                   x="0"
                   y="82"
-                  fontFamily="'Playfair Display', serif"
-                  fontStyle="italic"
+                  fontFamily="var(--font-family-serif)"
                   fontWeight="700"
                   fontSize="90"
                   fill="url(#textGrad)"
