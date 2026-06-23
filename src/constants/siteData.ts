@@ -96,9 +96,9 @@ export const navigation: NavigationItem[] = [
 export const team_member: Team_Member[] = [
   {
     name: "Santosh D. Urdukhe",
-    title: "Director & CEO",
+    title: "CEO",
     details:
-      "Santosh Urdukhe, an expert in environmental aspects, has a Master’s degree in Environment Science. He has industrial experience in pollution control and allied services and products, specifically in designing, fabricating, setting up and maintaining water treatment plants. \n*Erection and commissioning of CETP 27.5MLD at Taloja MIDC, Mumbai. \n*Operation and Maintenance of CETP 27.5MLD at Taloja MIDC, Mumbai, Pune. \n*Erection and commissioning of ETP (HTDS) 120m3/day, ETP (LTDS) 360m3/day, UF and RO 360m3/day at Clariant India Ltd, Bonthapally, Telangana. \n*Erection and commissioning of STP 350m3/day at Chambal fertilisers and chemicals ltd, Kota Rajasthan. \n*In Mahindra Vehicle Manufacturing Ltd, Chakan, Pune Operation and Maintenance of ETP (1560m3/day), STP (480m3/day) & (168m3/day). \n*In Radico NV Distilleries Maharashtra Ltd, Shendra, Aurangabad Operation and Maintenance of ETP (1020m3/day). \n*In Mayuge Sugars & Distilleries Ltd, Uganda, Africa Operation and Maintenance of Biogas Plant (400m3/day), CPU (400m3/day) and Bio-Composting.",
+      "Santosh Urdukhe, an expert in environmental aspects, has a Master's degree in Environment Science. He has industrial experience in pollution control and allied services and products, specifically in designing, fabricating, setting up, commissioning and maintaining water treatment plants.\n\n• Erection and commissioning of CETP 27.5MLD at Taloja MIDC, Mumbai.\n• Operation and Maintenance of CETP 27.5MLD at Taloja MIDC, Mumbai.\n• Erection and commissioning of STP 1500m3/day at City Corporation LTD, AMANORA, Hadapsar, Pune.\n• Erection and commissioning of ETP (HTDS) 120m3/day, ETP (LTDS) 360m3/day, UF and RO 360m3/day at Clariant India ltd, Bonthapally, Telangana.\n• Erection and commissioning of STP 350m3/day at Chambal fertilisers and chemicals ltd, Kota Rajasthan.",
     functionality:
       "Functionally he looks after Project Management, Procurement & Quality.",
     highlight: false,
@@ -113,6 +113,22 @@ export const team_member: Team_Member[] = [
     highlight: false,
   },
   {
+    name: "Dr. Vikrant Aher",
+    title: "Process Head",
+    details:
+      "He is a Process Co-ordinator and expert in the field of Remote Sensing, GIS and Environmental Engineering. He did his masters in Environmental Science and Geoinformatics from Pune University and doing his doctorate from University of Pune, Pune. He also done post graduate diploma in Water & Wastewater. He has taught Geoinformatics, Land Use-Planning and Environmental Engineering courses at Dept. of Environmental Science, University of Pune for nearly 8 years. Since joining Rincon Environmental Consultancy in 2013, he has worked extensively in GIS based study for EIA project, Command area development study, Water Audit, Pollution studies and Environmental Management Studies, Environmental Audit, Design and Turnkey Installation of Air Pollution Control Systems and Effluent Treatment Plants.",
+    functionality: "Functionally he looks after Process and Technical support",
+    highlight: false,
+  },
+  {
+    name: "Rakesh Ramesh Dhotre",
+    title: "Technical & Licensing Officer",
+    details:
+      "All types of Monitoring Services related to Environmental Laboratory & Compliances for Environmental Clearance & Consent from State Pollution Control Board. Liaison with Government Authorities e.g. Ministry of Environment & Forests (MoEF), SEAC/SEIAA Environment Department, Govt. of Maharashtra, Maharashtra Pollution Control Board, Survey of India, Town Planning Department etc. Primary, Secondary data collection & preparation of DPR (Detailed Project Report) for different projects, including CETP (Common Effluent Treatment Plant) of PCMC (Pimpri Chinchwad Municipal Corporation). Techno legal Services for all the matters in NGT (National Green Tribunal).",
+    functionality: "Functionally he looks after MPCB, CPCB related legal compliance.",
+    highlight: false,
+  },
+  {
     name: "Ganesh Gaikwad",
     title: "HR & Admin Head",
     details:
@@ -122,15 +138,7 @@ export const team_member: Team_Member[] = [
     highlight: false,
   },
   {
-    name: "Dr. Vikrant Aher",
-    title: "Process Head",
-    details:
-      "He is a Process Co-ordinator and expert in the field of Remote Sensing, GIS and Environmental Engineering. He did his masters in Environmental Science and Geoinformatics from Pune University and doing his doctorate from University of Pune, Pune. He also done post graduate diploma in Water & Wastewater. He has taught Geoinformatics, Land Use-Planning and Environmental Engineering courses at Dept. of Environmental Science, University of Pune for nearly 8 years. Since joining Rincon Environmental Consultancy in 2013, he has worked extensively in GIS based study for EIA project, Command area development study, Water Audit, Pollution studies and Environmental Management Studies, Environmental Audit, Design and Turnkey Installation of Air Pollution Control Systems and Effluent Treatment Plants.",
-    functionality: "Functionally he looks after Process and Technical support.",
-    highlight: false,
-  },
-  {
-    name: "Raju B Wagaskar",
+    name: "Raju B. Wagaskar",
     title: "EHS Manager",
     details:
       "Dynamic professional with nearly 24 years of experience in Safety, Utility Projects. Expert in Safety, Legal compliance in various Industries. He has done his Mechanical Engineering from Pune University and Advance Diploma in Industrial Safety from Mumbai Board. Expert in operation and maintenance of equipment in Facility management. Worked with Mahindra and Mahindra for 14 years as Project and Operational Manager. Prior to joining SA Enviro solutions also worked as Operations Manager in M/s Vibra Industries which is in wiring harness manufacturing.",
@@ -139,7 +147,32 @@ export const team_member: Team_Member[] = [
     highlight: false,
   },
   {
-    name: "Umakant Maharana",
+    name: "Pradeep Ubhe",
+    title: "Environment Engineer",
+    details:
+      "He has a Diploma in Civil Engineering. In all total 29 years of experience in designing, engineering & erection of trunky STP projects (civil) in domestic & industrial.",
+    functionality: "Functionally he looks after project design & erection.",
+    highlight: false,
+  },
+  {
+    name: "Yogesh Supare",
+    title: "Business Development Executive",
+    details:
+      "His qualification is MBA in marketing, MSc Environmental Sciences. He has worked with Ministry of housing and urban in Swachh Bharat Mission. Collaborated with business development, marketing and product department on creation of competitive concept proposals.",
+    functionality: "Functionally he is a Business Development Executive.",
+    highlight: false,
+  },
+  {
+    name: "Ashitosh Shinde",
+    title: "Environment Engineer",
+    details:
+      "He has a Master's degree in Environment Science. He has industrial experience in pollution control and allied services and products, specifically in designing, fabricating, setting up, commissioning and maintaining water treatment plants.",
+    functionality:
+      "Functionally he looks after project erection, commissioning and operation with maintenance of ETP, STP, WTP & ZLD.",
+    highlight: false,
+  },
+  {
+    name: "Umarakant Marne",
     title: "Technical Consultant",
     details:
       "He is a certified energy auditor. His qualification is in Mechanical Engineering. He has total 32 years of experience in the field of waste water treatment, research and development. Handling Trunkey projects. He is a Proprietor of EEcon Consulting Engineers.",

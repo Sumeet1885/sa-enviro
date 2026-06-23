@@ -192,7 +192,7 @@ const Client = () => {
           style={{
             maxWidth: "1280px",
             width: "100%",
-            padding: `clamp(3rem, 8vw, 8rem) clamp(1.5rem, 4vw, 4rem)`,
+            padding: `clamp(3rem, 9.5vw, 8rem) clamp(1.5rem, 4vw, 4rem)`,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -225,8 +225,9 @@ const Client = () => {
               {/* Heading */}
               <motion.h1
                 variants={itemVariants}
+                style={{
                   fontFamily: "var(--font-family-serif)",
-                  fontSize: "var(--text-display-xl-size)",
+                  fontSize: "3.2rem",
                   fontWeight: 800,
                   lineHeight: 1.1,
                   letterSpacing: "-0.02em",
@@ -462,7 +463,7 @@ const Client = () => {
             <h2
               style={{
                 fontFamily: "var(--font-family-serif)",
-                fontSize: "var(--text-section-heading-size)",
+                fontSize: "3rem",
                 fontWeight: 800,
                 color: theme.colors.textDark,
                 margin: "0 0 1rem 0",
