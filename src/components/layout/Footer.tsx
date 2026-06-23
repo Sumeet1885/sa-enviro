@@ -344,7 +344,7 @@ export const Footer = () => {
                 margin: 0,
               }}
             >
-              {siteConfig.description.substring(0, 160)}...
+              {siteConfig.description.substring(0, 300)}
             </p>
 
             {/* Social Icons */}
