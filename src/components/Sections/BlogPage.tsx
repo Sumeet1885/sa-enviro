@@ -135,7 +135,7 @@ function BlogContent({
   return (
     <article aria-label="Blog post content">
       {title && (
-        <h1 className="animate-fade-in-up font-display text-xl italic my-7 pl-5 font-bold leading-[1.75] text-muted-foreground border-l-4 border-primary">
+        <h1 className="animate-fade-in-up font-display text-xl my-7 pl-5 font-bold leading-[1.75] text-muted-foreground border-l-4 border-primary">
           {title}
         </h1>
       )}

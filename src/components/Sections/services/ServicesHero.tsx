@@ -193,7 +193,7 @@ export default function ServicesHero() {
               <img src={ServicesPhoto} alt="Team collaborating on services" style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute", top: 0, left: 0 }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 100%)", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 20 }}>
                 <div style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", borderRadius: 12, padding: "20px 32px", textAlign: "center", border: "1px solid rgba(255,255,255,0.2)" }}>
-                  <p className="font-display" style={{ fontSize: 28, fontWeight: 800, color: "#FFF", lineHeight: 1.2, letterSpacing: "0.04em" }}>SA ENVIRO<br />SOLUTIONS</p>
+                  <p className="font-display" style={{ fontFamily: "var(--font-family-serif)", fontSize: "var(--text-card-title-size)", fontWeight: 800, color: "#FFF", lineHeight: 1.2, letterSpacing: "0.04em" }}>SA ENVIRO<br />SOLUTIONS</p>
                 </div>
               </div>
             </div>
@@ -202,7 +202,7 @@ export default function ServicesHero() {
             <div style={{ position: "absolute", top: 0, right: 10, width: 180, height: 180, borderRadius: 12, overflow: "hidden", zIndex: 3, boxShadow: "0 12px 40px rgba(0,0,0,0.12)", animation: "float 7s ease-in-out infinite" }}>
               <div style={{ width: "100%", height: "100%", background: "linear-gradient(145deg, hsl(var(--background)), hsl(var(--muted)))", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10 }}>
                 <Settings className="w-12 h-12 text-primary" style={{ animation: "spin-slow 20s linear infinite" }} />
-                <p style={{ fontSize: 12, color: "hsl(var(--foreground))", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Services</p>
+                <p style={{ fontFamily: "var(--font-family-sans)", fontSize: "var(--text-badge-text-size)", color: "hsl(var(--foreground))", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Services</p>
               </div>
             </div>
           </div>

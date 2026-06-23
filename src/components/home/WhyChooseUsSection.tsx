@@ -5,27 +5,7 @@ import { motion } from 'framer-motion';
 // Injects Cormorant Garamond + Plus Jakarta Sans once into <head>.
 const useFonts = () => {
   useEffect(() => {
-    const id = 'why-choose-us-fonts';
-    if (document.getElementById(id)) return;
-
-    const preconnect1 = document.createElement('link');
-    preconnect1.rel = 'preconnect';
-    preconnect1.href = 'https://fonts.googleapis.com';
-
-    const preconnect2 = document.createElement('link');
-    preconnect2.rel = 'preconnect';
-    preconnect2.href = 'https://fonts.gstatic.com';
-    preconnect2.crossOrigin = 'anonymous';
-
-    const link = document.createElement('link');
-    link.id = id;
-    link.rel = 'stylesheet';
-    link.href =
-      'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap';
-
-    document.head.appendChild(preconnect1);
-    document.head.appendChild(preconnect2);
-    document.head.appendChild(link);
+    // Fonts are loaded globally via index.html to prevent duplicate network requests and layout shifts.
   }, []);
 };
 
@@ -196,7 +176,7 @@ export const WhyChooseUsSection: React.FC = () => {
   return (
     <section
       style={{
-        fontFamily: '"Plus Jakarta Sans", sans-serif',
+        fontFamily: 'var(--font-family-sans)',
         backgroundColor: t.bg,
         color: t.textDark,
         display: 'flex',
@@ -266,7 +246,7 @@ export const WhyChooseUsSection: React.FC = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
               <span
                 style={{
-                  fontSize: '12px',
+                  fontSize: 'var(--text-badge-text-size)',
                   fontWeight: 700,
                   letterSpacing: '0.2em',
                   color: '#005DE8',
@@ -280,9 +260,9 @@ export const WhyChooseUsSection: React.FC = () => {
 
             <h2
               style={{
-                fontFamily: '"Cormorant Garamond", serif',
-                fontSize: isMobile ? '40px' : isTablet ? '52px' : '64px',
-                fontWeight: 400,
+                fontFamily: 'var(--font-family-serif)',
+                fontSize: 'var(--text-section-heading-size)',
+                fontWeight: 700,
                 color: t.textDark,
                 lineHeight: 1.15,
                 margin: '0 0 24px 0',
@@ -293,7 +273,6 @@ export const WhyChooseUsSection: React.FC = () => {
               <br />
               <span
                 style={{
-                  fontStyle: 'italic',
                   color: '#005DE8',
                   fontWeight: 600,
                   position: 'relative',
@@ -329,7 +308,7 @@ export const WhyChooseUsSection: React.FC = () => {
 
             <p
               style={{
-                fontSize: isMobile ? '15px' : '17px',
+                fontSize: 'var(--text-section-subheading-size)',
                 lineHeight: 1.65,
                 color: t.textMuted,
                 maxWidth: '540px',
@@ -383,8 +362,8 @@ export const WhyChooseUsSection: React.FC = () => {
             <div>
               <h3
                 style={{
-                  fontFamily: '"Cormorant Garamond", serif',
-                  fontSize: '24px',
+                  fontFamily: 'var(--font-family-serif)',
+                  fontSize: 'var(--text-card-title-size)',
                   fontWeight: 600,
                   color: '#005DE8',
                   margin: '0 0 10px 0',
@@ -395,7 +374,7 @@ export const WhyChooseUsSection: React.FC = () => {
               </h3>
               <p
                 style={{
-                  fontSize: '15px',
+                  fontSize: 'var(--text-card-description-size)',
                   lineHeight: 1.6,
                   color: t.textMuted,
                   margin: 0,
@@ -543,7 +522,7 @@ export const WhyChooseUsSection: React.FC = () => {
                 {/* Pillar title */}
                 <h4
                   style={{
-                    fontSize: '16px',
+                    fontSize: 'var(--text-body-size)',
                     fontWeight: 600,
                     color: t.textDark,
                     margin: '0 0 12px 0',
@@ -557,7 +536,7 @@ export const WhyChooseUsSection: React.FC = () => {
                 {/* Pillar description */}
                 <p
                   style={{
-                    fontSize: '11.5px',
+                    fontSize: 'var(--text-badge-text-size)',
                     lineHeight: 1.65,
                     color: '#0f172a',
                     fontWeight: 500,

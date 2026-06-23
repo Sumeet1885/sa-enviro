@@ -225,8 +225,8 @@ const Client = () => {
               {/* Heading */}
               <motion.h1
                 variants={itemVariants}
-                style={{
-                  fontSize: "clamp(2.4rem, 3.5vw, 3.75rem)",
+                  fontFamily: "var(--font-family-serif)",
+                  fontSize: "var(--text-display-xl-size)",
                   fontWeight: 800,
                   lineHeight: 1.1,
                   letterSpacing: "-0.02em",
@@ -245,7 +245,8 @@ const Client = () => {
               <motion.p
                 variants={itemVariants}
                 style={{
-                  fontSize: "clamp(1rem, 1.25vw, 1.125rem)",
+                  fontFamily: "var(--font-family-sans)",
+                  fontSize: "var(--text-hero-text-size)",
                   lineHeight: 1.7,
                   color: theme.colors.textMuted,
                   margin: 0,
@@ -337,7 +338,8 @@ const Client = () => {
                     >
                       <span
                         style={{
-                          fontSize: "1.2rem",
+                          fontFamily: "var(--font-family-sans)",
+                          fontSize: "var(--text-card-title-size)",
                           fontWeight: 700,
                           color: isDark
                             ? theme.colors.white
@@ -349,7 +351,8 @@ const Client = () => {
                       </span>
                       <span
                         style={{
-                          fontSize: "0.82rem",
+                          fontFamily: "var(--font-family-sans)",
+                          fontSize: "var(--text-badge-text-size)",
                           color: isDark
                             ? "rgba(255,255,255,0.8)"
                             : theme.colors.textMuted,
@@ -458,7 +461,8 @@ const Client = () => {
 
             <h2
               style={{
-                fontSize: "clamp(1.75rem, 3vw, 2.4rem)",
+                fontFamily: "var(--font-family-serif)",
+                fontSize: "var(--text-section-heading-size)",
                 fontWeight: 800,
                 color: theme.colors.textDark,
                 margin: "0 0 1rem 0",
@@ -474,7 +478,8 @@ const Client = () => {
 
             <p
               style={{
-                fontSize: "clamp(1rem, 1.25vw, 1.1rem)",
+                fontFamily: "var(--font-family-sans)",
+                fontSize: "var(--text-section-subheading-size)",
                 color: theme.colors.textMuted,
                 maxWidth: "560px",
                 margin: "0 0 2.5rem 0",

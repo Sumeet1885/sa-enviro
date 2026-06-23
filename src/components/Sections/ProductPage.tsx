@@ -136,7 +136,7 @@ export default function ProductPage({ product }: { product: Product }) {
               <RenderPageDescription content={product.Page_Description} />
             </div>
             
-            <p className="border-l-4 border-primary pl-8 py-6 italic text-slate-800 font-medium bg-white rounded-r-2xl shadow-sm text-xl">
+            <p className="border-l-4 border-primary pl-8 py-6 text-slate-800 font-medium bg-white rounded-r-2xl shadow-sm text-xl">
               "We provide cost-effective and reliable solutions for wastewater management."
             </p>
           </div>
@@ -177,7 +177,7 @@ export default function ProductPage({ product }: { product: Product }) {
               transition={{ delay: 0.5, duration: 1 }}
               className="text-4xl md:text-7xl font-display font-bold text-white tracking-tight px-12 text-center max-w-4xl drop-shadow-xl"
             >
-              Efficiency through <span className="italic text-water-sky font-serif">precision</span>.
+              Efficiency through <span className="text-water-sky font-serif">precision</span>.
             </motion.h3>
           </div>
         </section>
@@ -285,7 +285,7 @@ export default function ProductPage({ product }: { product: Product }) {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-slate-900 mb-8 tracking-tight drop-shadow-sm"
           >
-            Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-water-deep italic pr-2">transform</span> your facility?
+            Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-water-deep pr-2">transform</span> your facility?
           </motion.h2>
           
           <motion.p 

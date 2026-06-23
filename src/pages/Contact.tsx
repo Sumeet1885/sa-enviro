@@ -21,8 +21,8 @@ const theme = {
     borderDark: "rgba(13, 59, 102, 0.1)",
   },
   fonts: {
-    sans: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-    serif: '"Playfair Display", "Georgia", "Times New Roman", serif',
+    sans: 'var(--font-family-sans)',
+    serif: 'var(--font-family-serif)',
   },
   shadows: {
     card: "0 25px 50px -12px rgba(0, 0, 0, 0.05)",

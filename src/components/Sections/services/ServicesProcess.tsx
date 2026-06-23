@@ -102,8 +102,8 @@ const theme = {
     line: '#cbd5e1',
   },
   fonts: {
-    serif: '"Playfair Display", "Merriweather", "Georgia", serif',
-    sans: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    serif: 'var(--font-family-serif)',
+    sans: 'var(--font-family-sans)',
   }
 };
 

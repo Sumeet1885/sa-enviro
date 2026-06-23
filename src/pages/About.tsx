@@ -26,8 +26,8 @@ const colors = {
 };
 
 const typography = {
-  fontSans: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-  fontSerif: '"Playfair Display", "Georgia", "Times New Roman", serif',
+  fontSans: 'var(--font-family-sans)',
+  fontSerif: 'var(--font-family-serif)',
 };
 
 // --- Hooks ---
@@ -643,8 +643,8 @@ const storyTheme = {
     cardBg: 'rgba(255, 255, 255, 0.85)',
   },
   fonts: {
-    serif: '"Playfair Display", "Georgia", "Times New Roman", serif',
-    sans: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+    serif: 'var(--font-family-serif)',
+    sans: 'var(--font-family-sans)',
   },
   shadows: {
     soft: '0 10px 40px -10px rgba(15, 23, 42, 0.05)',

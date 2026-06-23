@@ -34,8 +34,8 @@ const theme = {
     bgLight: '#f8fafc',
   },
   fonts: {
-    serif: '"Playfair Display", "Georgia", serif',
-    sans: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    serif: 'var(--font-family-serif)',
+    sans: 'var(--font-family-sans)',
   },
   shadows: {
     glass: '0 8px 32px 0 rgba(0, 0, 0, 0.2)',

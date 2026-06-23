@@ -145,14 +145,14 @@ const AnimatedStat: React.FC<AnimatedStatProps> = ({ number, suffix, label, icon
       <div>
         <div
           style={{
-            fontSize: '32px',
+            fontSize: 'var(--text-card-title-size)',
             fontWeight: 700,
             color: '#005DE8',
             lineHeight: 1,
             marginBottom: '6px',
             display: 'flex',
             alignItems: 'baseline',
-            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            fontFamily: 'var(--font-family-sans)',
           }}
         >
           {count}
@@ -160,7 +160,7 @@ const AnimatedStat: React.FC<AnimatedStatProps> = ({ number, suffix, label, icon
         </div>
         <div
           style={{
-            fontSize: '13px',
+            fontSize: 'var(--text-copyright-text-size)',
             color: '#334155',
             fontWeight: 500,
             lineHeight: 1.4,
@@ -216,8 +216,7 @@ export const TestimonialsSection: React.FC = () => {
       flexDirection: 'column',
       alignItems: 'center',
       padding: isMobile ? '60px 20px' : '100px 40px',
-      fontFamily:
-        '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+      fontFamily: 'var(--font-family-sans)',
       boxSizing: 'border-box',
     },
     topRightBadge: {
@@ -249,20 +248,20 @@ export const TestimonialsSection: React.FC = () => {
     },
     badgeText: {
       color: colors.primary,
-      fontSize: '12px',
+      fontSize: 'var(--text-badge-text-size)',
       fontWeight: 700,
       letterSpacing: '1.5px',
       textTransform: 'uppercase',
     },
     heading: {
-      fontSize: isMobile ? '38px' : '56px',
+      fontSize: 'var(--text-hero-heading-size)',
       fontWeight: 700,
       color: colors.textMain,
       textAlign: 'center',
       marginBottom: '16px',
       letterSpacing: '-0.5px',
       lineHeight: 1.1,
-      fontFamily: '"Merriweather", "Georgia", serif',
+      fontFamily: 'var(--font-family-serif)',
     },
     headingHighlight: {
       color: colors.primary,
@@ -275,7 +274,7 @@ export const TestimonialsSection: React.FC = () => {
       marginBottom: '32px',
     },
     subtitle: {
-      fontSize: isMobile ? '15px' : '16px',
+      fontSize: 'var(--text-section-subheading-size)',
       color: colors.textMuted,
       textAlign: 'center',
       maxWidth: '600px',
@@ -531,9 +530,9 @@ export const TestimonialsSection: React.FC = () => {
                     >
                       <span
                         style={{
-                          fontSize: '64px',
+                          fontSize: 'var(--text-display-xl-size)',
                           color: isBlue ? 'rgba(255,255,255,0.15)' : colors.primaryLight,
-                          fontFamily: 'serif',
+                          fontFamily: 'var(--font-family-serif)',
                           lineHeight: 0.8,
                           display: 'block',
                         }}
@@ -566,7 +565,7 @@ export const TestimonialsSection: React.FC = () => {
                     {/* Quote text */}
                     <div
                       style={{
-                        fontSize: '15px',
+                        fontSize: 'var(--text-testimonial-quote-size)',
                         color: isBlue ? '#F8FAFC' : '#334155',
                         lineHeight: 1.7,
                         flexGrow: 1,
@@ -601,7 +600,7 @@ export const TestimonialsSection: React.FC = () => {
                       )}
                       <div
                         style={{
-                          fontSize: '15px',
+                          fontSize: 'var(--text-testimonial-author-size)',
                           fontWeight: 700,
                           color: isBlue ? '#FFFFFF' : colors.textMain,
                           marginBottom: '4px',
@@ -612,7 +611,7 @@ export const TestimonialsSection: React.FC = () => {
                       </div>
                       <div
                         style={{
-                          fontSize: '13px',
+                          fontSize: 'var(--text-copyright-text-size)',
                           color: isBlue ? 'rgba(255,255,255,0.7)' : colors.textMuted,
                           transition: 'color 0.4s ease',
                         }}

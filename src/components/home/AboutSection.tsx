@@ -36,9 +36,8 @@ const theme = {
     borderLight: '#E2E8F0',
   },
   fonts: {
-    serif: "'Playfair Display', Georgia, serif",
-    sans: "'Inter', system-ui, sans-serif",
-    handwriting: "'Caveat', cursive",
+    serif: "var(--font-family-serif)",
+    sans: "var(--font-family-sans)",
   },
 };
 
@@ -139,10 +138,7 @@ export const AboutSection: React.FC = () => {
 
   return (
     <>
-      {/* Font Injection */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap');
-      `}} />
+
 
       <div id="about" style={{
         minHeight: isMobile ? 'auto' : '100vh',
@@ -233,7 +229,6 @@ export const AboutSection: React.FC = () => {
             Solutions that<br/>
             go beyond treatment.<br/>
             <span style={{
-              fontStyle: 'italic',
               color: theme.colors.blueAccent,
               fontWeight: 400,
             }}>

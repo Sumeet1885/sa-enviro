@@ -311,7 +311,7 @@ export default function TeamSlider({
                       />
                     ) : (
                       <div
-                        className="w-full h-full flex items-center justify-center text-white font-light italic"
+                        className="w-full h-full flex items-center justify-center text-white font-light"
                         style={{
                           background:
                             "var(--gradient-water-deep, linear-gradient(135deg,#1d4ed8,#38bdf8))",
@@ -373,7 +373,7 @@ export default function TeamSlider({
 
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4 mb-2s sm:mb-6">
               <h2 
-                className="font-light italic leading-tight text-[clamp(1.5rem,4vw,2.2rem)]"
+                className="font-light leading-tight text-[clamp(1.5rem,4vw,2.2rem)]"
                 style={{ color: "#005DE8" }}
               >
                 {user.name}
