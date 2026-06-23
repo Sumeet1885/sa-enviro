@@ -120,7 +120,7 @@ const timelineContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 1, delayChildren: 0.5 }
+    transition: { staggerChildren: 0.5, delayChildren: 0.1 }
   }
 };
 
@@ -138,7 +138,7 @@ const lineVariants: Variants = {
   visible: { 
     pathLength: 1, 
     opacity: 1,
-    transition: { duration: 4, ease: "linear", delay: 0.5 }
+    transition: { duration: 3, ease: "linear", delay: 0.1 }
   }
 };
 
@@ -206,7 +206,7 @@ export default function ServicesProcess() {
 
           <motion.h2 variants={itemVariants} style={{ 
             fontFamily: theme.fonts.serif,
-            fontSize: isMobile ? '2.5rem' : '4.5rem',
+            fontSize: isMobile ? '2.5rem' : '4.0rem',
             fontWeight: 700,
             lineHeight: 1.2,
             margin: '0 0 24px 0',

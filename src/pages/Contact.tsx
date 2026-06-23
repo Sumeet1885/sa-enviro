@@ -9,8 +9,8 @@ const theme = {
   colors: {
     primary: "#0f52ba", // Deep corporate sapphire blue
     primaryHover: "#0a3d8f",
-    accent: "#4facfe", // Bright cyan/blue for highlights
-    darkBg: "#09101a", // Very dark navy for background
+    accent: "#005DE8", // Bright blue accent matching overall theme
+    darkBg: "#ffffff", // Changed to white for page background
     textLight: "#ffffff",
     textDark: "#1e293b",
     textMuted: "#64748b",
@@ -18,7 +18,7 @@ const theme = {
     bgWhite: "#ffffff",
     bgLightGray: "#f8fafc",
     borderLight: "#e2e8f0",
-    borderDark: "rgba(255,255,255,0.1)",
+    borderDark: "rgba(13, 59, 102, 0.1)",
   },
   fonts: {
     sans: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -257,9 +257,9 @@ const InputField = ({
     width: "100%",
     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     borderRadius: "8px",
-    backgroundColor: "#f4f7f9", // Updated to match the light grayish-blue background in the image
-    boxShadow: isFocused ? `0 0 0 2px ${theme.colors.primary}40` : "none",
-    border: `1px solid ${error ? "#ef4444" : isFocused ? theme.colors.primary : theme.colors.borderLight}`,
+    backgroundColor: "rgba(255, 255, 255, 0.08)",
+    boxShadow: isFocused ? `0 0 0 2px rgba(255, 255, 255, 0.2)` : "none",
+    border: `1px solid ${error ? "#ef4444" : isFocused ? "#ffffff" : "rgba(255, 255, 255, 0.15)"}`,
     overflow: "hidden",
     display: "flex",
     alignItems: isTextArea ? "flex-start" : "center",
@@ -272,7 +272,7 @@ const InputField = ({
     backgroundColor: "transparent",
     fontFamily: theme.fonts.sans,
     fontSize: "14.5px",
-    color: theme.colors.textDark,
+    color: "#ffffff",
     outline: "none",
   };
 
@@ -290,11 +290,11 @@ const InputField = ({
           style={{
             fontSize: "14px",
             fontWeight: 600,
-            color: theme.colors.textDark,
+            color: "#ffffff",
             fontFamily: theme.fonts.sans,
           }}
         >
-          {label} {required && <span style={{ color: theme.colors.textDark }}>*</span>}
+          {label} {required && <span style={{ color: "#ffffff" }}>*</span>}
         </label>
       )}
       <div style={containerStyle}>
@@ -311,18 +311,18 @@ const InputField = ({
         ) : options.length > 0 ? (
           <div style={{ width: "100%", position: "relative" }}>
             <select
-              style={{ ...inputBaseStyle, appearance: "none", cursor: "pointer" }}
+              style={{ ...inputBaseStyle, appearance: "none", cursor: "pointer", color: value ? "#ffffff" : "rgba(255, 255, 255, 0.6)" }}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               value={value}
               onChange={onChange}
               disabled={disabled}
             >
-              <option value="" disabled hidden>
+              <option value="" disabled hidden style={{ backgroundColor: "#0d3b66", color: "#ffffff" }}>
                 {placeholder}
               </option>
               {options.map((opt: string, i: number) => (
-                <option key={i} value={opt}>
+                <option key={i} value={opt} style={{ backgroundColor: "#0d3b66", color: "#ffffff" }}>
                   {opt}
                 </option>
               ))}
@@ -334,7 +334,7 @@ const InputField = ({
                 top: "50%",
                 transform: "translateY(-50%)",
                 width: "16px",
-                color: theme.colors.textMuted,
+                color: "rgba(255, 255, 255, 0.6)",
                 pointerEvents: "none",
               }}
             />
@@ -383,8 +383,8 @@ const InfoCard = ({ icon: Icon, title, subtitle, delay }: any) => {
       style={{
         padding: "24px",
         borderRadius: "16px",
-        backgroundColor: isHovered ? theme.colors.bgWhite : theme.colors.bgLightGray,
-        border: `1px solid ${isHovered ? theme.colors.primary + "40" : theme.colors.borderLight}`,
+        backgroundColor: isHovered ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)",
+        border: `1px solid ${isHovered ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.08)"}`,
         boxShadow: isHovered ? theme.shadows.card : "none",
         display: "flex",
         alignItems: "flex-start",
@@ -398,8 +398,8 @@ const InfoCard = ({ icon: Icon, title, subtitle, delay }: any) => {
           width: "48px",
           height: "48px",
           borderRadius: "12px",
-          backgroundColor: isHovered ? theme.colors.primary : theme.colors.primary + "15",
-          color: isHovered ? "white" : theme.colors.primary,
+          backgroundColor: isHovered ? "#ffffff" : "rgba(255, 255, 255, 0.12)",
+          color: isHovered ? "#0D3B66" : "#ffffff",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -415,7 +415,7 @@ const InfoCard = ({ icon: Icon, title, subtitle, delay }: any) => {
             margin: "0 0 6px 0",
             fontSize: "15px",
             fontWeight: 600,
-            color: theme.colors.textDark,
+            color: "#ffffff",
             fontFamily: theme.fonts.serif,
           }}
         >
@@ -425,7 +425,7 @@ const InfoCard = ({ icon: Icon, title, subtitle, delay }: any) => {
           style={{
             margin: 0,
             fontSize: "13px",
-            color: theme.colors.textMuted,
+            color: "rgba(255, 255, 255, 0.8)",
             lineHeight: 1.5,
             fontFamily: theme.fonts.sans,
           }}
@@ -508,6 +508,33 @@ export const validateContactForm = (
     isValid: Object.keys(errors).length === 0,
   };
 };
+
+// --- Background Pattern Component (matching Blog/About page hero section) ---
+const BackgroundPattern = () => (
+  <div style={{
+    position: 'absolute',
+    top: 0, left: 0, right: 0, bottom: 0,
+    overflow: 'hidden',
+    zIndex: 0,
+    pointerEvents: 'none',
+    opacity: 0.6
+  }}>
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', top: 0, left: 0 }}>
+      <defs>
+        <linearGradient id="about-hero-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{ stopColor: '#e0f2fe', stopOpacity: 0.8 }} />
+          <stop offset="100%" style={{ stopColor: '#ffffff', stopOpacity: 0 }} />
+        </linearGradient>
+      </defs>
+      <path d="M-100 200 C 200 100, 400 400, 800 200 S 1200 400, 1600 100" fill="none" stroke="#e0f2fe" strokeWidth="1" opacity="0.5" />
+      <path d="M-100 220 C 250 120, 350 420, 850 220 S 1150 420, 1600 120" fill="none" stroke="#bae6fd" strokeWidth="0.5" opacity="0.4" />
+      <path d="M-100 240 C 300 140, 300 440, 900 240 S 1100 440, 1600 140" fill="none" stroke="#e0f2fe" strokeWidth="1.5" opacity="0.3" />
+      <path d="M-100 800 C 300 900, 500 600, 1000 800 S 1400 600, 1800 900" fill="none" stroke="#e0f2fe" strokeWidth="1" opacity="0.5" />
+      <circle cx="10%" cy="20%" r="300" fill="url(#about-hero-grad)" opacity="0.4" />
+      <circle cx="90%" cy="80%" r="400" fill="url(#about-hero-grad)" opacity="0.3" />
+    </svg>
+  </div>
+);
 
 export default function Contact() {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -623,7 +650,7 @@ export default function Contact() {
     flexDirection: "column",
     justifyContent: "flex-start",
     padding: isMobile ? "32px 6% 10% 6%" : "40px 6% 8% 6%",
-    color: theme.colors.textLight,
+    color: theme.colors.textDark,
     zIndex: 1,
   };
 
@@ -672,17 +699,7 @@ export default function Contact() {
         <div style={topSectionStyle}>
           {/* --- LEFT PANEL (Visual & Storytelling) --- */}
           <div style={leftPanelStyle}>
-            <motion.div
-              style={leftBackgroundStyle}
-              initial={{ scale: 1.05 }}
-              animate={{ scale: 1 }}
-              transition={{
-                duration: 10,
-                ease: "linear",
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
+            <BackgroundPattern />
 
             {/* Subtle Ambient Glow */}
             <div
@@ -707,47 +724,45 @@ export default function Contact() {
               style={{ maxWidth: "600px", zIndex: 2 }}
             >
               {/* Main Typography */}
-              <motion.h1
-                variants={fadeUpVariant}
+              <h1
                 style={{
                   fontFamily: theme.fonts.serif,
                   fontSize: isMobile ? "2.5rem" : "clamp(2.5rem, 4.5vw, 4.5rem)",
                   lineHeight: 1.1,
                   margin: "0 0 24px 0",
-                  fontWeight: 500,
+                  fontWeight: 700,
+                  color: "#0A1526"
                 }}
               >
                 Let’s Build <br />
                 A Cleaner, <br />
                 <span
                   style={{
-                    fontStyle: "italic",
                     color: theme.colors.accent,
-                    fontWeight: 400,
+                    fontWeight: 600,
                   }}
                 >
                   Sustainable
                 </span>{" "}
                 <br />
                 Future Together.
-              </motion.h1>
+              </h1>
 
               {/* Subtitle */}
-              <motion.p
-                variants={fadeUpVariant}
+              <p
                 style={{
                   fontSize: "1.1rem",
                   lineHeight: 1.6,
-                  color: "#cbd5e1",
+                  color: "#475569",
                   maxWidth: "400px",
                   margin: "0 0 40px 0",
-                  fontWeight: 300,
+                  fontWeight: 400,
                 }}
               >
                 Have a project in mind or need expert guidance?
                 <br />
                 We're here to help you find the right water treatment solution.
-              </motion.p>
+              </p>
 
               {/* Location Info Element */}
               <motion.div
@@ -757,26 +772,39 @@ export default function Contact() {
                   alignItems: "flex-start",
                   gap: "16px",
                   padding: "24px",
-                  background: "rgba(255,255,255,0.03)",
-                  border: `1px solid ${theme.colors.borderDark}`,
+                  background: "#0D3B66",
+                  border: "1px solid rgba(255, 255, 255, 0.15)",
                   borderRadius: "16px",
-                  backdropFilter: "blur(10px)",
                   maxWidth: "400px",
+                  boxShadow: "0 20px 40px -10px rgba(0,0,0,0.15)",
                 }}
               >
-                <Icons.Pin
+                <div
                   style={{
-                    width: "24px",
-                    color: theme.colors.textLight,
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "10px",
+                    backgroundColor: "rgba(255, 255, 255, 0.12)",
+                    color: "#ffffff",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                     flexShrink: 0,
-                    marginTop: "2px",
                   }}
-                />
+                >
+                  <Icons.Pin
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      color: "#ffffff",
+                    }}
+                  />
+                </div>
                 <div>
-                  <h4 style={{ margin: "0 0 8px 0", fontSize: "15px", fontWeight: 600 }}>
+                  <h4 style={{ margin: "0 0 8px 0", fontSize: "15px", fontWeight: 700, color: "#ffffff", fontFamily: theme.fonts.serif }}>
                     Global Solutions. Local Commitment.
                   </h4>
-                  <p style={{ margin: 0, fontSize: "13px", color: "#cbd5e1", lineHeight: 1.5 }}>
+                  <p style={{ margin: 0, fontSize: "13px", color: "rgba(255, 255, 255, 0.8)", lineHeight: 1.5 }}>
                     {siteConfig.contact.address}
                   </p>
                 </div>
@@ -791,11 +819,11 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
               style={{
-                backgroundColor: theme.colors.bgWhite,
-                border: `1px solid ${theme.colors.borderLight}`,
+                backgroundColor: "#0D3B66",
+                border: "1px solid rgba(255, 255, 255, 0.15)",
                 borderRadius: "24px",
                 padding: isMobile ? "32px 20px" : "48px 40px",
-                boxShadow: "0 20px 40px -10px rgba(0,0,0,0.2)",
+                boxShadow: "0 20px 40px -10px rgba(0,0,0,0.15)",
                 width: "100%",
                 maxWidth: isMobile ? "100%" : "420px",
                 alignSelf: isMobile ? "stretch" : "flex-start",
@@ -816,12 +844,12 @@ export default function Contact() {
                     fontWeight: 700,
                     letterSpacing: "1px",
                     textTransform: "uppercase",
-                    color: theme.colors.textDark,
+                    color: "#ffffff",
                   }}
                 >
                   Reach Us Directly
                 </h3>
-                <div style={{ width: "40px", height: "2px", backgroundColor: theme.colors.borderLight }} />
+                <div style={{ width: "40px", height: "2px", backgroundColor: "rgba(255, 255, 255, 0.2)" }} />
               </div>
 
               <div
@@ -868,11 +896,11 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             style={{
-              backgroundColor: theme.colors.bgWhite,
+              backgroundColor: "#0D3B66",
               borderRadius: "32px",
               padding: isMobile ? "32px 20px" : "48px 40px",
-              border: `1px solid ${theme.colors.borderLight}`,
-              boxShadow: "0 20px 40px -10px rgba(0,0,0,0.2)",
+              border: "1px solid rgba(255, 255, 255, 0.15)",
+              boxShadow: "0 20px 40px -10px rgba(0,0,0,0.15)",
               width: "100%",
               maxWidth: "1000px", // Keeps the wide form nicely constrained and premium
             }}
@@ -884,8 +912,8 @@ export default function Contact() {
                     width: "64px",
                     height: "64px",
                     borderRadius: "50%",
-                    backgroundColor: theme.colors.primary + "15",
-                    color: theme.colors.primary,
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    color: "#ffffff",
                     display: "inline-flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -910,7 +938,7 @@ export default function Contact() {
                     margin: "0 0 8px 0",
                     fontSize: "24px",
                     fontWeight: 700,
-                    color: theme.colors.textDark,
+                    color: "#ffffff",
                     fontFamily: theme.fonts.serif,
                   }}
                 >
@@ -920,7 +948,7 @@ export default function Contact() {
                   style={{
                     margin: 0,
                     fontSize: "15px",
-                    color: theme.colors.textMuted,
+                    color: "rgba(255, 255, 255, 0.8)",
                     fontFamily: theme.fonts.sans,
                     lineHeight: 1.5,
                   }}
@@ -937,7 +965,7 @@ export default function Contact() {
                       margin: 0,
                       fontSize: "28px",
                       fontWeight: 700,
-                      color: theme.colors.textDark,
+                      color: "#ffffff",
                       fontFamily: theme.fonts.serif,
                     }}
                   >
@@ -1037,7 +1065,7 @@ export default function Contact() {
                   type="submit"
                   whileHover={{
                     scale: isLoading ? 1 : 1.01,
-                    backgroundColor: isLoading ? "#115e9b" : theme.colors.primaryHover,
+                    backgroundColor: isLoading ? "#005DE8" : "#0047b3",
                   }}
                   whileTap={{ scale: isLoading ? 1 : 0.99 }}
                   disabled={isLoading}
@@ -1048,7 +1076,7 @@ export default function Contact() {
                     justifyContent: "center",
                     gap: "12px",
                     padding: "16px 32px",
-                    backgroundColor: "#115e9b", // Adjusted blue to match image
+                    backgroundColor: "#005DE8",
                     color: "white",
                     border: "none",
                     borderRadius: "8px",
