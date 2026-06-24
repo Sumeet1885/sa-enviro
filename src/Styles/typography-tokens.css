@@ -1,0 +1,58 @@
+:root {
+  /* Font Family Tokens */
+  --font-family-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-serif: "Merriweather", "Georgia", serif;
+  --font-family-mono: "DM Mono", Courier, monospace;
+
+  /* Font Sizes */
+  --text-display-xxl-size: 6rem;   /* ~96px */
+  --text-display-xl-size: 4.5rem;   /* ~72px */
+  --text-display-lg-size: 3.5rem;   /* ~56px */
+  
+  --text-hero-heading-size: 3.5rem;
+  --text-hero-text-size: 1.1rem;
+
+  --text-section-heading-size: 3.5rem;
+  --text-section-subheading-size: 1.05rem;
+
+  --text-card-title-size: 1.5rem;     /* 24px */
+  --text-card-description-size: 0.9375rem; /* 15px */
+
+  --text-testimonial-quote-size: 0.9375rem; /* 15px */
+  --text-testimonial-author-size: 0.9375rem; /* 15px */
+
+  --text-button-text-size: 0.875rem; /* 14px */
+  --text-nav-link-size: 0.875rem;     /* 14px */
+  --text-footer-link-size: 0.875rem;  /* 14px */
+  
+  --text-form-label-size: 0.875rem;
+  --text-input-text-size: 0.9rem;
+  --text-badge-text-size: 0.75rem;    /* 12px */
+  --text-copyright-text-size: 0.8125rem; /* 13px */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+}
+
+/* Mobile responsive font sizing overrides */
+@media (max-width: 768px) {
+  :root {
+    --text-display-xxl-size: 3.5rem;
+    --text-display-xl-size: 3rem;
+    --text-display-lg-size: 2.5rem;
+    --text-hero-heading-size: 2.5rem;
+    --text-hero-text-size: 1rem;
+    --text-section-heading-size: 2.5rem;
+    --text-section-subheading-size: 0.95rem;
+    --text-card-title-size: 1.25rem;
+  }
+}

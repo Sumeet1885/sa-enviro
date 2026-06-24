@@ -135,9 +135,9 @@ export interface SiteConfig {
     address: string;
   };
   social: {
-    facebook: string;
-    linkedin: string;
-    twitter: string;
+    instagram?: string;
+    linkedin?: string;
+    whatsapp?: string;
   };
   stats: {
     Experience: string;
