@@ -514,12 +514,6 @@ export const certifications = [
 ];
 
 export const galleryImages = [
-
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773727163/Water-Treatment-Plants-WTP1_ggis8i.webp",
-    alt: "Water Treatment Plants",
-    category: "plants",
-  },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     alt: "Ultraviolet Units",
@@ -607,13 +601,18 @@ export const galleryImages = [
   },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220703/Effluent-Treatment-Plant_e9js1o_azdb8p.png",
-    alt: "Effluent-Treatment-Plant",
+    alt: "ETP1",
     category: "plants",
   },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220702/Effluent-Treatment-Plant_e9js2o_qhr3az.png",
-    alt: "OMS Sensor Setup",
+    alt: "ETP2",
     category: "equipment",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782279474/WhatsApp_Image_2026-06-17_at_1.49.54_PM_2_mfzif7.jpg",
+    alt: "OMS",
+    category: "System",
   },
 ];
 
@@ -1377,6 +1376,8 @@ export const products: Product[] = [
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg", alt: "Architecture View" },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220702/Effluent-Treatment-Plant_e9js2o_qhr3az.png", alt: "ETP1" },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220703/Effluent-Treatment-Plant_e9js1o_azdb8p.png", alt: "ETP1" },
     ],
     Page_Description: [
       {
@@ -1905,6 +1906,10 @@ export const products: Product[] = [
       },
       {
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/OMS2_fbcrdl.jpg",
+        alt: "Online Monitoring System - Sensor Setup",
+      },
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782279474/WhatsApp_Image_2026-06-17_at_1.49.54_PM_2_mfzif7.jpg",
         alt: "Online Monitoring System - Sensor Setup",
       },
     ],
