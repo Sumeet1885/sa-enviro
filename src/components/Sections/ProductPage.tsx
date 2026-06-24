@@ -121,8 +121,7 @@ export default function ProductPage({ product }: { product: Product }) {
 
   const heroImageSrc = product.main.image;
   const archImageSrc = product.images?.[0]?.url;
-  const fullImageSrc = product.images?.[1]?.url;
-  const gridImages = product.images?.slice(2) || [];
+  const gridImages = product.images?.slice(1) || [];
 
   return (
     <div ref={containerRef} className="bg-white text-slate-900 font-sans selection:bg-violet-500/30 selection:text-violet-900">
@@ -161,7 +160,7 @@ export default function ProductPage({ product }: { product: Product }) {
       </section>
 
       {/* Description & Ticker Image (Images[0]) */}
-      <section className="relative pb-20 md:py-20  md:px-12 bg-white">
+      <section className="relative pb-20 px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
           <div className="flex flex-col justify-center order-2 lg:order-none">
             <SectionTitle title={product.main.description} subtitle="Details & Specifications" />
@@ -188,35 +187,7 @@ export default function ProductPage({ product }: { product: Product }) {
         </div>
       </section>
 
-      {/* Full Image Section (Images[1]) */}
-      {fullImageSrc && (
-        <section className="relative h-[80vh] overflow-hidden">
-          <motion.div 
-            initial={{ clipPath: 'inset(10% 10% 10% 10%)' }}
-            whileInView={{ clipPath: 'inset(0% 0% 0% 0%)' }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full h-full"
-          >
-            <img 
-              src={fullImageSrc} 
-              className="w-full h-full object-cover brightness-90"
-              alt="Fullscreen Immersive"
-            />
-          </motion.div>
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none bg-gradient-to-t from-slate-900/60 to-transparent">
-            <motion.h3 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="text-4xl md:text-7xl font-display font-bold text-white tracking-tight px-12 text-center max-w-4xl drop-shadow-xl"
-            >
-              Efficiency through <span className="text-water-sky font-serif">precision</span>.
-            </motion.h3>
-          </div>
-        </section>
-      )}
-
-      {/* Grid Images (Images[2...]) - Masonry Layout */}
+      {/* Grid Images (Images[1...]) - Masonry Layout */}
       {gridImages.length > 0 && (
         <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto bg-white">
           <SectionTitle title="Technical Installations" subtitle="Visual Components" />
