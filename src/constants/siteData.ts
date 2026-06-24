@@ -3,7 +3,7 @@ import Image2 from "@/assets/hero-water-treatment.webp";
 import Image3 from "@/assets/hero2.webp";
 
 
-import {Image }from "../assets/image"
+
 import Profile1 from "@/assets/Profile1.webp";
 import {
   Product,

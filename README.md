@@ -1,5 +1,7 @@
 # Project Documentation
 
+For complete, detailed instructions on how to set up, configure environment variables, connect **EmailJS** and **Cloudinary** accounts, and deploy the application to production, please refer to the [PROJECT_SETUP.md](file:///d:/Dev/saEnviro/sa-environment/PROJECT_SETUP.md) guide.
+
 ## Overview
 
 This project is a modern web application built with a high-performance frontend stack. It follows best practices for scalability, maintainability, and developer experience.

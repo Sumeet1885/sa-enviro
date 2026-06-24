@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/layout/SEO";
 import { seoData, LOGOS } from "@/constants/siteData";
-import logo from "@/assets/logo.webp";
+
 
 // --- Types ---
 interface WindowSize {
