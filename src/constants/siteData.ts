@@ -262,11 +262,11 @@ export const heroData: HeroData = {
 export const aboutData = {
   title: "About Us",
   intro:
-    "SA ENVIRO SOLUTIONS (SAES), provides quality and customized services to address Environmental Aspects, specifically in Water and Wastewater Treatment, Zero Liquid Discharge, Air Pollution Control, Energy, Safety & Solid-Waste Management.",
+    "SA Enviro Solutions (SAES) offers tailored environmental solutions across Water & Wastewater Treatment, ZLD, Air Pollution Control, Energy, Safety, and Solid Waste Management.",
   description:
-    "The company focused on its core competencies and providing value-based services. It is perceived in the market as a company who is committed to quality and delivery. We stand tall because of our philosophy of core values that can only be matched with our commitment.",
+    "We combine core expertise with value-based services, earning recognition for our commitment to quality, reliability, and excellence.",
   founders:
-    "SAES is managed by Mrs. Amruta Urdukhe & Mr. Santosh Urdukhe, Masters in Environmental Sciences, experienced in designing and developing water treatment machines and plants.",
+    "SAES is managed by Mrs. Amruta Santosh Urdukhe & Mr. Santosh Dattatray Urdukhe, Masters in Environmental Sciences, experienced in designing and developing water treatment machines and plants.",
   team: "The company has a team of qualified technical professionals in areas of Environment Science, Microbiology, Electrical, Mechanical, Instrumentation and Civil Engineering to offer efficient technology for treating water.",
   location:
     "SAES workshop is located at Chinchwad, Pune for fabrication of treatment machines.",
@@ -514,18 +514,6 @@ export const certifications = [
 ];
 
 export const galleryImages = [
-  
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725956/Pressure-Sand-Filter-activated-carbon-filter1_yqs77v.webp",
-    alt: "Pressure Sand Filter",
-    category: "filters",
-  },
-
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773727163/Water-Treatment-Plants-WTP1_ggis8i.webp",
-    alt: "Water Treatment Plants",
-    category: "plants",
-  },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     alt: "Ultraviolet Units",
@@ -613,13 +601,18 @@ export const galleryImages = [
   },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220703/Effluent-Treatment-Plant_e9js1o_azdb8p.png",
-    alt: "Effluent-Treatment-Plant",
+    alt: "ETP1",
     category: "plants",
   },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220702/Effluent-Treatment-Plant_e9js2o_qhr3az.png",
-    alt: "OMS Sensor Setup",
+    alt: "ETP2",
     category: "equipment",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782279474/WhatsApp_Image_2026-06-17_at_1.49.54_PM_2_mfzif7.jpg",
+    alt: "OMS",
+    category: "System",
   },
 ];
 
@@ -1383,6 +1376,8 @@ export const products: Product[] = [
         alt: "Industrial Effluent Treatment Plant Setup",
       },
       { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg", alt: "Architecture View" },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220702/Effluent-Treatment-Plant_e9js2o_qhr3az.png", alt: "ETP1" },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782220703/Effluent-Treatment-Plant_e9js1o_azdb8p.png", alt: "ETP1" },
     ],
     Page_Description: [
       {
@@ -1911,6 +1906,10 @@ export const products: Product[] = [
       },
       {
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/OMS2_fbcrdl.jpg",
+        alt: "Online Monitoring System - Sensor Setup",
+      },
+      {
+        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1782279474/WhatsApp_Image_2026-06-17_at_1.49.54_PM_2_mfzif7.jpg",
         alt: "Online Monitoring System - Sensor Setup",
       },
     ],

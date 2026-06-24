@@ -190,7 +190,7 @@ const Client = () => {
           style={{
             maxWidth: "1280px",
             width: "100%",
-            padding: `clamp(3rem, 9.5vw, 8rem) clamp(1.5rem, 4vw, 4rem)`,
+            padding: `clamp(5rem, 12vw, 20rem) clamp(1.5rem, 4vw, 4rem)`,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",

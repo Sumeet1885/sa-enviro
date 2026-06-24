@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { SEO } from "@/components/layout/SEO";
-import { seoData } from "@/constants/siteData";
+import { seoData, aboutData } from "@/constants/siteData";
 import TeamSlider from "@/components/Sections/Team_Section";
 import { Droplet } from 'lucide-react';
 
@@ -661,23 +661,23 @@ interface TimelineItem {
 const timelineData: TimelineItem[] = [
   {
     num: "01",
-    title: "The Beginning",
-    desc: "Our story started with a small dream – to make clean water accessible to every community."
+    title: "Who We Are",
+    desc: aboutData.intro
   },
   {
     num: "02",
-    title: "Growing Stronger",
-    desc: "Through innovation and dedication, we expanded our solutions and earned the trust of industries and communities."
+    title: "Our Philosophy",
+    desc: aboutData.description
   },
   {
     num: "03",
-    title: "Creating Impact",
-    desc: "Today, our solutions empower a cleaner, healthier world and create a lasting impact for generations."
+    title: "Leadership & Team",
+    desc: `SAES is led by Mrs. Amruta Santosh Urdukhe and Mr. Santosh Dattatray Urdukhe, experts in Environmental Sciences, supported by a skilled multidisciplinary team delivering efficient water treatment solutions.`
   },
   {
     num: "04",
-    title: "The Future",
-    desc: "We continue to evolve, embrace new technologies, and shape a sustainable future—together."
+    title: "Fabrication Facility",
+    desc: aboutData.location
   }
 ];
 
@@ -879,9 +879,7 @@ const OurStory = () => {
           </motion.h1>
 
           <motion.p variants={fadeUpOurStory} style={styles.subtitle}>
-            What began as a simple belief in the power of clean water has grown into
-            a mission that touches lives and protects our planet. Our journey is built on trust,
-            innovation, and an unwavering commitment to a better tomorrow.
+            A leading environmental solutions provider dedicated to engineering clean water and securing our planet's most valuable resources through innovation, quality services, and absolute trust.
           </motion.p>
         </motion.div>
 

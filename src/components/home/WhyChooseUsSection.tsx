@@ -47,42 +47,13 @@ interface Sparkle {
 // ─── Pillars Data ─────────────────────────────────────────────────────────────
 const pillars: ValuePillar[] = [
   {
-    id: 'turnkey',
-    title: 'Turnkey Solutions',
+    id: 'qualitative_products',
+    title: 'Qualitative Products',
     description:
-      'From concept to commissioning, we offer end-to-end water treatment plant solutions tailored to your needs.',
+      'Engineered to meet the highest standards, ensuring exceptional durability and reliable water purification.',
     stat: '100%',
-    statLabel: 'Full Execution Guarantee',
+    statLabel: 'Quality Assured',
     color: '#3b82f6',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
-        <path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-13-7-13S5 10.7 5 15a7 7 0 0 0 7 7z" />
-      </svg>
-    ),
-  },
-  {
-    id: 'advanced',
-    title: 'Advanced Technology',
-    description:
-      'We integrate proven, cutting-edge technologies to deliver maximum performance with minimum environmental impact.',
-    stat: '0.01μm',
-    statLabel: 'Ultrafiltration Precision',
-    color: '#10b981',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" style={{ transformOrigin: 'center' }}>
-        <circle cx="12" cy="12" r="3" />
-        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-      </svg>
-    ),
-  },
-  {
-    id: 'quality',
-    title: 'Quality & Reliability',
-    description:
-      'Engineered for durability and consistent performance, our systems ensure safe water—every time.',
-    stat: '99.98%',
-    statLabel: 'System Operational Uptime',
-    color: '#f59e0b',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -91,29 +62,57 @@ const pillars: ValuePillar[] = [
     ),
   },
   {
-    id: 'sustainable',
-    title: 'Sustainable by Design',
+    id: 'cost_effective',
+    title: 'Cost-effective Products/Services',
     description:
-      'We build solutions that conserve resources, reduce energy consumption, and support a cleaner future.',
-    stat: '40%',
-    statLabel: 'Reduced Energy Footprint',
-    color: '#14b8a6',
+      'Optimized solutions designed to minimize operational costs while maximizing resource efficiency.',
+    stat: 'Low O&M',
+    statLabel: 'Cost Savings',
+    color: '#10b981',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
-        <path d="M2 22 16 8" />
-        <path d="M14 14a8 8 0 0 0 8-8 8 8 0 0 0-8 8z" />
-        <path d="M18 10a6 6 0 0 0-6 6" />
+        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
       </svg>
     ),
   },
   {
-    id: 'expertise',
-    title: 'Expertise That Matters',
+    id: 'competitive_prices',
+    title: 'Competitive Prices',
     description:
-      'Backed by decades of experience, our team brings deep domain knowledge and a passion for solving complex challenges.',
-    stat: '35+',
-    statLabel: 'Years Global Domain Presence',
+      'Unmatched value-focused pricing models delivering premium-grade water treatment without exceeding budget.',
+    stat: 'Best Value',
+    statLabel: 'Market Rate',
+    color: '#f59e0b',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+        <line x1="7" y1="7" x2="7.01" y2="7" />
+      </svg>
+    ),
+  },
+  {
+    id: 'infrastructure',
+    title: 'Infrastructure',
+    description:
+      'State-of-the-art fabrication facility equipped with advanced machinery and technologies for high-capacity production.',
+    stat: 'Modern',
+    statLabel: 'Fabrication Facility',
     color: '#8b5cf6',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+        <path d="M22 21H2V3l7 4 7-4 6 4v14z" />
+        <path d="M19 17h1M19 13h1M14 17h1M14 13h1M9 17h1M9 13h1M4 17h1M4 13h1" />
+      </svg>
+    ),
+  },
+  {
+    id: 'expert_team',
+    title: 'Expert Team with Experience',
+    description:
+      'A highly qualified team of environmental scientists, process engineers, and skilled technical professionals.',
+    stat: '45+',
+    statLabel: 'Specialists',
+    color: '#ec4899',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -124,17 +123,34 @@ const pillars: ValuePillar[] = [
     ),
   },
   {
-    id: 'partnership',
-    title: 'Long-Term Partnership',
+    id: 'service_support',
+    title: 'Service Support After Supply',
     description:
-      'We go beyond delivery—offering reliable support, maintenance, and upgrades to keep your plant running at its best.',
+      'Dedicated post-installation support, proactive maintenance, and field assistance for system longevity.',
     stat: '24/7',
-    statLabel: 'Telemetry & Field Support',
-    color: '#ec4899',
+    statLabel: 'Telemetry & Support',
+    color: '#14b8a6',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
         <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
         <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+      </svg>
+    ),
+  },
+  {
+    id: 'satisfied_customers',
+    title: 'Satisfied Customers',
+    description:
+      'Trusted by leading industrial and commercial clients nationwide, backed by positive testimonials.',
+    stat: '100%',
+    statLabel: 'Satisfaction Rate',
+    color: '#ef4444',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+        <line x1="9" y1="9" x2="9.01" y2="9" />
+        <line x1="15" y1="9" x2="15.01" y2="9" />
       </svg>
     ),
   },
@@ -158,6 +174,19 @@ export const WhyChooseUsSection: React.FC = () => {
   const t = theme;
   const isMobile = windowWidth < 768;
   const isTablet = windowWidth >= 768 && windowWidth < 1100;
+
+  let cols = 'repeat(7, 1fr)';
+  let columnsCount = 7;
+  if (isMobile) {
+    cols = '1fr';
+    columnsCount = 1;
+  } else if (isTablet) {
+    cols = '1fr 1fr';
+    columnsCount = 2;
+  } else if (windowWidth < 1366) {
+    cols = 'repeat(4, 1fr)';
+    columnsCount = 4;
+  }
 
   const sparklesList = useMemo<Sparkle[]>(() => {
     const list: Sparkle[] = [];
@@ -401,7 +430,13 @@ export const WhyChooseUsSection: React.FC = () => {
             <motion.div
                animate={{
                  left: hoveredPillar
-                   ? `${(pillars.findIndex((p) => p.id === hoveredPillar) * 16.66) + 8.33}%`
+                   ? (() => {
+                       const idx = pillars.findIndex((p) => p.id === hoveredPillar);
+                       if (idx === -1) return '50%';
+                       const col = idx % columnsCount;
+                       const widthPerCol = 100 / columnsCount;
+                       return `${(col * widthPerCol) + (widthPerCol / 2)}%`;
+                     })()
                    : '50%',
                  backgroundColor: hoveredPillar
                    ? pillars.find((p) => p.id === hoveredPillar)?.color
@@ -422,17 +457,18 @@ export const WhyChooseUsSection: React.FC = () => {
           </div>
         )}
 
-        {/* ── 6-Pillar Card Grid ── */}
+        {/* ── 7-Pillar Card Grid ── */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr 1fr' : 'repeat(6, 1fr)',
+            gridTemplateColumns: cols,
             gap: isMobile ? '24px' : '20px',
             marginBottom: '16px',
           }}
         >
-          {pillars.map((pillar) => {
+          {pillars.map((pillar, idx) => {
             const isHovered = hoveredPillar === pillar.id;
+            const isFirstRow = idx < columnsCount;
             return (
               <motion.div
                 key={pillar.id}
@@ -476,7 +512,7 @@ export const WhyChooseUsSection: React.FC = () => {
                 )}
 
                 {/* Card connector dot (desktop) */}
-                {!isMobile && (
+                {!isMobile && isFirstRow && (
                   <div
                     style={{
                       position: 'absolute',
