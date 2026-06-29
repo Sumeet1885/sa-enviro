@@ -370,7 +370,7 @@ export const services = [
     description:
       "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water.",
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/RO2_jjdtan.jpg",
     link: "/services/reverse-osmosis",
     category: "amc",
   },
@@ -380,7 +380,7 @@ export const services = [
     description:
       "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants.",
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
     link: "/services/water-treatment-plants",
     category: "amc",
   },
@@ -1445,7 +1445,8 @@ export const products: Product[] = [
       },
     },
     images: [
-      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp", alt: "Water Treatment Plant" },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg", alt: "Water Treatment Plant" },
+
     ],
     Page_Description: [
       {
@@ -1578,11 +1579,8 @@ export const products: Product[] = [
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/RO2_jjdtan.jpg",
         alt: "Reverse Osmosis (RO) system with blue filtration tanks and control panel",
       },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
-        alt: "Reverse Osmosis (RO) ",
-      },
-      
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp", alt: "Reverse Osmosis (RO) System" },
+
     ],
     Page_Description: [
       {
