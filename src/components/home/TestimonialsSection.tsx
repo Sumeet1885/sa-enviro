@@ -645,7 +645,7 @@ export const TestimonialsSection: React.FC = () => {
         </div>
 
         {/* Stats */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -670,7 +670,7 @@ export const TestimonialsSection: React.FC = () => {
               />
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> */}
 
       </div>
     </div>

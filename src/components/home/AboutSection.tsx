@@ -130,6 +130,7 @@ export const AboutSection: React.FC = () => {
   const isTablet = width >= 768 && width < 1024;
 
   const [dl, setDl] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   const handleDownload = () => {
     setDl(true);
@@ -414,8 +415,8 @@ export const AboutSection: React.FC = () => {
               src="https://res.cloudinary.com/dwttz8kvz/video/upload/v1778074474/SAEnviro_1_t0abij"
               autoPlay
               loop
-              muted
               playsInline
+              muted={isMuted}
               style={{
                 position: 'absolute',
                 top: 0,
@@ -427,6 +428,52 @@ export const AboutSection: React.FC = () => {
                 zIndex: 1,
               }}
             />
+
+            {/* Mute/Unmute Overlay Button */}
+            <button
+              onClick={() => setIsMuted(!isMuted)}
+              style={{
+                position: 'absolute',
+                bottom: '16px',
+                right: '16px',
+                zIndex: 10,
+                backgroundColor: 'rgba(10, 21, 38, 0.75)',
+                backdropFilter: 'blur(4px)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '50%',
+                width: '44px',
+                height: '44px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#ffffff',
+                cursor: 'pointer',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(0, 93, 232, 0.9)';
+                e.currentTarget.style.transform = 'scale(1.08)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(10, 21, 38, 0.75)';
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+              title={isMuted ? "Unmute Video" : "Mute Video"}
+            >
+              {isMuted ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11   5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <line x1="23" y1="9" x2="17" y2="15"></line>
+                  <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+              )}
+            </button>
           </div>
 
           {/* CTA Box — Download Brochure */}
