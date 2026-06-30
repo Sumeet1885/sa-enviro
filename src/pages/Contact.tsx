@@ -1010,11 +1010,11 @@ export default function Contact() {
             </motion.div>
           </div>
         </div>
-
+        
         {/* --- MAP SECTION --- */}
         <section style={{ height: "384px", backgroundColor: "rgba(255, 255, 255, 0.05)", position: "relative", zIndex: 2 }}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.1756641332554!2d73.7718946!3d18.5209623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0fd0cfe2717%3A0xe534b896a7893206!2sSA%20ENVIRO%20SOLUTIONS!5e0!3m2!1sen!2sin!4v1771998843750!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242156.49368438823!2d73.69242286360773!3d18.49745993620021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b96e87e723e5%3A0x29918004adc95820!2sKrishna%20residency!5e0!3m2!1sen!2sin!4v1782798328596!5m2!1sen!2sin"
             width="100%"
             height="100%"
             style={{ border: 0 }}

@@ -130,7 +130,7 @@ export const AboutSection: React.FC = () => {
   const isTablet = width >= 768 && width < 1024;
 
   const [dl, setDl] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
 
   const handleDownload = () => {
     setDl(true);
