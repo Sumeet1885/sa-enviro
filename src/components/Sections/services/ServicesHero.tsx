@@ -52,7 +52,7 @@ export default function ServicesHero() {
 
           {/* Heading */}
           <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight mb-5 text-foreground">
-            Comprehensive Environmental{" "}
+            Comprehensive & Non-Comprehensive Environmental{" "}
             <span
               className="relative inline-block"
               style={{ color: "#005DE8" }}
@@ -77,7 +77,7 @@ export default function ServicesHero() {
 
           {/* Sub-heading */}
           <p className="text-lg max-w-xl leading-relaxed mb-8 text-muted-foreground">
-            We provide end-to-end solutions for Water and Wastewater Treatment, Zero Liquid Discharge, and comprehensive Annual Maintenance Contracts (AMC) tailored to your industry needs.
+            We provide end-to-end solutions for Water and Wastewater Treatment, Zero Liquid Discharge, and Comprehensive & Non-Comprehensive AMC (Annual Maintenance Contracts) tailored to your industry needs.
           </p>
 
 

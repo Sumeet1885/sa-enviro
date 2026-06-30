@@ -24,7 +24,7 @@ export const siteConfig: SiteConfig = {
     phone: "+91 8087748585 / 8087758585",
     email: "sales@saenvirosolutions.com, amruta@saenvirosolutions.com",
     address:
-      "FLAT NO 302, 3RD Floor, KRISHNA RESIDENCY, CTS NO 571, OPP. BHAJI MANDAI, Chinchwad Gaon, Pimpri Chinchwad, Pune, Maharashtra - 411033",
+      "F. No. 302, 3RD Floor, KRISHNA RESIDENCY, CTS NO 571, OPP. BHAJI MANDAI, Chinchwad Gaon, Pimpri Chinchwad, Pune, Maharashtra - 411033",
   },
   social: {
     instagram: "https://instagram.com/saenvirosolutions",
@@ -514,6 +514,16 @@ export const certifications = [
 ];
 
 export const galleryImages = [
+   {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg",
+    alt: "STP System Overview",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg",
+    alt: "Industrial ETP Unit",
+    category: "plants",
+  },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     alt: "Ultraviolet Units",
@@ -535,23 +545,8 @@ export const galleryImages = [
     category: "plants",
   },
   {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg",
-    alt: "STP System Overview",
-    category: "plants",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
-    alt: "STP Component View",
-    category: "plants",
-  },
-  {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/STP4_adarrl.jpg",
     alt: "Industrial STP Setup",
-    category: "plants",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
-    alt: "Modern STP Installation",
     category: "plants",
   },
   {
@@ -560,8 +555,8 @@ export const galleryImages = [
     category: "plants",
   },
   {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg",
-    alt: "ZLD Plant Overview",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
+    alt: "Modern STP Installation",
     category: "plants",
   },
   {
@@ -570,8 +565,8 @@ export const galleryImages = [
     category: "plants",
   },
   {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg",
-    alt: "Industrial ETP Unit",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg",
+    alt: "ZLD Plant Overview",
     category: "plants",
   },
   {
@@ -590,13 +585,18 @@ export const galleryImages = [
     category: "equipment",
   },
   {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/OMS1_bsvsqe.jpg",
-    alt: "Online Monitoring System Dashboard",
-    category: "equipment",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
+    alt: "STP Component View",
+    category: "plants",
   },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/OMS2_fbcrdl.jpg",
     alt: "OMS Sensor Setup",
+    category: "equipment",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/OMS1_bsvsqe.jpg",
+    alt: "Online Monitoring System Dashboard",
     category: "equipment",
   },
   {
