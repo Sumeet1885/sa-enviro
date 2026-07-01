@@ -133,7 +133,7 @@ const Icons = {
 
 // --- Stats Data ---
 const statsData = [
-  { icon: "building" as const, value: "20+", label: "Industries Covered" },
+  { icon: "building" as const, value: "30+", label: "Happy Clients" },
   { icon: "people" as const, value: "Long-term", label: "Partnerships" },
 ];
 
@@ -240,19 +240,6 @@ const Client = () => {
                 </span>
               </motion.h1>
 
-              <motion.p
-                variants={itemVariants}
-                style={{
-                  fontFamily: "var(--font-family-sans)",
-                  fontSize: "var(--text-section-subheading-size)",
-                  color: theme.colors.textMuted,
-                  margin: 0,
-                  lineHeight: 1.6,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Insights That Create Impact.
-              </motion.p>
             </div>
 
             {/* ── Right: 2×2 Stats Card Grid ── */}

@@ -24,7 +24,7 @@ export const siteConfig: SiteConfig = {
     phone: "+91 8087748585 / 8087758585",
     email: "sales@saenvirosolutions.com, amruta@saenvirosolutions.com",
     address:
-      "FLAT NO 302, 3RD Floor, KRISHNA RESIDENCY, CTS NO 571, OPP. BHAJI MANDAI, Chinchwad Gaon, Pimpri Chinchwad, Pune, Maharashtra - 411033",
+      "F. No. 302, 3RD Floor, KRISHNA RESIDENCY, CTS NO 571, OPP. BHAJI MANDAI, Chinchwad Gaon, Pimpri Chinchwad, Pune, Maharashtra - 411033",
   },
   social: {
     instagram: "https://instagram.com/saenvirosolutions",
@@ -370,7 +370,7 @@ export const services = [
     description:
       "RO is a water purification process that uses a partially permeable membrane to separate ions, unwanted molecules and larger particles from drinking water.",
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/RO2_jjdtan.jpg",
     link: "/services/reverse-osmosis",
     category: "amc",
   },
@@ -380,7 +380,7 @@ export const services = [
     description:
       "SA Enviro Solutions supply a wide range of Water Treatment Plants, Packaged Water Treatment Plants.",
     image:
-      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp",
+      "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
     link: "/services/water-treatment-plants",
     category: "amc",
   },
@@ -514,6 +514,16 @@ export const certifications = [
 ];
 
 export const galleryImages = [
+   {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg",
+    alt: "STP System Overview",
+    category: "plants",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg",
+    alt: "Industrial ETP Unit",
+    category: "plants",
+  },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725958/Sewage-Treatment-Plants-Tube_ei19jk.webp",
     alt: "Ultraviolet Units",
@@ -535,23 +545,8 @@ export const galleryImages = [
     category: "plants",
   },
   {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP2_pto54g.jpg",
-    alt: "STP System Overview",
-    category: "plants",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
-    alt: "STP Component View",
-    category: "plants",
-  },
-  {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/STP4_adarrl.jpg",
     alt: "Industrial STP Setup",
-    category: "plants",
-  },
-  {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
-    alt: "Modern STP Installation",
     category: "plants",
   },
   {
@@ -560,8 +555,8 @@ export const galleryImages = [
     category: "plants",
   },
   {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg",
-    alt: "ZLD Plant Overview",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP5_qkvb5x.jpg",
+    alt: "Modern STP Installation",
     category: "plants",
   },
   {
@@ -570,8 +565,8 @@ export const galleryImages = [
     category: "plants",
   },
   {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/ETP2_jjtsui.jpg",
-    alt: "Industrial ETP Unit",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/ZLD2_mlq2w5.jpg",
+    alt: "ZLD Plant Overview",
     category: "plants",
   },
   {
@@ -590,13 +585,18 @@ export const galleryImages = [
     category: "equipment",
   },
   {
-    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/OMS1_bsvsqe.jpg",
-    alt: "Online Monitoring System Dashboard",
-    category: "equipment",
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/STP3_ic3rmj.jpg",
+    alt: "STP Component View",
+    category: "plants",
   },
   {
     src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/OMS2_fbcrdl.jpg",
     alt: "OMS Sensor Setup",
+    category: "equipment",
+  },
+  {
+    src: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060975/OMS1_bsvsqe.jpg",
+    alt: "Online Monitoring System Dashboard",
     category: "equipment",
   },
   {
@@ -1445,7 +1445,8 @@ export const products: Product[] = [
       },
     },
     images: [
-      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp", alt: "Water Treatment Plant" },
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg", alt: "Water Treatment Plant" },
+
     ],
     Page_Description: [
       {
@@ -1578,11 +1579,8 @@ export const products: Product[] = [
         url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060977/RO2_jjdtan.jpg",
         alt: "Reverse Osmosis (RO) system with blue filtration tanks and control panel",
       },
-      {
-        url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1778060976/RO1_gk1ppp.jpg",
-        alt: "Reverse Osmosis (RO) ",
-      },
-      
+      { url: "https://res.cloudinary.com/dwttz8kvz/image/upload/f_auto,q_auto/v1773725964/WTP_yvvfad.webp", alt: "Reverse Osmosis (RO) System" },
+
     ],
     Page_Description: [
       {
