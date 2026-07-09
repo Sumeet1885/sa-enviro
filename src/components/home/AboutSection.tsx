@@ -131,6 +131,23 @@ export const AboutSection: React.FC = () => {
 
   const [dl, setDl] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Sync muted state directly to DOM property to bypass browser dynamic-prop quirks
+    video.muted = isMuted;
+
+    // Force play attempt in case autoplay was blocked initially
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((err) => {
+        console.log("Autoplay play promise was blocked or interrupted:", err);
+      });
+    }
+  }, [isMuted]);
 
   const handleDownload = () => {
     setDl(true);
@@ -412,11 +429,12 @@ export const AboutSection: React.FC = () => {
           }}>
             {/* Background Video */}
             <video
-              src="https://res.cloudinary.com/dwttz8kvz/video/upload/v1778074474/SAEnviro_1_t0abij"
+              ref={videoRef}
+              src="https://res.cloudinary.com/dwttz8kvz/video/upload/v1778074474/SAEnviro_1_t0abij.mp4"
               autoPlay
               loop
               playsInline
-              muted={isMuted}
+              muted
               style={{
                 position: 'absolute',
                 top: 0,
