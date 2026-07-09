@@ -137,10 +137,8 @@ export const AboutSection: React.FC = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Sync muted state directly to DOM property to bypass browser dynamic-prop quirks
     video.muted = isMuted;
 
-    // Force play attempt in case autoplay was blocked initially
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch((err) => {
