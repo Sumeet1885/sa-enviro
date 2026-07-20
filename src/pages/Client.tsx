@@ -133,7 +133,7 @@ const Icons = {
 
 // --- Stats Data ---
 const statsData = [
-  { icon: "building" as const, value: "30+", label: "Happy Clients" },
+  { icon: "building" as const, value: "150+", label: "Happy Clients" },
   { icon: "people" as const, value: "Long-term", label: "Partnerships" },
 ];
 
