@@ -124,9 +124,9 @@ Create a `.env` file in your project root:
 
 Edit `.env` and add your EmailJS credentials:
 
-    NEXT_PUBLIC_EMAILJS_SERVICE=service_abc123
-    NEXT_PUBLIC_EMAILJS_TEMPLATE=template_xyz789
-    NEXT_PUBLIC_EMAILJS_KEY=xxxxxxxxxxxxx
+    VITE_EMAILJS_SERVICE=service_abc123
+    VITE_EMAILJS_TEMPLATE=template_xyz789
+    VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxx
 
 Save the file
 

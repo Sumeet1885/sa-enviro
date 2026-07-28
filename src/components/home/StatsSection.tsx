@@ -85,7 +85,7 @@ interface FeatureItem {
 }
 
 const featuresData: FeatureItem[] = [
-  { id: 1, icon: IconCheckCircle, title: '66+ Completed Projects' },
+  { id: 1, icon: IconCheckCircle, title: '151+ Completed Projects' },
   { id: 2, icon: IconUsers,       title: '45+ Workers' },
   { id: 3, icon: IconMapPin,      title: '2+ Office Locations' },
   { id: 4, icon: IconAward,       title: '10+ Years of Trust & Partnership' },

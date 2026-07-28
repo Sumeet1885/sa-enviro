@@ -220,7 +220,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery, 
           }}>
             Our Blog <span style={{ 
             fontFamily: theme.fonts.serif, 
-            fontSize: isMobile ? '2rem' : '2.8rem', 
+            fontSize: isMobile ? '1.5rem' : '2.8rem', 
             fontWeight: 600,
             color: '#005DE8',
             display: 'block',
