@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-// ─── Window Size Hook ─────────────────────────────────────────────────────────
 const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
     width: typeof window !== 'undefined' ? window.innerWidth : 1200,
@@ -23,7 +22,6 @@ const useWindowSize = () => {
   return windowSize;
 };
 
-// ─── Theme ────────────────────────────────────────────────────────────────────
 const theme = {
   colors: {
     bgLight: '#F8FAFC',
@@ -41,7 +39,6 @@ const theme = {
   },
 };
 
-// ─── Icons ────────────────────────────────────────────────────────────────────
 const Icons = {
   WaterDrop: () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -92,11 +89,9 @@ const Icons = {
   ),
 };
 
-// ─── Brochure Config (matches BrochureSection) ───────────────────────────────
 const BROCHURE_PDF_URL = import.meta.env.VITE_BROCHURE_URL;
 const BROCHURE_FILENAME = 'SA.pdf';
 
-// ─── Background Component (same style as Certification) ──────────────────────
 const BackgroundPattern = () => (
   <div style={{
     position: 'absolute',
@@ -123,7 +118,6 @@ const BackgroundPattern = () => (
   </div>
 );
 
-// ─── About Section ────────────────────────────────────────────────────────────
 export const AboutSection: React.FC = () => {
   const { width } = useWindowSize();
   const isMobile = width < 1024;
@@ -167,7 +161,6 @@ export const AboutSection: React.FC = () => {
       }}>
         <BackgroundPattern />
 
-        {/* ── Center-aligned Badge (similar to Certification badge) ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -201,7 +194,6 @@ export const AboutSection: React.FC = () => {
           <div style={{ height: '1px', width: '40px', backgroundColor: theme.colors.bluePrimary, opacity: 0.5 }} />
         </motion.div>
 
-        {/* ── Columns Container ── */}
         <div style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
@@ -210,7 +202,6 @@ export const AboutSection: React.FC = () => {
           alignItems: 'center',
         }}>
 
-          {/* ── LEFT COLUMN (CONTENT) ─────────────────────────────────── */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -227,7 +218,6 @@ export const AboutSection: React.FC = () => {
           >
 
 
-          {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -252,7 +242,6 @@ export const AboutSection: React.FC = () => {
             </span>
           </motion.h1>
 
-          {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -271,7 +260,6 @@ export const AboutSection: React.FC = () => {
             We design and deliver intelligent water treatment systems that ensure purity, protect resources, and empower a sustainable future.
           </motion.p>
 
-          {/* Features Timeline */}
           <div style={{ position: 'relative' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               {[
@@ -397,7 +385,6 @@ export const AboutSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* ── RIGHT COLUMN (VISUALS) ────────────────────────────────── */}
         <div style={{
           width: isMobile ? '100%' : '45%',
           display: 'flex',
@@ -409,12 +396,9 @@ export const AboutSection: React.FC = () => {
           position: 'relative',
         }}>
 
-          {/* Video Container */}
           <div style={{
             width: '100%',
             aspectRatio: '16 / 9',
-            // height: isMobile ? undefined : '60vh',
-            // maxHeight: isMobile ? undefined : '550px',
             position: 'relative',
             overflow: 'hidden',
             display: 'flex',
@@ -492,7 +476,6 @@ export const AboutSection: React.FC = () => {
             </button>
           </div>
 
-          {/* CTA Box — Download Brochure (Redesigned) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -510,7 +493,6 @@ export const AboutSection: React.FC = () => {
               position: 'relative',
             }}
           >
-            {/* ── LEFT SIDE: Brochure Preview + Info ── */}
             <div style={{
               flex: isMobile ? 'unset' : '1 1 0%',
               padding: isMobile ? '24px 20px' : '28px 32px',
@@ -522,7 +504,6 @@ export const AboutSection: React.FC = () => {
               position: 'relative',
               background: 'linear-gradient(135deg, #f8faff 0%, #ffffff 100%)',
             }}>
-              {/* Decorative dot grid */}
               <div style={{
                 position: 'absolute', top: 12, right: 12,
                 width: 80, height: 80, opacity: 0.08,
@@ -532,7 +513,6 @@ export const AboutSection: React.FC = () => {
                 pointerEvents: 'none',
               }} />
 
-              {/* Label */}
               <div style={{
                 display: 'flex', alignItems: 'center', gap: '6px',
                 color: theme.colors.bluePrimary,
@@ -548,7 +528,6 @@ export const AboutSection: React.FC = () => {
                 Explore Our Story
               </div>
 
-              {/* Title */}
               <div>
                 <h3 style={{
                   fontFamily: theme.fonts.serif,
@@ -581,7 +560,6 @@ export const AboutSection: React.FC = () => {
 
             </div>
 
-            {/* ── RIGHT SIDE: PDF Badge + Checklist + Download Button ── */}
             <div style={{
               width: isMobile ? '100%' : '220px',
               flexShrink: 0,
@@ -592,7 +570,6 @@ export const AboutSection: React.FC = () => {
               justifyContent: 'center',
               background: '#ffffff',
             }}>
-              {/* PDF Badge */}
               <div style={{
                 display: 'flex', alignItems: 'center', gap: '12px',
                 padding: '10px 14px',
@@ -610,7 +587,6 @@ export const AboutSection: React.FC = () => {
                   position: 'relative',
                   overflow: 'hidden',
                 }}>
-                  {/* PDF Icon */}
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill={theme.colors.bluePrimary} opacity="0.15"/>
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke={theme.colors.bluePrimary} strokeWidth="1.5" fill="none"/>
@@ -633,7 +609,6 @@ export const AboutSection: React.FC = () => {
 
 
 
-              {/* Download Button */}
               <motion.a
                 href={BROCHURE_PDF_URL}
                 download={BROCHURE_FILENAME}
@@ -659,7 +634,6 @@ export const AboutSection: React.FC = () => {
                   marginTop: '4px',
                 }}
               >
-                {/* PDF download arrow icon */}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                   <polyline points="7 10 12 15 17 10"/>
