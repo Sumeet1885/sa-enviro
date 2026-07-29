@@ -93,7 +93,7 @@ const Icons = {
 };
 
 // ─── Brochure Config (matches BrochureSection) ───────────────────────────────
-const BROCHURE_PDF_URL = '/Broucher.pdf';
+const BROCHURE_PDF_URL = import.meta.env.VITE_BROCHURE_URL;
 const BROCHURE_FILENAME = 'SA.pdf';
 
 // ─── Background Component (same style as Certification) ──────────────────────
@@ -492,85 +492,183 @@ export const AboutSection: React.FC = () => {
             </button>
           </div>
 
-          {/* CTA Box — Download Brochure */}
-          <motion.a
-            href={BROCHURE_PDF_URL}
-            download={BROCHURE_FILENAME}
-            onClick={handleDownload}
-            initial={{ opacity: 0, y: 20 }}
+          {/* CTA Box — Download Brochure (Redesigned) */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-            whileHover={{ y: -4, boxShadow: '0 20px 40px -10px rgba(10, 22, 40, 0.4)' }}
+            transition={{ delay: 0.6, duration: 0.6 }}
             style={{
-              textDecoration: 'none',
-              backgroundColor: '#0D3B66',
-              borderRadius: '16px',
-              padding: isMobile ? '20px' : '16px 24px',
+              width: '100%',
+              backgroundColor: '#ffffff',
+              borderRadius: '20px',
+              border: `1.5px solid ${theme.colors.borderLight}`,
+              boxShadow: '0 8px 40px -8px rgba(10, 22, 60, 0.12)',
               display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: isMobile ? '20px' : '0',
-              boxShadow: '0 10px 30px -5px rgba(10, 22, 40, 0.3)',
-              width: '100%',
-              cursor: 'pointer',
-              border: '1px solid rgba(255,255,255,0.1)',
+              overflow: 'hidden',
+              position: 'relative',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            {/* ── LEFT SIDE: Brochure Preview + Info ── */}
+            <div style={{
+              flex: isMobile ? 'unset' : '1 1 0%',
+              padding: isMobile ? '24px 20px' : '28px 32px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '18px',
+              borderRight: isMobile ? 'none' : `1.5px solid ${theme.colors.borderLight}`,
+              borderBottom: isMobile ? `1.5px solid ${theme.colors.borderLight}` : 'none',
+              position: 'relative',
+              background: 'linear-gradient(135deg, #f8faff 0%, #ffffff 100%)',
+            }}>
+              {/* Decorative dot grid */}
               <div style={{
-                width: '40px',
-                height: '40px',
+                position: 'absolute', top: 12, right: 12,
+                width: 80, height: 80, opacity: 0.08,
+                backgroundImage: 'radial-gradient(circle, #005DE8 1px, transparent 1px)',
+                backgroundSize: '10px 10px',
                 borderRadius: '50%',
-                backgroundColor: 'rgba(255,255,255,0.15)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: theme.colors.white,
-              }}>
-                <div style={{ transform: 'scale(0.8)' }}>
-                  <Icons.Document />
-                </div>
-              </div>
-              <p style={{
+                pointerEvents: 'none',
+              }} />
+
+              {/* Label */}
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: '6px',
+                color: theme.colors.bluePrimary,
                 fontFamily: theme.fonts.sans,
-                fontSize: '0.85rem',
-                color: theme.colors.white,
-                lineHeight: 1.4,
-                maxWidth: '220px',
-                fontWeight: 400,
-                margin: 0,
+                fontSize: '0.72rem',
+                fontWeight: 700,
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
               }}>
-                Explore our capabilities, technologies, and projects in detail.
-              </p>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill={theme.colors.bluePrimary}>
+                  <circle cx="5" cy="5" r="5" />
+                </svg>
+                Explore Our Story
+              </div>
+
+              {/* Title */}
+              <div>
+                <h3 style={{
+                  fontFamily: theme.fonts.serif,
+                  fontSize: isMobile ? '1.4rem' : '1.65rem',
+                  fontWeight: 700,
+                  color: theme.colors.navyDark,
+                  margin: '0 0 6px 0',
+                  lineHeight: 1.2,
+                }}>
+                  Company Brochure
+                </h3>
+                <div style={{
+                  width: '36px', height: '3px',
+                  borderRadius: '2px',
+                  background: `linear-gradient(90deg, ${theme.colors.bluePrimary}, #60a5fa)`,
+                  marginBottom: '10px',
+                }} />
+                <p style={{
+                  fontFamily: theme.fonts.sans,
+                  fontSize: '0.85rem',
+                  color: theme.colors.textMuted,
+                  lineHeight: 1.55,
+                  margin: 0,
+                  maxWidth: '280px',
+                  fontWeight: 300,
+                }}>
+                  Learn about our journey, our mission and how we create lasting environmental impact.
+                </p>
+              </div>
+
             </div>
 
-            {!isMobile && (
-              <div style={{ width: '1px', height: '32px', backgroundColor: 'rgba(255,255,255,0.2)' }} />
-            )}
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style={{
-                color: theme.colors.white,
-                fontFamily: theme.fonts.serif,
-                fontSize: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                cursor: 'pointer',
-                padding: '8px',
-                userSelect: 'none',
-              }}
-            >
-              <div style={{ transform: 'scale(0.9)' }}>
-                <Icons.Download />
+            {/* ── RIGHT SIDE: PDF Badge + Checklist + Download Button ── */}
+            <div style={{
+              width: isMobile ? '100%' : '220px',
+              flexShrink: 0,
+              padding: isMobile ? '24px 20px' : '28px 24px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '16px',
+              justifyContent: 'center',
+              background: '#ffffff',
+            }}>
+              {/* PDF Badge */}
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: '12px',
+                padding: '10px 14px',
+                borderRadius: '12px',
+                border: `1.5px solid ${theme.colors.borderLight}`,
+                background: '#F8FAFC',
+              }}>
+                <div style={{
+                  width: '40px', height: '44px',
+                  background: 'linear-gradient(135deg, #e8f0fe 0%, #c7d9ff 100%)',
+                  borderRadius: '8px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  flexShrink: 0,
+                  border: `1.5px solid ${theme.colors.bluePrimary}33`,
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}>
+                  {/* PDF Icon */}
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill={theme.colors.bluePrimary} opacity="0.15"/>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke={theme.colors.bluePrimary} strokeWidth="1.5" fill="none"/>
+                    <polyline points="14 2 14 8 20 8" stroke={theme.colors.bluePrimary} strokeWidth="1.5" fill="none"/>
+                    <text x="6" y="18" fontFamily="Arial" fontSize="5.5" fontWeight="bold" fill={theme.colors.bluePrimary}>PDF</text>
+                  </svg>
+                </div>
+                <div>
+                  <div style={{
+                    fontFamily: theme.fonts.sans, fontSize: '0.72rem',
+                    fontWeight: 700, color: theme.colors.navyDark,
+                    textTransform: 'uppercase', letterSpacing: '0.5px',
+                  }}>PDF Format</div>
+                  <div style={{
+                    fontFamily: theme.fonts.sans, fontSize: '0.7rem',
+                    color: theme.colors.textMuted, fontWeight: 300,
+                  }}>SA Enviro Solutions</div>
+                </div>
               </div>
-              {dl ? 'Preparing…' : 'Download Brochure'}
-            </motion.div>
-          </motion.a>
+
+
+
+              {/* Download Button */}
+              <motion.a
+                href={BROCHURE_PDF_URL}
+                download={BROCHURE_FILENAME}
+                onClick={handleDownload}
+                whileHover={{ scale: 1.03, boxShadow: `0 8px 24px -4px ${theme.colors.bluePrimary}55` }}
+                whileTap={{ scale: 0.97 }}
+                style={{
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  background: `linear-gradient(135deg, ${theme.colors.bluePrimary} 0%, #003fbe 100%)`,
+                  color: '#ffffff',
+                  borderRadius: '10px',
+                  padding: '12px 16px',
+                  fontFamily: theme.fonts.sans,
+                  fontSize: '0.82rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  boxShadow: `0 4px 16px -4px ${theme.colors.bluePrimary}66`,
+                  letterSpacing: '0.2px',
+                  marginTop: '4px',
+                }}
+              >
+                {/* PDF download arrow icon */}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                {dl ? 'Preparing…' : 'Download Brochure'}
+              </motion.a>
+            </div>
+          </motion.div>
 
         </div>
       </div>
