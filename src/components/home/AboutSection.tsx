@@ -90,7 +90,7 @@ const Icons = {
 };
 
 const BROCHURE_PDF_URL = import.meta.env.VITE_BROCHURE_URL;
-const BROCHURE_FILENAME = 'SA.pdf';
+const BROCHURE_FILENAME = 'SA Enviro Solutions Brochure.pdf';
 
 const BackgroundPattern = () => (
   <div style={{
@@ -141,9 +141,39 @@ export const AboutSection: React.FC = () => {
     }
   }, [isMuted]);
 
-  const handleDownload = () => {
+  const handleDownload = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (dl) return;
     setDl(true);
-    setTimeout(() => setDl(false), 2000);
+    try {
+      const pdfUrl = BROCHURE_PDF_URL ;
+      const response = await fetch(pdfUrl);
+      if (!response.ok) throw new Error(`Fetch error: ${response.statusText}`);
+
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = BROCHURE_FILENAME || 'SA-Enviro-Brochure.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      setTimeout(() => {
+        window.URL.revokeObjectURL(blobUrl);
+      }, 100);
+    } catch (error) {
+      console.error('Download failed, falling back:', error);
+      const link = document.createElement('a');
+      link.href = BROCHURE_PDF_URL || '#';
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.download = BROCHURE_FILENAME;
+      link.click();
+    } finally {
+      setDl(false);
+    }
   };
 
   return (
@@ -218,435 +248,435 @@ export const AboutSection: React.FC = () => {
           >
 
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            style={{
-              fontFamily: theme.fonts.serif,
-              fontSize: 'clamp(2.5rem, 3.5vw, 4rem)',
-              lineHeight: 1.1,
-              color: theme.colors.navyDark,
-              marginBottom: '20px',
-              fontWeight: 400,
-            }}
-          >
-            Solutions that<br/>
-            go beyond treatment.<br/>
-            <span style={{
-              color: theme.colors.blueAccent,
-              fontWeight: 400,
-            }}>
-              Impact that flows forward.
-            </span>
-          </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              style={{
+                fontFamily: theme.fonts.serif,
+                fontSize: 'clamp(2.5rem, 3.5vw, 4rem)',
+                lineHeight: 1.1,
+                color: theme.colors.navyDark,
+                marginBottom: '20px',
+                fontWeight: 400,
+              }}
+            >
+              Solutions that<br />
+              go beyond treatment.<br />
+              <span style={{
+                color: theme.colors.blueAccent,
+                fontWeight: 400,
+              }}>
+                Impact that flows forward.
+              </span>
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            style={{
-              fontFamily: theme.fonts.sans,
-              fontSize: isMobile ? '0.9rem' : '1rem',
-              color: theme.colors.textMuted,
-              lineHeight: 1.5,
-              maxWidth: '480px',
-              marginBottom: '32px',
-              fontWeight: 300,
-            }}
-          >
-            We design and deliver intelligent water treatment systems that ensure purity, protect resources, and empower a sustainable future.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              style={{
+                fontFamily: theme.fonts.sans,
+                fontSize: isMobile ? '0.9rem' : '1rem',
+                color: theme.colors.textMuted,
+                lineHeight: 1.5,
+                maxWidth: '480px',
+                marginBottom: '32px',
+                fontWeight: 300,
+              }}
+            >
+              We design and deliver intelligent water treatment systems that ensure purity, protect resources, and empower a sustainable future.
+            </motion.p>
 
-          <div style={{ position: 'relative' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              {[
-                { title: 'Our Purpose', desc: 'To deliver clean water solutions that improve lives and preserve the planet.', icon: Icons.WaterDrop },
-                { title: 'Our Commitment', desc: 'We combine innovation, expertise, and responsibility in every project we undertake.', icon: Icons.Shield },
-                { title: 'Our Promise', desc: 'Reliable systems. Responsible processes. Real results that last.', icon: Icons.Leaf },
-              ].map((feature, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 + (idx * 0.2) }}
-                  style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', position: 'relative', zIndex: 1 }}
-                >
-                  {!isMobile && (
-                    <>
-                      {idx === 0 && (
-                        <svg
-                          style={{
-                            position: 'absolute',
-                            top: '-48px',
-                            height: '68px',
-                            left: '-24px',
-                            width: '44px',
-                            zIndex: -1,
-                            pointerEvents: 'none',
-                            overflow: 'visible',
-                          }}
-                          preserveAspectRatio="none"
-                          viewBox="0 0 100 100"
-                        >
-                          <motion.path
-                            d="M 50 0 C 50 60, -10 60, 100 100"
-                            fill="none"
-                            stroke={theme.colors.borderLight}
-                            strokeWidth="1.5"
-                            vectorEffect="non-scaling-stroke"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-                          />
-                        </svg>
-                      )}
-
-                      {idx < 2 && (
-                        <svg
-                          style={{
-                            position: 'absolute',
-                            top: '20px',
-                            bottom: '-40px',
-                            left: '-24px',
-                            width: '44px',
-                            zIndex: -1,
-                            pointerEvents: 'none',
-                            overflow: 'visible',
-                          }}
-                          preserveAspectRatio="none"
-                          viewBox="0 0 100 100"
-                        >
-                          <motion.path
-                            d="M 100 0 C -20 0, -20 100, 100 100"
-                            fill="none"
-                            stroke={theme.colors.bluePrimary}
-                            strokeWidth="1.5"
-                            vectorEffect="non-scaling-stroke"
-                            initial={{ pathLength: 0, opacity: 0 }}
-                            whileInView={{ pathLength: 1, opacity: 0.8 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.5 + (idx * 0.2) }}
-                          />
-                        </svg>
-                      )}
-                    </>
-                  )}
-
+            <div style={{ position: 'relative' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                {[
+                  { title: 'Our Purpose', desc: 'To deliver clean water solutions that improve lives and preserve the planet.', icon: Icons.WaterDrop },
+                  { title: 'Our Commitment', desc: 'We combine innovation, expertise, and responsibility in every project we undertake.', icon: Icons.Shield },
+                  { title: 'Our Promise', desc: 'Reliable systems. Responsible processes. Real results that last.', icon: Icons.Leaf },
+                ].map((feature, idx) => (
                   <motion.div
-                    whileHover={{ scale: 1.1, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '50%',
-                      backgroundColor: theme.colors.white,
-                      border: `1px solid ${theme.colors.borderLight}`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: theme.colors.navyDark,
-                      flexShrink: 0,
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
-                      cursor: 'default',
-                    }}
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + (idx * 0.2) }}
+                    style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', position: 'relative', zIndex: 1 }}
                   >
-                    <div style={{ transform: 'scale(0.8)' }}>
-                      <feature.icon />
+                    {!isMobile && (
+                      <>
+                        {idx === 0 && (
+                          <svg
+                            style={{
+                              position: 'absolute',
+                              top: '-48px',
+                              height: '68px',
+                              left: '-24px',
+                              width: '44px',
+                              zIndex: -1,
+                              pointerEvents: 'none',
+                              overflow: 'visible',
+                            }}
+                            preserveAspectRatio="none"
+                            viewBox="0 0 100 100"
+                          >
+                            <motion.path
+                              d="M 50 0 C 50 60, -10 60, 100 100"
+                              fill="none"
+                              stroke={theme.colors.borderLight}
+                              strokeWidth="1.5"
+                              vectorEffect="non-scaling-stroke"
+                              initial={{ pathLength: 0, opacity: 0 }}
+                              whileInView={{ pathLength: 1, opacity: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+                            />
+                          </svg>
+                        )}
+
+                        {idx < 2 && (
+                          <svg
+                            style={{
+                              position: 'absolute',
+                              top: '20px',
+                              bottom: '-40px',
+                              left: '-24px',
+                              width: '44px',
+                              zIndex: -1,
+                              pointerEvents: 'none',
+                              overflow: 'visible',
+                            }}
+                            preserveAspectRatio="none"
+                            viewBox="0 0 100 100"
+                          >
+                            <motion.path
+                              d="M 100 0 C -20 0, -20 100, 100 100"
+                              fill="none"
+                              stroke={theme.colors.bluePrimary}
+                              strokeWidth="1.5"
+                              vectorEffect="non-scaling-stroke"
+                              initial={{ pathLength: 0, opacity: 0 }}
+                              whileInView={{ pathLength: 1, opacity: 0.8 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.5 + (idx * 0.2) }}
+                            />
+                          </svg>
+                        )}
+                      </>
+                    )}
+
+                    <motion.div
+                      whileHover={{ scale: 1.1, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
+                      style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        backgroundColor: theme.colors.white,
+                        border: `1px solid ${theme.colors.borderLight}`,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: theme.colors.navyDark,
+                        flexShrink: 0,
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+                        cursor: 'default',
+                      }}
+                    >
+                      <div style={{ transform: 'scale(0.8)' }}>
+                        <feature.icon />
+                      </div>
+                    </motion.div>
+                    <div>
+                      <h3 style={{
+                        fontFamily: theme.fonts.serif,
+                        fontSize: '1.1rem',
+                        color: theme.colors.navyDark,
+                        marginBottom: '4px',
+                        fontWeight: 600,
+                      }}>
+                        {feature.title}
+                      </h3>
+                      <p style={{
+                        fontFamily: theme.fonts.sans,
+                        fontSize: '0.85rem',
+                        color: theme.colors.textMuted,
+                        lineHeight: 1.4,
+                        maxWidth: '350px',
+                        fontWeight: 300,
+                      }}>
+                        {feature.desc}
+                      </p>
                     </div>
                   </motion.div>
-                  <div>
-                    <h3 style={{
-                      fontFamily: theme.fonts.serif,
-                      fontSize: '1.1rem',
-                      color: theme.colors.navyDark,
-                      marginBottom: '4px',
-                      fontWeight: 600,
-                    }}>
-                      {feature.title}
-                    </h3>
-                    <p style={{
-                      fontFamily: theme.fonts.sans,
-                      fontSize: '0.85rem',
-                      color: theme.colors.textMuted,
-                      lineHeight: 1.4,
-                      maxWidth: '350px',
-                      fontWeight: 300,
-                    }}>
-                      {feature.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        <div style={{
-          width: isMobile ? '100%' : '45%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          gap: '24px',
-          padding: isMobile ? '20px 24px 60px' : '80px 48px 80px 0',
-          zIndex: 5,
-          position: 'relative',
-        }}>
-
-          <div style={{
-            width: '100%',
-            aspectRatio: '16 / 9',
-            position: 'relative',
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: '16px',
-            border: `6px solid ${theme.colors.bgLight}`,
-            outline: `2px solid ${theme.colors.bluePrimary}`,
-            boxShadow: `0 25px 50px -12px rgba(0,0,0,0.15), 0 0 0 2px ${theme.colors.bluePrimary}22`,
-          }}>
-            {/* Background Video */}
-            <video
-              ref={videoRef}
-              src="https://res.cloudinary.com/dwttz8kvz/video/upload/v1778074474/SAEnviro_1_t0abij.mp4"
-              autoPlay
-              loop
-              playsInline
-              muted
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                zIndex: 1,
-              }}
-            />
-
-            {/* Mute/Unmute Overlay Button */}
-            <button
-              onClick={() => setIsMuted(!isMuted)}
-              style={{
-                position: 'absolute',
-                bottom: '16px',
-                right: '16px',
-                zIndex: 10,
-                backgroundColor: 'rgba(10, 21, 38, 0.75)',
-                backdropFilter: 'blur(4px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '50%',
-                width: '44px',
-                height: '44px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#ffffff',
-                cursor: 'pointer',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(0, 93, 232, 0.9)';
-                e.currentTarget.style.transform = 'scale(1.08)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(10, 21, 38, 0.75)';
-                e.currentTarget.style.transform = 'scale(1)';
-              }}
-              title={isMuted ? "Unmute Video" : "Mute Video"}
-            >
-              {isMuted ? (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="11   5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                  <line x1="23" y1="9" x2="17" y2="15"></line>
-                  <line x1="17" y1="9" x2="23" y2="15"></line>
-                </svg>
-              ) : (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                </svg>
-              )}
-            </button>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            style={{
-              width: '100%',
-              backgroundColor: '#ffffff',
-              borderRadius: '20px',
-              border: `1.5px solid ${theme.colors.borderLight}`,
-              boxShadow: '0 8px 40px -8px rgba(10, 22, 60, 0.12)',
-              display: 'flex',
-              flexDirection: isMobile ? 'column' : 'row',
-              overflow: 'hidden',
-              position: 'relative',
-            }}
-          >
-            <div style={{
-              flex: isMobile ? 'unset' : '1 1 0%',
-              padding: isMobile ? '24px 20px' : '28px 32px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '18px',
-              borderRight: isMobile ? 'none' : `1.5px solid ${theme.colors.borderLight}`,
-              borderBottom: isMobile ? `1.5px solid ${theme.colors.borderLight}` : 'none',
-              position: 'relative',
-              background: 'linear-gradient(135deg, #f8faff 0%, #ffffff 100%)',
-            }}>
-              <div style={{
-                position: 'absolute', top: 12, right: 12,
-                width: 80, height: 80, opacity: 0.08,
-                backgroundImage: 'radial-gradient(circle, #005DE8 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-                borderRadius: '50%',
-                pointerEvents: 'none',
-              }} />
-
-              <div style={{
-                display: 'flex', alignItems: 'center', gap: '6px',
-                color: theme.colors.bluePrimary,
-                fontFamily: theme.fonts.sans,
-                fontSize: '0.72rem',
-                fontWeight: 700,
-                letterSpacing: '1.5px',
-                textTransform: 'uppercase',
-              }}>
-                <svg width="10" height="10" viewBox="0 0 10 10" fill={theme.colors.bluePrimary}>
-                  <circle cx="5" cy="5" r="5" />
-                </svg>
-                Explore Our Story
+                ))}
               </div>
-
-              <div>
-                <h3 style={{
-                  fontFamily: theme.fonts.serif,
-                  fontSize: isMobile ? '1.4rem' : '1.65rem',
-                  fontWeight: 700,
-                  color: theme.colors.navyDark,
-                  margin: '0 0 6px 0',
-                  lineHeight: 1.2,
-                }}>
-                  Company Brochure
-                </h3>
-                <div style={{
-                  width: '36px', height: '3px',
-                  borderRadius: '2px',
-                  background: `linear-gradient(90deg, ${theme.colors.bluePrimary}, #60a5fa)`,
-                  marginBottom: '10px',
-                }} />
-                <p style={{
-                  fontFamily: theme.fonts.sans,
-                  fontSize: '0.85rem',
-                  color: theme.colors.textMuted,
-                  lineHeight: 1.55,
-                  margin: 0,
-                  maxWidth: '280px',
-                  fontWeight: 300,
-                }}>
-                  Learn about our journey, our mission and how we create lasting environmental impact.
-                </p>
-              </div>
-
-            </div>
-
-            <div style={{
-              width: isMobile ? '100%' : '220px',
-              flexShrink: 0,
-              padding: isMobile ? '24px 20px' : '28px 24px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '16px',
-              justifyContent: 'center',
-              background: '#ffffff',
-            }}>
-              <div style={{
-                display: 'flex', alignItems: 'center', gap: '12px',
-                padding: '10px 14px',
-                borderRadius: '12px',
-                border: `1.5px solid ${theme.colors.borderLight}`,
-                background: '#F8FAFC',
-              }}>
-                <div style={{
-                  width: '40px', height: '44px',
-                  background: 'linear-gradient(135deg, #e8f0fe 0%, #c7d9ff 100%)',
-                  borderRadius: '8px',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  flexShrink: 0,
-                  border: `1.5px solid ${theme.colors.bluePrimary}33`,
-                  position: 'relative',
-                  overflow: 'hidden',
-                }}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill={theme.colors.bluePrimary} opacity="0.15"/>
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke={theme.colors.bluePrimary} strokeWidth="1.5" fill="none"/>
-                    <polyline points="14 2 14 8 20 8" stroke={theme.colors.bluePrimary} strokeWidth="1.5" fill="none"/>
-                    <text x="6" y="18" fontFamily="Arial" fontSize="5.5" fontWeight="bold" fill={theme.colors.bluePrimary}>PDF</text>
-                  </svg>
-                </div>
-                <div>
-                  <div style={{
-                    fontFamily: theme.fonts.sans, fontSize: '0.72rem',
-                    fontWeight: 700, color: theme.colors.navyDark,
-                    textTransform: 'uppercase', letterSpacing: '0.5px',
-                  }}>PDF Format</div>
-                  <div style={{
-                    fontFamily: theme.fonts.sans, fontSize: '0.7rem',
-                    color: theme.colors.textMuted, fontWeight: 300,
-                  }}>SA Enviro Solutions</div>
-                </div>
-              </div>
-
-
-
-              <motion.a
-                href={BROCHURE_PDF_URL}
-                download={BROCHURE_FILENAME}
-                onClick={handleDownload}
-                whileHover={{ scale: 1.03, boxShadow: `0 8px 24px -4px ${theme.colors.bluePrimary}55` }}
-                whileTap={{ scale: 0.97 }}
-                style={{
-                  textDecoration: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                  background: `linear-gradient(135deg, ${theme.colors.bluePrimary} 0%, #003fbe 100%)`,
-                  color: '#ffffff',
-                  borderRadius: '10px',
-                  padding: '12px 16px',
-                  fontFamily: theme.fonts.sans,
-                  fontSize: '0.82rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  boxShadow: `0 4px 16px -4px ${theme.colors.bluePrimary}66`,
-                  letterSpacing: '0.2px',
-                  marginTop: '4px',
-                }}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                  <polyline points="7 10 12 15 17 10"/>
-                  <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                {dl ? 'Preparing…' : 'Download Brochure'}
-              </motion.a>
             </div>
           </motion.div>
 
+          <div style={{
+            width: isMobile ? '100%' : '45%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            gap: '24px',
+            padding: isMobile ? '20px 24px 60px' : '80px 48px 80px 0',
+            zIndex: 5,
+            position: 'relative',
+          }}>
+
+            <div style={{
+              width: '100%',
+              aspectRatio: '16 / 9',
+              position: 'relative',
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '16px',
+              border: `6px solid ${theme.colors.bgLight}`,
+              outline: `2px solid ${theme.colors.bluePrimary}`,
+              boxShadow: `0 25px 50px -12px rgba(0,0,0,0.15), 0 0 0 2px ${theme.colors.bluePrimary}22`,
+            }}>
+              {/* Background Video */}
+              <video
+                ref={videoRef}
+                src="https://res.cloudinary.com/dwttz8kvz/video/upload/v1778074474/SAEnviro_1_t0abij.mp4"
+                autoPlay
+                loop
+                playsInline
+                muted
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  zIndex: 1,
+                }}
+              />
+
+              {/* Mute/Unmute Overlay Button */}
+              <button
+                onClick={() => setIsMuted(!isMuted)}
+                style={{
+                  position: 'absolute',
+                  bottom: '16px',
+                  right: '16px',
+                  zIndex: 10,
+                  backgroundColor: 'rgba(10, 21, 38, 0.75)',
+                  backdropFilter: 'blur(4px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '50%',
+                  width: '44px',
+                  height: '44px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#ffffff',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(0, 93, 232, 0.9)';
+                  e.currentTarget.style.transform = 'scale(1.08)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(10, 21, 38, 0.75)';
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
+                title={isMuted ? "Unmute Video" : "Mute Video"}
+              >
+                {isMuted ? (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="11   5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                  </svg>
+                ) : (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  </svg>
+                )}
+              </button>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              style={{
+                width: '100%',
+                backgroundColor: '#ffffff',
+                borderRadius: '20px',
+                border: `1.5px solid ${theme.colors.borderLight}`,
+                boxShadow: '0 8px 40px -8px rgba(10, 22, 60, 0.12)',
+                display: 'flex',
+                flexDirection: isMobile ? 'column' : 'row',
+                overflow: 'hidden',
+                position: 'relative',
+              }}
+            >
+              <div style={{
+                flex: isMobile ? 'unset' : '1 1 0%',
+                padding: isMobile ? '24px 20px' : '28px 32px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '18px',
+                borderRight: isMobile ? 'none' : `1.5px solid ${theme.colors.borderLight}`,
+                borderBottom: isMobile ? `1.5px solid ${theme.colors.borderLight}` : 'none',
+                position: 'relative',
+                background: 'linear-gradient(135deg, #f8faff 0%, #ffffff 100%)',
+              }}>
+                <div style={{
+                  position: 'absolute', top: 12, right: 12,
+                  width: 80, height: 80, opacity: 0.08,
+                  backgroundImage: 'radial-gradient(circle, #005DE8 1px, transparent 1px)',
+                  backgroundSize: '10px 10px',
+                  borderRadius: '50%',
+                  pointerEvents: 'none',
+                }} />
+
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: '6px',
+                  color: theme.colors.bluePrimary,
+                  fontFamily: theme.fonts.sans,
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  letterSpacing: '1.5px',
+                  textTransform: 'uppercase',
+                }}>
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill={theme.colors.bluePrimary}>
+                    <circle cx="5" cy="5" r="5" />
+                  </svg>
+                  Explore Our Story
+                </div>
+
+                <div>
+                  <h3 style={{
+                    fontFamily: theme.fonts.serif,
+                    fontSize: isMobile ? '1.4rem' : '1.65rem',
+                    fontWeight: 700,
+                    color: theme.colors.navyDark,
+                    margin: '0 0 6px 0',
+                    lineHeight: 1.2,
+                  }}>
+                    Company Brochure
+                  </h3>
+                  <div style={{
+                    width: '36px', height: '3px',
+                    borderRadius: '2px',
+                    background: `linear-gradient(90deg, ${theme.colors.bluePrimary}, #60a5fa)`,
+                    marginBottom: '10px',
+                  }} />
+                  <p style={{
+                    fontFamily: theme.fonts.sans,
+                    fontSize: '0.85rem',
+                    color: theme.colors.textMuted,
+                    lineHeight: 1.55,
+                    margin: 0,
+                    maxWidth: '280px',
+                    fontWeight: 300,
+                  }}>
+                    Learn about our journey, our mission and how we create lasting environmental impact.
+                  </p>
+                </div>
+
+              </div>
+
+              <div style={{
+                width: isMobile ? '100%' : '220px',
+                flexShrink: 0,
+                padding: isMobile ? '24px 20px' : '28px 24px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+                justifyContent: 'center',
+                background: '#ffffff',
+              }}>
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: '12px',
+                  padding: '10px 14px',
+                  borderRadius: '12px',
+                  border: `1.5px solid ${theme.colors.borderLight}`,
+                  background: '#F8FAFC',
+                }}>
+                  <div style={{
+                    width: '40px', height: '44px',
+                    background: 'linear-gradient(135deg, #e8f0fe 0%, #c7d9ff 100%)',
+                    borderRadius: '8px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    flexShrink: 0,
+                    border: `1.5px solid ${theme.colors.bluePrimary}33`,
+                    position: 'relative',
+                    overflow: 'hidden',
+                  }}>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill={theme.colors.bluePrimary} opacity="0.15" />
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke={theme.colors.bluePrimary} strokeWidth="1.5" fill="none" />
+                      <polyline points="14 2 14 8 20 8" stroke={theme.colors.bluePrimary} strokeWidth="1.5" fill="none" />
+                      <text x="6" y="18" fontFamily="Arial" fontSize="5.5" fontWeight="bold" fill={theme.colors.bluePrimary}>PDF</text>
+                    </svg>
+                  </div>
+                  <div>
+                    <div style={{
+                      fontFamily: theme.fonts.sans, fontSize: '0.72rem',
+                      fontWeight: 700, color: theme.colors.navyDark,
+                      textTransform: 'uppercase', letterSpacing: '0.5px',
+                    }}>PDF Format</div>
+                    <div style={{
+                      fontFamily: theme.fonts.sans, fontSize: '0.7rem',
+                      color: theme.colors.textMuted, fontWeight: 300,
+                    }}>SA Enviro Solutions</div>
+                  </div>
+                </div>
+
+
+
+                <motion.a
+                  href={BROCHURE_PDF_URL}
+                  download={BROCHURE_FILENAME}
+                  onClick={handleDownload}
+                  whileHover={{ scale: 1.03, boxShadow: `0 8px 24px -4px ${theme.colors.bluePrimary}55` }}
+                  whileTap={{ scale: 0.97 }}
+                  style={{
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    background: `linear-gradient(135deg, ${theme.colors.bluePrimary} 0%, #003fbe 100%)`,
+                    color: '#ffffff',
+                    borderRadius: '10px',
+                    padding: '12px 16px',
+                    fontFamily: theme.fonts.sans,
+                    fontSize: '0.82rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    boxShadow: `0 4px 16px -4px ${theme.colors.bluePrimary}66`,
+                    letterSpacing: '0.2px',
+                    marginTop: '4px',
+                  }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  {dl ? 'Preparing…' : 'Download Brochure'}
+                </motion.a>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </div>
-    </div>
-  </>
+    </>
   );
 };
